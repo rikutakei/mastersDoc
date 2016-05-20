@@ -1,56 +1,55 @@
 \chapter{Methods (draft)}
 \label{ch:methods}
 
-\section{Body Mass Index (BMI)}
+\section{\gls{bmi}}
 \label{sec:bmi}
 
-\subsection{BMI Calculation}
+\subsection{\gls{bmi} Calculation}
 \label{subsec:bmicalc}
 
-BMI was calculated from the height and weight data of the samples using the following equation:
+\gls{bmi} was calculated from the height and weight data of the samples using the following equation:
 
 \begin{equation}
 	\label{eq:bmicalc}
-	BMI = \frac{weight (kg)}{Height^2(m^2)}\\
+	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
 \end{equation}
 
-\subsection{BMI Classification}
+\subsection{\gls{bmi} Classification}
 \label{subsec:bmiclassification}
 
-Samples were classified based on the WHO definition, as shown in Table~\ref{tab:whobmiclass}.
+Samples were classified based on the \gls{who} definition, as shown in Table~\ref{tab:whobmiclass}.
 \begin{table}[hb]
-	\caption{WHO defined BMI classification}
+	\caption{\gls{who} defined \gls{bmi} classification}
 	\label{tab:whobmiclass}
 	\begin{center}
-		\begin{tabular}{|c|c|}
+		\begin{tabular}{lc}
+			\bfseries {Classification} & \bfseries {\gls{bmi} Value}\\
 			\hline
-			\bfseries {Classification} & \bfseries {BMI}\\
-			\hline
-			Underweight & \textless 20.0\\
+			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
 			Normal weight/lean & 20.0$\sim$24.9\\
 			Overweight & 25.0$\sim$29.9\\
-			Obese & \textgreater 30.0\\
-			\hline
+			Obese & \textgreater{} 30.0\\
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\section{Download Data from publicly available source}
+\section{Publicly available cancer data}
 \label{sec:data}
 
-Data related to multiple different cancer types were downloaded from free and publicly available source such as The Cancer Genome Atlas and the International Cancer Genome Consortium.
+Data related to multiple different cancer types were downloaded from free and publicly available sources such as \gls{tcga} and the \gls{icgc}.
 
-\subsection{The Cancer Genome Atlas (TCGA)}
+\subsection{\gls{tcga}}
 \label{subsec:tcga}
 
-The clinical data for all cancer types (33 types in total) were downloaded from TCGA database and were checked for the height and weight data for each sample.
-Any cancer type with no weight and/or height data of the samples were excluded from the project, as no BMI information can be obtained without these data.
-This gave a total of eight cancer types (bladder urothelial carcinoma (BLCA), cervical squamous cell carcinoma and endocervical adenocarcinoma (CESC), colon adenocarcinoma (COAD), kidney renal clear cell carcinoma (KIRP), liver hepatocellular carcinoma (LIHC), rectum adenocarcinoma (READ), skin cutaneous melanoma (SKCM), and uterine corpus endometrial carcinoma (UCEC)) to be used for further analyses.
+The clinical data for all cancer types (33 types in total) were downloaded from \gls{tcga} database and were checked for the height and weight data for each sample, for each cancer type.
+Any cancer type with no weight and/or height data of the samples were excluded from the project, as no \gls{bmi} information can be obtained without these data.
 
-\subsection{International Cancer Genome Consortium (ICGC)}
+This gave a total of eight cancer types (\gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}) to be used for further analyses.
+
+\subsection{\gls{icgc}}
 \label{subsec:icgc}
 
-RNA-seq data for the eight cancer types with sample BMI information available were downloaded from the ICGC database.
+RNA-seq data for the eight cancer types with sample \gls{bmi} information available were downloaded from the \gls{icgc} database.
 The RNA-seq data for each of the eight cancer types were imported into R.
 
 \section{Validation of methodology used by \citet{Creighton2012}}
@@ -59,15 +58,15 @@ The RNA-seq data for each of the eight cancer types were imported into R.
 \subsection{Raw data from the \citet{Creighton2012} study}
 \label{subsec:rawdatacr}
 
-The raw microarray gene expression data files of all the samples used by \citet{Creighton2012} were downloaded from the Gene Expression Omnibus (GEO) database.
+The raw microarray gene expression data files of all the samples used by \citet{Creighton2012} were downloaded from the \gls{geo} database.
 Raw data were imported into R/RStudio for further analyses.
 
-(add data/sample composition -- race, grade, etc -- maybe in table form)
+(add data/sample composition -- ethinicity, grade, etc -- maybe in table form)
 
 \subsection{Normalisation of raw \citet{Creighton2012} data}
 \label{subsec:normcrdata}
 
-The raw microarray data for all 103 samples in the study were normalised using Robust Multi Array (RMA) method from the \textit{affy} package in R.
+The raw microarray data for all 103 samples in the study were normalised using \gls{rma} method from the \textit{affy} package in R.
 The data was then standardised so that each of the genes had a mean of 0 and a standard deviation of 1.
 (mention scaling anything over 3 were made to be 3 for heatmap scaling)
 
@@ -80,16 +79,16 @@ The list of gene probes were imported into R for further analyses and validation
 \subsection{Differential gene expression analysis}
 \label{subsec:deg}
 
-All 103 samples from the \citet{Creighton2012} study were split into two groups (obese and non-obese) based on the sample BMI status as defined by the WHO classification (see Table~\ref{tab:whobmiclass}).
+All 103 samples from the \citet{Creighton2012} study were split into two groups (obese and non-obese) based on the sample \gls{bmi} status as defined by the \gls{who} classification (see Table~\ref{tab:whobmiclass}).
 The difference in the gene expression between these two sample groups were analysed by fitting a linear model to the data, using the \textit{limma} package in R.
 The top 799 differentially expressed gene probes that had p-value \textless{} 0.01 were identified.
 
-The process above was repeated on the same data, with the same group (obese and non-obese) after controlling for all other clinical variables that were not related to the sample BMI (age, sex, race, tumour grade, lymph node (LN) status, progesterone receptor (PR) status, and estrogen receptor (ER) status).
-The top 799 differentially expressed gene probes that had p-value \textless{} 0.01 between the two groups were identified.
+The process above was repeated on the same data, with the same group (obese and non-obese) after controlling for all other clinical variables that were not related to the sample \gls{bmi} (age, sex, ethinicity, tumour grade, \gls{ln} status, \gls{pr} status, \gls{er} status, \gls{her2} status).
+the top 799 differentially expressed gene probes that had p-value \textless{} 0.01 between the two groups were identified.
 
-To completely remove the effect of race on the analysis, the analysis was repeated using only the Caucasian samples.
-This reduced the sample size from 103 samples to (70 something) samples (check sample size).
-The data was controlled for all other clinical variables except the variables that were related to BMI (age, sex, tumour grade, LN status, PR status, and ER status).
+To completely remove the effect of ethinicity on the analysis, the analysis was repeated using only the Caucasian samples.
+This reduced the sample size from 103 samples to 77 samples.
+The data was controlled for all other clinical variables except the variables that were related to \gls{bmi} (age, sex, tumour grade, \gls{ln} status, \gls{pr} status, \gls{er} status, and \gls{her2} status).
 Again, the top 799 differentially expressed genes between the two groups with p-value \textless{} 0.01 were identified.
 
 \subsection{Comparison of \citet{Creighton2012} gene probes and identified gene probes}
@@ -98,16 +97,16 @@ Again, the top 799 differentially expressed genes between the two groups with p-
 The obesity associated gene probes identified by \citet{Creighton2012} were compared with each of the three sets of gene probes identified from the differential gene expression analysis (see \ref{subsec:deg} \nameref{subsec:deg}).
 The presence of any of the \citet{Creighton2012} genes were checked for in each of the gene sets identified at a p-value \textless{} 0.05, as well as the top 799 gene probes at p-Value \textless{} 0.01.
 
-\subsection{Singular Value Decomposition}
+\subsection{\gls{svd}}
 \label{subsec:svd}
 
 (need svd derivation and why I'm using it)
 
-\subsection{Correlation between obesity associated metagene and sample BMI}
+\subsection{Correlation between obesity associated metagene and sample \gls{bmi}}
 \label{subsec:metavsbmi}
 
-In order to check whether the metagenes were actually specific to the BMI status of the samples, the metagenes were plotted against both the BMI statuses and the BMI values of the samples.
-The metagenes were ranked for each sample, and a box plot and a scatter plot were plotted for sample BMI statuses and BMI values, respectively.
+In order to check whether the metagenes were actually specific to the \gls{bmi} status of the samples, the metagenes were plotted against both the \gls{bmi} statuses and the \gls{bmi} values of the samples.
+The metagenes were ranked for each sample, and a box plot and a scatter plot were plotted for sample \gls{bmi} statuses and \gls{bmi} values, respectively.
 
 \section{Applying metagene to other cancer types}
 \label{sec:metagene}

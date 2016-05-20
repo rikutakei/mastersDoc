@@ -30,6 +30,7 @@ all: thesis.pdf
 # missing file reference and interactively asking you for an alternative.
 
 thesis.pdf: thesis.tex
+	makeglossaries thesis
 	latexmk -bibtex -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make thesis.tex
 
 clean:

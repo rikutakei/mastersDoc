@@ -10,6 +10,7 @@
 \usepackage{setspace}                        % package for setting line space (used in title page)
 \usepackage[hidelinks, colorlinks]{hyperref} % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
 \usepackage[md]{titlesec}                    % package for tweaking the chapter/section/subsection titles format
+\usepackage[acronym, toc]{glossaries}          % package for making glossaries
 
 % Set up the hyperlinks - hange the colour of the links to blue:
 \hypersetup{allcolors=blue}
@@ -24,6 +25,10 @@
 
 % Change the title of bibliography to references:
 \renewcommand{\bibname}{References}
+
+% To generate glossaries:
+\include{./misc/glossary}
+\makeglossaries
 
 \begin{document}
 
@@ -51,11 +56,18 @@
 
 \listoftables
 
-% May need to include abbreviations and glossary here, before any chapter begins
+\clearpage
+
+\printglossaries
 
 \clearpage
 
+% \listoftables
+
+% \clearpage
+
 \pagenumbering{arabic} % revert the page numbering to normal numbering
+\glsresetall
 
 \include{./intro/intro}
 
