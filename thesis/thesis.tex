@@ -9,8 +9,13 @@
 \usepackage{chngcntr}                        % package for making continuous figure numbering, instead of section-based numbering
 \usepackage{setspace}                        % package for setting line space (used in title page)
 \usepackage[hidelinks, colorlinks]{hyperref} % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
+\usepackage[capitalise]{cleveref}            % package for referencing multiple referencing in a single \ref command
 \usepackage[md]{titlesec}                    % package for tweaking the chapter/section/subsection titles format
-\usepackage[acronym, toc]{glossaries}          % package for making glossaries
+\usepackage[acronym, toc]{glossaries}        % package for making glossaries
+\usepackage{xcolor,colortbl}                 % package for making colours
+
+% Define colour(s) for table rows:
+\definecolor{LightCyan}{rgb}{0.88,1,1}
 
 % Set up the hyperlinks - hange the colour of the links to blue:
 \hypersetup{allcolors=blue}
