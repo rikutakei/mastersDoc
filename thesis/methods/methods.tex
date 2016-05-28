@@ -264,7 +264,6 @@ To have a better colour scales in the heatmap, any expression values that were g
 The same \gls{metagene} scores from the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
 Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
 
-
 \section{Fuentes-Mattei metagene in \gls{icgc} cancer data}
 \label{sec:fmmetaicgc}
 
@@ -322,16 +321,36 @@ These two groups were classified based on the sample \gls{bmi}, where the obese 
 \subsection{Gene expression analysis}
 \label{subsec:crdeg}
 
+The difference in the gene expression between the obese and non-obese sample groups in each of the four data sets described in \cref{subsec:subdatadeg} were analysed by fitting a linear model to the data, using the \textit{limma} package in \gls{r}.
+From the top significantly expressed genes produced by the \texttt{topTable} function, all of the gene probes that had a p-value \textless{} 0.01 were selected.
+
+When there were more than 799 gene probes in the list of significant genes, the top 799 gene probes were selected from the list and used as the gene probe set for the metagene analysis, for that dataset.
+
+For each gene probe set, the gene probes that were common with the obesity associated genes identified by \citet{Creighton2012} were selected and used as a separate gene probe set.
+There were eight metagenes in total after this process: four gene probe sets from the datasets from \cref{subsec:subdatadeg}, and four gene probe sets that were in common with the obesity associated genes from \citet{Creighton2012} study.
+
+\subsection{Gene probe set conversion}
+\label{subsec:gpconv}
+
+
+
+
+
+\subsection{BMI metagenes in Creighton data}
+\label{subsec:bmidegmetacr}
+
+
+
+
+\subsection{BMI metagenes in \gls{icgc} data}
+\label{subsec:bmidegmetaicgc}
+
 The gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
 Where there was a duplicated gene in the data, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 
 
 
 
-
-
-The difference in the gene expression between these two sample groups were analysed by fitting a linear model to the data, using the \textit{limma} package in \gls{r}.
-The top 799 differentially expressed gene probes that had p-value \textless{} 0.01 were identified.
 
 
 
