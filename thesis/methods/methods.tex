@@ -252,6 +252,7 @@ See \cref{subsec:rawdatacr,subsec:normcrdata} for details on how the data was pr
 The gene probe IDs in Creighton data were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
 Where there was a duplicated gene, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 All of the *** obesity associated genes from  \cref{subsec:fmobsgene} were selected from the data.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 
 %TODO: how do I explain how I got the \gls{metagene} scores?
 The \gls{metagene} scores of the samples were obtained by taking the first eigenvector of the transformed Creighton data.
@@ -331,15 +332,20 @@ The difference in the gene expression between the obese and non-obese sample gro
 From the list of significantly expressed (genes produced by the \texttt{topTable} function), all of the gene probes that had a p-value \textless{} 0.01 were selected.
 
 When there was more than 799 gene probes in the list of significant genes, the top 799 gene probes were selected from the list.
-This list of 799 gene probes represented the obesity associated metagene for that dataset.
+This list of 799 gene probes represented the gene probes that were associated with obesity  for that dataset.
+
+\subsection{Common gene probes from the \citet{Creighton2012} study}
+\label{subsec:crol}
 
 For each gene probe set, the gene probes that were common with the obesity associated genes identified by \citet{Creighton2012} were selected and used as a separate gene probe set.
-There were eight metagenes in total after this process: four gene probe sets from the datasets from \cref{subsec:subdatadeg}, and four gene probe sets that were in common with the obesity associated genes from the \citet{Creighton2012} study.
+There were eight gene probe sets in total after this process: four gene probe sets from the datasets from \cref{subsec:subdatadeg}, and four gene probe sets that were in common with the obesity associated genes from the \citet{Creighton2012} study.
+
+%TODO: add a table summarizing how many genes were in each gene probe set
 
 \subsection{Gene probe set conversion and selection}
 \label{subsec:gpconv}
 
-For each of the eight gene probe sets identified in \cref{subsec:crdeg}, the gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+For each of the eight gene probe sets identified in \cref{subsec:crdeg,subsec:crol}, the gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
 Any duplicates and any gene symbols that were not present in both the Creighton data and the ICGC data were removed from the gene probe set.
 
 \section{BMI metagenes in Creighton data}
@@ -348,49 +354,26 @@ Any duplicates and any gene symbols that were not present in both the Creighton 
 \subsection{BMI metagene generation}
 \label{subsec:bmimetagen}
 
+The gene probe IDs in Creighton data were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was a duplicated gene, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+For each gene probe sets identified in \cref{subsec:crdeg,subsec:crol}, the gene probes were selected from this data.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 
-
+SVD was applied to the standardised data, and the first eigenvector of the decomposed matrix was used as the sample metagene score for that gene probe set.
+The \gls{metagene} scores were ranked based on the number of samples in the data (*** samples in Creighton data), and the scores ranged from 0 to 1.
 
 \subsection{BMI metagenes and sample gene expression in Creighton data}
 \label{subsec:gpconv}
 
-The gene probe IDs in the Creighton data were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
-Where there was a duplicated gene in the data, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-
-For each BMI gene probe set identified in \cref{sec:deg}, relevant genes were taken from the Creighton data.
-The data was then standardised so all of the genes had a mean ($\mu$) of 0 and standard deviation ($\sigma$) of 1.
-
-
-
-
-
+For each \gls{metagene} scores in \cref{subsec:bmimetagen} were plotted together with the gene expression of the associated gene probes for each sample on a heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
 
 \subsection{BMI metagenes in \gls{icgc} data}
 \label{subsec:bmidegmetaicgc}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The same \gls{metagene} scores from the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
+Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
 
 \newpage
 
