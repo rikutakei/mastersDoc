@@ -1,0 +1,422 @@
+\chapter{Methods (draft)}
+\label{ch:methods}
+
+\section{\gls{bmi}}
+\label{sec:bmi}
+
+\subsection{\gls{bmi} Calculation}
+\label{subsec:bmicalc}
+
+\gls{bmi} was calculated from the height and weight data of the samples using the following equation:
+
+\begin{equation}
+	\label{eq:bmicalc}
+	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
+\end{equation}
+
+\subsection{\gls{bmi} Classification}
+\label{subsec:bmiclassification}
+
+Samples were classified based on the \gls{who} definition, as shown in Table~\cref{tab:whobmiclass}.
+\begin{table}[hb]
+	\caption{\gls{who} defined \gls{bmi} classification}
+	\label{tab:whobmiclass}
+	\begin{center}
+		\begin{tabular}{lc}
+			\bfseries {Classification} & \bfseries {\gls{bmi} Value}\\
+			\hline
+			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
+			Normal weight/lean & 20.0$\sim$24.9\\
+			Overweight & 25.0$\sim$29.9\\
+			Obese & \textgreater{} 30.0\\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\section{Publicly available cancer data}
+\label{sec:data}
+
+Data related to multiple different cancer types were downloaded from free and publicly available sources such as \gls{tcga} and the \gls{icgc}.
+
+\subsection{\gls{tcga}}
+\label{subsec:tcga}
+
+The clinical data for all available cancer types (33 types in total) were downloaded from \gls{tcga} database and were checked for the height and weight data for each sample, for each cancer type.
+Any cancer type with no weight and/or height data of the samples were excluded from the project, as no \gls{bmi} information can be obtained without these data.
+
+This gave a total of eight cancer types: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}.
+All eight cancer types were used for further analyses.
+
+\subsection{\gls{icgc}}
+\label{subsec:icgc}
+
+\gls{rnaseq} data for the eight cancer types with sample \gls{bmi} information available were downloaded from the \gls{icgc} database.
+The \gls{rnaseq} data for each of the eight cancer types were imported into \gls{r}.
+%TODO: add in how I processed the ICGC data format into genes by samples.
+
+%TODO: change the title name?
+\subsection{\gls{icgc} sample exclusion criteria}
+\label{subsec:sampleexclusion}
+
+Samples from the downloaded data were removed using the following criteria.
+
+\subsubsection{\textbf{Sample BMI availability}}
+\label{subsubsec:samplebmiavailability}
+
+Some of the samples did not have either height or weight data, or both.
+These samples were removed from the analyses.
+
+\subsubsection{\textbf{Sample ID conversion and matching}}
+\label{subsubsec:sampleidconversion}
+
+%TODO: check the actual ID stripping process
+%TODO: check the WGCNA function and check if it uses median/mean/whatever for choosing the sample
+
+\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the ID from the \gls{rnaseq} data matched with the \gls{tcga} ID in the clinical data.
+After stripping the ID, samples were checked for any overlaps.
+Where there was an overlap in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+
+In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the \gls{tcga} sample ID in the \gls{rnaseq} data, and vice versa.
+Any sample that did not have either clinical or \gls{rnaseq} data were removed, so both clinical and \gls{rnaseq} data were available for all of the samples that were included in the analyses.
+See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
+
+\begin{table}[h]
+	\caption{Summary of the total number of samples included in the analyses for each cancer type}
+	\label{tab:samplesize}
+	\begin{center}
+		\begin{tabular}{cc}
+			\textbf{Cancer Type}   & \textbf{Total} \\
+			\hline
+			\rule{0pt}{2.25ex}BLCA & 261   \\
+			CESC                   & 224   \\
+			COAD                   & 226   \\
+			KIRP                   & 124   \\
+			LIHC                   & 264   \\
+			READ                   & 73    \\
+			SKCM                   & 218   \\
+			UCEC                   & 482   \\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\section{Data processing -- Creighton data}
+\label{sec:dataprocessingcr}
+
+\subsection{Raw data from the \citet{Creighton2012} study}
+\label{subsec:rawdatacr}
+
+The raw microarray gene expression data files of all *** samples from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
+Clinical data of the samples were obtained from the supplementary table 1 from their paper.
+Raw data were imported into \gls{r}/RStudio for subsequent analyses.
+
+
+%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
+
+\subsection{Normalisation of raw Creighton data}
+\label{subsec:normcrdata}
+
+The raw microarray data for all 103 samples from the study were normalised using \gls{rma} method from the \textit{affy} package in \gls{r}.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+This ensured that all of the genes were on the same scale as one another, allowing for comparison.
+
+\subsection{Obesity associated gene probes from the \citet{Creighton2012} study}
+\label{subsec:crobsgene}
+
+799 obesity associated gene probes identified by \citet{Creighton2012} were obtained from the supplementary data file 1 from their paper.
+The list of gene probes were imported into \gls{r}.
+The gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Any duplicates and any gene symbols that were not present in both the Creighton data and the \gls{icgc} data were removed, which left *** unique obesity associated genes.
+
+\section{Validation of results -- \citet{Creighton2012}}
+\label{sec:valresultscr}
+
+The results presented by \citet{Creighton2012} were validated using the same raw data they have used in their study.
+See  \cref{sec:dataprocessingcr} for details on how the raw data was accessed and processed.
+
+\subsection{Creighton metagene generation}
+\label{subsec:crmetagen}
+
+The gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was a duplicated gene in the data, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+All of the *** obesity associated genes from  \cref{subsec:crobsgene} were selected from the data.
+
+\gls{svd} was applied to this data to obtain the decomposed matrices of the data.
+%TODO: how do I explain how I got the \gls{metagene} scores?
+The \gls{metagene} scores of the samples were obtained by taking the first eigenvector of the (orthogonal matrix...?).
+The \gls{metagene} scores were ranked based on the number of samples in the data (103 samples in the Creighton data), and the values of the scores were between 0 and 1.
+
+\subsection{Metagene and sample gene expression pattern}
+\label{subsec:crmetage}
+
+\Gls{metagene} scores from \cref{subsec:crmetagen} were plotted together with the gene expression of the obesity associated gene probes for each sample on a heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{Metagene and sample \gls{bmi}}
+\label{subsec:crmetabmi}
+
+The same \gls{metagene} scores as in the previous section (\cref{subsec:crmetage}) were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
+Boxplot was plotted to show the association of the \gls{metagene} scores with the sample \gls{bmi} status, and scatter plot was plotted to show the association with the sample \gls{bmi} value.
+
+%TODO: check the formal definition of these test/values
+For the boxplot, the p-value was obtained from the ANOVA test.
+For the scatter plot, the regression line was plotted and the adjusted $R^2$ value was calculated for the regression line.
+
+
+\section{Creighton metagene in \gls{icgc} cancer data}
+\label{sec:crmetaicgc}
+
+\subsection{\gls{icgc} data processing}
+\label{subsec:datprocicgc}
+
+The obesity associated genes from \cref{subsec:crobsgene} were selected in each of the eight cancer types.
+All cancer data had 1 added to the count data, so no infinite values were introduced when the data was logged.
+All cancer data were logged to the base 10.
+
+All of the data were then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+Any ``NaN'' values in the data introduced from this were assigned a value of 0.
+
+\subsection{Transformation matrix}
+\label{subsec:transmatcr}
+
+Transformation matrix was formed from the decomposed matrices that resulted from the application of \gls{svd} to the Creighton data (see \cref{subsec:crmetage}).
+%TODO: add the derivation of transformation matrix??
+
+\subsection{Transformed \gls{icgc} data and metagene}
+\label{subsec:icgctranscr}
+
+Each of the eight cancer data from \cref{subsec:datprocicgc} were transformed using the transformation matrix from \cref{subsec:transmatcr}.
+Metagene scores of the samples in each cancer types were obtained by taking the first eigenvector of the cancer matrix that resulted from the transformation.
+The \gls{metagene} scores were ranked based on the number of samples in the data, and the scores ranged from 0 to 1.
+
+\subsection{Creighton metagene and sample gene expression}
+\label{subsec:crmetaicgcge}
+
+\Gls{metagene} scores from \cref{subsec:icgctranscr} were plotted together with the gene expression of the obesity associated gene probes on a heatmap for each cancer type.
+The data from \cref{subsec:datprocicgc} were used for the heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{Creighton metagene and sample \gls{bmi}}
+\label{subsec:crmetaicgcge}
+
+The same \gls{metagene} scores as in the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values for each cancer type.
+Boxplot was plotted to show the association of the \gls{metagene} scores with the sample \gls{bmi} status, and scatter plot was plotted to show the association with the sample \gls{bmi} value.
+
+%TODO: check the formal definition of these test/values
+For the boxplot, the p-value was obtained from the ANOVA test.
+For the scatter plot, the regression line was plotted and the adjusted $R^2$ value was calculated for the regression line.
+
+
+%TODO: Not sure if I should cut this section to "see previous section for details"
+\section{Data processing -- Fuentes-Mattei data}
+\label{sec:dataprocessingfm}
+
+\subsection{Raw data from the \citet{Fuentes-Mattei2014} study}
+\label{subsec:rawdatafm}
+
+
+
+%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
+
+\subsection{Normalisation of raw Fuentes-Mattei data}
+\label{subsec:normfmdata}
+
+The raw microarray data for all *** samples from the study were normalised using \gls{rma} method from the \textit{affy} package in \gls{r}.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+
+\subsection{Obesity associated gene probes from the \citet{Fuentes-Mattei2014} study}
+\label{subsec:fmobsgene}
+
+Any gene symbols that were not present in the Fuentes-Mattei data, the Creighton data and the \gls{icgc} data were removed, which left *** unique obesity associated genes.
+
+\section{Validation of results -- \citet{Fuentes-Mattei2014}}
+\label{sec:valresultsfm}
+
+The results presented by \citet{Fuentes-Mattei2014} were validated using the Creighton data, as the clinical data of the samples were not available.
+See \cref{subsec:rawdatacr,subsec:normcrdata} for details on how the data was processed.
+
+\subsection{Fuentes-Mattei transformation matrix}
+\label{subsec:transmatfm}
+
+\gls{svd} was applied to Fuentes-Mattei data to obtain the decomposed matrices of the data, and this was used to make the transformation matrix.
+%TODO: add the derivation of transformation matrix??
+
+\subsection{Fuentes-Mattei metagene generation}
+\label{subsec:fmmetagen}
+
+The gene probe IDs in the Creighton data were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was a duplicated gene, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+All of the *** obesity associated genes from  \cref{subsec:fmobsgene} were selected from the data.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+
+%TODO: how do I explain how I got the \gls{metagene} scores?
+The \gls{metagene} scores of the samples were obtained by taking the first eigenvector of the transformed Creighton data.
+The \gls{metagene} scores were ranked based on the number of samples in the data (*** samples in the Creighton data), and the scores ranged from 0 to 1.
+
+\subsection{Fuentes-Mattei metagene and gene expression in the Creighton data}
+\label{subsec:fmmetage}
+
+These \gls{metagene} scores were plotted together with the gene expression of the obesity associated gene probes for each sample on a heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{Fuentes-Mattei metagene and sample \gls{bmi} in the Creighton data}
+\label{subsec:fmmetabmi}
+
+The same \gls{metagene} scores from the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
+Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
+
+\section{Fuentes-Mattei metagene in \gls{icgc} cancer data}
+\label{sec:fmmetaicgc}
+
+\subsection{\gls{icgc} data processing}
+\label{subsec:datprocicgcfm}
+
+All of the \gls{icgc} data were processed in a similar fashion as in \cref{subsec:datprocicgc}, but the obesity associated genes from \cref{subsec:fmobsgene} were used instead.
+
+\subsection{Transformation matrix}
+\label{subsec:icgctransmatfm}
+
+The same transformation matrix from \cref{subsec:transmatfm} was used.
+
+\subsection{Transformed \gls{icgc} data and metagene}
+\label{subsec:icgctransfm}
+
+Each of the eight cancer data from \cref{subsec:datprocicgcfm} were transformed using the transformation matrix from \cref{subsec:transmatfm}.
+Metagene scores were ranked as in \cref{subsec:icgctranscr}.
+
+\subsection{Fuentes-Mattei metagene and sample gene expression}
+\label{subsec:fmmetaicgcge}
+
+\Gls{metagene} scores from \cref{subsec:icgctransfm} were plotted together with the gene expression of the obesity associated gene probes for each sample on a heatmap for each cancer type.
+The data from \cref{subsec:datprocicgcfm} were used for the heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{Creighton metagene and sample \gls{bmi}}
+\label{subsec:fmmetaicgcge}
+
+The same \gls{metagene} scores as in the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values for each cancer type.
+Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
+
+\section{Differential gene expression analysis}
+\label{sec:deg}
+
+\subsection{Data processing and subsetting}
+\label{subsec:subdatadeg}
+
+Raw data from \cref{subsec:rawdatacr,subsec:normcrdata} were used in the analysis.
+Together with the raw data, few other data sets were created based on the raw data: residual data, Caucasian-only raw data, and Caucasian-only residual data.
+
+Residual data was created from the raw data after it has been controlled for all clinical variables, except those related to \gls{bmi}.
+These clinical variables included age, sex, ethinicity, tumour grade, \gls{pr}, \gls{er}, \gls{her2} statuses, and \gls{ln} status.
+
+Caucasian-only data was created by taking only the Caucasian samples from the raw data, which reduced the sample size from 103 samples to 77 samples.
+Caucasian-only residual data was created using the same approach as with the residual data: the data that remained after all the non-\gls{bmi} clinical variables were controlled in the Caucasian-only raw data.
+
+\subsection{Group classification}
+\label{subsec:crdegclass}
+
+In each of the datasets from \cref{subsec:subdatadeg}, all of the samples were split into two groups: obese and non-obese groups.
+These two groups were classified based on the sample \gls{bmi}, where the obese groups were defined as samples with \gls{bmi}  \textgreater{} 30, and non-obese group were defined as samples with \gls{bmi}  \textless{} 30 (see \cref{tab:whobmiclass}).
+
+\subsection{Gene expression analysis}
+\label{subsec:crdeg}
+
+The difference in the gene expression between the obese and non-obese sample groups in each of the four data sets described in \cref{subsec:subdatadeg} were analysed by fitting a linear model to the data, using the \textit{limma} package in \gls{r}.
+From the list of significantly expressed (genes produced by the \texttt{topTable} function), all of the gene probes that had a p-value \textless{} 0.01 were selected.
+
+When there was more than 799 gene probes in the list of significant genes, the top 799 gene probes were selected from the list.
+This list of 799 gene probes represented the gene probes that were associated with obesity  for that dataset.
+
+\subsection{Common gene probes from the \citet{Creighton2012} study}
+\label{subsec:crol}
+
+For each gene probe set, the gene probes that were common with the obesity associated genes identified by \citet{Creighton2012} were selected and used as a separate gene probe set.
+There were eight gene probe sets in total after this process: four gene probe sets from the datasets from \cref{subsec:subdatadeg}, and four gene probe sets that were in common with the obesity associated genes from the \citet{Creighton2012} study.
+
+%TODO: add a table summarizing how many genes were in each gene probe set
+
+\subsection{Gene probe set conversion and selection}
+\label{subsec:gpconv}
+
+For each of the eight gene probe sets identified in \cref{subsec:crdeg,subsec:crol}, the gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Any duplicates and any gene symbols that were not present in both the Creighton data and the ICGC data were removed from the gene probe set.
+
+\section{BMI metagenes in the Creighton data}
+\label{sec:bmidegmetacr}
+
+\subsection{BMI metagene generation}
+\label{subsec:bmimetagen}
+
+The gene probe IDs in the Creighton data were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was a duplicated gene, appropriate gene data was chosen to represent that particular gene by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+For each gene probe sets identified in \cref{subsec:crdeg,subsec:crol}, the gene probes were selected from the Creighton data.
+The data was then standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+
+SVD was applied to the standardised data, and the first eigenvector of the decomposed matrix was used as the sample metagene score for that gene probe set.
+The \gls{metagene} scores were ranked based on the number of samples in the data (103 samples in the Creighton data), and the scores ranged from 0 to 1.
+
+\subsection{BMI metagenes and sample gene expression}
+\label{subsec:bmimetavscr}
+
+For each \gls{metagene} scores in \cref{subsec:bmimetagen} were plotted together with the gene expression of the associated gene probes for each sample on a heatmap.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{BMI metagenes and sample \gls{bmi}}
+\label{subsec:bmidegmetacr}
+
+The same \gls{metagene} scores from the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
+Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
+
+\section{BMI metagenes in the \gls{icgc} data}
+\label{sec:bmidegmetaicgc}
+
+\subsection{\gls{icgc} data processing}
+
+All of the \gls{icgc} data were processed in a similar fashion as in \cref{subsec:datprocicgc}, but each of the eight BMI metagene gene probes from \cref{subsec:bmimetagen} were used instead.
+
+\subsection{BMI metagene transformation matrix}
+\label{subsec:bmimetagenicgc}
+
+Transformation matrix for each BMI metagene gene probe sets were created using the decomposed matrices of the Creighton data that resulted from the application of SVD in \ref{subsec:bmimetagen}.
+
+\subsection{BMI metagenes and sample gene expression in the \gls{icgc} data}
+\label{subsec:gpconv}
+
+For each \gls{metagene} scores in \cref{subsec:bmimetagen} were plotted together with the gene expression of the associated gene probes for each sample on a heatmap for each cancer type.
+The samples in the heatmap were ordered based on their ranked \gls{metagene} scores.
+To have a better colour scales in the heatmap, any expression values that were greater than 3 or less than -3 were assigned the value of 3 and -3, respectively.
+
+\subsection{BMI metagenes in \gls{icgc} data}
+\label{subsec:bmidegmetaicgc}
+
+The same \gls{metagene} scores from the previous section were used to compare the \gls{metagene} scores with the samples' \gls{bmi} statuses and values.
+Box and scatter plots, and any statistical values associated with these plots were calculated as in \cref{subsec:crmetaicgcge}.
+
+
+
+\newpage
+
+
+%TODO: need svd derivation and why I'm using it
+
+%TODO: How you could transfer the metagene to other cancer data
+
+%TODO: why transformation matrix is used
+%TODO: refer back to eqiations in the  svd section
+
+\section{Gene expression analysis in \gls{icgc} data}
+\label{sec:degicgc}
+
+\section{Pathway enrichment analysis in \gls{icgc} data}
+\label{sec:pathenrich}
+
+
+
+
+
+
+
