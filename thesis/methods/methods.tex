@@ -83,74 +83,88 @@ The \gls{rnaseq} data for each of the eight cancer types were imported into \gls
 
 % \subsubsection{\textbf{Data processing}}
 
-\paragraph{\textit{Raw data normalisation}}
+\subsubsection{\textbf{Raw data normalisation}}
 
 The raw microarray data for all 103 samples from \cref{subsec:crrawdat} were normalised using the \gls{rma} method from the \textit{affy} package in \gls{r}.
 \gls{rma} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
 
-\paragraph{\textit{ Raw data standardisation }}
+\subsubsection{\textbf{Raw data standardisation}}
 
-The data was standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+The data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
 
-\paragraph{\textit{ Raw data standardisation }}
+\subsubsection{\textbf{Gene probe ID conversion}}
 
+Where appropriate, the gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was an overlap in the gene symbols, a single data was chosen to represent that particular gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
+Likewise, the obesity associated gene probes were also converted into gene symbols where required.
 
+\subsubsection{\textbf{Sample \gls{bmi} calculation}}
 
-
+\gls{bmi} of the samples were calculated from the clinical data using \cref{eq:bmicalc}.
 
 \subsection{Fuentes-Mattei data}
 \label{subsec:fmdatproc}
 
 % \subsubsection{\textbf{Data processing}}
 
-\paragraph{\textit{Raw data normalisation}}
+\subsubsection{\textbf{Raw data normalisation}}
 
 The raw microarray data for all *** samples from \cref{subsec:fmrawdat} were normalised using the \gls{rma} method from the \textit{affy} package in \gls{r}.
 \gls{rma} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
 
-\paragraph{\textit{ Raw data standardisation }}
+\subsubsection{\textbf{Raw data standardisation}}
 
-The data was standardised so that each of the genes had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+The data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
+
+\subsubsection{\textbf{Gene probe ID conversion}}
+
+Where appropriate, the gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r}.
+Where there was an overlap in the gene symbols, a single data was chosen to represent that particular gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 
 \subsection{\gls{tcga}}
 \label{subsec:datproctcga}
 
+\subsubsection{\textbf{Raw data normalisation}}
 
+The raw \gls{rnaseq} data for each cancer types from \cref{subsec:tcga} had 1 added, and then logged to the power of 10.
 
+\subsubsection{\textbf{Raw data standardisation}}
+
+The normalised data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
 
 \subsection{\gls{icgc}}
 \label{subsec:datprocicgc}
 
-\subsubsection{\textbf{Reformatting the raw data}}
-\label{subsec:icgcreformat}
-
+\subsubsection{\textbf{Raw data format conversion}}
 %TODO: add in how I processed the ICGC data format into genes by samples.
-TODO: add in how I processed the ICGC data format into genes by samples.
+The raw \gls{rnaseq} data for each cancer types were formatted so that the rows corresponded to the genes and the columns to the samples.
+% TODO: find out what functions I used to reformat the icgc data
+This was done using the \textit{dplyr} package in \gls{r}.
 
+\subsubsection{\textbf{Sample ID conversion}}
+%TODO: add details on how I stripped the ICGC ID into TCGA ID
+%TODO: check the actual ID stripping process
+%TODO: check the WGCNA function and check if it uses median/mean/whatever for choosing the sample
+\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the ID matched with the \gls{tcga} ID in the clinical data.
+After the IDs were stripped, samples were checked for any overlaps.
+Where there was an overlap in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 
-%TODO: change the title name?
 \subsubsection{\textbf{\gls{icgc} sample exclusion criteria}}
 \label{subsec:icgcsampleexclusion}
 
-\paragraph{\textit{Sample BMI availability}}
+% \subsubsection{\textbf{Sample BMI availability}}
+
 Some of the samples did not have either height or weight data, or both.
 These samples were removed from the analyses.
-
-\paragraph{\textit{Sample ID conversion and matching}}
-
-%TODO: check the actual ID stripping process
-%TODO: check the WGCNA function and check if it uses median/mean/whatever for choosing the sample
-
-\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the ID from the \gls{rnaseq} data matched with the \gls{tcga} ID in the clinical data.
-After stripping the ID, samples were checked for any overlaps.
-Where there was an overlap in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-
 In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the \gls{tcga} sample ID in the \gls{rnaseq} data, and vice versa.
-Any sample that did not have either clinical or \gls{rnaseq} data were removed, so both clinical and \gls{rnaseq} data were available for all of the samples that were included in the analyses.
+Any sample that did not have either clinical or \gls{rnaseq} data were removed.
+This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in the analyses.
 See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
 
+%TODO: May need more details on the sample (bmi status, etc.)
 \begin{table}[h]
 	\caption{Summary of the total number of samples included in the analyses for each cancer type}
 	\label{tab:samplesize}
@@ -170,16 +184,65 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 	\end{center}
 \end{table}
 
+\section{Plot creation}
+\label{sec:plot_creation}
 
-\subsection{Normalisation of raw Creighton data}
-\label{subsec:normcrdata}
+\subsection{Heatmaps}
+\label{sub:heatmaps}
 
 
-\subsection{Obesity associated gene probes from the \citet{Creighton2012} study}
-\label{subsec:crobsgene}
 
-The gene probe IDs were converted into gene symbols using the \textit{hgu133a.db} package in \gls{r}.
-Any duplicates and any gene symbols that were not present in both the Creighton data and the \gls{icgc} data were removed, which left *** unique obesity associated genes.
+
+
+
+\subsection{Box plots}
+\label{sub:box_plots}
+
+
+
+
+
+\subsection{Scatter plots}
+\label{sub:scatter_plots}
+
+
+
+
+
+
+\section{Gene expression analysis}
+\label{sec:gene_expression_analysis}
+
+
+
+\section{Metagene analysis}
+\label{sec:metagene_analysis}
+
+
+
+
+
+\section{Pathway enrichment analysis}
+\label{sec:pathway_enrichment_analysis}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
