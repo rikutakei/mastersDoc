@@ -198,7 +198,7 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 \label{sec:gene_expression_analysis}
 
 The samples were grouped based on the sample BMI status (obese or non-obese group), and a linear model was fitted to the data based on the sample grouping.
-Empirical Bayes statisticsc was used to identify the differentially expressed genes between the two groups, and the top scoring genes were listed.
+Empirical Bayes statistics was used to identify the differentially expressed genes between the two groups, and the top scoring genes were listed.
 The error rate of the genes were \gls{fdr} controlled for multiple hypothesis testing.
 
 \section{Pathway enrichment analysis}
@@ -248,10 +248,12 @@ The metagene was also checked for the association between the sample \gls{bmi} s
 \section{Gatza pathway metagene direction}
 \label{sec:pathway_metagene_direction}
 
+All 18 pathway signatures from \citet{Gatza2010a} study were used to create both the metagenes and transformation matrices in the Gatza data set.
+Each of the 18 pathway metagenes were compared with the gene expression of the gene that represents the pathway to check whether the metagenes were in the correct direction.
+% TODO: check if it was the AKT1 or AKT2 gene for AKT pathway
+For example, the AKT pathway metagene was compared with the AKT1 gene expression.
 
-
-
-
+The metagenes were flipped depending on the
 
 
 
