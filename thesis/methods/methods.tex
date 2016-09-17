@@ -17,7 +17,7 @@
 \subsection{\gls{bmi} Classification}
 \label{subsec:bmiclassification}
 
-Samples were classified based on the \gls{who} definition, as shown in Table~\cref{tab:whobmiclass}.
+Samples were classified based on the \gls{who} definition, as shown in \cref{tab:whobmiclass}.
 \begin{table}[hb]
 	\caption{\gls{who} defined \gls{bmi} classification}
 	\label{tab:whobmiclass}
@@ -36,24 +36,53 @@ Samples were classified based on the \gls{who} definition, as shown in Table~\cr
 \section{Publicly available cancer data}
 \label{sec:data}
 
-The original raw data from the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies were downloaded from the \gls{geo} website.
-Data related to multiple different cancer types were downloaded from free and publicly available sources such as \gls{tcga} and the \gls{icgc}.
+% TODO: add Cris Print's paper
+The raw microarray data from \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Gatza2010a}  studies were downloaded from the \gls{geo} website.
+\gls{rnaseq} and clinical data for multiple different cancer types were downloaded from free and publicly available sources such as \gls{icgc} and \gls{tcga}, respectively.
 
-\subsection{Raw data from the \citet{Creighton2012} study}
+\subsection{Raw data from \citet{Creighton2012} study}
 \label{subsec:crrawdat}
 
-The raw microarray gene expression data files of all *** samples from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
-Clinical data of the samples were obtained from the supplementary table 1 from their paper.
 %TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
-799 obesity associated gene probes identified in the \citet{Creighton2012} study were obtained from the supplementary data file 1 from their paper.
+
+The raw microarray gene expression data files of all 103 samples from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
+Clinical data of the samples were obtained from the supplementary table 1 from \citet{Creighton2012} paper.
+799 obesity associated gene probes identified in the \citet{Creighton2012} study were obtained from the supplementary data file 1 from \citet{Creighton2012} paper.
 The raw expression data, clinical data, and the list of gene probes were imported into \gls{r}/RStudio.
 
-\subsection{Raw data from the \citet{Fuentes-Mattei2014} study}
+\subsection{Raw data from \citet{Fuentes-Mattei2014} study}
 \label{subsec:fmrawdat}
+
+%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
+%TODO: find out where  the genes were taken from
 
 The raw microarray gene expression data files of all *** samples from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
 Clinical data for the samples in this study was not available.
 130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were downloaded from (supplementary data??).
+The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
+
+\subsection{Raw data from Print et al study}
+\label{subsec:printrawdat}
+
+%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
+%TODO: find out where  the genes were taken from
+%TODO: Change Fuentes-Mattei citation to Cris Print's citation
+
+The raw microarray gene expression data files of all *** samples from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
+Clinical data for the samples in this study was not available.
+130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were downloaded from (supplementary data??).
+The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
+
+\subsection{Raw data from \citet{Gatza2010a} study}
+\label{sub:gatzarawdat}
+
+%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
+%TODO: find out where  the genes were taken from
+%TODO: Change Fuentes-Mattei citation to Cris Print's citation
+
+The raw microarray gene expression data files used in  \citet{Gatza2010a} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
+Clinical data for the samples in this study was not available.
+130 obesity associated gene probes identified by \citet{Gatza2010a} were downloaded from (supplementary data??).
 The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
 
 \subsection{\gls{tcga}}
@@ -69,7 +98,7 @@ All eight cancer types were used for further analyses.
 \label{subsec:icgc}
 
 \gls{rnaseq} data for the eight cancer types identified in \cref{subsec:tcga} were downloaded from the \gls{icgc} database.
-The \gls{rnaseq} data for each of the eight cancer types were imported into \gls{r}.
+The \gls{rnaseq} data for each of the eight cancer types were imported into \gls{r}/RStudio.
 
 
 
@@ -78,88 +107,69 @@ The \gls{rnaseq} data for each of the eight cancer types were imported into \gls
 \section{Data processing}
 \label{sec:datproc}
 
-\subsection{Creighton data}
-\label{subsec:crdatproc}
+\subsection{Data normalisation}
+\label{sub:data_normalisation}
 
-% \subsubsection{\textbf{Data processing}}
+\subsubsection{Microarray data}
+\label{ssub:microarray_data}
 
-\subsubsection{\textbf{Raw data normalisation}}
+The raw microarray data were normalised using either the \gls{rma} or \gls{mas} method from the \textit{affy} package in \gls{r}.
+Either \gls{rma} or \gls{mas} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
 
-The raw microarray data for all 103 samples from \cref{subsec:crrawdat} were normalised using the \gls{rma} method from the \textit{affy} package in \gls{r}.
-\gls{rma} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
+\subsubsection{RNA-seq data}
+\label{ssub:rna_seq_data}
 
-\subsubsection{\textbf{Raw data standardisation}}
+The raw \gls{rnaseq} data for each cancer types downloaded from \gls{icgc} website had 1 added, and then logged to the power of 10.
 
-The data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
+\subsection{Data standardisation}
+\label{sub:data_standardisation}
+
+The data was standardised so that each gene in the data had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
 
-\subsubsection{\textbf{Gene probe ID conversion}}
+\subsection{Residual data creation}
+\label{sub:residual_data_creation}
+
+To create the residual data for a given data set, a linear model was fitted to the data with all of the clinical variables that required to be controlled for.
+The \textit{limma} package in \gls{r} was used.
+
+\subsection{Gene probe ID conversion}
+\label{sub:gene_probe_id_conversion}
 
 Where appropriate, the gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r}.
 Where there was an overlap in the gene symbols, a single data was chosen to represent that particular gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 Likewise, the obesity associated gene probes were also converted into gene symbols where required.
 
-\subsubsection{\textbf{Sample \gls{bmi} calculation}}
 
-\gls{bmi} of the samples were calculated from the clinical data using \cref{eq:bmicalc}.
+\subsection{Batch correction}
+\label{sub:batch_correction}
 
-\subsection{Fuentes-Mattei data}
-\label{subsec:fmdatproc}
+When there were more than one microarray data to be used as a single data set, these microarray data were normalised separately then combined together with the \texttt{ComBat} function in the \textit{sva} package in \gls{r}.
+This corrected for the effect of the individual microarray data on the whole data when they were combined together.
 
-% \subsubsection{\textbf{Data processing}}
+\subsection{Sample \gls{bmi} calculation}
+\label{sub:sample_bmi_calculation}
 
-\subsubsection{\textbf{Raw data normalisation}}
+Where missing, the \gls{bmi} of the samples were calculated from the clinical data using \cref{eq:bmicalc}.
 
-The raw microarray data for all *** samples from \cref{subsec:fmrawdat} were normalised using the \gls{rma} method from the \textit{affy} package in \gls{r}.
-\gls{rma} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
+\subsection{\gls{icgc} data format conversion}
+\label{sub:icgc_data_format_conversion}
 
-\subsubsection{\textbf{Raw data standardisation}}
+The raw \gls{rnaseq} data for each cancer types were formatted using the \textit{dplyr} package in \gls{r}, so that the rows corresponded to the genes and the columns to the samples.
 
-The data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
-This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
+\subsection{Sample ID conversion}
+\label{sub:sample_id_conversion}
 
-\subsubsection{\textbf{Gene probe ID conversion}}
+\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the sample ID matched with the \gls{tcga} ID in the clinical data.
+After the IDs were stripped, samples were checked for any duplicates.
+Where there was a duplicate in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
 
-Where appropriate, the gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r}.
-Where there was an overlap in the gene symbols, a single data was chosen to represent that particular gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-
-\subsection{\gls{tcga}}
-\label{subsec:datproctcga}
-
-\subsubsection{\textbf{Raw data normalisation}}
-
-The raw \gls{rnaseq} data for each cancer types from \cref{subsec:tcga} had 1 added, and then logged to the power of 10.
-
-\subsubsection{\textbf{Raw data standardisation}}
-
-The normalised data was standardised so that each gene had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
-This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
-
-\subsection{\gls{icgc}}
-\label{subsec:datprocicgc}
-
-\subsubsection{\textbf{Raw data format conversion}}
-%TODO: add in how I processed the ICGC data format into genes by samples.
-The raw \gls{rnaseq} data for each cancer types were formatted so that the rows corresponded to the genes and the columns to the samples.
-% TODO: find out what functions I used to reformat the icgc data
-This was done using the \textit{dplyr} package in \gls{r}.
-
-\subsubsection{\textbf{Sample ID conversion}}
-%TODO: add details on how I stripped the ICGC ID into TCGA ID
-%TODO: check the actual ID stripping process
-%TODO: check the WGCNA function and check if it uses median/mean/whatever for choosing the sample
-\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the ID matched with the \gls{tcga} ID in the clinical data.
-After the IDs were stripped, samples were checked for any overlaps.
-Where there was an overlap in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-
-\subsubsection{\textbf{\gls{icgc} sample exclusion criteria}}
-\label{subsec:icgcsampleexclusion}
-
-% \subsubsection{\textbf{Sample BMI availability}}
+\subsection{\gls{icgc} sample exclusion}
+\label{sub:icgc_sample_exclusion}
 
 Some of the samples did not have either height or weight data, or both.
 These samples were removed from the analyses.
-In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the \gls{tcga} sample ID in the \gls{rnaseq} data, and vice versa.
+In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the sample ID in the \gls{rnaseq} data, and vice versa.
 Any sample that did not have either clinical or \gls{rnaseq} data were removed.
 This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in the analyses.
 See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
@@ -184,8 +194,106 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 	\end{center}
 \end{table}
 
+\section{Gene expression analysis}
+\label{sec:gene_expression_analysis}
+
+The samples were grouped based on the sample BMI status (obese or non-obese group), and a linear model was fitted to the data based on the sample grouping.
+Empirical Bayes statisticsc was used to identify the differentially expressed genes between the two groups, and the top scoring genes were listed.
+The error rate of the genes were \gls{fdr} controlled for multiple hypothesis testing.
+
+\section{Pathway enrichment analysis}
+\label{sec:pathway_enrichment_analysis}
+
+For a given list of differentially expressed genes identified in a data set, the \texttt{camera} function from the \textit{limma} package was used to identify the pathways that were enriched in those genes.
+The \gls{go} database was used to identify the enriched pathways.
+
+\section{\gls{svd}}
+\label{sec:singular_value_decomposition}
+
+\gls{svd} was used on a given data set to create the summary metagene scores of a given genetic signature.
+% TODO: add more details on the components (s, v, d) created when svd was applied to the data.
+Any matrix $X$ can be represented in the form:
+\begin{equation}
+	\label{eq:svd}
+	X = UDV'
+\end{equation}
+
+\noindent
+where $U$ is the *****, $D$ is the ********, and $V'$ is the **** (eigenvectors and eigenvalues??).
+
+\section{Transformation matrix}
+\label{sec:transformation_matrix}
+
+Transformation matrix of a genetic signature was created from the \gls{svd} components.
+Rearranging \cref{eq:svd}, you get:
+
+\begin{equation}
+	\label{eq:transmat}
+	V' = U'D^{-1}X
+\end{equation}
+
+\noindent
+where $U'D^{-1}$ represents the transformation matrix.
+The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, and was used to transform other data set and obtain the metagene in that data set.
+
+\section{Metagene analysis}
+\label{sec:metagene_analysis}
+
+\gls{svd} was applied to the training data set to create the metagene and the transformation matrix in the data set.
+The transformation matrix from the training data was used to transform the other data sets and to create the metagene of the genetic signature in those data sets.
+
+Each of these metagenes were plotted in a heatmap to see the association between the metagene and the overall gene expression of the genes that were used to create the metagene.
+The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a boxplot and scatter plot, respectively.
+
+\section{Gatza pathway metagene direction}
+\label{sec:pathway_metagene_direction}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Obesity metagene prediction}
+\label{sec:obesity_metagene_prediction}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Plot creation}
 \label{sec:plot_creation}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Heatmaps}
 \label{sub:heatmaps}
@@ -195,35 +303,6 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 
 
 
-\subsection{Box plots}
-\label{sub:box_plots}
-
-
-
-
-
-\subsection{Scatter plots}
-\label{sub:scatter_plots}
-
-
-
-
-
-
-\section{Gene expression analysis}
-\label{sec:gene_expression_analysis}
-
-
-
-\section{Metagene analysis}
-\label{sec:metagene_analysis}
-
-
-
-
-
-\section{Pathway enrichment analysis}
-\label{sec:pathway_enrichment_analysis}
 
 
 
@@ -232,8 +311,19 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 
 
 
+% Do I need to explain how to make boxplots and scatter plots?
+% \subsection{Box plots}
+% \label{sub:box_plots}
+
+% \subsection{Scatter plots}
+% \label{sub:scatter_plots}
 
 
+
+
+
+
+% TODO: re-write everything so that it's in past tense
 
 
 
