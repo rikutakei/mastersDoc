@@ -7,7 +7,7 @@
 \subsection{\gls{bmi} Calculation}
 \label{subsec:bmicalc}
 
-\gls{bmi} was calculated from the height and weight data of the samples using the following equation:
+\cref{eq:bmicalc}  was used to calculate the \gls{bmi} from the height and weight data of the samples.
 
 \begin{equation}
 	\label{eq:bmicalc}
@@ -28,7 +28,7 @@ Samples were classified based on the \gls{who} definition, as shown in \cref{tab
 			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
 			Normal weight/lean & 20.0$\sim$24.9\\
 			Overweight & 25.0$\sim$29.9\\
-			Obese & \textgreater{} 30.0\\
+			Obese & \geq{} 30.0\\
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -38,7 +38,7 @@ Samples were classified based on the \gls{who} definition, as shown in \cref{tab
 
 % TODO: add Cris Print's paper
 The raw microarray data from \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Gatza2010a}  studies were downloaded from the \gls{geo} website.
-\gls{rnaseq} and clinical data for multiple different cancer types were downloaded from free and publicly available sources such as \gls{icgc} and \gls{tcga}, respectively.
+\gls{rnaseq} and clinical data of multiple different cancer types were downloaded from free and publicly available sources such as \gls{icgc} and \gls{tcga}, respectively.
 
 \subsection{Raw data from \citet{Creighton2012} study}
 \label{subsec:crrawdat}
@@ -68,9 +68,9 @@ The raw expression data and the list of gene probes were imported into \gls{r}/R
 %TODO: find out where  the genes were taken from
 %TODO: Change Fuentes-Mattei citation to Cris Print's citation
 
-The raw microarray gene expression data files of all *** samples from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
+The raw microarray gene expression data files of all *** samples from the  Print et al. study were downloaded from the \gls{geo} database (include website name/GEO ID here).
 Clinical data for the samples in this study was not available.
-130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were downloaded from (supplementary data??).
+*** obesity associated gene probes identified by Print et al. were downloaded from (supplementary data??).
 The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
 
 \subsection{Raw data from \citet{Gatza2010a} study}
@@ -81,8 +81,9 @@ The raw expression data and the list of gene probes were imported into \gls{r}/R
 %TODO: Change Fuentes-Mattei citation to Cris Print's citation
 
 The raw microarray gene expression data files used in  \citet{Gatza2010a} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
+Only the Affymetrix HGU133A microarray samples were included in the project.
 Clinical data for the samples in this study was not available.
-130 obesity associated gene probes identified by \citet{Gatza2010a} were downloaded from (supplementary data??).
+*** obesity associated gene probes identified by \citet{Gatza2010a} were downloaded from (supplementary data??).
 The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
 
 \subsection{\gls{tcga}}
@@ -97,12 +98,8 @@ All eight cancer types were used for further analyses.
 \subsection{\gls{icgc}}
 \label{subsec:icgc}
 
-\gls{rnaseq} data for the eight cancer types identified in \cref{subsec:tcga} were downloaded from the \gls{icgc} database.
+\gls{rnaseq} data for the eight cancer types from \cref{subsec:tcga} were downloaded from the \gls{icgc} database.
 The \gls{rnaseq} data for each of the eight cancer types were imported into \gls{r}/RStudio.
-
-
-
-
 
 \section{Data processing}
 \label{sec:datproc}
@@ -119,19 +116,21 @@ Either \gls{rma} or \gls{mas} normalisation was used to account for the inter-ar
 \subsubsection{RNA-seq data}
 \label{ssub:rna_seq_data}
 
-The raw \gls{rnaseq} data for each cancer types downloaded from \gls{icgc} website had 1 added, and then logged to the power of 10.
+The raw \gls{rnaseq} data were normalised in two different ways, depending on the analysis.
+For gene expression analyses, \texttt{voom} function from the \textit{limma} package was used to normalise the data.
+For the purposes of data visualisation or application of metagene transformation matrices, the data had 1 added and then logged to the base of 10.
 
 \subsection{Data standardisation}
 \label{sub:data_standardisation}
 
 The data was standardised so that each gene in the data had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
-This ensured that all of the genes were on the same scale as one another, allowing for comparison across all the genes.
+This ensured that all of the genes were on the same scale as one another, which allowed direct comparison across all of the genes.
 
 \subsection{Residual data creation}
 \label{sub:residual_data_creation}
 
-To create the residual data for a given data set, a linear model was fitted to the data with all of the clinical variables that required to be controlled for.
-The \textit{limma} package in \gls{r} was used.
+A linear model was constructed from the data with all of the clinical variables controlled for.
+The residual data was taken from this linear model to be used as the residual data for that data set.
 
 \subsection{Gene probe ID conversion}
 \label{sub:gene_probe_id_conversion}
@@ -145,7 +144,7 @@ Likewise, the obesity associated gene probes were also converted into gene symbo
 \label{sub:batch_correction}
 
 When there were more than one microarray data to be used as a single data set, these microarray data were normalised separately then combined together with the \texttt{ComBat} function in the \textit{sva} package in \gls{r}.
-This corrected for the effect of the individual microarray data on the whole data when they were combined together.
+This corrected for the effect of the individual microarray data on the whole data when combined together.
 
 \subsection{Sample \gls{bmi} calculation}
 \label{sub:sample_bmi_calculation}
@@ -234,7 +233,7 @@ Rearranging \cref{eq:svd}, you get:
 
 \noindent
 where $U'D^{-1}$ represents the transformation matrix.
-The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, and was used to transform other data set and obtain the metagene in that data set.
+The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, and was used to transform other data set and obtain the metagene in the data set.
 
 \section{Metagene analysis}
 \label{sec:metagene_analysis}
@@ -243,7 +242,7 @@ The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, 
 The transformation matrix from the training data was used to transform the other data sets and to create the metagene of the genetic signature in those data sets.
 
 Each of these metagenes were plotted in a heatmap to see the association between the metagene and the overall gene expression of the genes that were used to create the metagene.
-The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a boxplot and scatter plot, respectively.
+The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a box plot and a scatter plot, respectively.
 
 \section{Gatza pathway metagene direction}
 \label{sec:pathway_metagene_direction}
@@ -253,92 +252,33 @@ Each of the 18 pathway metagenes were compared with the gene expression of the g
 % TODO: check if it was the AKT1 or AKT2 gene for AKT pathway
 For example, the AKT pathway metagene was compared with the AKT1 gene expression.
 
-The metagenes were flipped depending on the
+The pathway metagene value was first compared visually with its pathway gene in a heatmap.
+If the direction of the pathway metagene was correct (for example, high pathway metagene value corresponded with high expression of the gene representing that pathway), the metagene values were not changed, but if it was incorrect, the metagene values were flipped for that pathway.
 
+Spearman correlation of the pathway metagene and the expression of the pathway gene was also used to distinguish whether the pathway metagene was in the right direction.
+The direction of the metagene was considered correct when the correlation was positive and incorrect when the correlation was negative.
 
-
-
-
-
-
-
+The clustering of the pathway metagenes were taken into account to decide on the final direction of the metagene.
+The direction of the pathway metagenes were modified until the resulting pathway metagenes were similarly clustered together as in the results from \citet{Gatza2010a} paper.
 
 \section{Obesity metagene prediction}
 \label{sec:obesity_metagene_prediction}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+% TODO: possibly extra analyses here (gradual pathway inclusion in the model, using all the pathway...?)
+Sample BMI, BMI status and/or pathway metagenes were used to construct a linear model in Cris Print's data.
+The constructed linear model was then used to predict the obesity metagene values in \citet{Creighton2012} data set.
+The predicted obesity metagene values were compared with the true obesity metagene values, and both Spearman and Pearson correlation were calculated.
 
 \section{Plot creation}
 \label{sec:plot_creation}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Heatmaps}
 \label{sub:heatmaps}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-% Do I need to explain how to make boxplots and scatter plots?
-% \subsection{Box plots}
-% \label{sub:box_plots}
-
-% \subsection{Scatter plots}
-% \label{sub:scatter_plots}
-
-
+Heatmaps were created using either the \texttt{heatmap.2} function from \textit{gplots} package, or the \texttt{heatmap.2x} function written by Tom Kelly.
+All of the heatmaps that required no or one column bar used the \texttt{heatmap.2} function, and all of the heatmaps that required more than one column bars used the \texttt{heatmap.2x} function.
 
 
 
 
 % TODO: re-write everything so that it's in past tense
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
