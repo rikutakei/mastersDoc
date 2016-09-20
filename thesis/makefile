@@ -32,6 +32,7 @@ all: thesis.pdf
 thesis.pdf: thesis.tex
 	makeglossaries thesis
 	latexmk -bibtex -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make thesis.tex
+	rm *600pk
 
 clean:
 	latexmk -c

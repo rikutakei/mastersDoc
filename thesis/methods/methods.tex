@@ -43,48 +43,37 @@ The raw microarray data from \citet{Creighton2012}, \citet{Fuentes-Mattei2014} a
 \subsection{Raw data from \citet{Creighton2012} study}
 \label{subsec:crrawdat}
 
-%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
-
-The raw microarray gene expression data files of all 103 samples from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
+The raw microarray gene expression data files from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
 Clinical data of the samples were obtained from the supplementary table 1 from \citet{Creighton2012} paper.
 799 obesity associated gene probes identified in the \citet{Creighton2012} study were obtained from the supplementary data file 1 from \citet{Creighton2012} paper.
-The raw expression data, clinical data, and the list of gene probes were imported into \gls{r}/RStudio.
+The raw expression data, clinical data, and the list of gene probes were imported into \gls{r}.
 
 \subsection{Raw data from \citet{Fuentes-Mattei2014} study}
 \label{subsec:fmrawdat}
 
-%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
-%TODO: find out where  the genes were taken from
-
-The raw microarray gene expression data files of all *** samples from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
-Clinical data for the samples in this study was not available.
-130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were downloaded from (supplementary data??).
-The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
-
-\subsection{Raw data from Print et al study}
-\label{subsec:printrawdat}
-
-%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
-%TODO: find out where  the genes were taken from
-%TODO: Change Fuentes-Mattei citation to Cris Print's citation
-
-The raw microarray gene expression data files of all *** samples from the  Print et al. study were downloaded from the \gls{geo} database (include website name/GEO ID here).
-Clinical data for the samples in this study was not available.
-*** obesity associated gene probes identified by Print et al. were downloaded from (supplementary data??).
-The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
+The raw microarray gene expression data files from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE20194).
+Clinical data for the samples in this study was also downloaded from the \gls{geo} database (same \gls{geo} accession ID).
+130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the supplementary table 3.
+The raw expression data and the list of gene probes were imported into \gls{r}.
 
 \subsection{Raw data from \citet{Gatza2010a} study}
 \label{sub:gatzarawdat}
 
-%TODO: add data/sample composition -- ethinicity, grade, etc -- maybe in table form
-%TODO: find out where  the genes were taken from
-%TODO: Change Fuentes-Mattei citation to Cris Print's citation
-
-The raw microarray gene expression data files used in  \citet{Gatza2010a} study were downloaded from the \gls{geo} database (include website name/GEO ID here).
+The raw microarray gene expression data files from the \citet{Gatza2010a} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE1456, GSE1561, GSE2034, GSE3494, GSE4922, and GSE6596).
 Only the Affymetrix HGU133A microarray samples were included in the project.
 Clinical data for the samples in this study was not available.
-*** obesity associated gene probes identified by \citet{Gatza2010a} were downloaded from (supplementary data??).
-The raw expression data and the list of gene probes were imported into \gls{r}/RStudio.
+The raw expression data and the list of gene probes were imported into \gls{r}.
+
+\subsection{Raw data from Print et al study}
+\label{subsec:printrawdat}
+
+%TODO: Find Cris's paper
+
+The raw microarray gene expression data files from the  Print et al. study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE36771).
+Clinical data for the samples in this study was ******.
+The raw expression data and the list of gene probes were imported into \gls{r}.
+
+% TODO: Overall summary table of the samples from each data set at the end of this section.
 
 \subsection{\gls{tcga}}
 \label{subsec:tcga}
@@ -179,7 +168,7 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 	\label{tab:samplesize}
 	\begin{center}
 		\begin{tabular}{cc}
-			\textbf{Cancer Type}   & \textbf{Total} \\
+			\textbf{Cancer Type}   & \textbf{Total number of samples} \\
 			\hline
 			\rule{0pt}{2.25ex}BLCA & 261   \\
 			CESC                   & 224   \\
