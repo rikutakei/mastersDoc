@@ -74,6 +74,7 @@ ENTRY
     title
     type
     url
+    urldate
     volume
     year
   }
@@ -417,8 +418,13 @@ FUNCTION {format.url}
   url
   duplicate$ empty$
     { pop$ "" }
-    { "\urlprefix\url{" swap$ * "}" * }
-  if$
+    { "\newline Available: \url{" swap$ * "}" *
+        urldate duplicate$ empty$
+        { pop$ }
+        {"~[" swap$ * "]" * * }
+        if$
+    }
+    if$
 }
 
 INTEGERS { nameptr namesleft numnames }
