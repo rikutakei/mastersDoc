@@ -98,7 +98,7 @@ Since the expression of both neuropeptides are under the control of leptin, and 
 In contrast to the \gls{pomc}/\gls{cart} neurons, orexogenic neuropeptides \gls{npy} and \gls{agrp} are produced in the \gls{npy}/\gls{agrp} neurons when stimulated by hormones that control satiety.
 
 \gls{npy} was first discovered by \citet{Tatemoto1982}, and later associated with altered eating behaviour in rats by \citet{Clark1984}.
-\gls{npy} is recognised by the \gls{nyr}, a G protein-coupled receptor expressed on the downstream effector neurons, which relays the orexogenic signal from the \gls{npy}/\gls{agrp} neurons \citep{Barsh2002, Bell2005, Herzog1992}
+\gls{npy} is recognised by the \gls{nyr1}, a G protein-coupled receptor expressed on the downstream effector neurons, which relays the orexogenic signal from the \gls{npy}/\gls{agrp} neurons \citep{Barsh2002, Bell2005, Herzog1992}
 
 Agouti protein is a protein normally expressed in the skin where it affects the pigmentation, and was first identified over 100 years ago by \citet{Castle1910} in mice that had yellow, or agouti-coloured coat.
 Although the fact that ubiquitous expression of agouti protein caused obesity in mice was known for a long time, the biochemical mechanism that caused such phenotype was not elucidated until 1997 by \citet{Ollmann1997}.
@@ -398,8 +398,6 @@ The environment in which the tumours grow can also be an important factor for th
 \subsubsection{Hallmarks of Cancer}
 \label{subsubsec:cancerhallmarks}
 
-% TODO: REWRITE THIS SHIT!!!!!!!
-
 Early researches in cancer biology have been able to uncover many pathways and regulatory mechanisms in cancer, so much that there were too many possibilities in which cancer could develop from.
 With more than 100 distinct types and subtypes of cancers, each with its own distinct development mechanisms, it became difficult to focus on the overarching mechanisms of cancer development \citep{Hanahan2000}.
 To resolve this, \citet{Hanahan2000} proposed ``six essential alterations'' that cancer cells usually take advantage of during development and progression.
@@ -407,7 +405,7 @@ These six key mechanisms were coined the term ``The Hallmarks of Cancer'', and h
 
 10 years after the first review where the Hallmarks of Cancer was proposed, Hanahan and Weinberg revisited these hallmarks and added four more hallmarks on top of the six hallmarks presented in 2000 \citep{Hanahan2011}.
 The ten Hallmarks of Cancer are: sustaining proliferative signalling, evading growth suppressors, enabling replicative immortality, activating invasion and metastasis, inducing angiogenesis, resisting cell death, avoiding immune destruction, tumour-promoting inflammation, genome instability and mutation, and deregulating cellular energetics (\cref{fig:hallmarks}).
-Each of these hallmarks will be described very briefly to provide an overview of the significance of these hallmarks in tumour biology.
+Each of these hallmarks will be described briefly to provide an overview of the significance of these hallmarks in tumour biology.
 
 \begin{figure}[h!]
 	\centering
@@ -451,12 +449,32 @@ In many cancers, these proteins are usually mutated and selected against to allo
 \paragraph{Resisting cell death}
 
 \noindent
-\Gls{apoptosis}, the natural and controlled death of a cell, is one of many defense mechanisms in the body to prevent the development of cancer.
+\Gls{apoptosis}, the natural and controlled death of a cell, is one of many defence mechanisms in the body to prevent the development of cancer.
+The triggering of \gls{apoptosis} is controlled and maintained by the balance between the pro- and anti-apoptotic signals that affect the downstream apoptotic proteins \citep{Hanahan2011}.
+
+\Gls{bcl2} family proteins are the major players of apoptosis.
+Embedded in the mitochondrial membrane, the Bax subfamily of \gls{bcl2} proteins are pro-apoptotic, and are under constant repression by the anti-apoptotic proteins of the \gls{bcl2} subfamily proteins \citep{Adams2007,Hanahan2011}.
+The inhibition of the pro-apoptotic proteins are achieved by the interaction between the pro- and anti-apoptotic proteins via the \gls{bh3} domain \citep{Adams2007}.
+In addition to the pro-apoptotic Bax subfamily proteins, there is a family of proteins that contain a single \gls{bh3} domain, and hence named \gls{bh3}-only family proteins \citep{Adams2007}.
+\gls{bh3}-only proteins either disrupt the inhibition of the Bax family proteins by the \gls{bcl2} subfamily proteins, or directly stimulate the Bax subfamily proteins \citep{Adams2007}.
+The activation of the pro-apoptotic proteins disrupt the mitochondrial cell membrane adn releases cytochrome \textit{c}, which in turn triggers the activation of the apoptotic proteases caspase 8 and caspase 9, resulting in apoptosis \citep{Adams2007,Hanahan2011}.
+
+The precise cellular conditions that trigger apoptosis are yet to be uncovered, but there is a clear evidence of p53 tumour suppressor playing a key role in apoptosis initiation.
+When \acrshort{dna} damage is sensed, p53 protein transcribes the pro-apoptotic members of the \gls{bcl2} family proteins, such as Bax, Puma and Noxa \citep{Fridman2003,Hanahan2011}.
+The fact that p53 protein is involved not only in cell cycle regulation, but also in apoptotic pathway shows its importance in the control of cancer development, and perhaps that is the reason why more than 50\% of tumours have a mutation in the \textit{p53} gene \citep{Levine1997}.
 
 \paragraph{Enabling replicative immortality}
 
 \noindent
+When acquired by cancer cells, the previous three hallmarks allow the cells to continuously grow in an uncontrolled manner.
+However, this is not the case as the disruption in cell signalling on its own does not trigger the rapid expansion of the tumour -- only when the cells have the capability of replicating infinitely \citep{Hanahan2000, Hanahan2011}.
 
+There are two barriers in achieving the infinite replicative capacity: senescence and crisis \citep{Hanahan2011}.
+When cells are grown in a culture, cells are able to replicate and grow until a certain point, and the cells reach the stage of senescence where the cells stop growing but are still viable \citep{Hanahan2011}.
+The cells that manage to bypass this senescence phase, by mutating the tumour suppressor proteins such as p53 and \gls{rb} proteins, then undergoes the crisis phase where the majority of the cells in the culture dies \citep{Hanahan2011}.
+Very rarely, some cells are able to survive the crisis phase and acquires the ability to replicate infinitely, and this transition has been termed immortalisation \citep{Hanahan2011, Wright1989}.
+
+Without immortalisation, cancer cells are not able to generate a macroscopic tumours that are capable of killing the host organism \citep{Hanahan2000,Hanahan2011}.
 
 \paragraph{Activating invasion and metastasis}
 
