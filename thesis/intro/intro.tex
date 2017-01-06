@@ -797,37 +797,90 @@ Due to this complexity, it is difficult to confidently explain how obesity contr
 \section{Genetic signatures}
 \label{sec:genetic_signatures}
 
+One of the difficulties associated with the treatment of cancers is the identification of the underlying mechanisms or hallmarks that drive the cancer progression.
+As one can imagine, it is difficult for clinicians to treat a patient if they do not know what is causing the disease.
+The reason why it is so difficult to identify the underlying mechanisms is that there are very little reliable biological markers (or ``genetic signatures'') that signify the presence or absence of these pathways and/or hallmarks.
+With that said, significant improvements have been made in recent years owing to the advancement in sequencing technologies and have allowed researchers to study the genetic signatures that represent the hallmarks in a much greater detail.
+
 \subsection{Microarray and Next Generation Sequencing technologies}
 \label{sub:microarray_and_next_generation_sequencing_technologies}
 
-% Due to advances in sequencing technology over the last few years, many researchers have started to focus on bioinformatics based analyses of cancer cells to better understand the biology of cancer.
-% Advantages of this strategy are that very specific gene expression and/or mutational signatures for certain cancer subtypes can be identified from the analyses, which the researchers and clinicians can study in much greater depth and details.
+\subsubsection{Microarray technology}
+\label{ssub:microarray_technology}
+
+Microarray technology was first developed by \citet{Schena1995} and has been used extensively to study gene expression patterns and \gls{snp} identification for over two decades.
+In short, microarray technology uses a glass slide with hundreds of thousands of \acrshort{dna} sequences attached to it, where fluorescently labelled \glspl{cdna} taken from the sample \glspl{mrna} are hybridised to these immobilised \acrshort{dna} sequences, and the fluorscent probes are detected \citep{Schena1995,Schulze2001}.
+Since only the exactly matching sequences remain on the microarray slide, researchers are able to identify and quantify the gene expression level of the sample \citep{Schulze2001}.
+
+One disadvantage of microarray technology is that it requires previous knowledge of the genes and \glspl{snp} of the samples being investigated \citep{Hurd2009}.
+This is due to the fact that the detection of sequences relies on the hybridisation of the sample sequences with the microarray sequences and therefore the sequences under investigation must be known before they are invesetigated.
+Another disadvantage of microarrays is the potentially erroneous detection of the sample sequences, both in terms of its sequence and its expression level \citep{Hurd2009}.
+Again, because the microarray slides require pre-defined sequences to be attached to it, there is always a possibility of similar sequences hybridising to the slide.
+Even if the sequences correctly hybridise to the slide, it may be difficult to measure the exact amount of some sequences in the samples.
+Since the amount of sequences in the sample is measured with the relative strength of the fluorescence of the dyes used, it is difficult to detect the exact level of expressions of sequences that are either very rare or highly abundant in the sample \citep{Hurd2009}.
+
+\subsubsection{Next generation sequencing technology}
+\label{ssub:next_generation_sequencing_technology}
+
+\Gls{ngs} technology refers to the high throughput sequencing techniques that allow sequencing of large quantity of genetic material from a sample \citep{Metzker2010}.
+\gls{ngs} technology has been developed and improved in the last decade at a revolutionary pace, making it possible for researchers to study gene expressions and variations in days to weeks, where the same experiment would have taken years to complete before the technology was developed.
+
+Every \gls{ngs} technology uses the same principle process to sequence \acrshort{dna} samples.
+First, \acrshort{dna} samples are fragmented into smaller sizes and universal primers are attached to the ends of the fragments.
+These fragments are then amplified into clusters to make the signals stronger for detection (although this amplification step varies between different techniques) \citep{Metzker2010}.
+After the amplification step, the clusters of \acrshort{dna} fragments are sequenced and ``imaged'' using fluorescently labelled \acrshort{dna} bases, where the incorporation of different bases are detected by its unique fluorescence \citep{Metzker2010}.
+
+\gls{ngs} technology have many advantages over microarray technology.
+Firstly, \gls{ngs} does not require any prior knowledge of the sample like in the microarray technology as all genetic materials are attached to universal primers when they are sequenced -- there is no need to pre-define the sequences to be searched and thus allow the detection of novel genes or transcripts \citep{Hurd2009}.
+This also prevents the introduction of experimental bias, as the sequences are not altered in any way and no specific sequence is searched over the others \citep{Hurd2009}.
+Another advantage is that \gls{ngs} produce count data of the genetic material being sequenced, instead of relying on the intensity of the fluorescence to detect the presence and amount of certan sequence.
+This allows an absolute quantification of the amount of transcripts from the sample, making it possible for a more accurate comparison of the expression levels between samples.
+Lastly, many \gls{ngs} techniques are capable of sequencing multiple samples simultaneously with high throughput, generating tremendous amount of genetic data in a single run.
+
+The use of \gls{ngs} technology have significantly improved the workflow of modern genetic studies and its application in variety of research area have made it possible to dig deeper into the causes of complex diseases, such as cancer.
+With the cost of sequencing declining, personalised genome sequencing and treatment based on the sequence will be a reality in the near future.
 
 \subsection{Obesity associated genetic signatures}
 \label{sub:obesity_associated_genetic_signatures}
 
+There is a clear evidence of obesity being a major risk factor for many cancer types, but what genes or pathways directly contribute to tumorigenesis in patients that are obese is yet to be clarified.
+Two studies in particular, one by \citet{Creighton2012} and another by \citet{Fuentes-Mattei2014}, have investigated if there were any difference in genetic composition between obese and normal weight patients, specifically in a group of breast cancer patients.
+In both studies, the authors were able to identify a set of genes that were up or downregulated in breast tumours from obese patients.
+% For simplicity, these genetic signatures will be referred to as ``obesity associated genetic signatures'' hereafter.
+
 \subsubsection{\citet{Creighton2012} study}
 \label{ssub:creighton_study}
 
-
+In this study, \citet{Creighton2012} used 103 breast tumour samples and analysed these samples using microarrays.
+Of the 103 samples, 35\% were from normal weight, 28\% were from overweight and 37\% were from obese patients.
+They compared the gene expression between the tumours from obese patients with the tumours from non-obese patients and identified 799 probe sets (662 unique genes) with p \textless{} 0.01 and with a \gls{fc} \textgreater{} 1.2.
+Majority of these genes (725 gene probes) were downregulated and 74 gene probes were upregulated in the samples from obese patients compared with the samples from non-obese patients.
 
 \subsubsection{\citet{Fuentes-Mattei2014} study}
 \label{ssub:fuentes_mattei_study}
 
+In the study conducted by \citet{Fuentes-Mattei2014}, they obtained 137 breast tumour samples from \gls{er} positive patients and analysed their transcriptome using microarrays.
+Of the 137 patients, 94 patients were not obese and 43 patients were obese.
+Comparison of the gene expression of the tumour samples from obese patients with the samples from non-obese patients revealed 112 genes that were statistically significantly dysregulated (62 genes upregulated and 50 genes downregulated).
+Furthermore, functional transcriptomic analysis suggested that insulin signalling and inflammation affected human \gls{er}+ breast cancer.
 
-
+On top of this, \citet{Fuentes-Mattei2014} validated their results using a mouse model, where they compared the expression level in the breast tumours from obese mice with the samples from lean mice.
+Results from this animal model experiment provided strong evidence of obesity significantly accelerating tumour growth through Akt/\gls{mtor} signalling pathway.
 
 \subsection{Pathway associated genetic signatures}
 \label{sub:pathway_associated_genetic_signatures}
 
-% Talk about \citet{Gatza2010a}
+Like obesity associated genetic signatures, there has also been a focus on the identification of pathways and genes that affect tumour growth.
+About a decade ago, \citet{Bild2006} demonstrated that a collection of genes that are involved in a specific pathway could be used to determine the status of those pathways in specific samples.
+These pathway specific genes were identified experimentally by altering the expression of one specific gene that is central to the pathway in a model cell culture system.
+For example, all of the genes that have altered its expression in the cells that have \textit{Myc} gene induced were noted down as the gene involved in the Myc pathway.
 
-\subsubsection{\citet{Gatza2011} study}
+\subsubsection{\citet{Gatza2010a} study}
 \label{ssub:gatza_study}
 
-
-
-
+In this study, \citet{Gatza2010a} used 18 pathway signatures to classify human breast tumours into more detailed subtypes.
+This was a significant improvement from their previous works on pathway signatures \citep{Bild2006,Bild2009}.
+Using more pathways in their analysis have allowed them to identify certain pathways to coactivate (or cluster) together, suggesting that some pathways are related to one another and may have relevance in identifying the causes.
 
 \section{Aim of the project}
 \label{sec:aim}
@@ -835,3 +888,10 @@ Due to this complexity, it is difficult to confidently explain how obesity contr
 This research aims to determine whether gene expression signatures exist  that are specific to obesity across multiple cancer types, and to investigate whether there are any common pathways being dysregulated in cancers based on these genetic signatures.
 Better understanding of the pathways being dysregulated in cancer cells in obese patients may lead to improved clinical decisions, and contribute towards personalised treatment in the future.
 
+In the following chapter, the detailed methods of all the analyses carried out for this project is outlined.
+The results from these analyses are split into two parts, each presented in separate chapters: first part of the results clarify the relationship between the obesity associated genetic signatures with various cancer types; and the second part of the results consist of the links between the pathway associated genetic signatures and various cancer types.
+By the end of this thesis, the aim presented here will be answered with clarity.
+However, it is without doubt that there will be many more questions to be answered than what was actually answered -- those questions shall remain unanswered for future investigations.
+
+
+% TODO: Finished draft copy of introduction -- need to cut down on the contents and link everything together
