@@ -1,6 +1,11 @@
 \chapter{Methods (draft)}
 \label{ch:methods}
 
+\section{\gls{r} -- statistical programming language}
+\label{sec:r}
+
+All statistical analyses and data manipulation were carried out with \gls{r} (version 3.3.2 -- ``Sincere Pumpkin Patch''), a free open-source programming language and software environment for statistical computing and graphics \citep{R2016}.
+
 \section{\gls{bmi}}
 \label{sec:bmi}
 
@@ -18,17 +23,19 @@
 \label{subsec:bmiclassification}
 
 Samples were classified based on the \gls{who} definition, as shown in \cref{tab:whobmiclass}.
-\begin{table}[hb]
+\begin{table}[htb]
 	\caption{\gls{who} defined \gls{bmi} classification}
 	\label{tab:whobmiclass}
 	\begin{center}
 		\begin{tabular}{lc}
-			\bfseries {Classification} & \bfseries {\gls{bmi} Value}\\
+			Classification & \gls{bmi} Value\\
 			\hline
 			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
 			Normal weight/lean & 20.0$\sim$24.9\\
 			Overweight & 25.0$\sim$29.9\\
 			Obese & $\geq{}$ 30.0\\
+			\hline
+			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -36,65 +43,45 @@ Samples were classified based on the \gls{who} definition, as shown in \cref{tab
 \section{Publicly available cancer data}
 \label{sec:data}
 
-% TODO: add Cris Print's paper
 The raw microarray data from \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Gatza2010a}  studies were downloaded from the \gls{geo} website.
 \gls{rnaseq} and clinical data of multiple different cancer types were downloaded from free and publicly available sources such as \gls{icgc} and \gls{tcga}, respectively.
+\\
 
-\subsection{Raw data from \citet{Creighton2012} study}
-\label{subsec:crrawdat}
-
-The raw microarray gene expression data files from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
-Clinical data of the samples were obtained from the supplementary table 1 from \citet{Creighton2012} paper.
+\noindent
+The raw Affymetrix HGU\-133A microarray gene expression data files from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
+Clinical data of the samples (age, ethnicity, tumour grade, menopause status, \gls{bmi}, \gls{er} status, \gls{pr} status, \gls{her2} status, and \gls{ln} status) were obtained from the supplementary table 1 from \citet{Creighton2012} paper.
 799 obesity associated gene probes identified in the \citet{Creighton2012} study were obtained from the supplementary data file 1 from \citet{Creighton2012} paper.
-The raw expression data, clinical data, and the list of gene probes were imported into \gls{r}.
 
-\subsection{Raw data from \citet{Fuentes-Mattei2014} study}
-\label{subsec:fmrawdat}
-
-The raw microarray gene expression data files from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE\-20194).
-Clinical data for the samples in this study was also downloaded from the \gls{geo} database (same \gls{geo} accession ID).
-130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the supplementary table 3.
-The raw expression data and the list of gene probes were imported into \gls{r}.
-
-\subsection{Raw data from \citet{Gatza2010a} study}
-\label{sub:gatzarawdat}
+The raw Affymetrix HGU\-133A microarray gene expression data files from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE\-20194).
+Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\gls{her2} statuses, and treatments used) in this study was also downloaded from the \gls{geo} database (same \gls{geo} accession ID).
+130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the supplementary table 3 from their paper.
 
 The raw microarray gene expression data files from the \citet{Gatza2010a} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE1456, GSE\-1561, GSE2034, GSE3494, GSE4922, and GSE6596).
-Only the Affymetrix HGU\-133A microarray samples were included in the project.
-Clinical data for the samples in this study was not available.
-The raw expression data and the list of gene probes were imported into \gls{r}.
-
-\subsection{Raw data from Print et al study}
-\label{subsec:printrawdat}
+Only the Affymetrix HGU\-133A microarray samples were included in this project, as other microarray data were analysed using the Affymetrix HGU-133A platform.
+Clinical data for the samples in \citet{Gatza2010a} study was not available, as these samples were a combination of many different datasets.
 
 %TODO: Find Cris's paper
 
-The raw microarray gene expression data files from the  Print et al. study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE36771).
-Clinical data for the samples in this study was ******.
-The raw expression data and the list of gene probes were imported into \gls{r}.
-
+The raw microarray gene expression data files from the (Cris' paper) study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE36771).
+Clinical data for the samples (age, ethnicity, tumour grade, breast cancer subtype, \gls{er}/\gls{pr} statuses, \gls{ln} status, \gls{bmi} and treatments used) in this study was taken from (Cris' paper).
+\\
 % TODO: Overall summary table of the samples from each data set at the end of this section.
 
-\subsection{\gls{tcga}}
-\label{subsec:tcga}
-
-The clinical data for all available cancer types (33 types in total) were downloaded from \gls{tcga} database and were checked for the height and weight data for each sample.
-Any cancer type with no weight and/or height data of the samples were excluded from the project, as no \gls{bmi} information can be obtained without these data.
-
-This gave a total of eight cancer types: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}.
-All eight cancer types were used for further analyses.
-
-\subsection{\gls{icgc}}
-\label{subsec:icgc}
-
-\gls{rnaseq} data for the eight cancer types from \cref{subsec:tcga} were downloaded from the \gls{icgc} database.
-The \gls{rnaseq} data for each of the eight cancer types were imported into \gls{r}/RStudio.
+\noindent
+The clinical data for all available cancer types (33 types in total) were downloaded from \gls{tcga} database (last accessed 1 April 2015) and were checked for both the height and weight data for each sample.
+Any cancer type with no height and/or weight data of the samples were excluded from the project, as no \gls{bmi} information can be obtained without these data.
+Out of these 33 cancer types with clinical data, 14 cancer types had both height and weight data.
+However, only 8 cancer types out of these 14 types had \gls{rnaseq} data available from the \gls{icgc} database (last accessed 7 September 2015), so only those 8 cancer types were downloaded and used in this project.
+The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}.
 
 \section{Data processing}
 \label{sec:datproc}
 
 \subsection{Data normalisation}
 \label{sub:data_normalisation}
+
+% TODO: start data normalisation section
+
 
 \subsubsection{Microarray data}
 \label{ssub:microarray_data}
