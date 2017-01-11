@@ -59,6 +59,7 @@ Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\
 The raw microarray gene expression data files from the \citet{Gatza2010a} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE1456, GSE\-1561, GSE2034, GSE3494, GSE4922, and GSE6596).
 Only the Affymetrix HGU\-133A microarray samples were included in this project, as other microarray data were analysed using the Affymetrix HGU-133A platform.
 Clinical data for the samples in \citet{Gatza2010a} study was not available, as these samples were a combination of many different datasets.
+(Find out where the 18 pathway signatures were downloaded from)
 
 %TODO: Find Cris's paper
 
@@ -80,24 +81,47 @@ The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, 
 \subsection{Data normalisation}
 \label{sub:data_normalisation}
 
-% TODO: start data normalisation section
-
+All of the data were normalised to remove any experimental bias, errors and noise, so only the true biological signals are considered in the analyses.
+Any experimental procedure is prone to errors due to differences in experimental conditions, machinery used to measure signals and technical procedures in different laboratories, just to name a few.
+In order to remove these experimental noises and focus on the true biological signals in the raw data, the data must be normalised one way or another.
 
 \subsubsection{Microarray data}
 \label{ssub:microarray_data}
 
-The raw microarray data were normalised using either the \gls{rma} or \gls{mas} method from the \textit{affy} package in \gls{r}.
-Either \gls{rma} or \gls{mas} normalisation was used to account for the inter-array differences that may have arisen during the data collection process.
+In microarray experiments, there are two types of probes present on the microarray chips: \gls{pm} and \gls{mm} probes \citep{Irizarry2003}.
+As the name suggests, \gls{pm} probes represent the probes that should perfectly match the gene of interest, whereas \gls{mm} probes have there 13th base pair intentionally altered to measure non-specific binding of the gene \citep{Irizarry2003}.
+Various normalisation methods make use of \gls{pm} and \gls{mm}, or ``probe pairs'', to identify true signals from the noise.
+
+\Gls{mas} and \gls{rma} normalisation methods are both part of the \textit{affy} package in \gls{r} \citep{Gautier2004}.
+\Gls{mas} uses a difference-based method where it subtracts a value derived from \gls{mm} from \gls{pm}, but this approach may introduce additional noise and/or errors in some cases \citep{Irizarry2003}.
+\Gls{rma} method is based on the observation that \gls{pm} is a mixture of background and true signal, and uses mathematical models to estimate the expression while correcting for background signals from \gls{pm} only \citep{Irizarry2003}.
+In fact, the \gls{rma} method showed better identification of the true signals than the other methods, including \Gls{mas} method \citep{Irizarry2003}.
+
+The raw microarray data were normalised using both \gls{rma} and \gls{mas} methods, each done separately on a copy of the data.
+The reason why \gls{mas} method was used as well as the \gls{rma} method was becuase the \gls{mas} normalisation method was used in \citet{Gatza2010a} study.
+Though the normalisation methods were not specified in the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies, to allow for data comparison between different datasets and accurate result validation of some of the studies, both \gls{rma} and \gls{mas} methods were used to normalise the microarray data.
 
 \subsubsection{RNA-seq data}
 \label{ssub:rna_seq_data}
 
+\gls{rnaseq} data are fundamentally different to the microarray data, as \gls{rnaseq} data is a count data of all the sequences, while microarray data is a continuous data of the intensity of the matching probes.
+This means that \gls{rnaseq} data must be processed in a different manner as the microarray data.
+However, by analysing \gls{rnaseq} data as a count data, it limits range of statistical tools and types of analyses that can be done on the data, as many tools were designed for normally distributed data \citep{Law2014}.
+
+To overcome this limitation, \citet{Law2014} developed a method called ``variance modelling at the observational level'', or voom, that allows any \gls{rnaseq} data to be used in any existing statistical analysis pipeline that is precision weight aware, including pipelines used for microarray data analyses.
+In brief, voom first constructs a standard deviation trend from the logged \gls{cpm} value of the genes (experimental design, treatment conditions and other factors are taken into account).
+This trend is then used to interpolate the standard deviation of the observation based on its predicted count size, and the inverse square of the predicted standard deviation is used as the weight  for that observations.
+The weights of the observations and the logged \gls{cpm} can then be used in other statistical pipelines that allows the input of quantitative weights \citep{Law2014}.
+
 The raw \gls{rnaseq} data were normalised in two different ways, depending on the analysis.
-For gene expression analyses, \texttt{voom} function from the \textit{limma} package was used to normalise the data.
-For the purposes of data visualisation or application of metagene transformation matrices, the data had 1 added and then logged to the base of 10.
+For gene expression analyses, voom normalisation method from the \textit{limma} package in \gls{r} was used to normalise the data \citep{Ritchie2015}.
+For the purposes of data visualisation or application of metagene transformation matrices on the \gls{rnaseq} data, the raw data had 1 added (to prevent logging of 0) and then logged to the base of 10 to allow for better visualisation.
 
 \subsection{Data standardisation}
 \label{sub:data_standardisation}
+
+
+
 
 The data was standardised so that each gene in the data had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
 This ensured that all of the genes were on the same scale as one another, which allowed direct comparison across all of the genes.
