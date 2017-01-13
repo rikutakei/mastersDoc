@@ -6,13 +6,13 @@
 
 All statistical analyses and data manipulation were carried out with \gls{r} (version 3.3.2 -- ``Sincere Pumpkin Patch''), a free open-source programming language and software environment for statistical computing and graphics \citep{R2016}.
 
-\section{\gls{bmi}}
+\section{\Gls{bmi}}
 \label{sec:bmi}
 
 \subsection{\gls{bmi} Calculation}
 \label{subsec:bmicalc}
 
-\cref{eq:bmicalc}  was used to calculate the \gls{bmi} from the height and weight data of the samples.
+Where missing, the \gls{bmi} of the samples were calculated from the clinical data using \cref{eq:bmicalc}.
 
 \begin{equation}
 	\label{eq:bmicalc}
@@ -65,8 +65,15 @@ Clinical data for the samples in \citet{Gatza2010a} study was not available, as 
 
 The raw microarray gene expression data files from the (Cris' paper) study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE36771).
 Clinical data for the samples (age, ethnicity, tumour grade, breast cancer subtype, \gls{er}/\gls{pr} statuses, \gls{ln} status, \gls{bmi} and treatments used) in this study was taken from (Cris' paper).
+
+All of the microarray data associate the genes with the corresponding gene probe IDs, and therefore these IDs had to be converted into their corresponding gene symbols.
+The gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r} \citep{hgu133}.
+Since multiple gene probes matches back to a single gene of interest in a microarray chip, there were conflicting expression data for some of the genes after the conversion of the gene probe IDs into gene symbols.
+For the gene symbols that had multiple data entries, a single data was chosen to represent the gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r} \citep{Langfelder2008}.
+Likewise, any obesity associated or pathway associated gene probes were converted into gene symbols.
 \\
-% TODO: Overall summary table of the samples from each data set at the end of this section.
+
+% TODO: Overall summary table of the samples from each data set at the end of this section (?).
 
 \noindent
 The clinical data for all available cancer types (33 types in total) were downloaded from \gls{tcga} database (last accessed 1 April 2015) and were checked for both the height and weight data for each sample.
@@ -74,6 +81,44 @@ Any cancer type with no height and/or weight data of the samples were excluded f
 Out of these 33 cancer types with clinical data, 14 cancer types had both height and weight data.
 However, only 8 cancer types out of these 14 types had \gls{rnaseq} data available from the \gls{icgc} database (last accessed 7 September 2015), so only those 8 cancer types were downloaded and used in this project.
 The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}.
+
+The raw \gls{rnaseq} data from \gls{icgc} database were formatted in a way that the count data of all the genes were listed for one sample, then the count data for all the genes for the next sample, and so on.
+This data format was highly inconvenient for later analyses so the data were reformatted into gene by sample matrix using the \textit{dplyr} package in \gls{r}.
+
+Another problem with the data was the sample ID in the \gls{rnaseq} data.
+Though similar to the \gls{tcga} sample IDs, the \gls{icgc} IDs in the \gls{rnaseq} data had extra identification code in the sample names.
+To associate each sample in the raw \gls{rnaseq} data from the \gls{icgc} database with the correct samples in the clinical data from the \gls{tcga} database, the \gls{icgc} IDs were stripped so they matched the \gls{tcga} IDs.
+After the IDs were stripped, all of the samples were checked to see if there were any duplicates in either the \gls{icgc} \gls{rnaseq} data or \gls{tcga} clinical data.
+Where there was a duplicate in the sample ID, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r} \citep{Langfelder2008}.
+
+Since some of the samples did not have either height or weight data, or both in the clinical data, these samples were removed from the analyses.
+In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the sample ID in the \gls{rnaseq} data, and vice versa.
+Any sample that did not have either clinical information or \gls{rnaseq} data were removed from the analyses.
+This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in the study.
+See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
+
+%TODO: May need more details on the sample (bmi status, etc.)
+\begin{table}[h]
+	\caption{Summary of the total number of samples included in the analyses for each cancer type}
+	\label{tab:samplesize}
+	\begin{center}
+		\begin{tabular}{lc}
+			Cancer Type   & Number of samples \\
+			\hline
+			\rule{0pt}{2.25ex}BLCA & 261   \\
+			CESC                   & 224   \\
+			COAD                   & 226   \\
+			KIRP                   & 124   \\
+			LIHC                   & 264   \\
+			READ                   & 73    \\
+			SKCM                   & 218   \\
+			UCEC                   & 482   \\
+			\hline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
 
 \section{Data processing}
 \label{sec:datproc}
@@ -115,83 +160,36 @@ The weights of the observations and the logged \gls{cpm} can then be used in oth
 
 The raw \gls{rnaseq} data were normalised in two different ways, depending on the analysis.
 For gene expression analyses, voom normalisation method from the \textit{limma} package in \gls{r} was used to normalise the data \citep{Ritchie2015}.
-For the purposes of data visualisation or application of metagene transformation matrices on the \gls{rnaseq} data, the raw data had 1 added (to prevent logging of 0) and then logged to the base of 10 to allow for better visualisation.
+For the purposes of data visualisation or application of metagene transformation matrices on the \gls{rnaseq} data, the raw data had 1 added (to prevent logging of 0) and then logged to the base of 10.
 
 \subsection{Data standardisation}
 \label{sub:data_standardisation}
 
-
-
-
-The data was standardised so that each gene in the data had a mean ($\mu$) of 0 and a standard deviation ($\sigma$) of 1.
-This ensured that all of the genes were on the same scale as one another, which allowed direct comparison across all of the genes.
+For metagene creation and data visualisation that used heatmaps, the data were standardised so that each gene in the data had a \gls{m} of 0 and a \gls{sd} of 1.
+Since the expression levels of the genes could vary significantly (some may have very low expression, whereas another may have very high expression), the direct comparison of the raw expression values between different genes was not feasible.
+Standardisation of each gene allowed the expression levels to be within acceptable range or scale, thus allowed for better visualisation with heatmaps and comparison between different genes was made possible.
 
 \subsection{Residual data creation}
 \label{sub:residual_data_creation}
 
-A linear model was constructed from the data with all of the clinical variables controlled for.
-The residual data was taken from this linear model to be used as the residual data for that data set.
+In order to analyse the data without the effect of certain clinical variables on the data, the residual data of the data was used in some analyses.
+For example, a gene from the raw data might have a strong association with \gls{bmi}, but it is possible that other clinical variables such as \gls{er} status and/or tumour grades are also associated with the gene.
+To focus only on the association with certain variables, the effect of those variables that may affect the analyses must be removed from the data.
 
-\subsection{Gene probe ID conversion}
-\label{sub:gene_probe_id_conversion}
-
-Where appropriate, the gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r}.
-Where there was an overlap in the gene symbols, a single data was chosen to represent that particular gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-Likewise, the obesity associated gene probes were also converted into gene symbols where required.
-
+To do this, a linear model was created from the data with all of the clinical variables that had to be controlled for; in other words, all of the clincial variables apart from the variables of interest were included in the linear model.
+Once a linear model was fitted to the data, the remaining data, or the ``residual data'', represented the data that had been corrected for all of the unwanted variables.
+This data was used in some analyses that required focus on certain variables without the other variables affecting the result.
 
 \subsection{Batch correction}
 \label{sub:batch_correction}
 
-When there were more than one microarray data to be used as a single data set, these microarray data were normalised separately then combined together with the \texttt{ComBat} function in the \textit{sva} package in \gls{r}.
-This corrected for the effect of the individual microarray data on the whole data when combined together.
+It is most likely that experiments are done at different time period, location and laboratory environment.
+These differences between experiments introduces systematic non-biological differences or ``batch effects'' into the data, making it difficult to directly compare the data from different batches \citep{Johnson2007}.
+The problem with the batch effect is that the normalisation methods do not control and adjust for the effect \citep{Johnson2007}.
+Fortunately, \citet{Johnson2007} developed a method to correct for batch effects in the data, using an empirical Bayesian framework.
 
-\subsection{Sample \gls{bmi} calculation}
-\label{sub:sample_bmi_calculation}
-
-Where missing, the \gls{bmi} of the samples were calculated from the clinical data using \cref{eq:bmicalc}.
-
-\subsection{\gls{icgc} data format conversion}
-\label{sub:icgc_data_format_conversion}
-
-The raw \gls{rnaseq} data for each cancer types were formatted using the \textit{dplyr} package in \gls{r}, so that the rows corresponded to the genes and the columns to the samples.
-
-\subsection{Sample ID conversion}
-\label{sub:sample_id_conversion}
-
-\gls{icgc} sample ID in the \gls{rnaseq} data were stripped so that the sample ID matched with the \gls{tcga} ID in the clinical data.
-After the IDs were stripped, samples were checked for any duplicates.
-Where there was a duplicate in the sample ID in the \gls{rnaseq} data, a single sample was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}.
-
-\subsection{\gls{icgc} sample exclusion}
-\label{sub:icgc_sample_exclusion}
-
-Some of the samples did not have either height or weight data, or both.
-These samples were removed from the analyses.
-In each of the eight cancer types, the \gls{tcga} sample ID in the clinical data were cross-checked with the sample ID in the \gls{rnaseq} data, and vice versa.
-Any sample that did not have either clinical or \gls{rnaseq} data were removed.
-This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in the analyses.
-See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
-
-%TODO: May need more details on the sample (bmi status, etc.)
-\begin{table}[h]
-	\caption{Summary of the total number of samples included in the analyses for each cancer type}
-	\label{tab:samplesize}
-	\begin{center}
-		\begin{tabular}{cc}
-			\textbf{Cancer Type}   & \textbf{Total number of samples} \\
-			\hline
-			\rule{0pt}{2.25ex}BLCA & 261   \\
-			CESC                   & 224   \\
-			COAD                   & 226   \\
-			KIRP                   & 124   \\
-			LIHC                   & 264   \\
-			READ                   & 73    \\
-			SKCM                   & 218   \\
-			UCEC                   & 482   \\
-		\end{tabular}
-	\end{center}
-\end{table}
+Since the data used in \citet{Gatza2010a} study was a combination of multiple microarray data from various studies, the batch effect had to be corrected before any analysis was carried out.
+Each microarray dataset was normalised separately then combined together into a single dataset, and the batch effect was corrected with the \texttt{ComBat} function (an implementation of the batch correcting method by \citet{Johnson2007}) from the \textit{sva} package in \gls{r} \citep{Leek2012}.
 
 \section{Gene expression analysis}
 \label{sec:gene_expression_analysis}
@@ -206,8 +204,17 @@ The error rate of the genes were \gls{fdr} controlled for multiple hypothesis te
 For a given list of differentially expressed genes identified in a data set, the \texttt{camera} function from the \textit{limma} package was used to identify the pathways that were enriched in those genes.
 The \gls{go} database was used to identify the enriched pathways.
 
-\section{\gls{svd}}
-\label{sec:singular_value_decomposition}
+\section{Metagene analysis}
+\label{sec:metagene_analysis}
+
+\gls{svd} was applied to the training data set to create the metagene and the transformation matrix in the data set.
+The transformation matrix from the training data was used to transform the other data sets and to create the metagene of the genetic signature in those data sets.
+
+Each of these metagenes were plotted in a heatmap to see the association between the metagene and the overall gene expression of the genes that were used to create the metagene.
+The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a box plot and a scatter plot, respectively.
+
+% \section{\Gls{svd}}
+% \label{sec:singular_value_decomposition}
 
 \gls{svd} was used on a given data set to create the summary metagene scores of a given genetic signature.
 % TODO: add more details on the components (s, v, d) created when svd was applied to the data.
@@ -220,8 +227,8 @@ Any matrix $X$ can be represented in the form:
 \noindent
 where $U$ is the *****, $D$ is the ********, and $V'$ is the **** (eigenvectors and eigenvalues??).
 
-\section{Transformation matrix}
-\label{sec:transformation_matrix}
+% \section{Transformation matrix}
+% \label{sec:transformation_matrix}
 
 Transformation matrix of a genetic signature was created from the \gls{svd} components.
 Rearranging \cref{eq:svd}, you get:
@@ -234,15 +241,6 @@ Rearranging \cref{eq:svd}, you get:
 \noindent
 where $U'D^{-1}$ represents the transformation matrix.
 The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, and was used to transform other data set and obtain the metagene in the data set.
-
-\section{Metagene analysis}
-\label{sec:metagene_analysis}
-
-\gls{svd} was applied to the training data set to create the metagene and the transformation matrix in the data set.
-The transformation matrix from the training data was used to transform the other data sets and to create the metagene of the genetic signature in those data sets.
-
-Each of these metagenes were plotted in a heatmap to see the association between the metagene and the overall gene expression of the genes that were used to create the metagene.
-The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a box plot and a scatter plot, respectively.
 
 \section{Gatza pathway metagene direction}
 \label{sec:pathway_metagene_direction}
