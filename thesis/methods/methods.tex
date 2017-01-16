@@ -194,9 +194,53 @@ Each microarray dataset was normalised separately then combined together into a 
 \section{Gene expression analysis}
 \label{sec:gene_expression_analysis}
 
-The samples were grouped based on the sample BMI status (obese or non-obese group), and a linear model was fitted to the data based on the sample grouping.
-Empirical Bayes statistics was used to identify the differentially expressed genes between the two groups, and the top scoring genes were listed.
-The error rate of the genes were \gls{fdr} controlled for multiple hypothesis testing.
+For gene expression analysis, or differential expression analysis, the \textit{limma} package in \gls{r} was used \citep{Ritchie2015}.
+Since there were thousands of genes to be hypothesis tested, adjustment for multiple hypothesis testing had to be considered in order to identify the truly \glspl{deg}.
+
+\subsection{Limma}
+\label{sub:limma}
+
+\textit{limma} is a package that contains variety of tools to analyse microarray data using linear models-based methods, developed by \citet{Ritchie2015}.
+For gene expression analysis, \textit{limma} package fits a linear model in a gene-wise manner and produce test statistics that allow the assessment of whether the gene is differentially expressed or not \citep{Ritchie2015}.
+
+Before the data was analysed using the \textit{limma} analysis pipeline, it was normalised as described in \cref{sub:data_normalisation}: \nameref{sub:data_normalisation}.
+In addition to this, a design matrix that describes the experimental design was created from the clinical data.
+To create the design matrix, the samples were divided into two groups, the obese group and the non-obese group, and the constructed group information was used in the \texttt{model.matrix} function (in \textit{limma} package) to form the design matrix.
+
+\texttt{lmFit} function (\textit{limma}) was used to fit a linear model to the normalised data, using the experiental design information from the design matrix.
+The output of this function was used in the \texttt{eBayes} function (\textit{limma}) to identify the \glspl{deg} from the data.
+In \texttt{eBayes} function, statistical parameters are estimated from the data and these parameters are used in the empirical Bayesian approach to calculate the summary statistics used for the ranking and identification of \glspl{deg} \citep{Smyth2004}.
+
+The summary statistics from the \texttt{eBayes} function can be displayed with the \texttt{topTable} function (\textit{limma}) and includes: the estimate of the fold change of the gene expression in log$_2$, average gene expression level in log$_2$, moderated \textit{t}-statistic, raw p-value of the gene, multiple hypothesis testing adjusted p-value, and \textit{B}-statistic.
+The first value shows the estimate of the log$_2$ fold change of the gene expression compared with the reference group, so this represents the log$_2$ fold change of the gene expression in the obese samples relative to the non-obese group.
+Second value presents the log$_2$ value of the average expression of the gene across all of the arrays/samples.
+Moderated \textit{t}-statistic is the same as normal \textit{t}-statistic, but its standard error has been adjusted by a simple Bayesian method \citep{Smyth2005}.
+Raw p-value and adjusted p-value represent the p-value of the gene before and after it has been corrected for multiple hypothesis testing, respectively.
+Lastly, the value of \textit{B}-statistic represents the log-odds that the gene is differentially expressed, where \textit{B}-statistic of 0 shows that there is a 50\% chance the gene is differentially expressed \citep{Smyth2005}.
+
+From these summary statistics, the most likely \glspl{deg} were chosen from the list of significant genes by setting the threshold of the p-value to be either less than 1\% or 5\%.
+In the case where there were more than 1000 \glspl{deg}, the top 799 genes were picked from the list, as this was the number of genes found in the \citet{Creighton2012} study; otherwise, as many significant genes identified were taken from the list.
+
+\subsection{Multiple hypothesis testing correction}
+\label{sub:multiple_hypothesis_testing_correction}
+
+In an experiment where there are multiple hypotheses being tested, the rate or proportion of \gls{type1} appearing from the experiment must be controlled.
+The probability of \gls{type1} occuring for a single hypopthesis is usually controlled at some significance threshold $\alpha$, which is usually set at 0.05 \citep{Shaffer1995}.
+In a typical microarray experiment, there are over 20,000 gene probes to be tested for differential expression, and with a significance threshold of $\alpha = 0.05$, this would yield approximately 1,000 \glspl{type1}.
+In other words, 1,000 gene probes would be identified as differentially expressed, when in fact they are not.
+
+There are two broad classes of methods to correct for this problem: \gls{fwer} control and \gls{fdr} control.
+With \gls{fwer} control, the method primarily aims to set the $\alpha$-value for each hypothesis testing ($\alpha_i$) such that the sum of all the $\alpha_i$ is equal to $\alpha$ \citep{Hochberg1987,Shaffer1995}.
+Usually, $\alpha_i$ is set to $\frac{\alpha}{n}$, where $n$ is the number of hypothesis tests carried out in the experiment \citep{Shaffer1995}.
+This highly conservative approach significantly improves the certainty of the result from the experiment, but at the same time it significantly increases the likelihood of missing the truly \glspl{deg}, or \glspl{type2}.
+
+In contrast to the conservative \gls{fwer} control methods, the \gls{fdr} method developed by \citet{Benjamini1995a} control the \glspl{type1} while maintaining statistical \gls{power}.
+The \gls{fdr} method controls the ``expected proportion of errors among the rejected hypotheses'' by adjusting the $\alpha$ to an alternative value, $q^*$, which is calculated from the p-values of the hypothesis tests \citep{Benjamini1995a}.
+With \gls{fdr}, the p-values are ranked and ordered from the lowest to the highest p-value,
+
+
+
+
 
 \section{Pathway enrichment analysis}
 \label{sec:pathway_enrichment_analysis}
