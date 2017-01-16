@@ -235,12 +235,16 @@ Usually, $\alpha_i$ is set to $\frac{\alpha}{n}$, where $n$ is the number of hyp
 This highly conservative approach significantly improves the certainty of the result from the experiment, but at the same time it significantly increases the likelihood of missing the truly \glspl{deg}, or \glspl{type2}.
 
 In contrast to the conservative \gls{fwer} control methods, the \gls{fdr} method developed by \citet{Benjamini1995a} control the \glspl{type1} while maintaining statistical \gls{power}.
-The \gls{fdr} method controls the ``expected proportion of errors among the rejected hypotheses'' by adjusting the $\alpha$ to an alternative value, $q^*$, which is calculated from the p-values of the hypothesis tests \citep{Benjamini1995a}.
-With \gls{fdr}, the p-values are ranked and ordered from the lowest to the highest p-value,
+The \gls{fdr} method controls the ``expected proportion of errors among the rejected hypotheses'' by adjusting the $\alpha$-level (denoted as $q^*$ in \gls{fdr}) depending on the rank of the p-value \citep{Benjamini1995a}.
+With \gls{fdr}, the p-values are ordered and ranked from the lowest to the highest p-value, and for each hypothesis the p-value is compared with the adjusted threshold value:
+\begin{equation}
+	\label{eq:fdr}
+	P_{(i)} \leq \frac{i}{m}q^*
+\end{equation}
+where $P_{(i)}$ is the p-value of the ordered and ranked $i$th hypothesis, $m$ is the total number of hypotheses, and $q^*$ is the threshold value \citep{Benjamini1995a}.
+From \cref{eq:fdr}, the adjusted p-value from \gls{fdr} control is the product of the p-value with the number of hypotheses, divided by its rank.
 
-
-
-
+Since \gls{fdr} method controls \gls{type1} and have greater statistical \gls{power} than the \gls{fwer} methods, \gls{fdr} method was used to identify the \glspl{deg} for gene expression analysis.
 
 \section{Pathway enrichment analysis}
 \label{sec:pathway_enrichment_analysis}
