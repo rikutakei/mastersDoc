@@ -323,20 +323,21 @@ As a consequence, the \gls{type1} rate is increased in these methods.
 \subsection{\gls{go} database}
 \label{sub:go_database}
 
+\Gls{ontology} is defined as a set of concepts and categories in a subject area or domain that shows their properties and the relations between them.
+\Acrfull{go}, as the name suggests, is an \gls{ontology} of the genes and biological pathways, curated and maintained by the \gls{go} Consortium \citep{GO2000,GO2004}.
+The goal of the \gls{go} Consortium is to ``produce a structured, precisely defined, common, controlled vocabulary for describing the roles of genes and gene products in any organism'' \citep{GO2000}.
+The \gls{go} database includes not only the human genetic information, but collates variety of information from eukaryotic cells, including \textit{Arabidopsis thaliana} and \textit{Drosophila melanogaster} \citep{GO2000,GO2004}.
 
+\gls{go} provides three distinct ontologies to describe the role of a gene or its gene product in the cell: biological process, molecular function, and cellular component \citep{GO2000}.
+Biological process categorises the genes or its gene products into their overarching biological purpose or goal in the cell; for example, ``cell death'' and ``cell growth and maintenance''.
+Molecular function describes the biochemical activity a gene or protein has, ignoring when or where the activity takes place.
+The definition of ``biochemical activity'' is very broad as it includes specific binding to ligands and structure.
+Examples of terms used in molecular function are ``kinase activity'', ``transporter'' and ``ligands''.
+Lastly, cellular components refers to the location in which the gene product is active, such as ``Golgi apparatus'' and ``nuclear membrane''.
 
-
-
-
-
-
-
-
-
-
-
-For a given list of differentially expressed genes identified in a data set, the \texttt{camera} function from the \textit{limma} package was used to identify the pathways that were enriched in those genes.
-The \gls{go} database was used to identify the enriched pathways.
+Due to the sheer amount of terms and definitions available from the data, \gls{go} was chosen as the database for pathway reference.
+The \textit{GO.db} package was used to load the \gls{go} database into \gls{r} \citep{Carlson2016}.
+Only the human related \gls{go} terms were used in pathway enrichment analysis, and these terms were manipulated in a form which the \texttt{camera} function was able to recognise.
 
 \section{Metagene analysis}
 \label{sec:metagene_analysis}
