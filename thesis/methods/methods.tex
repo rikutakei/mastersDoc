@@ -201,7 +201,7 @@ Since there were thousands of genes to be hypothesis tested, adjustment for mult
 \label{sub:limma}
 
 \textit{limma} is a package that contains variety of tools to analyse microarray data using linear models-based methods, developed by \citet{Ritchie2015}.
-For gene expression analysis, \textit{limma} package fits a linear model in a gene-wise manner and produce test statistics that allow the assessment of whether the gene is differentially expressed or not \citep{Ritchie2015}.
+For gene expression analysis, \textit{limma} package fits a linear model in a genewise manner and produce test statistics that allow the assessment of whether the gene is differentially expressed or not \citep{Ritchie2015}.
 
 Before the data was analysed using the \textit{limma} analysis pipeline, it was normalised as described in \cref{sub:data_normalisation}: \nameref{sub:data_normalisation}.
 In addition to this, a design matrix that describes the experimental design was created from the clinical data.
@@ -248,6 +248,92 @@ Since \gls{fdr} method controls \gls{type1} and have greater statistical \gls{po
 
 \section{Pathway enrichment analysis}
 \label{sec:pathway_enrichment_analysis}
+
+Identification of \glspl{deg} provides great deal of information about the effect of treatment and provides a list of genes that may have a role in that particular experimental setting.
+With that said, it is often difficult for the investigators to provide a plausible biological explanation with just a long list of \glspl{deg}, as the list lacks the link between the genes with the biological cause \citep{Khatri2012}.
+Therefore, given a list of \glspl{deg}, it is crucial for any researcher to undertake pathway enrichment analysis in order to provide useful insights into the underlying biological mechanisms the \glspl{deg} may be involved in.
+
+\subsection{Competitive and self-contained tests}
+\label{sub:competitive_and_self_contained_tests}
+
+In general, there are two major classes of methods for pathway enrichment analysis: self-contained or competitive tests \citep{Goeman2007}.
+The main difference between the two classes is the definition of the null hypothesis.
+Letting $G$ be the gene set of interest and $G^c$ its compliment, then in self-contained tests, the null hypothesis is formulated as follows:
+
+\begin{quote}
+	\textit{$H_0^{\textrm{self}}$: No genes in G are differentially expressed. }
+\end{quote}
+
+\noindent
+whereas in competitive tests, the null hypothesis is defined as:
+
+\begin{quote}
+	\textit{$H_0^{\textrm{comp}}$: The genes in G are at most as often differentially expressed as the genes in $G^c$.
+	}
+\end{quote}
+
+These hypotheses show that self-contained tests care only about the genes defined in the gene set, but competitive tests examine the genes in the defined set as well as the genes not present in the set \citep{Wu2012}.
+Due to the fact that self-contained tests do not take into account for the genes not defined in the gene set, self-contained tests are more restrictive compared to competitive tests.
+The restrictive property of self-contained tests give it greater power, as they are able to reject the null hypothesis at a higher accuracy for more gene sets than the competitive tests \citep{Goeman2007}.
+As \citet{Goeman2007} stated in their paper, ``the competitive types of test can be said to voluntarily relinquish some power in order to make a stronger statement''.
+
+Taken together, self-contained tests are more appropriate in assessing whether a biological process is significantly involved in an expreiment, and in contrast, competitive tests are better for selecting the most relevant biological processes from those that are not \citep{Wu2012}.
+
+\subsection{\Gls{ora} and \gls{fcs}}
+\label{sub:ora_and_fcs}
+
+Though the approaches differ between the two, both \acrfull{ora} and \acrfull{fcs} are used to identify whether certain pathways are enriched, given a list of \glspl{deg}.
+The common approach taken by \gls{ora} is to count the \glspl{deg} that are part of a biological pathway and perform a statistical test to decide whether the pathway is over- or under-represented in the list of genes \citep{Khatri2012}.
+Statistical test used in \gls{ora} includes $\chi^2$-test, hypergeometric test, and binomial test \citep{Khatri2012}.
+Depending on the methods, \gls{ora} uses either self-contained or competitive tests.
+
+There are several limitations to the \gls{ora} approach.
+Firstly, the statistical tests are independent of the measured changes and therefore ignores the values associated with the genes, such as intensities and significance of the change \citep{Khatri2012}.
+Secondly, only the most significant genes are selected for the input list of genes, which means that the almost significant genes are discarded from the analysis and results in a loss of information \citep{Khatri2012}.
+Lastly, by treating each gene individually, the analysis ignores the biological interaction and complexity of the genes with other genes, as well as between pathways \citep{Khatri2012}.
+
+In general, \gls{fcs} methods measure gene-level statistics from the given data, then aggregate these statistics into pathway-level statistics, which is then used to calculate the statistical significance of the pathway \citep{Khatri2012}.
+Either self-contained or competitive tests can be used to calculate the statistical significance of the pathways.
+
+\Gls{fcs} approach addresses some of the limitations presented by the \gls{ora} methods.
+By calculating the statistical significance per pathway, \gls{fcs} approach takes into account of all of the genes involved in the pathways, not just the genes that are differentially expressed.
+Furthermore, \gls{fcs} approach also detect small but consistant and coordinated changes in the expression of the genes, unlike in \gls{ora} where molecular measurements are completely ignored \citep{Khatri2012}.
+
+Though \gls{fcs} approach improves on \gls{ora} approach, there are still some limitations.
+Since the analyses that use \gls{fcs} compare the pathways independently from one another, it ignores the interactive nature of biological pathways.
+Another limitation is that \gls{fcs} methods use the molecular measurements to rank the genes, but they do not consider these changes into further analysis \citep{Khatri2012}.
+For example, if one gene was expressed with a 2-fold change, whereas another gene was expressed with a 20-fold change, the \gls{fcs} method will rank these genes accordingly and disregard the fact that the second gene should be weighted more than the first gene \citep{Khatri2012}.
+
+Although both approaches have their own limitations, it is clear that \gls{fcs} approach have more advantages over \gls{ora} methods.
+
+\subsection{\Gls{camera}}
+\label{sub:camera}
+
+\Acrfull{camera} is a competitive \gls{fcs}-based method developed by \citet{Wu2012}, implemented as the \texttt{camera} function in the \textit{limma} package \citep{Ritchie2015}.
+Briefly, \gls{camera} fits a linear model in a genewise manner and calculates the genewise test statistics using the log\gls{fc} between the conditions.
+These genewise test statistics are used in the \gls{wmw} rank sum test to question whether a pathway is significantly enriched in the data \citep{Wu2012}.
+
+One problem with the other \gls{fcs}-based methods is that these methods do not consider the inter-gene correlation of the gene set being tested \citep{Wu2012}.
+Since other methods assume that all the genes are equivalent under the null hypothesis, inter-gene correlation of the genes in a gene set will violate this assumption \citep{Wu2012}.
+As a consequence, the \gls{type1} rate is increased in these methods.
+\Gls{camera} accounts for this correlation by estimating the \gls{vif} from the genewise correlation and the number of genes in the gene set \citep{Wu2012}.
+
+\gls{camera} was used in this project to identify the pathways that are enriched in samples from obese patients compared with the samples from non-obese patients, as it provides a competitive \gls{fcs}-based method.
+
+\subsection{\gls{go} database}
+\label{sub:go_database}
+
+
+
+
+
+
+
+
+
+
+
+
 
 For a given list of differentially expressed genes identified in a data set, the \texttt{camera} function from the \textit{limma} package was used to identify the pathways that were enriched in those genes.
 The \gls{go} database was used to identify the enriched pathways.
