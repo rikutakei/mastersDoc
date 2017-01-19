@@ -259,19 +259,14 @@ Therefore, given a list of \glspl{deg}, it is crucial for any researcher to unde
 In general, there are two major classes of methods for pathway enrichment analysis: self-contained or competitive tests \citep{Goeman2007}.
 The main difference between the two classes is the definition of the null hypothesis.
 Letting $G$ be the gene set of interest and $G^c$ its compliment, then in self-contained tests, the null hypothesis is formulated as follows:
-
 \begin{quote}
 	\textit{$H_0^{\textrm{self}}$: No genes in G are differentially expressed. }
 \end{quote}
-
-\noindent
 whereas in competitive tests, the null hypothesis is defined as:
-
 \begin{quote}
 	\textit{$H_0^{\textrm{comp}}$: The genes in G are at most as often differentially expressed as the genes in $G^c$.
 	}
 \end{quote}
-
 These hypotheses show that self-contained tests care only about the genes defined in the gene set, but competitive tests examine the genes in the defined set as well as the genes not present in the set \citep{Wu2012}.
 Due to the fact that self-contained tests do not take into account for the genes not defined in the gene set, self-contained tests are more restrictive compared to competitive tests.
 The restrictive property of self-contained tests give it greater power, as they are able to reject the null hypothesis at a higher accuracy for more gene sets than the competitive tests \citep{Goeman2007}.
@@ -342,40 +337,35 @@ Only the human related \gls{go} terms were used in pathway enrichment analysis, 
 \section{Metagene analysis}
 \label{sec:metagene_analysis}
 
-\gls{svd} was applied to the training data set to create the metagene and the transformation matrix in the data set.
-The transformation matrix from the training data was used to transform the other data sets and to create the metagene of the genetic signature in those data sets.
-
-Each of these metagenes were plotted in a heatmap to see the association between the metagene and the overall gene expression of the genes that were used to create the metagene.
-The metagene was also checked for the association between the sample \gls{bmi} status and \gls{bmi} value, which was plotted in a box plot and a scatter plot, respectively.
-
-% \section{\Gls{svd}}
-% \label{sec:singular_value_decomposition}
-
-\gls{svd} was used on a given data set to create the summary metagene scores of a given genetic signature.
-% TODO: add more details on the components (s, v, d) created when svd was applied to the data.
-Any matrix $X$ can be represented in the form:
+In order to assess whether a certain set of genes are up or down regulated by a sample, some sort of score based on these genes must be calculated.
+\Gls{svd} is a mathematical method that splits a matrix into several matrices that represent the original matrix \citep{Golub1970}.
+With \gls{svd}, a matrix $X$ of size $n$ genes by $m$ arrays (or samples) can be represented as:
 \begin{equation}
 	\label{eq:svd}
-	X = UDV'
+	X = UDV^T
 \end{equation}
+where the columns of $U$ and $V$ contain the left and right singular vectors of $X$ respectively, and $D$ contains the singular values of $X$.
 
-\noindent
-where $U$ is the *****, $D$ is the ********, and $V'$ is the **** (eigenvectors and eigenvalues??).
+The term that is of the greatest importance is $V$, as this matrix contains the principal components of the original data matrix $X$.
+Previous studies have used the principal components to summarise the expression of the set of genes for each sample in the experiment \citep{Alter2000,West2001}.
+This allows direct comparison of the expressions of multiple different genes in different arrays or experiments \citep{Alter2000}.
+Furthermore, this summary gene, or metagene, can be used to sort the samples and provide a meaningful grouping of the data which may help understand the underlying biology \citep{Alter2000}.
 
-% \section{Transformation matrix}
-% \label{sec:transformation_matrix}
+With respect to this project, \gls{svd} was used to assess whether the metagene created from various obesity or pathway associated genes were significantly associated with certain clinical variables, such as \gls{bmi}.
+To do this, the normalised original expression data was reduced in size so that it only included the genes of ineterest (either obesity or pathway associated) and the samples, then \texttt{svd} function from the \textit{base} package in \gls{r} was used to apply \gls{svd} to the matrix.
+The first principal component was taken from the $V$ matrix and was used as the metagene scores for the samples in the data.
 
-Transformation matrix of a genetic signature was created from the \gls{svd} components.
-Rearranging \cref{eq:svd}, you get:
-
+Another important property of \gls{svd} is that the signal used to create the metagene in the first data set can be directly applied to other data set to obtain the metagene scores in that data set.
+Rearrangement of \cref{eq:svd} for $V^T$ gives the following equation:
 \begin{equation}
 	\label{eq:transmat}
-	V' = U'D^{-1}X
+	V^T = U^{T}D^{-1}X
 \end{equation}
-
-\noindent
-where $U'D^{-1}$ represents the transformation matrix.
-The transformation matrix $U'D^{-1}$ was created from the \gls{svd} components, and was used to transform other data set and obtain the metagene in the data set.
+where $U^{T}D^{-1}$ will be referred to as the ``transformation matrix'' hereafter.
+Clearly, by substituting the data matrix $X$ with another data matrix, the transformation matrix allows for the generation of the metagene for that data set.
+The reason why the transformation matrix is used instead of independently applying \gls{svd} to the other data set is because the signature, and therefore the metagene, from a single data set is dependent on the signal within its data set.
+Therefore, the metagenes created independently from different data sets using \gls{svd} does not have the same weighting as the metagene from the original data set, and consequently does not provide a fair comparison of the metagenes across different data sets.
+For this reason, the transformation matrix for a given set of genes was created in the data set in which the genes were first identified in, and then transformed into other data sets to obatain the metagenes.
 
 \section{Gatza pathway metagene direction}
 \label{sec:pathway_metagene_direction}
