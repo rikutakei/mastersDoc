@@ -423,13 +423,27 @@ Therefore, the direction as well as the magnitude of the correlation value was a
 Lastly, further on top of this, the clustering of the pathway metagenes with the other pathway metagenes were also considered.
 It was known from \citet{Gatza2010a} study that some pathways clustered and grouped together with specific pathways, so the metagenes were flipped so that the grouping of the pathways matched the results from their study.
 
-\section{Obesity metagene prediction}
-\label{sec:obesity_metagene_prediction}
+\section{Obesity metagene prediction with pathway metagenes}
+\label{sec:obesity_metagene_prediction_with_pathway_metagenes}
+
+To determine whether the obesity metagene was associated with any of the pathway metagenes, a linear model was constructed with some clinical variables and pathway metagenes, and then this model was used to predict the obesity metagene.
+This was based on the idea that, if a variable or a pathway metagene was a significant part of the model for the obesity metagene, then the variable or a pathway metagene may be associated with the obesity metagene.
+Furthermore, the model that was created based on the significant variables can be used to predict the obesity metagene, which can be used to compare with the original obesity metagene; if the predicted metagene was similar to the original metagene, then it provides an evidence that the pathway used to construct the model was associated with the obesity metagene.
+
+Four linear models were created in (Cris' data -- get reference) to predict the obesity associated metagene from the \citet{Creighton2012} study.
+The first model used the sample \gls{bmi} value or \gls{bmi} status by itself, the second model with sample \gls{bmi} value, \gls{bmi} status and selected pathway associated metagenes, the third model with selected pathway associated metagenes, and the last model was constructed with just the \gls{pr} pathway.
+The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
+
+In deciding on the pathways to be used for the construction of the linear model, the correlation of different versions of pathway metagenes, \gls{svd}-derived and transformation matrix-derived, in different data sets were used.
+When a transformation matrix is applied to the data set in which it was derived from, the resulting metagene is identical to the one created from the direct application of \gls{svd}.
+Therefore, theoretically, if the metagene derived from a transformation matrix is similar to the metagene created from \gls{svd}, then it shows that the genetic signature is consistent and reliable across different data sets.
+The above mentioned pathways had high correlation value between the \gls{svd}-derived and transformation matrix-derived pathway metagenes, and so it was used in the construction of the linear model.
 
 % TODO: possibly extra analyses here (gradual pathway inclusion in the model, using all the pathway...?)
-Sample BMI, BMI status and/or pathway metagenes were used to construct a linear model in Cris Print's data.
-The constructed linear model was then used to predict the obesity metagene values in \citet{Creighton2012} data set.
-The predicted obesity metagene values were compared with the true obesity metagene values, and both Spearman and Pearson correlation were calculated.
+
+The predicted obesity metagenes that were created in (Cris' data -- get reference) was compared with the original obesity metagene from the \citet{Creighton2012} data set.
+Both Pearson and Spearman correlation was calculated to assess the relationship between the predicted and original metagenes.
+Scatter plots were also created to visually compare the two metagene scores.
 
 \section{Plot creation}
 \label{sec:plot_creation}
@@ -443,4 +457,3 @@ All of the heatmaps that required no or one column bar used the \texttt{heatmap.
 
 
 
-% TODO: re-write everything so that it's in past tense
