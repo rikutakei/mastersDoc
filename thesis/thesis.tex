@@ -2,20 +2,20 @@
 \documentclass[a4paper, 12pt, oneside, draft]{report} % for draft compilation
 
 % Preamble:
-\usepackage[T1]{fontenc}                            % package for specifying output font encoding
-\usepackage[utf8]{inputenc}                         % package for specifying input font encoding
-\usepackage{natbib}                                 % package for reference management
-\usepackage{graphicx}                               % package for graphics handling (i.e. figure images)
-\usepackage{mathptmx}                               % package for Times New Roman font
-\usepackage{chngcntr}                               % package for making continuous figure numbering, instead of section-based numbering
-\usepackage[flushleft]{threeparttable}              % package to add notes at the bottom of the table
-\usepackage{setspace}                               % package for setting line space (used in title page)
-\usepackage[hidelinks, colorlinks]{hyperref}        % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
-\usepackage[md]{titlesec}                           % package for tweaking the chapter/section/subsection titles format
-\usepackage[acronym, toc]{glossaries}               % package for making glossaries
-\usepackage{xcolor,colortbl}                        % package for making colours
-\usepackage[noabbrev,capitalise]{cleveref}          % package for referencing multiple referencing in a single \ref command
-\usepackage[font=footnotesize,format=hang]{caption} % package for formatting figure caption
+\usepackage[T1]{fontenc}                               % package for specifying output font encoding
+\usepackage[utf8]{inputenc}                            % package for specifying input font encoding
+\usepackage{natbib}                                    % package for reference management
+\usepackage{graphicx}                                  % package for graphics handling (i.e. figure images)
+\usepackage{mathptmx}                                  % package for Times New Roman font
+\usepackage{chngcntr}                                  % package for making continuous figure numbering, instead of section-based numbering
+\usepackage[flushleft]{threeparttable}                 % package to add notes at the bottom of the table
+\usepackage{setspace}                                  % package for setting line space (used in title page)
+\usepackage[hidelinks, colorlinks]{hyperref}           % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
+\usepackage[md]{titlesec}                              % package for tweaking the chapter/section/subsection titles format
+\usepackage[acronym]{glossaries} % package for making glossaries
+\usepackage{xcolor,colortbl}                           % package for making colours
+\usepackage[noabbrev,capitalise]{cleveref}             % package for referencing multiple referencing in a single \ref command
+\usepackage[font=footnotesize,format=hang]{caption}    % package for formatting figure caption
 
 % Define colour(s) for table rows:
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -37,6 +37,9 @@
 
 % Change the title of bibliography to references:
 \renewcommand{\bibname}{References}
+
+% Change the title of Table of Contents:
+\renewcommand{\contentsname}{Table of Contents}
 
 % Italicise the subsubsection title:
 \titleformat{\subsubsection}{\normalfont\itshape\bfseries}{\thesubsubsection}{1em}{}
@@ -84,13 +87,17 @@
 
 \clearpage
 
-\printglossaries
+\addcontentsline{toc}{section}{Glossary}
+
+\printglossary[style=altlist]
 
 \clearpage
 
-% \listoftables
+\addcontentsline{toc}{section}{Acronyms}
 
-% \clearpage
+\printglossary[type=\acronymtype,style=super]
+
+\clearpage
 
 \pagenumbering{arabic} % revert the page numbering to normal numbering
 \glsresetall
@@ -107,6 +114,8 @@
 
 % Use the reference style specified in BiocRefStyle.bst:
 \bibliographystyle{BiocRefStyle}
+
+\addcontentsline{toc}{chapter}{\bibname}
 
 % Print out the bibliography:
 \bibliography{./MSc,./MSc2}
