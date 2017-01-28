@@ -115,14 +115,78 @@ Another reason for this apparent lack of association could be that the genetic s
 \section{Obesity associated genetic signature from \citet{Fuentes-Mattei2014} study}
 \label{sec:fm_obesity_metagene}
 
-It was surprising that Creighton's metagene did not show significant association with \gls{bmi} in other data sets.
+Since Creighton's obesity associated genetic signature was not associated with sample \gls{bmi} or \gls{bmi} status in other data sets, Fuentes-Mattei's (FM) obesity associated genetic signature was examined to see whether FM's obesity metagene associated with sample \gls{bmi} or \gls{bmi} status.
+Since FM's data set did not have sample \gls{bmi} information, FM's obesity metagene was not able to be compared with the sample \gls{bmi} or \gls{bmi} status in the original FM's data.
+However, the transformation matrix was still applied to other cancer data to see whether FM's obesity metagene associated with sample \gls{bmi}/\gls{bmi} status
 
+Firstly, FM's data was normalised with the \gls{rma} method and \gls{svd} was applied to the normalised data to get the transformation matrix.
+The transformation matrix was used to transform the \gls{rma}-normalised Creighton's data to extract FM's obesity metagene scores.
+FM's obesity metagene scores were compared with gene expressions and sample \gls{bmi}/\gls{bmi} status in Creighton's data, as shown in \cref{fig:fmmetacr1,fig:fmmetaboxcr1}.
+Clearly, like with Creighton's obesity metagene, FM's obesity metagene was reflective of the overall gene expression of the samples, but did not associate with the sample \gls{bmi} or \gls{bmi} status.
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and Creighton's cancer data]{(insert Creighton heatmaps)}
+	\label{fig:fmmetacr1}
+\end{figure}
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in Creighton's data]{(insert figure of box plot and scatter plot for Creighton data)}
+	\label{fig:fmmetaboxcr1}
+\end{figure}
 
+Next, the transformation matrix was applied to the \gls{icgc} cancer data and resulting metagenes were compared with the gene expression and sample \gls{bmi}/\gls{bmi} status.
+As evident in \cref{fig:fmmetaicgc1}, FM's obesity metagene scores appeared to reflect the gene expression of FM's obesity associated genetic signature.
+However, as with all the results in this section so far, FM's obesity metagene did not significantly associate with any of the \gls{icgc} cancer data (\cref{fig:fmmetaboxicgc1}).
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and \gls{icgc} cancer data]{(insert ICGC heatmaps)}
+	\label{fig:fmmetaicgc1}
+\end{figure}
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in \gls{icgc} data]{(insert figure of box plot and scatter plot for Creighton data)}
+	\label{fig:fmmetaboxicgc1}
+\end{figure}
 
+Lastly, the transformation matrix was applied to Print's data.
+
+\\
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and Print's cancer data]{(insert Print heatmaps)}
+	\label{fig:fmmetacris1}
+\end{figure}
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\hfill
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in Print's data]{(insert figure of box plot and scatter plot for Print's data)}
+	\label{fig:fmmetaboxcris1}
+\end{figure}
+
+\noindent
 
 
 
