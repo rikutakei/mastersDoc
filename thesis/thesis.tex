@@ -1,5 +1,5 @@
-% \documentclass[a4paper, 12pt, oneside]{report} % for final draft compilation
-\documentclass[a4paper, 12pt, oneside, draft]{report} % for draft compilation
+\documentclass[a4paper, 12pt, oneside]{report} % for final draft compilation
+% \documentclass[a4paper, 12pt, oneside, draft]{report} % for draft compilation
 
 % Preamble:
 \usepackage[T1]{fontenc}                               % package for specifying output font encoding
@@ -16,6 +16,7 @@
 \usepackage{xcolor,colortbl}                           % package for making colours
 \usepackage[noabbrev,capitalise]{cleveref}             % package for referencing multiple referencing in a single \ref command
 \usepackage[font=footnotesize,format=hang]{caption}    % package for formatting figure caption
+\usepackage{subcaption}    % package for formatting figure caption
 
 % Define colour(s) for table rows:
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -41,6 +42,9 @@
 % Change the title of Table of Contents:
 \renewcommand{\contentsname}{Table of Contents}
 
+% Change the title of Table of Contents:
+\renewcommand{\thesubfigure}{\Alph{subfigure}}
+
 % Italicise the subsubsection title:
 \titleformat{\subsubsection}{\normalfont\itshape\bfseries}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}{\normalfont\itshape}{\theparagraph}{\noindent}{}
@@ -54,7 +58,7 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % If you want to compile specific files, uncomment the line below and add the filenames in the {} :
-%\includeonly{}
+\includeonly{./results/results}
 
 \begin{document}
 

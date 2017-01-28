@@ -340,7 +340,7 @@ Only the human related \gls{go} terms were used in pathway enrichment analysis, 
 \subsection{\Gls{svd}}
 \label{sub:svd}
 
-In order to ertain set of genes are up or down regulated by a sample, some sort of score based on these genes must be calculated.
+In order to determine whether a set of genes are up or down regulated by a sample, some sort of score based on these genes must be calculated.
 \Gls{svd} is a mathematical method that splits a matrix into several matrices that represent the original matrix \citep{Golub1970}.
 With \gls{svd}, a matrix $X$ of size $n$ genes by $m$ arrays (or samples) can be represented as:
 \begin{equation}
@@ -355,7 +355,7 @@ This allows direct comparison of the expressions of multiple different genes in 
 Furthermore, this summary gene, or metagene, can be used to sort the samples and provide a meaningful grouping of the data which may help understand the underlying biology \citep{Alter2000}.
 
 With respect to this project, \gls{svd} was used to assess whether the metagene created from various obesity or pathway associated genes were significantly associated with certain clinical variables, such as \gls{bmi}.
-To do this, the normalised original expression data was reduced in size so that it only included the genes of ineterest (either obesity or pathway associated) and the samples, then \texttt{svd} function from the \textit{base} package in \gls{r} was used to apply \gls{svd} to the matrix.
+To do this, the normalised original expression data was reduced in size so that it only included the genes of interest (either obesity or pathway associated) and the samples, then \texttt{svd} function from the \textit{base} package in \gls{r} was used to apply \gls{svd} to the matrix.
 The first principal component was taken from the $V$ matrix and was used as the metagene scores for the samples in the data.
 
 Another important property of \gls{svd} is that the signal used to create the metagene in the first data set can be directly applied to other data set to obtain the metagene scores in that data set.
