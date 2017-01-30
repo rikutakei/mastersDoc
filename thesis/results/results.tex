@@ -10,7 +10,9 @@ Lastly, the presence of common genes or pathways that were associated with obesi
 \label{sec:creighton_obesity_metagene}
 
 Obesity metagene was created using the obesity associated genetic signatures from \citet{Creighton2012} study.
-Since there was no description about the normalisation method used by Creighton's group, the \gls{rma} method was used to  normalise the Creighton data set.
+% As the genetic signatures were described as gene probe IDs, the gene probes had to be converted into gene symbols (see \cref{sec:data}).
+% This resulted in 644 unique gene symbols, compared to 799 gene probes IDs in the original signature.
+There was no description about the normalisation method used by Creighton's group when they first analysed their data, so the more reliable \gls{rma} method was used to  normalise the Creighton data set.
 The obesity metagene was plotted in a heatmap with the sample gene expression (\cref{fig:crmetaheat1}) to check whether the metagene scores were in accordance with the overall gene expression of the samples.
 
 \begin{figure}[htb]
@@ -191,13 +193,108 @@ These results showed that FM's obesity associated metagene was not transferable 
 This meant that neither Creighton's nor FM's obesity associate metagenes may be too specific to the orignial data set in which the signature was identified in.
 Furthermore, it may be possible that these obesity associated metagenes may not be related to obesity, but another clinical variable which may be closely related to \gls{bmi}.
 
-\section{New obesity associated genetic signature in \citet{Creighton2012} data set}
+\section{Novel obesity associated genetic signatures from \citet{Creighton2012} data set}
 \label{sec:creighton_obesity_metagene_new}
+
+\subsection{Identification of obesity associated genetic signatures}
+\label{sub:identification_of_obesity_associated_genetic_signatures}
 
 Both metagenes generated from Creighton's data and FM's data were able to capture the overall pattern of gene expression of the samples, but did not associate with sample \gls{bmi}/\gls{bmi} status.
 One possible reason for this result could be that the obesity associated genetic signatures from Creighton's and FM's study may not have been truly associated with sample \gls{bmi} status, but another clinical variable.
-To remove this possibility, obesity associated genetic signature was identified in Creighton's data after controlling for all the clinical variables in the data set.
-FM's data set was not used to get obesity associated genetic signature, as no \gls{bmi} information was available for the samples in FM's data.
+To remove this possibility, obesity associated genetic signatures were identified in Creighton's data after controlling for all the clinical variables in the data set.
+FM's data set was not used to get obesity associated genetic signatures, as no \gls{bmi} information was available for the samples in FM's data.
+
+Firstly, to validate whether the identified obesity associated genetic signature was similar to the signature that Creighton's groups had originally found, the identified \glspl{deg} were compared with the set of genes identified by Creighton's group.
+\glspl{deg}  were identified between the samples from obese patient and non-obese patient in the \gls{rma}-normalised Creighton's data, as described in \cref{sec:gene_expression_analysis}.
+Without adjusting the p-value with FDR, 5278 gene probes and 1781 gene probes were significant at p \textless{} 0.05 and p \textless{} 0.01, respectively.
+After afjustment, there were only 9 gene probes significant at p \textless{} 0.05 and no gene was significant at p \textless{} 0.01.
+Furthermore, there were only 61 gene probes that were significantly differentially expressed at p \textless{} 0.05 with a log$_2$ \gls{fc} greater than 1.2.
+From these observations, the log$_2$ fold change of the gene probes were ignored and the threshold p-value was set to 0.01 (without adjustment) for the identification of gene probes.
+This was to include as many gene probes as possible without losing power (?).
+Additionally, when there were more than 799 gene probes identified, only the most significant 799 gene probes were taken as the obesity associated genetic signature, as this many genes were originally identified by Creighton's group.
+These criteria were applied for the identification of other genetic signatures as well.
+
+The above analysis was repeated with the residual data (\gls{rma}-normalised Creighton's data that had been controlled for other clinical variables; see \cref{sub:residual_data_creation}).
+The clinical variables controlled were age, ethnicity, menopause status, tumour grade, hormone (\gls{er}, \gls{pr}, and \gls{her2}) statuses  and \gls{ln} status.
+In the residual data, 1104 gene probes were significant with unadjusted p-value (p \textless{} 0.01).
+Again, the most significant 799 genes were taken as the obesity associated genetic signature from this data.
+
+In addition to the above two obesity associated genetic signatures, two more sets of genetic signatures were identified by taking the common genes between the above two signatures with Creighton's original obesity associated genetic signatures.
+There were 239 common gene probes between Creighton's original genetic signature and the gene probes identified from the unadjusted Creighton's data, and 168 common gene probes between the original signature and gene probes from residual data in Creighton's data.
+The genetic signatures identified were summarised as a Venn diagram, as shown in \cref{fig:venn1}.
+\\
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Summary of the \glspl{deg} identified from Creighton's data]{(add venn diagram)}
+	\label{fig:venn1}
+\end{figure}
+
+\noindent
+There was a possible bias between different ethnic groups, where African American patients were more likely to be obese compared to the Caucasian patients (see \cref{ssub:creighton_study}).
+Though ethnicity was controlled in the residual data, the effect of ethnicity on the data was completely removed to prevent any possibility of ethnicity influencing the analysis.
+Therefore, the effect of ethnicity was completely removed by considering only the Caucasian patients in Creighton's data, which left a total of 77 Caucasian patients in the data set.
+With this Caucasian-only data set, obesity associated genetic signatures were identified as described above; first with unadjusted data, then with the data with clinical variables adjusted (except ethnicity, as it has already been controlled for), and lastly the common genes with Creighton's original signature were identified.
+
+2129 gene probes and 1558 gene probes were identified in the unadjusted and clinical variable-adjusted Caucasian patient data, respectively.
+As before, the most significant 799 gene probes were selected from these gene probes.
+There were 148 and 92 common gene probes with Creighton's original genetic signatures and unadjusted or clinical variable-adjusted Caucasian patient data set, respectively.
+Again, Venn diagram was used to summarise the genes identified from the Caucasian patient data set (\cref{fig:venn2}).
+\\
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Summary of the \glspl{deg} identified from Creighton's data (Caucasian patient data)]{(add venn diagram)}
+	\label{fig:venn2}
+\end{figure}
+
+\noindent
+For simplicity, Creighton's original obesity associated signature will be referred to as ``original'' signature, new signatures from unadjusted and clinical variable-adjusted Creighton's data as ``Cr'' and ``Res'' signature respectively, and the signatures from unadjusted and clinical variable-adjusted Caucasian patient data set as ``Ca'' and ``CaRes'' signature respectively.
+All of the overlap signatures will be referred to as their respective signature, but with ``Ol'' added at the end, for example ``CaResOl'' for the overlap signature identified in clinical variable-adjusted Caucasian patient data set.
+All of these obesity associated genetic signatures (eight in total) were checked to see whether these signatures had significant association with sample \gls{bmi}/\gls{bmi} status.
+
+\subsection{Novel obesity associated signatures and sample \gls{bmi}/\gls{bmi} status}
+\label{sub:_novel_obesity_associated_signatures_and_sample_bmi}
+
+As with the original signature, all eight signatures were validated in Creighton's data set first, and then compared in other cancer data sets by using the transformation matrix generated in Creighton's data.
+% Before the metagenes were created, all of the signatures were converted into gene symbols, as described in \cref{sec:data} (\cref{tab:signature_gene_num}).
+Creighton's data was normalised with \gls{rma} method and \gls{svd} was applied to generate the metagene for the corresponding genetic signature.
+
+
+
+
+
+
+
+% \begin{table}[htbp]
+% 	\centering
+% 	\caption{Summary of the number of gene probes and genes in each obesity associated genetic signature}
+% 	\label{tab:signature_gene_num}
+% 	\begin{tabular}{lcc}
+% 		Obesity associated genetic signature & No. gene probes   & No. genes\\
+% 		\hline
+% 		\rule{0pt}{2.25ex}Cr & 799 & 678\\
+% 		Res                  & 799 & 655\\
+% 		Ca                   & 799 & 657\\
+% 		CaRes                & 799 & 651\\
+% 		CrOl                 & 239 & 199\\
+% 		ResOl                & 168 & 147\\
+% 		CaOl                 & 148 & 128\\
+% 		CaResOl              &  92 & 86\\
+% 		\hline
+% 		\hline
+% 	\end{tabular}
+% \end{table}
+
+
+
+
+
+
+
+
 
 
 
