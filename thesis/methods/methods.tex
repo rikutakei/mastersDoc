@@ -191,6 +191,15 @@ Fortunately, \citet{Johnson2007} developed a method to correct for batch effects
 Since the data used in \citet{Gatza2010a} study was a combination of multiple microarray data from various studies, the batch effect had to be corrected before any analysis was carried out.
 Each microarray dataset was normalised separately then combined together into a single dataset, and the batch effect was corrected with the \texttt{ComBat} function (an implementation of the batch correcting method by \citet{Johnson2007}) from the \textit{sva} package in \gls{r} \citep{Leek2012}.
 
+\subsection{Sample randomisation in simulation analysis}
+\label{sub:sample_randomisation_in_simulation_analysis}
+
+In some cases, an analysis was repeated a number of times to provide statistical evidence that the observed results did not occur by chance.
+All of the simulated results must be derived from a randomised data, and by comparing the true results with the results that occured by chance, simulation analysis provides statistical evidence for the true results.
+When a simulation was required, none of the values in the original data were modified but the values in the original data were assigned randomly to different samples; in other words, the samples were shuffled.
+This provided a random set of data in which a simulation could be conducted with.
+The samples were shuffled with the \texttt{sample} function from the \textit{base} package in \gls{r}, and were reshuffled for each simulation.
+
 \section{Gene expression analysis}
 \label{sec:gene_expression_analysis}
 

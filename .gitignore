@@ -31,3 +31,4 @@
 *.xml
 *.fls
 *.fdb_latexmk
+*pk

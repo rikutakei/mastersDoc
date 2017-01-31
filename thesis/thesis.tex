@@ -17,6 +17,7 @@
 \usepackage[noabbrev,capitalise]{cleveref}             % package for referencing multiple referencing in a single \ref command
 \usepackage[font=footnotesize,format=hang]{caption}    % package for formatting figure caption
 \usepackage{subcaption}    % package for formatting figure caption
+\usepackage[toc]{appendix}    % package for formatting figure caption
 
 % Define colour(s) for table rows:
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -27,6 +28,10 @@
 
 % Change the default cref name for equations:
 \creflabelformat{equation}{#2\textup{#1}#3}
+
+% Change the default cref name for appendix:
+\crefname{appcha}{Appendix}{Appendices}
+\crefname{appsec}{Appendix}{Appendices}
 
 % Change the default url font:
 \urlstyle{rm}
@@ -58,7 +63,7 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % If you want to compile specific files, uncomment the line below and add the filenames in the {} :
-\includeonly{{./methods/methods},{./results/results}}
+\includeonly{{./methods/methods},{./results/results},{./misc/appendix}}
 
 \begin{document}
 
@@ -115,6 +120,8 @@
 \include{./results/results2}
 
 \include{./discussion/discussion}
+
+\include{./misc/appendix}
 
 % Use the reference style specified in BiocRefStyle.bst:
 \bibliographystyle{BiocRefStyle}

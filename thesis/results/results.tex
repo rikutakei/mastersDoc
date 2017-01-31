@@ -251,22 +251,75 @@ Again, Venn diagram was used to summarise the genes identified from the Caucasia
 \end{figure}
 
 \noindent
+In addition to these eight obesity associated genetic signatures, a genetic signature was identified based on the correlation of gene probe expression with sample \gls{bmi} as continuous values, rather than discrete values as in \gls{bmi} status.
+However, no significant genes were identified and thus was not used for further analysis (results detailed in appendix).
+
 For simplicity, Creighton's original obesity associated signature will be referred to as ``original'' signature, new signatures from unadjusted and clinical variable-adjusted Creighton's data as ``Cr'' and ``Res'' signature respectively, and the signatures from unadjusted and clinical variable-adjusted Caucasian patient data set as ``Ca'' and ``CaRes'' signature respectively.
 All of the overlap signatures will be referred to as their respective signature, but with ``Ol'' added at the end, for example ``CaResOl'' for the overlap signature identified in clinical variable-adjusted Caucasian patient data set.
-All of these obesity associated genetic signatures (eight in total) were checked to see whether these signatures had significant association with sample \gls{bmi}/\gls{bmi} status.
+All of these obesity associated genetic signatures (eight in total) were checked to see whether these signatures had significant association with sample \gls{bmi}/\gls{bmi} status in various data set.
 
 \subsection{Novel obesity associated signatures and sample \gls{bmi}/\gls{bmi} status}
 \label{sub:_novel_obesity_associated_signatures_and_sample_bmi}
 
 As with the original signature, all eight signatures were validated in Creighton's data set first, and then compared in other cancer data sets by using the transformation matrix generated in Creighton's data.
 % Before the metagenes were created, all of the signatures were converted into gene symbols, as described in \cref{sec:data} (\cref{tab:signature_gene_num}).
-Creighton's data was normalised with \gls{rma} method and \gls{svd} was applied to generate the metagene for the corresponding genetic signature.
+Creighton's original data (unadjusted, all samples included) was normalised with \gls{rma} method and \gls{svd} was applied to generate the metagene for the corresponding genetic signature.
+The direction of the metagenes were first examined to make sure that all of the metagenes were in line with one another (see \cref{sub:metagene_direction}; results shown in appendix).
+The comparison of the metagenes with the sample gene expression in Creighton's data were displayed as heatmaps (\cref{fig:degmetacr}).
+It was clear from the heatmaps that all of the metagenes reflected the overall expression of the corresponding genetic signatures.
+The association of the metagenes with sample \gls{bmi}/\gls{bmi} status was significant for all eight of the metagenes identified (\cref{fig:degmetacrbmi}).
+These results confirmed that all of the obesity associated genetic signatures identified in \cref{sub:identification_of_obesity_associated_genetic_signatures} significantly associated with sample \gls{bmi}/\gls{bmi} status in the data in which the metagenes were derived from.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in Creighton's data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetacr}
+\end{figure}
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in Creighton's data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetacrbmi}
+\end{figure}
+
+To confirm whether these metagenes showed significant association with sample \gls{bmi}/\gls{bmi} status in other cancer data sets, transformation matrix was applied to the \gls{icgc} cancer data and Print's breast cancer data.
+Firstly in \gls{icgc} cancer data sets, all eight metagene scores were reflective of the sample gene expression of the genetic signatures (\cref{fig:degmetaicgc}), but none of the metagenes associated significantly with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaicgcbmi}).
+Likewise in Print's data, the higher the metagenes scores were the more expressed the genes were (and vice versa; \cref{fig:degmetaprint}), but lacked the association with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaprintbmi}).
+
+These results showed that, even though all of the metagenes significantly associated with sample \gls{bmi}/\gls{bmi} status in the data the genetic signatures were derived from, the metagenes did not transfer well in other cancer data sets.
+Furthermore, these results showed that the lack of association with sample \gls{bmi}/\gls{bmi} status were not due to other clinical variables in Creighton's data set.
+This raised a question of whether there are any obesity associated genetic signature that are common in multiple cancer types.
 
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in \gls{icgc} data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetaicgc}
+\end{figure}
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in \gls{icgc} data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetaicgcbmi}
+\end{figure}
 
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in Print's data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetaprint}
+\end{figure}
 
-
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\caption[Novel obesity associated metagenes in Print's data]{(add all eight metagene heatmaps)}
+	\label{fig:degmetaprintbmi}
+\end{figure}
 
 % \begin{table}[htbp]
 % 	\centering
@@ -288,33 +341,83 @@ Creighton's data was normalised with \gls{rma} method and \gls{svd} was applied 
 % 	\end{tabular}
 % \end{table}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Common genes across multiple cancer types}
 \label{sec:common_genes_across_multiple_cancer_types}
 
-It was clear that the metagenes created from obesity signatures were not consistent across different data sets.
-To identify genes that were associated with sample \gls{bmi} in multiple cancer types, \glspl{deg} were searched (?).
+It was clear that the obesity associated genetic signatures created from Creighton's data were not consistent across different data sets.
+To determine whether there was any obesity associated genetic signature that was expressed in multiple different cancer types, gene expression analysis was carried out on each of the eight \gls{icgc} cancer types and common genes were searched from the \glspl{deg} that were identified.
+All of the \gls{icgc} cancer data sets were normalised with voom method (\cref{ssub:rna_seq_data}), which were then put through the gene expression analysis pipeline to identify \glspl{deg} between the obese group of samples and non-obese group of samples (\cref{sec:gene_expression_analysis}).
+\cref{tab:icgcdegnum} summarised the number of genes found from each cancer type with p \textless{} 0.05.
 
+\begin{table}[htbp]
+	\centering
+	\caption{Summary of the number of \glspl{deg} identified in each \gls{icgc} cancer data set}
+	\label{tab:icgcdegnum}
+	\begin{tabular}{lc}
+		Cancer type & No. of \glspl{deg}\\
+		\hline
+		\rule{0pt}{2.25ex}\gls{blca} & 679 \\
+		\gls{cesc} & 1229\\
+		\gls{coad} & 974\\
+		\gls{kirp} & 687\\
+		\gls{lihc} & 3340\\
+		\gls{read} & 796\\
+		\gls{skcm} & 1137\\
+		\gls{ucec} & 2934\\
+		\hline
+		\hline
+	\end{tabular}
+\end{table}
 
+There were 9695 unique \glspl{deg} across the eight cancer types, and these genes were checked for any commonalities across the different cancer types.
+There were 7330 genes that were differentially expressed by one cancer type, 2024 genes expressed by any two cancer types, 320 genes expressed by any three cancer types, and 21 genes expressed by any four cancer types.
+There were no genes differentially expressed by six or more cancer types (see \cref{tab:icgcdegtab} for a summary).
+To confirm that these results were statistically significant, the gene expression analysis was repeated 1000 times for each cancer type after the samples were randomised in each analysis (see \cref{sub:sample_randomisation_in_simulation_analysis}).
+The results from the simulation were summarised together with the earlier results in \cref{tab:icgcdegtab}.
 
+(insert description of the simulation results).
+The results from the simulation showed that the \glspl{deg} identified from the gene expression analysis of \gls{icgc} cancer data were significant.
+However, the results also confirmed that there were no obesity associated \glspl{deg} that were common across different cancer types.
 
-
-
+\begin{table}[htbp]
+	\centering
+	\begin{threeparttable}
+		\caption{Summary of the number of \glspl{deg} identified by the gene expression analysis and simulation analysis in \gls{icgc} cancer data}
+		\label{tab:icgcdegtab}
+		\begin{tabular}{>{\quad}lcccccccc}
+			& \multicolumn{8}{c}{No. of cancer types expressing the \glspl{deg}}\\
+			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+			\hline
+			\rule{0pt}{2.25ex}\hspace{-1em}Results from gene expression analysis & 7330 & 2024 & 320 & 21 & 0 & 0 & 0 & 0  \\
+			\hspace{-1em}Results from simulation:                                &      &      &     &    &   &   &   &  \\
+			Mean no. of \glspl{deg} identified                                   & 0    & 0    & 0   & 0  & 0 & 0 & 0 & 0  \\
+			$95^{th}$ percentile                                                 & 0    & 0    & 0   & 0  & 0 & 0 & 0 & 0  \\
+			\hline
+			\hline
+		\end{tabular}
+		% \begin{tablenotes}
+		% 	\begin{footnotesize}
+		% 	\item [1] The numbers represent the number of cancer types a gene was expressed in.
+		% 	\item [2] The simulation was repeated 1000 times.
+		% 	\end{footnotesize}
+		% \end{tablenotes}
+	\end{threeparttable}
+\end{table}
 
 \section{Pathways enriched in obesity associated genes}
 \label{sec:pathways_enriched_in_obesity_associated_genes}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
