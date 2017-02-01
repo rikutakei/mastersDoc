@@ -13,65 +13,67 @@ Obesity metagene was created using the obesity associated genetic signatures fro
 % As the genetic signatures were described as gene probe IDs, the gene probes had to be converted into gene symbols (see \cref{sec:data}).
 % This resulted in 644 unique gene symbols, compared to 799 gene probes IDs in the original signature.
 There was no description about the normalisation method used by Creighton's group when they first analysed their data, so the more reliable \gls{rma} method was used to  normalise the Creighton data set.
-The obesity metagene was plotted in a heatmap with the sample gene expression (\cref{fig:crmetaheat1}) to check whether the metagene scores were in accordance with the overall gene expression of the samples.
+The obesity metagene was plotted in a heatmap with the sample gene expression (\cref{fig:crmetaheat}) to check whether the metagene scores were in accordance with the overall gene expression of the samples.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{results1/crmeta_original}
-	\caption[Heatmap of Creighton's metagene in Creighton's data]{Heatmap showing Creighton's obesity associated metagene with the gene expressions of obesity associated genes in Creighton's data. Level of expression is represented in the top right histogram, where low and high gene expression were colour-coded with blue and red, respectively. Each row of the heatmap represents a gene from the obesity associated genetic signature, and each column of the heatmap represents a sample from Creighton's data. The obesity associated metagene scores of the samples are shown in a separate row at top of the heatmap, and the tree diagram of the heirarchical clustering of the genes is shown to the left of the heatmap. For clarity, the metagene scores were flipped in order to match the results from \citet{Creighton2012} paper.}
-	\label{fig:crmetaheat1}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/creighton_mg_heatmap1}
+	\caption[Creighton's metagene and sample gene expression in Creighton's data]{Heatmap showing Creighton's obesity associated metagene with the gene expressions of obesity associated genes in Creighton's data.
+	Level of expression is represented in the top right histogram, where low and high gene expression were colour-coded with blue and red, respectively.
+	Each row of the heatmap represents a gene from the obesity associated genetic signature, and each column of the heatmap represents a sample from Creighton's data.
+	The obesity associated metagene scores of the samples are shown in a separate row at top of the heatmap, and the tree diagram of the heirarchical clustering of the genes is shown to the left of the heatmap.
+	For clarity, the metagene scores were flipped in order to match the results from \citet{Creighton2012} paper.}
+	\label{fig:crmetaheat}
 \end{figure}
 
-As shown in \cref{fig:crmetaheat1}, high obesity associated metagene score of the sample reflected low expression in majority of the genes in the signature, and in contrast, low obesity associated metagene score of the sample reflected high expression in majority of the genes in the signature.
+As shown in \cref{fig:crmetaheat}, high obesity associated metagene score of the sample reflected low expression in majority of the genes in the signature, and in contrast, low obesity associated metagene score of the sample reflected high expression in majority of the genes in the signature.
 This was consistent with the reported property of the obesity associated signature by \citet{Creighton2012}.
-To provide further evidence that the obesity associated metagenes were in fact associated with the \gls{bmi} status and \gls{bmi} value of the samples, a box plot and a scatter plot were created, respectively (\cref{fig:crmetaboxplot1}).
+To provide further evidence that the obesity associated metagenes were in fact associated with the \gls{bmi} status and \gls{bmi} value of the samples, a box plot and a scatter plot were created, respectively (\cref{fig:crmetaboxplot}).
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/creighton_mg_heatmap1}
 	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Creighton metagene and sample \gls{bmi}/\gls{bmi} status]{(insert figure of box plot and scatter plot)}
-	\label{fig:crmetaboxplot1}
+	\includegraphics[page=5,width=0.45\linewidth]{results1/creighton_mg_heatmap1}
+	\caption[Creighton's metagene and sample \gls{bmi}/\gls{bmi} status in Creighton's data]{Box plot and scatter plot showing the association of Creighton's obesity associated metagene with sample \gls{bmi} status and \gls{bmi} from Creighton's data, respectively.
+	In the box plot, the p-values above the groups represent the statistical significance of the association of the metagene with the overweight or obese group compared with the normal weight group.
+	The \gls{anova} p-value shows the statistical significance of the association of the metagene with the sample \gls{bmi} groups.
+	In the scatter plot, $R^2$- and p-values describe the adjusted coefficient of determination of the regression line and the statistical significance of the linear model used to draw the regression line, respectively.}
+	\label{fig:crmetaboxplot}
 \end{figure}
 
-\cref{fig:crmetaboxplot1} clearly showed that the obesity associated metagene from \citet{Creighton2012} study significantly associated with the sample \gls{bmi} status, as well as the \gls{bmi} value of the samples (include p-value and r-squared).
+\cref{fig:crmetaboxplot} clearly showed that the obesity associated metagene from \citet{Creighton2012} study significantly associated with the sample \gls{bmi} status, as well as the \gls{bmi} value of the samples (include p-value and r-squared).
 It should be noted here that the obesity associated metagene significantly associated with the samples that were obese, but not the samples that were overweight.
 This was due to the fact that the obesity associated genetic signatures were originally identified from the comparison of the samples that were obese with the samples that were not obese, and therefore the metagene scores were significant with obese group, but not the overweight group.
 \\
 
 \noindent
 Now that the association of the obesity metagene from \citet{Creighton2012} study was established in Creighton's data set, the obesity associated signature was transferred to the \gls{icgc} cancer data.
-The direction of the obesity associated metagene was checked in the Creighton's data, so that high metagene scores reflected high sample \gls{bmi} and low metagene scores reflected low sample \gls{bmi} (\cref{fig:crmetaboxplot1}).
+The direction of the obesity associated metagene was checked in the Creighton's data, so that high metagene scores reflected high sample \gls{bmi} and low metagene scores reflected low sample \gls{bmi} (\cref{fig:crmetaboxplot}).
 The transformation matrix was created in Creighton's data, as described in \cref{sub:svd}.
 
 All of the \gls{icgc} data were normalised as described in \cref{ssub:rna_seq_data}.
 Before the transformation matrix was applied to the log$_{10}$-normalised cancer data, the suitability of standardised data or untouched (non-standardised) data was determined (appendix).
 From these results, the standardised data was the most suitable to use for matrix transformation.
 The transformation matrix was applied to each cancer data set in turn to obtain the obesity metagenes for each of the data set.
-Each obesity metagenes were plotted on a heatmap with the corresponding data set in which the metagene was taken from \cref{fig:crmetaicgc1}.
+Each obesity metagenes were plotted on a heatmap with the corresponding data set in which the metagene was taken from \cref{fig:crmetaicgc}.
 These heatmaps confirmed that the obesity associated metagene derived from Creighton's data was able to capture the overall gene expression pattern, where the metagene scores reflected the expression levels of majority of the genes in the signature.
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Creighton metagene and \acrshort{icgc} cancer data]{(insert ICGC heatmaps)}
-	\label{fig:crmetaicgc1}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Creighton metagene and sample \gls{bmi}/\gls{bmi} status in \acrshort{icgc} data]{(insert figure of box plot and scatter plot for ICGC data)}
-	\label{fig:crmetaboxicgc1}
-\end{figure}
-
-As before, association of the obesity metagene with the sample \gls{bmi} and \gls{bmi} status was checked in their respective cancer data set (\cref{fig:crmetaboxicgc1}).
+As before, association of the obesity metagene with the sample \gls{bmi} and \gls{bmi} status was checked in their respective cancer data set (\cref{fig:crmetaicgc}).
 In contrast to the strong association of the obesity metagene with sample \gls{bmi} and \gls{bmi} status in Creighton's data, the obesity metagene taken from the \gls{icgc} cancer data did not significantly associate with the sample \gls{bmi} or \gls{bmi} status in any of the \gls{icgc} cancer data.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[page=3,width=0.8\linewidth]{results1/crtcga_std}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/crtcga_std}
+	\hfill
+	\includegraphics[page=5,width=0.45\linewidth]{results1/crtcga_std}
+	\caption[Creighton's metagene in \acrshort{icgc} \acrshort{blca} data]{Heatmap, box plot and scatter plot showing the association of Creighton's obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from \gls{icgc} \gls{blca} data, respectively.
+	The results for other cancer types are in \cref{app:a}.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
+	\label{fig:crmetaicgc}
+\end{figure}
 
 There could be several reasons for the apparent lack of association of the metagene with the sample \gls{bmi} or \gls{bmi} status.
 First, transformation matrix was derived from Creighton's microarray data, but the \gls{icgc} cancer data were \gls{rnaseq} data.
@@ -83,29 +85,23 @@ Since the obesity associated signature was identified in breast cancer data, the
 \noindent
 To check whether the metagene was specific to breast cancer microarray data, the same transformation matrix was applied to Print's breast cancer microarray data.
 Print's data was normalised with \gls{rma} method as described in \cref{ssub:microarray_data}, and the transformation matrix was applied to the normalised data to obtain the metagene.
-The metagene was again compared with the gene expression of the samples with a heatmap (\cref{fig:crmetaprint1}), and the association of the metagene with the sample \gls{bmi} and \gls{bmi} status was examined with box and scatter plots (\cref{fig:crmetaboxprint1}).
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Creighton metagene and Print's cancer data]{(insert Print heatmaps)}
-	\label{fig:crmetaprint1}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Creighton metagene and sample \gls{bmi}/\gls{bmi} status in Print's data]{(insert figure of box plot and scatter plot for Print data)}
-	\label{fig:crmetaboxprint1}
-\end{figure}
+The metagene was again compared with the gene expression of the samples with a heatmap (\cref{fig:crmetaprint}), and the association of the metagene with the sample \gls{bmi} and \gls{bmi} status was examined with box and scatter plots (\cref{fig:crmetaprint}).
 
 The obesity metagene managed to reflect the overall gene expression of the samples in Print's data.
-However, like in \gls{icgc} cancer data, the obesity metagene scores did not significantly associate with the sample \gls{bmi} or \gls{bmi} status.
+However, as in \gls{icgc} cancer data, the obesity metagene scores did not significantly associate with the sample \gls{bmi} or \gls{bmi} status.
 These results confirmed that the lack of association of the obesity metagene from Creighton's data was not due to the technology in which the data was gathered (mcroarray or \gls{rnaseq}), nor the type of cancer in which the transformation matrix was applied to.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=0.8\linewidth,page=3]{results1/cris_cr_trans_meta}\\
+	\vspace{1em}
+	\includegraphics[width=0.45\linewidth,page=4]{results1/cris_cr_trans_meta}
+	\hfill
+	\includegraphics[width=0.45\linewidth,page=5]{results1/cris_cr_trans_meta}
+	\caption[Creighton's metagene in Print's breast cancer data]{Heatmap, box plot and scatter plot showing the association of Creighton's obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from Print's breast cancer data, respectively.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
+	\label{fig:crmetaprint}
+\end{figure}
 
 All together, all of these results suggest that the obesity metagene identified in the study conducted by \citet{Creighton2012} associated with sample \gls{bmi} and \gls{bmi} status in Creighton's data, but did not transfer well in other cancer data sets.
 The lack of association with \gls{bmi} was not due to the type of technology platform in which the data was gathered, as neither the \gls{icgc} \gls{rnaseq} data nor Print's microarray data did not show significant association with the obesity metagene.
@@ -123,69 +119,52 @@ However, the transformation matrix was still applied to other cancer data to see
 
 Firstly, FM's data was normalised with the \gls{rma} method and \gls{svd} was applied to the normalised data to get the transformation matrix.
 The transformation matrix was used to transform the \gls{rma}-normalised Creighton's data to extract FM's obesity metagene scores.
-FM's obesity metagene scores were compared with gene expressions and sample \gls{bmi}/\gls{bmi} status in Creighton's data, as shown in \cref{fig:fmmetacr1,fig:fmmetaboxcr1}.
+FM's obesity metagene scores were compared with gene expressions and sample \gls{bmi}/\gls{bmi} status in Creighton's data, as shown in \cref{fig:fmmetacr}.
 Clearly, like with Creighton's obesity metagene, FM's obesity metagene was reflective of the overall gene expression of the samples, but did not associate with the sample \gls{bmi} or \gls{bmi} status.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/cr_fm_meta}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/cr_fm_meta}
 	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and Creighton's cancer data]{(insert Creighton heatmaps)}
-	\label{fig:fmmetacr1}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in Creighton's data]{(insert figure of box plot and scatter plot for Creighton data)}
-	\label{fig:fmmetaboxcr1}
+	\includegraphics[page=5,width=0.45\linewidth]{results1/cr_fm_meta}
+	\caption[FM's metagene in Creighton's  data]{Heatmap, box plot and scatter plot showing the association of FM's obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from Creighton's  data, respectively.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
+	\label{fig:fmmetacr}
 \end{figure}
 
 Next, the transformation matrix was applied to the \gls{icgc} cancer data and resulting metagenes were compared with the gene expression and sample \gls{bmi}/\gls{bmi} status.
-As evident in \cref{fig:fmmetaicgc1}, FM's obesity metagene scores appeared to reflect the gene expression of FM's obesity associated genetic signature.
-However, as with all the results in this section so far, FM's obesity metagene did not significantly associate with any of the \gls{icgc} cancer data (\cref{fig:fmmetaboxicgc1}).
+As evident in \cref{fig:fmmetaicgc}, FM's obesity metagene scores appeared to reflect the gene expression of FM's obesity associated genetic signature.
+However, as with all the results in this section so far, FM's obesity metagene did not significantly associate with any of the \gls{icgc} cancer data (\cref{fig:fmmetaicgc}).
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/fm_meta_ICGC}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/fm_meta_ICGC}
 	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and \gls{icgc} cancer data]{(insert ICGC heatmaps)}
-	\label{fig:fmmetaicgc1}
+	\includegraphics[page=5,width=0.45\linewidth]{results1/fm_meta_ICGC}
+	\caption[FM's metagene in \acrshort{icgc} \acrshort{blca} data]{Heatmap, box plot and scatter plot showing the association of FM's obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from \acrshort{icgc} \acrshort{blca} data, respectively.
+	The results for other cancer types are in \cref{app:a}.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
+	\label{fig:fmmetaicgc}
 \end{figure}
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in \gls{icgc} data]{(insert figure of box plot and scatter plot for Creighton data)}
-	\label{fig:fmmetaboxicgc1}
-\end{figure}
-
-Lastly, the transformation matrix was applied to Print's data (\cref{fig:fmmetaboxcris1,fig:fmmetacris1}).
+Lastly, the transformation matrix was applied to Print's data (\cref{fig:fmmetacris}).
 Again, FM's obesity metagene scores reflected the gene expression of the samples, did not significantly associate with sample \gls{bmi}/\gls{bmi} status.
 \\
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/cris_fm_meta}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/cris_fm_meta}
 	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and Print's cancer data]{(insert Print heatmaps)}
-	\label{fig:fmmetacris1}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\hfill
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[FM metagene and sample \gls{bmi}/\gls{bmi} status in Print's data]{(insert figure of box plot and scatter plot for Print's data)}
-	\label{fig:fmmetaboxcris1}
+	\includegraphics[page=5,width=0.45\linewidth]{results1/cris_fm_meta}
+	\caption[FM's metagene in Print's breast cancer data]{Heatmap, box plot and scatter plot showing the association of FM's obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from Print's breast cancer data, respectively.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
+	\label{fig:fmmetacris}
 \end{figure}
 
 \noindent
@@ -226,7 +205,7 @@ The genetic signatures identified were summarised as a Venn diagram, as shown in
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=1,width=0.8\linewidth]{results1/deg_venn}
 	\caption[Summary of the \glspl{deg} identified from Creighton's data]{(add venn diagram)}
 	\label{fig:venn1}
 \end{figure}
@@ -245,7 +224,7 @@ Again, Venn diagram was used to summarise the genes identified from the Caucasia
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
+	\includegraphics[page=2,width=0.8\linewidth]{results1/deg_venn}
 	\caption[Summary of the \glspl{deg} identified from Creighton's data (Caucasian patient data)]{(add venn diagram)}
 	\label{fig:venn2}
 \end{figure}
@@ -267,26 +246,25 @@ Creighton's original data (unadjusted, all samples included) was normalised with
 The direction of the metagenes were first examined to make sure that all of the metagenes were in line with one another (see \cref{sub:metagene_direction}; results shown in appendix).
 The comparison of the metagenes with the sample gene expression in Creighton's data were displayed as heatmaps (\cref{fig:degmetacr}).
 It was clear from the heatmaps that all of the metagenes reflected the overall expression of the corresponding genetic signatures.
-The association of the metagenes with sample \gls{bmi}/\gls{bmi} status was significant for all eight of the metagenes identified (\cref{fig:degmetacrbmi}).
+The association of the metagenes with sample \gls{bmi}/\gls{bmi} status was significant for all eight of the metagenes identified (\cref{fig:degmetacr}).
 These results confirmed that all of the obesity associated genetic signatures identified in \cref{sub:identification_of_obesity_associated_genetic_signatures} significantly associated with sample \gls{bmi}/\gls{bmi} status in the data in which the metagenes were derived from.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in Creighton's data]{(add all eight metagene heatmaps)}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/cr_deg_meta_vs_clin}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/cr_deg_meta_vs_clin}
+	\hfill
+	\includegraphics[page=5,width=0.45\linewidth]{results1/cr_deg_meta_vs_clin}
+	\caption[Cr obesity associated metagene in Creighton's data]{Heatmap, box plot and scatter plot showing the association of Cr obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from Creighton's data, respectively.
+	The results for other metagenes are in \cref{app:a}.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
 	\label{fig:degmetacr}
 \end{figure}
 
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in Creighton's data]{(add all eight metagene heatmaps)}
-	\label{fig:degmetacrbmi}
-\end{figure}
-
 To confirm whether these metagenes showed significant association with sample \gls{bmi}/\gls{bmi} status in other cancer data sets, transformation matrix was applied to the \gls{icgc} cancer data and Print's breast cancer data.
-Firstly in \gls{icgc} cancer data sets, all eight metagene scores were reflective of the sample gene expression of the genetic signatures (\cref{fig:degmetaicgc}), but none of the metagenes associated significantly with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaicgcbmi}).
-Likewise in Print's data, the higher the metagenes scores were the more expressed the genes were (and vice versa; \cref{fig:degmetaprint}), but lacked the association with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaprintbmi}).
+Firstly in \gls{icgc} cancer data sets, all eight metagene scores were reflective of the sample gene expression of the genetic signatures (\cref{fig:degmetaicgc}), but none of the metagenes associated significantly with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaicgc}).
+Likewise in Print's data, the higher the metagenes scores were the more expressed the genes were (and vice versa; \cref{fig:degmetaprint}), but lacked the association with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaprint}).
 
 These results showed that, even though all of the metagenes significantly associated with sample \gls{bmi}/\gls{bmi} status in the data the genetic signatures were derived from, the metagenes did not transfer well in other cancer data sets.
 Furthermore, these results showed that the lack of association with sample \gls{bmi}/\gls{bmi} status were not due to other clinical variables in Creighton's data set.
@@ -295,30 +273,28 @@ This raised a question of whether there are any obesity associated genetic signa
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in \gls{icgc} data]{(add all eight metagene heatmaps)}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/rawobsgene_ICGC}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/rawobsgene_ICGC}
+	\hfill
+	\includegraphics[page=5,width=0.45\linewidth]{results1/rawobsgene_ICGC}
+	\caption[Cr obesity associated metagene in \acrshort{icgc} \acrshort{blca} data]{Heatmap, box plot and scatter plot showing the association of Cr obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from \acrshort{icgc} \acrshort{blca} data, respectively.
+	The results for other metagenes and other cancer types are in \cref{app:a}.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
 	\label{fig:degmetaicgc}
 \end{figure}
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in \gls{icgc} data]{(add all eight metagene heatmaps)}
-	\label{fig:degmetaicgcbmi}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in Print's data]{(add all eight metagene heatmaps)}
+	\includegraphics[page=3,width=0.8\linewidth]{results1/cris_crdeg_trans_meta}\\
+	\vspace{1em}
+	\includegraphics[page=4,width=0.45\linewidth]{results1/cris_cr_trans_meta}
+	\hfill
+	\includegraphics[page=5,width=0.45\linewidth]{results1/cris_cr_trans_meta}
+	\caption[Cr obesity associated metagene in Print's data]{Heatmap, box plot and scatter plot showing the association of Cr obesity associated metagene with sample gene expression, \gls{bmi} and \gls{bmi} status from Print's data, respectively.
+	The results for other metagenes are in \cref{app:a}.
+	Scales, p-values and $R^2$-value are as described in previous figures.}
 	\label{fig:degmetaprint}
-\end{figure}
-
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=0.45\linewidth]{results1/crmeta_original}
-	\caption[Novel obesity associated metagenes in Print's data]{(add all eight metagene heatmaps)}
-	\label{fig:degmetaprintbmi}
 \end{figure}
 
 % \begin{table}[htbp]
@@ -407,8 +383,7 @@ However, the results also confirmed that there were no obesity associated \glspl
 \section{Pathways enriched in obesity associated genes}
 \label{sec:pathways_enriched_in_obesity_associated_genes}
 
-
-
+To check whether there were any significant pathways enriched in any of the \gls{icgc} cancer data sets that were associated with obesity, pathway enrichment analysis was carried out on each cancer type separately and then all cancer types combined (see \cref{sec:pathway_enrichment_analysis}).
 
 
 

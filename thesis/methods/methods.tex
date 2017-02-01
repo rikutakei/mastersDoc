@@ -324,8 +324,11 @@ As a consequence, the \gls{type1} rate is increased in these methods.
 
 \gls{camera} was used in this project to identify the pathways that are enriched in samples from obese patients compared with the samples from non-obese patients, as it provides a competitive \gls{fcs}-based method.
 
-\subsection{\gls{go} database}
-\label{sub:go_database}
+\subsection{Pathway databases}
+\label{sub:pathway_databases}
+
+\subsubsection{\gls{go} database}
+\label{ssub:go_database}
 
 \Gls{ontology} is defined as a set of concepts and categories in a subject area or domain that shows their properties and the relations between them.
 \Acrfull{go}, as the name suggests, is an \gls{ontology} of the genes and biological pathways, curated and maintained by the \gls{go} Consortium \citep{GO2000,GO2004}.
@@ -339,9 +342,19 @@ The definition of ``biochemical activity'' is very broad as it includes specific
 Examples of terms used in molecular function are ``kinase activity'', ``transporter'' and ``ligands''.
 Lastly, cellular components refers to the location in which the gene product is active, such as ``Golgi apparatus'' and ``nuclear membrane''.
 
-Due to the sheer amount of terms and definitions available from the data, \gls{go} was chosen as the database for pathway reference.
-The \textit{GO.db} package was used to load the \gls{go} database into \gls{r} \citep{Carlson2016}.
-Only the human related \gls{go} terms were used in pathway enrichment analysis, and these terms were manipulated in a form which the \texttt{camera} function was able to recognise.
+% Due to the sheer amount of terms and definitions available from the data, \gls{go} was chosen as the database for pathway reference.
+% The \textit{GO.db} package was used to load the \gls{go} database into \gls{r} \citep{Carlson2016}.
+% Only the human related \gls{go} terms were used in pathway enrichment analysis, and these terms were manipulated in a form which the \texttt{camera} function was able to recognise.
+
+\subsubsection{\gls{kegg} database}
+\label{ssub:kegg_database}
+
+
+
+\subsubsection{Reactome database}
+\label{ssub:Reactome_database}
+
+
 
 \section{Metagene analysis}
 \label{sec:metagene_analysis}
