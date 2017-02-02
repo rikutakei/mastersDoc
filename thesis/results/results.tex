@@ -211,7 +211,7 @@ The genetic signatures identified were summarised as a Venn diagram, as shown in
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=0.5\linewidth]{results1/deg_venn1}
-	\caption[Summary of the \glspl{deg} identified from Creighton's data]{(add venn diagram)}
+	\caption[Veen diagram of the \glspl{deg} identified from Creighton's data (all samples)]{Venn diagram showing the common genes between the signatures obtained from unadjusted and clinical variable-adjusted Creighton's data and Creighton's original obesity associated genetic signature.}
 	\label{fig:venn1}
 \end{figure}
 
@@ -230,7 +230,7 @@ Again, Venn diagram was used to summarise the genes identified from the Caucasia
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=0.5\linewidth]{results1/deg_venn2}
-	\caption[Summary of the \glspl{deg} identified from Creighton's data (Caucasian patient data)]{(add venn diagram)}
+	\caption[Summary of the \glspl{deg} identified from Creighton's data (Caucasian patient data)]{Venn diagram showing the common genes between the signatures obtained from unadjusted and clinical variable-adjusted Creighton's data (Caucasian patients only) and Creighton's original obesity associated genetic signature.}
 	\label{fig:venn2}
 \end{figure}
 
@@ -281,13 +281,46 @@ With that said, all eight metagenes showed high correlation with one another (lo
 \end{figure}
 
 To confirm whether these metagenes showed significant association with sample \gls{bmi}/\gls{bmi} status in other cancer data sets, transformation matrix was applied to the \gls{icgc} cancer data and Print's breast cancer data.
-Firstly in \gls{icgc} cancer data sets, all eight metagene scores were reflective of the sample gene expression of the genetic signatures (\cref{fig:degmetaicgc}), but none of the metagenes associated significantly with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaicgc}).
-Likewise in Print's data, the higher the metagenes scores were the more expressed the genes were (and vice versa; \cref{fig:degmetaprint}), but lacked the association with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaprint}).
+Firstly in \gls{icgc} cancer data sets, all eight metagene scores were reflective of the sample gene expression of the genetic signatures (\cref{fig:degmetaicgc}).
+In all cancer types but \gls{blca}, none of the metagenes significantly associated with the sample \gls{bmi}/\gls{bmi} status (results shown in \cref{app:a}).
+As shown in \cref{fig:degmetaicgc}, only the \gls{blca} data set showed significant association of the Cr metagene with sample \gls{bmi}/\gls{bmi} status.
+With the metagenes other than Cr metagene, Res, CrOl and Ca metagenes showed statistical significance in overweight group, \gls{anova} and the regression line p-values; CaRes metagene was significant in overweight group and \gls{anova} p-value; CrOl and ResOl metagenes were significant in overweight group; and ResOl and CaOl metagenes were not significant in \gls{blca} data set.
 
+This was unexpected since all of the genetic signatures were results of gene expression analysis between the non-obese group and the obese group of samples in Creighton's data, and yet the metagenes showed significant association with the overweight group in \gls{blca} data set.
+These results suggested that the samples that were overweight in \gls{blca} data were similar in phenotype with the samples that were obese in Creighton's data.
+Again, due to the fact that all of the metagenes lacked association with sample \gls{bmi}/\gls{bmi} status in all other \gls{icgc} data set, it was difficult to conclude whether the observed association of many of the obesity metagenes with the overweight group of samples was truly reflective of the effect resulted from these metagenes.
+
+\begin{table}[htpb]
+	\centering
+	\caption{P-values of all the metagenes in \gls{blca} cancer data}
+	\label{tab:degmetablca}
+	\begin{threeparttable}
+		\begin{tabular}{lccccc}
+			& \multicolumn{3}{c}{ P-values} & \multicolumn{2}{c}{ Regression line statistics}\\
+			\cmidrule(r){2-4} \cmidrule(r){5-6}
+			 Metagenes &  Overweight &  Obese &  \gls{anova} &  R$^2$ &  P \\
+			\hline
+			\rule{0pt}{2.25ex}Cr & {\bfseries 0.0134}\tnote{1} & 0.1365 & {\bfseries 0.0387} & 0.0171 & {\bfseries 0.0195} \\
+			Res                  & {\bfseries 0.0055}          & 0.1974 & {\bfseries 0.0196} & 0.0117 & {\bfseries 0.0446} \\
+			CrOl                 & {\bfseries 0.0383}          & 0.4583 & 0.1096             & 0.0047 & 0.1374             \\
+			ResOl                & 0.0909                      & 0.7092 & 0.2125             & 0.0018 & 0.2254             \\
+			Ca                   & {\bfseries 0.0077}          & 0.1973 & {\bfseries 0.0231} & 0.0116 & {\bfseries 0.0456} \\
+			CaRes                & {\bfseries 0.0104}          & 0.2712 & {\bfseries 0.0322} & 0.0101 & 0.0572             \\
+			CaOl                 & 0.0575                      & 0.6185 & 0.1487             & 0.0022 & 0.2126             \\
+			CaResOl              & {\bfseries 0.0463}          & 0.5820 & 0.1263             & 0.0036 & 0.1660             \\
+			\hline
+			\hline
+		\end{tabular}
+		\begin{tablenotes}
+			\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+In Print's data, the higher the metagenes scores were the more expressed the genes were (and vice versa), but lacked the association with sample \gls{bmi}/\gls{bmi} status (\cref{fig:degmetaprint}).
 These results showed that, even though all of the metagenes significantly associated with sample \gls{bmi}/\gls{bmi} status in the data the genetic signatures were derived from, the metagenes did not transfer well in other cancer data sets.
 Furthermore, these results showed that the lack of association with sample \gls{bmi}/\gls{bmi} status were not due to other clinical variables in Creighton's data set.
-This raised a question of whether there are any obesity associated genetic signature that are common in multiple cancer types.
-
+This raised a question of whether there was any obesity associated genetic signature that was common in multiple cancer types.
 
 \begin{figure}[htp!]
 	\centering
@@ -379,12 +412,11 @@ Unfortunately, there were no \glspl{deg} expressed in all eight cancer types, wh
 	\end{threeparttable}
 \end{table}
 
-\section{Pathways enriched in obesity associated genes}
+\section{Pathways enriched in obesity associated genes (haven't finished)}
 \label{sec:pathways_enriched_in_obesity_associated_genes}
 
 To check whether there were any significant pathways enriched in any of the \gls{icgc} cancer data sets that were associated with obesity, pathway enrichment analysis was carried out on each cancer type separately and then all cancer types combined (see \cref{sec:pathway_enrichment_analysis}).
 
-(unfinished)
 
 
 
