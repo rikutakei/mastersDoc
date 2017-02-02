@@ -2,8 +2,8 @@
 \label{cha:obesity_genetic_signatures_and_cancer}
 
 The obesity associated genetic signatures are central to this project in order to clarify the relationship between \gls{bmi} and cancer.
-Firstly in this chapter, the previously identified obesity associated signatures from the studies conducted by \citet{Creighton2012} and \citet{Fuentes-Mattei2014} were examined in turn to judge the agreement of these signatures with the sample \gls{bmi}, as presented in thier results.
-Secondly, novel obesity associated genetic signatures were identified in the \citet{Creighton2012} data set and was compared with the signatures.
+Firstly in this chapter, the previously identified obesity associated signatures from the studies conducted by \citet{Creighton2012} and \citet{Fuentes-Mattei2014} were examined in turn to judge the agreement of these signatures with the sample \gls{bmi}/\gls{bmi} status, as presented in thier results.
+Secondly, novel obesity associated genetic signatures were identified in the \citet{Creighton2012} data set and was compared with Creighton's and Fuentes-Mattei's  signatures.
 Lastly, the presence of common genes or pathways that were associated with obesity in multiple types of cancer was explored using the \gls{icgc} cancer data sets.
 
 \section{Obesity associated genetic signature from \citet{Creighton2012} study}
@@ -13,7 +13,7 @@ Obesity metagene was created using the obesity associated genetic signatures fro
 % As the genetic signatures were described as gene probe IDs, the gene probes had to be converted into gene symbols (see \cref{sec:data}).
 % This resulted in 644 unique gene symbols, compared to 799 gene probes IDs in the original signature.
 There was no description about the normalisation method used by Creighton's group when they first analysed their data, so the more reliable \gls{rma} method was used to  normalise the Creighton data set.
-The obesity metagene was plotted in a heatmap with the sample gene expression (\cref{fig:crmetaheat}) to check whether the metagene scores were in accordance with the overall gene expression of the samples.
+The obesity metagene was plotted in a heatmap with the sample gene expression  to check whether the metagene scores were in accordance with the overall gene expression of the samples (\cref{fig:crmetaheat}).
 
 \begin{figure}[htb]
 	\centering
@@ -27,7 +27,7 @@ The obesity metagene was plotted in a heatmap with the sample gene expression (\
 \end{figure}
 
 As shown in \cref{fig:crmetaheat}, high obesity associated metagene score of the sample reflected low expression in majority of the genes in the signature, and in contrast, low obesity associated metagene score of the sample reflected high expression in majority of the genes in the signature.
-This was consistent with the reported property of the obesity associated signature by \citet{Creighton2012}.
+This was consistent with the reported property of the obesity associated signature by \citet{Creighton2012} (see \cref{ssub:creighton_study}).
 To provide further evidence that the obesity associated metagenes were in fact associated with the \gls{bmi} status and \gls{bmi} value of the samples, a box plot and a scatter plot were created, respectively (\cref{fig:crmetaboxplot}).
 
 \begin{figure}[htp!]
@@ -42,25 +42,27 @@ To provide further evidence that the obesity associated metagenes were in fact a
 	\label{fig:crmetaboxplot}
 \end{figure}
 
-\cref{fig:crmetaboxplot} clearly showed that the obesity associated metagene from \citet{Creighton2012} study significantly associated with the sample \gls{bmi} status, as well as the \gls{bmi} value of the samples (include p-value and r-squared).
-It should be noted here that the obesity associated metagene significantly associated with the samples that were obese, but not the samples that were overweight.
-This was due to the fact that the obesity associated genetic signatures were originally identified from the comparison of the samples that were obese with the samples that were not obese, and therefore the metagene scores were significant with obese group, but not the overweight group.
+\cref{fig:crmetaboxplot} clearly showed that the obesity associated metagene from \citet{Creighton2012} study significantly associated with the sample \gls{bmi} status, as well as sample \gls{bmi} value (include p-value and r-squared).
+It should be noted here that the obesity associated metagene significantly associated with the samples that were obese, but not with the samples that were overweight.
+This was due to the fact that the obesity associated genetic signatures were originally identified from the comparison of the samples that were obese with the samples that were not obese, and therefore the metagene scores were significant with the obese group, but not with the overweight group.
+In addition to this, although the regression line in the scatter plot showed statistically significant association with sample \gls{bmi}, the sample \gls{bmi} values seemed to be randomly dispersed across the metagene scores.
+This suggested that perhaps Creighton's obesity metagene was not associated with sample \gls{bmi} as strongly as expected.
 \\
 
 \noindent
-Now that the association of the obesity metagene from \citet{Creighton2012} study was established in Creighton's data set, the obesity associated signature was transferred to the \gls{icgc} cancer data.
-The direction of the obesity associated metagene was checked in the Creighton's data, so that high metagene scores reflected high sample \gls{bmi} and low metagene scores reflected low sample \gls{bmi} (\cref{fig:crmetaboxplot}).
-The transformation matrix was created in Creighton's data, as described in \cref{sub:svd}.
+Now that the association of the obesity metagene from \citet{Creighton2012} study was established in Creighton's data set, the obesity associated signature was generated in the \gls{icgc} cancer data.
+The direction of the obesity associated metagene was checked in the Creighton's data first, so that high metagene scores reflected high sample \gls{bmi} and low metagene scores reflected low sample \gls{bmi} (\cref{fig:crmetaboxplot}).
+The transformation matrix was then created in Creighton's data, as described in \cref{sub:svd}.
 
 All of the \gls{icgc} data were normalised as described in \cref{ssub:rna_seq_data}.
-Before the transformation matrix was applied to the log$_{10}$-normalised cancer data, the suitability of standardised data or untouched (non-standardised) data was determined (appendix).
-From these results, the standardised data was the most suitable to use for matrix transformation.
-The transformation matrix was applied to each cancer data set in turn to obtain the obesity metagenes for each of the data set.
-Each obesity metagenes were plotted on a heatmap with the corresponding data set in which the metagene was taken from \cref{fig:crmetaicgc}.
+Before the transformation matrix was applied to the log$_{10}$-normalised cancer data, the suitability of standardised data or untouched (non-standardised) data was determined (see \cref{sec:metagenes_created_from_raw_data_vs_standardised_data_icgc}).
+From these results, the standardised data was found to be the most suitable to use for matrix transformation.
+The transformation matrix was applied to each cancer data set in turn to obtain Creighton's obesity metagenes for each of the data set.
+Each obesity metagenes were plotted in a heatmap with the corresponding data set in which the metagene was taken from (\cref{fig:crmetaicgc}; \cref{sec:rest_of_the_icgc_cancer_heatmap_resutls}).
 These heatmaps confirmed that the obesity associated metagene derived from Creighton's data was able to capture the overall gene expression pattern, where the metagene scores reflected the expression levels of majority of the genes in the signature.
-
-As before, association of the obesity metagene with the sample \gls{bmi} and \gls{bmi} status was checked in their respective cancer data set (\cref{fig:crmetaicgc}).
-In contrast to the strong association of the obesity metagene with sample \gls{bmi} and \gls{bmi} status in Creighton's data, the obesity metagene taken from the \gls{icgc} cancer data did not significantly associate with the sample \gls{bmi} or \gls{bmi} status in any of the \gls{icgc} cancer data.
+As before, association of the obesity metagene with the sample \gls{bmi} and \gls{bmi} status was checked in their respective cancer data set (\cref{fig:crmetaicgc}; \cref{sec:rest_of_the_icgc_cancer_heatmap_resutls}).
+Out of all the cancer types, only \gls{blca} data set showed significant association of Creighton's obesity metagene with the overweight group (but not with the obese group).
+However, neither the \gls{anova} p-value nor the regression line in the scatter plot were statistically significant, suggesting that this apparent association with the overweight group was not due to the Creighton's obesity metagene (?).
 
 \begin{figure}[htp!]
 	\centering
@@ -75,21 +77,21 @@ In contrast to the strong association of the obesity metagene with sample \gls{b
 	\label{fig:crmetaicgc}
 \end{figure}
 
-There could be several reasons for the apparent lack of association of the metagene with the sample \gls{bmi} or \gls{bmi} status.
+There could be several reasons for the apparent lack of association of the metagene with sample \gls{bmi}/\gls{bmi} status.
 First, transformation matrix was derived from Creighton's microarray data, but the \gls{icgc} cancer data were \gls{rnaseq} data.
-Though the log$_{10}$ normalisation and standardisation of the data was the most appropriate adjustment to be made to the \gls{rnaseq} data, this adjustment may not be equivalent to the \gls{rma} normalisation method that was used on the microarray data.
-Secondly, none of the \gls{icgc} cancer was from breast as in Creighton's data.
+Though the log$_{10}$ normalisation and standardisation of the data was the most appropriate adjustment to be made to the \gls{rnaseq} data, this adjustment was not equivalent to the \gls{rma} normalisation method that was used on the microarray data.
+Secondly, none of the \gls{icgc} cancer originated from breast as in Creighton's data.
 Since the obesity associated signature was identified in breast cancer data, the signature may be specific to breast cancer and may not be suitable in other cancer types.
 \\
 
 \noindent
-To check whether the metagene was specific to breast cancer microarray data, the same transformation matrix was applied to Print's breast cancer microarray data.
-Print's data was normalised with \gls{rma} method as described in \cref{ssub:microarray_data}, and the transformation matrix was applied to the normalised data to obtain the metagene.
-The metagene was again compared with the gene expression of the samples with a heatmap (\cref{fig:crmetaprint}), and the association of the metagene with the sample \gls{bmi} and \gls{bmi} status was examined with box and scatter plots (\cref{fig:crmetaprint}).
+To check whether the metagene was specific to breast cancer microarray data, the same transformation matrix was applied to breast cancer microarray data from \citet{Print2016} study (referred to as Print's data).
+Print's data was normalised with \gls{rma} method and the transformation matrix was applied to the normalised data to obtain the metagene.
+The metagene was again compared with the gene expression of the samples with a heatmap and the association of the metagene with the sample \gls{bmi}/\gls{bmi} status was examined with box and scatter plots (\cref{fig:crmetaprint}).
 
 The obesity metagene managed to reflect the overall gene expression of the samples in Print's data.
-However, as in \gls{icgc} cancer data, the obesity metagene scores did not significantly associate with the sample \gls{bmi} or \gls{bmi} status.
-These results confirmed that the lack of association of the obesity metagene from Creighton's data was not due to the technology in which the data was gathered (mcroarray or \gls{rnaseq}), nor the type of cancer in which the transformation matrix was applied to.
+However, as with \gls{icgc} cancer data, the obesity metagene scores did not significantly associate with the sample \gls{bmi} or \gls{bmi} status.
+These results confirmed that the lack of association of the obesity metagene from Creighton's data was not due to the technology in which the data was gathered (mcroarray or \gls{rnaseq}), nor the cancer type in which the transformation matrix was applied to.
 
 \begin{figure}[htp!]
 	\centering
@@ -103,11 +105,11 @@ These results confirmed that the lack of association of the obesity metagene fro
 	\label{fig:crmetaprint}
 \end{figure}
 
-All together, all of these results suggest that the obesity metagene identified in the study conducted by \citet{Creighton2012} associated with sample \gls{bmi} and \gls{bmi} status in Creighton's data, but did not transfer well in other cancer data sets.
-The lack of association with \gls{bmi} was not due to the type of technology platform in which the data was gathered, as neither the \gls{icgc} \gls{rnaseq} data nor Print's microarray data did not show significant association with the obesity metagene.
+All together, all of these results suggest that the obesity metagene identified in the study conducted by \citet{Creighton2012} associated with sample \gls{bmi} and \gls{bmi} status only in Creighton's data.
+The lack of association with \gls{bmi} was not due to the type of technology platform in which the data was gathered, as neither the \gls{icgc} \gls{rnaseq} data nor Print's microarray data showed no significant association with the obesity metagene.
 Furthermore, Creighton's metagene was not dependent on the cancer type since the obesity associated genetic signature did not show significant association in neither the \gls{icgc} cancer data nor in Print's breast cancer data.
 
-One possible reason why Creighton's obesity metagene did not show significant association with other data sets could be because the genetic signature was in fact not an obesity specific signature, but a signature that detected another clinical variable.
+One possible reason why Creighton's obesity metagene did not show significant association with other data sets could be because the genetic signature was in fact not an obesity specific signature, but a signature that was detected due to another clinical variable.
 Another reason for this apparent lack of association could be that the genetic signature was too specific to the data and was not a broad obesity associated genetic signature, but an obesity associated signature specifically for Creighton's data set.
 
 \section{Obesity associated genetic signature from \citet{Fuentes-Mattei2014} study}
@@ -118,7 +120,7 @@ Since FM's data set did not have sample \gls{bmi} information, FM's obesity meta
 However, the transformation matrix was still applied to other cancer data to see whether FM's obesity metagene associated with sample \gls{bmi}/\gls{bmi} status
 
 Firstly, FM's data was normalised with the \gls{rma} method and \gls{svd} was applied to the normalised data to get the transformation matrix.
-The transformation matrix was used to transform the \gls{rma}-normalised Creighton's data to extract FM's obesity metagene scores.
+The transformation matrix was used to transform the \gls{rma}-normalised Creighton's data to extract FM's obesity metagene scores in Creighton's data.
 FM's obesity metagene scores were compared with gene expressions and sample \gls{bmi}/\gls{bmi} status in Creighton's data, as shown in \cref{fig:fmmetacr}.
 Clearly, like with Creighton's obesity metagene, FM's obesity metagene was reflective of the overall gene expression of the samples, but did not associate with the sample \gls{bmi} or \gls{bmi} status.
 
@@ -135,8 +137,15 @@ Clearly, like with Creighton's obesity metagene, FM's obesity metagene was refle
 \end{figure}
 
 Next, the transformation matrix was applied to the \gls{icgc} cancer data and resulting metagenes were compared with the gene expression and sample \gls{bmi}/\gls{bmi} status.
-As evident in \cref{fig:fmmetaicgc}, FM's obesity metagene scores appeared to reflect the gene expression of FM's obesity associated genetic signature.
-However, as with all the results in this section so far, FM's obesity metagene did not significantly associate with any of the \gls{icgc} cancer data (\cref{fig:fmmetaicgc}).
+As evident in \cref{fig:fmmetaicgc}, FM's obesity metagene scores appeared to reflect the overall gene expression of FM's obesity associated genetic signature.
+As with all the results in this chapter so far, FM's obesity metagene did not significantly associate with any of the \gls{icgc} cancer data, except in \gls{blca} data set (\cref{fig:fmmetaicgc}).
+FM's obesity metagene significantly associated with the overweight group (but not with the obese group), and also had a significant \gls{anova} p-value.
+On the contrary to the association of the metagene with the sample \gls{bmi} status, FM's obesity metagene was not associated with sample \gls{bmi}.
+These results suggested that the samples that were overweight in the \gls{blca} data set had similar biological properties as the samples that were obese in FM's data set.
+However, due to the fact that FM's metagene lacked association with sample \gls{bmi} in \gls{blca} data set and that the metagene did not show any significant association in any other cancer type, it was difficult to determine whether the observed association of FM's obesity metagene with the overweight group of samples was truly reflective of the effect resulted from FM's metagene.
+Lastly, the transformation matrix was applied to Print's data (\cref{fig:fmmetacris}).
+Again, FM's obesity metagene scores reflected the gene expression of the samples, did not significantly associate with sample \gls{bmi}/\gls{bmi} status.
+\\
 
 \begin{figure}[htp!]
 	\centering
@@ -150,10 +159,6 @@ However, as with all the results in this section so far, FM's obesity metagene d
 	Scales, p-values and $R^2$-value are as described in previous figures.}
 	\label{fig:fmmetaicgc}
 \end{figure}
-
-Lastly, the transformation matrix was applied to Print's data (\cref{fig:fmmetacris}).
-Again, FM's obesity metagene scores reflected the gene expression of the samples, did not significantly associate with sample \gls{bmi}/\gls{bmi} status.
-\\
 
 \begin{figure}[htp!]
 	\centering
@@ -169,8 +174,8 @@ Again, FM's obesity metagene scores reflected the gene expression of the samples
 
 \noindent
 These results showed that FM's obesity associated metagene was not transferable to other cancer data sets, similar to Creighton's obesity associated metagene.
-This meant that neither Creighton's nor FM's obesity associate metagenes may be too specific to the orignial data set in which the signature was identified in.
-Furthermore, it may be possible that these obesity associated metagenes may not be related to obesity, but another clinical variable which may be closely related to \gls{bmi}.
+This meant that both Creighton's and FM's obesity associate metagenes may have been too specific to the orignial data set in which the signatures were identified in.
+Furthermore, there was a possibility that these obesity associated metagenes were not related to obesity, but associated with a different clinical variable that may be closely related to \gls{bmi}.
 
 \section{Novel obesity associated genetic signatures from \citet{Creighton2012} data set}
 \label{sec:creighton_obesity_metagene_new}
@@ -178,9 +183,9 @@ Furthermore, it may be possible that these obesity associated metagenes may not 
 \subsection{Identification of obesity associated genetic signatures}
 \label{sub:identification_of_obesity_associated_genetic_signatures}
 
-Both metagenes generated from Creighton's data and FM's data were able to capture the overall pattern of gene expression of the samples, but did not associate with sample \gls{bmi}/\gls{bmi} status.
-One possible reason for this result could be that the obesity associated genetic signatures from Creighton's and FM's study may not have been truly associated with sample \gls{bmi} status, but another clinical variable.
-To remove this possibility, obesity associated genetic signatures were identified in Creighton's data after controlling for all the clinical variables in the data set.
+Both the obesity associated metagenes generated from Creighton's data and FM's data were able to capture the overall pattern of gene expression of the genetic signature in the samples, but did not associate with sample \gls{bmi}/\gls{bmi} status.
+One possible reason for this result could be that the obesity associated genetic signatures from Creighton's and FM's study may not have been truly associated with sample \gls{bmi} status, but with another clinical variable.
+To reject this possibility, obesity associated genetic signatures were identified in Creighton's data after controlling for all the clinical variables in the data set.
 FM's data set was not used to get obesity associated genetic signatures, as no \gls{bmi} information was available for the samples in FM's data.
 
 Firstly, to validate whether the identified obesity associated genetic signature was similar to the signature that Creighton's groups had originally found, the identified \glspl{deg} were compared with the set of genes identified by Creighton's group.
@@ -205,7 +210,7 @@ The genetic signatures identified were summarised as a Venn diagram, as shown in
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[page=1,width=0.8\linewidth]{results1/deg_venn}
+	\includegraphics[width=0.5\linewidth]{results1/deg_venn1}
 	\caption[Summary of the \glspl{deg} identified from Creighton's data]{(add venn diagram)}
 	\label{fig:venn1}
 \end{figure}
@@ -214,9 +219,9 @@ The genetic signatures identified were summarised as a Venn diagram, as shown in
 There was a possible bias between different ethnic groups, where African American patients were more likely to be obese compared to the Caucasian patients (see \cref{ssub:creighton_study}).
 Though ethnicity was controlled in the residual data, the effect of ethnicity on the data was completely removed to prevent any possibility of ethnicity influencing the analysis.
 Therefore, the effect of ethnicity was completely removed by considering only the Caucasian patients in Creighton's data, which left a total of 77 Caucasian patients in the data set.
-With this Caucasian-only data set, obesity associated genetic signatures were identified as described above; first with unadjusted data, then with the data with clinical variables adjusted (except ethnicity, as it has already been controlled for), and lastly the common genes with Creighton's original signature were identified.
+With this Caucasian-only data set, obesity associated genetic signatures were identified as described above; first with unadjusted data, then with the data with clinical variables adjusted (except ethnicity, as it has already been controlled for by considering Caucasian samples only), and lastly the common genes with Creighton's original signature were identified.
 
-2129 gene probes and 1558 gene probes were identified in the unadjusted and clinical variable-adjusted Caucasian patient data, respectively.
+2129 and 1558 gene probes were identified in the unadjusted and clinical variable-adjusted Caucasian patient data, respectively.
 As before, the most significant 799 gene probes were selected from these gene probes.
 There were 148 and 92 common gene probes with Creighton's original genetic signatures and unadjusted or clinical variable-adjusted Caucasian patient data set, respectively.
 Again, Venn diagram was used to summarise the genes identified from the Caucasian patient data set (\cref{fig:venn2}).
@@ -224,7 +229,7 @@ Again, Venn diagram was used to summarise the genes identified from the Caucasia
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[page=2,width=0.8\linewidth]{results1/deg_venn}
+	\includegraphics[width=0.5\linewidth]{results1/deg_venn2}
 	\caption[Summary of the \glspl{deg} identified from Creighton's data (Caucasian patient data)]{(add venn diagram)}
 	\label{fig:venn2}
 \end{figure}
@@ -240,14 +245,14 @@ All of these obesity associated genetic signatures (eight in total) were checked
 \subsection{Novel obesity associated signatures and sample \gls{bmi}/\gls{bmi} status}
 \label{sub:_novel_obesity_associated_signatures_and_sample_bmi}
 
-As with the original signature, all eight signatures were validated in Creighton's data set first, and then compared in other cancer data sets by using the transformation matrix generated in Creighton's data.
+As with the original signature, all eight obesity associated genetic signatures were validated in Creighton's data set first, and then compared in other cancer data sets by using the transformation matrix generated in Creighton's data.
 % Before the metagenes were created, all of the signatures were converted into gene symbols, as described in \cref{sec:data} (\cref{tab:signature_gene_num}).
 Creighton's original data (unadjusted, all samples included) was normalised with \gls{rma} method and \gls{svd} was applied to generate the metagene for the corresponding genetic signature.
 The direction of the metagenes were first examined to make sure that all of the metagenes were in line with one another (see \cref{sub:metagene_direction}; results shown in appendix).
 The comparison of the metagenes with the sample gene expression in Creighton's data were displayed as heatmaps (\cref{fig:degmetacr}).
 It was clear from the heatmaps that all of the metagenes reflected the overall expression of the corresponding genetic signatures.
 The association of the metagenes with sample \gls{bmi}/\gls{bmi} status was significant for all eight of the metagenes identified (\cref{fig:degmetacr}).
-These results confirmed that all of the obesity associated genetic signatures identified in \cref{sub:identification_of_obesity_associated_genetic_signatures} significantly associated with sample \gls{bmi}/\gls{bmi} status in the data in which the metagenes were derived from.
+These results confirmed that all of the obesity associated genetic signatures identified in \cref{sub:identification_of_obesity_associated_genetic_signatures} significantly associated with sample \gls{bmi}/\gls{bmi} status in Creighton's data, where the metagenes were derived from.
 
 \begin{figure}[htp!]
 	\centering
@@ -260,6 +265,19 @@ These results confirmed that all of the obesity associated genetic signatures id
 	The results for other metagenes are in \cref{app:a}.
 	Scales, p-values and $R^2$-value are as described in previous figures.}
 	\label{fig:degmetacr}
+\end{figure}
+
+Additionally, the correlation of all of the obesity associated metagenes were examined to see whether these metagenes were similar to one another.
+As clearly shown in \cref{fig:cr_meta_cor}, there were two distinct groups within the eight metagenes; the first group contained the metagenes that were not overlapped with the original metagene (Cr, Res, Ca and CaRes), while the other group had the overlapped metagenes (CrOl, ResOl, CaOl and CaResOl).
+With that said, all eight metagenes showed high correlation with one another (lowest correlation approximately at 0.85), which suggested that all of these metagenes were detecting similar underlying biological mechanism from the data.
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.8\linewidth]{results1/cr_meta_cor}
+	\caption[Pearson correlation of all eight obesity associated metagenes identified in Creighton's data]{Heatmap showing the Pearson correlation of all eight obesity associated metagenes from Creighton's data with one another.
+	\gls{svd} was applied to \gls{rma}-normalised Creighton's data to generate each of the eight metagenes.
+	High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in top right.}
+	\label{fig:cr_meta_cor}
 \end{figure}
 
 To confirm whether these metagenes showed significant association with sample \gls{bmi}/\gls{bmi} status in other cancer data sets, transformation matrix was applied to the \gls{icgc} cancer data and Print's breast cancer data.
@@ -297,26 +315,6 @@ This raised a question of whether there are any obesity associated genetic signa
 	\label{fig:degmetaprint}
 \end{figure}
 
-% \begin{table}[htbp]
-% 	\centering
-% 	\caption{Summary of the number of gene probes and genes in each obesity associated genetic signature}
-% 	\label{tab:signature_gene_num}
-% 	\begin{tabular}{lcc}
-% 		Obesity associated genetic signature & No. gene probes   & No. genes\\
-% 		\hline
-% 		\rule{0pt}{2.25ex}Cr & 799 & 678\\
-% 		Res                  & 799 & 655\\
-% 		Ca                   & 799 & 657\\
-% 		CaRes                & 799 & 651\\
-% 		CrOl                 & 239 & 199\\
-% 		ResOl                & 168 & 147\\
-% 		CaOl                 & 148 & 128\\
-% 		CaResOl              &  92 & 86\\
-% 		\hline
-% 		\hline
-% 	\end{tabular}
-% \end{table}
-
 \section{Common genes across multiple cancer types}
 \label{sec:common_genes_across_multiple_cancer_types}
 
@@ -330,7 +328,7 @@ All of the \gls{icgc} cancer data sets were normalised with voom method (\cref{s
 	\caption{Summary of the number of \glspl{deg} identified in each \gls{icgc} cancer data set}
 	\label{tab:icgcdegnum}
 	\begin{tabular}{lc}
-		Cancer type & No. of \glspl{deg}\\
+		Cancer type & No. of \glspl{deg} identified\\
 		\hline
 		\rule{0pt}{2.25ex}\gls{blca} & 679 \\
 		\gls{cesc} & 1229\\
@@ -351,9 +349,10 @@ There were no genes differentially expressed by six or more cancer types (see \c
 To confirm that these results were statistically significant, the gene expression analysis was repeated 1000 times for each cancer type after the samples were randomised in each analysis (see \cref{sub:sample_randomisation_in_simulation_analysis}).
 The results from the simulation were summarised together with the earlier results in \cref{tab:icgcdegtab}.
 
-(insert description of the simulation results).
-The results from the simulation showed that the \glspl{deg} identified from the gene expression analysis of \gls{icgc} cancer data were significant.
-However, the results also confirmed that there were no obesity associated \glspl{deg} that were common across different cancer types.
+The results from the simulation showed that, on average, 5732 genes were found to be differentially expressed by a cancer type, 1057 by two cancer types, 111 by three cancer types, and 7 by four cancer types.
+When the results from \gls{icgc} gene expression analysis were compared with the simulation results, the number of \glspl{deg} found were statistically significant, as the numbers of genes identified exceeded the 95$^{th}$ percentile values for up to 5 cancer types.
+This result confirmed that the \glspl{deg} from the \gls{icgc} cancer data were not identified by chance.
+Unfortunately, there were no \glspl{deg} expressed in all eight cancer types, which confirmed that there was no common genes that were differentially expressed between the samples that were obese and normal weight.
 
 \begin{table}[htbp]
 	\centering
@@ -361,22 +360,22 @@ However, the results also confirmed that there were no obesity associated \glspl
 		\caption{Summary of the number of \glspl{deg} identified by the gene expression analysis and simulation analysis in \gls{icgc} cancer data}
 		\label{tab:icgcdegtab}
 		\begin{tabular}{>{\quad}lcccccccc}
-			& \multicolumn{8}{c}{No. of cancer types expressing the \glspl{deg}}\\
+			& \multicolumn{8}{c}{\small No. of cancer types expressing the \glspl{deg}\tnote{1}}\\
 			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
 			\hline
-			\rule{0pt}{2.25ex}\hspace{-1em}Results from gene expression analysis & 7330 & 2024 & 320 & 21 & 0 & 0 & 0 & 0  \\
-			\hspace{-1em}Results from simulation:                                &      &      &     &    &   &   &   &  \\
-			Mean no. of \glspl{deg} identified                                   & 0    & 0    & 0   & 0  & 0 & 0 & 0 & 0  \\
-			$95^{th}$ percentile                                                 & 0    & 0    & 0   & 0  & 0 & 0 & 0 & 0  \\
+			\rule{0pt}{2.25ex}\hspace{-1em}{\small Results from gene expression analysis} & 7330 & 2024 & 320 & 21 & 0 & 0 & 0 & 0 \\
+			\hspace{-1em}{\small Results from simulation:\tnote{2}}                       &      &      &     &    &   &   &   &   \\
+			{\small Mean no. of \glspl{deg} identified}                                   & 5732 & 1057 & 111 & 7  & 0 & 0 & 0 & 0 \\
+			{\small $95^{th}$ percentile}                                                 & 6965 & 1722 & 227 & 20 & 2 & 0 & 0 & 0 \\
 			\hline
 			\hline
 		\end{tabular}
-		% \begin{tablenotes}
-		% 	\begin{footnotesize}
-		% 	\item [1] The numbers represent the number of cancer types a gene was expressed in.
-		% 	\item [2] The simulation was repeated 1000 times.
-		% 	\end{footnotesize}
-		% \end{tablenotes}
+		\begin{tablenotes}
+			\begin{footnotesize}
+			\item [1] The numbers represent the number of cancer types a gene was expressed in.
+			\item [2] The simulation was repeated 1000 times, each with randomised samples.
+			\end{footnotesize}
+		\end{tablenotes}
 	\end{threeparttable}
 \end{table}
 
@@ -385,6 +384,7 @@ However, the results also confirmed that there were no obesity associated \glspl
 
 To check whether there were any significant pathways enriched in any of the \gls{icgc} cancer data sets that were associated with obesity, pathway enrichment analysis was carried out on each cancer type separately and then all cancer types combined (see \cref{sec:pathway_enrichment_analysis}).
 
+(unfinished)
 
 
 
