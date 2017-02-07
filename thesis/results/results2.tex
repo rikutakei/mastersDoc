@@ -14,13 +14,13 @@ However, the analyses so far have used \gls{rma}-normalisation method and ranked
 To decide which normalisation or ranking methods were suitable for the analysis, the different methods were compared in Gatza's data (see \cref{app:b}).
 Results shown in \cref{app:b} clarified that there was no significant difference in the ranking methods used.
 The same went for the normalisation methods, as long as the normalisation methods used to get the transformation matrix and the data in which the transformation matrix was applied to were the same.
-For example, transformation matrix was taken from \gls{rma}-normalised data and then applied to \gls{rma}-normalised data set.
+For example, transformation matrix taken from \gls{rma}-normalised data applied to \gls{rma}-normalised data set.
+With that said, \gls{rma}-normalised data sets had a more consistent correlation of the \gls{svd}-generated metagenes with the transformation matrix-generated metagenes across different data sets than the \gls{mas}-normalised data sets (see \cref{app:b}; more details in \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}).
 From these results, Gatza's data set was batch corrected first (\cref{sub:batch_correction}), then normalised with \gls{rma} method and the scores were ranked based on the number of samples in the data set.
 
-Before Gatza's pathway metagenes were compared with the obesity associated metagenes, the direction of Gatza's pathway metagenes were checked to make sure the metagenes were in the correct direction (\cref{sub:metagene_direction}).
-Each pathway metagenes was generated from Gatza's data set and the direction of the metagene was checked with the expression of the representative  pathway gene (\cref{tab:metagene_direction}).
+Before Gatza's pathway metagenes were compared with the obesity associated metagenes, the direction of Gatza's pathway metagenes had to be checked to make sure the metagenes were in the correct direction (\cref{sub:metagene_direction}).
+% Each pathway metagenes was generated from Gatza's data set and the direction of the metagene was checked with the expression of the representative pathway gene (\cref{tab:metagene_direction}), and the groupings of the pathways were considered as well.
 The correlation of all the pathway metagenes with one another were plotted as a heatmap in \cref{fig:gatza_meta_dir}.
-% The pathway metagenes showed a few distinct groups of pathways: a group that showed high correlation with E2F1, \gls{pi3k}, Myc, \gls{bcat} and Ras pathways; a group with \gls{ifna}, \gls{ifny} and \gls{tnfa} pathways;
 The most prominent group had five pathways (E2F1, \gls{pi3k}, Myc, \gls{bcat} and Ras) that clustered at the top right hand corner of the heatmap.
 % TODO: add additional info about why these pathways clustered together?
 Other groups included \gls{ifna}/\gls{ifny}/\gls{tnfa} pathways, \gls{er}/\gls{pr}/p53 pathway and p63/\gls{her2} pathways.
@@ -34,11 +34,10 @@ Comparing these groups with the results presented by \citet{Gatza2010a} (see \cr
 	\label{fig:gatza_meta_dir}
 \end{figure}
 
-To see whether the directionality of Gatza's pathway metagenes were being transferred across to other data sets properly, pathway metagenes were generated with the transformation matrices and the groupings of the metagenes were examined.
-Creighton's, FM's and Cris' data were \gls{rma}-normalised and transformation matrices of the pathway genetic signatures were applied to the data.
-The metagenes were plotted in a heatmap (shown in \cref{app:b}).
-These heatmaps showed similar groupings  as seen in \cref{fig:gatza_meta_dir}, which proved that the directions of the pathway metagenes were independent of the data sets.
-
+To see whether the directionality of Gatza's pathway metagenes were being transferred across to other data sets properly, pathway metagenes were generated in other data sets with the transformation matrices and the groupings of the metagenes were examined.
+Creighton's, FM's and Cris' data were \gls{rma}-normalised and transformation matrices of the pathway genetic signatures (derived from Gatza's data set) were applied to the data sets.
+The metagenes were plotted in a heatmap (shown in \cref{app:b}), which showed similar groupings  as seen in \cref{fig:gatza_meta_dir}.
+This result confirmed that the pathway metagenes were acting similarly in all the data sets in which the transformation matrices have been applied to.
 
 % In order to investigate what the underlying biological mechanism of the obesity associated genetic signatures was, Gatza's pathway associated genetic signatures were used to create linear models to predict the obesity associated metagene scores.
 % Before linear models were created, Gatza's pathway metagenes were checked for their directionality to ensure that the pathway metagenes were acting as reported by \citet{Gatza2010a} (see \cref{sub:metagene_direction}).
@@ -46,12 +45,28 @@ These heatmaps showed similar groupings  as seen in \cref{fig:gatza_meta_dir}, w
 \section{Pathway associated metagenes and obesity associated metagenes}
 \label{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}
 
-Results from previous section confirmed that the pathway metagenes from the \citet{Gatza2010a} study were in the correct directions.
+Results from previous section confirmed that the pathway metagenes from the \citet{Gatza2010a} study were in the correct directions, and that the pathway metagenes were behaving as expected in different data sets.
+Now that the directions of the pathway metagenes were established, these metagenes were ready for comparison with the obesity associted metagenes.
+However, all of the pathway metagenes were derived from Gatza's data, whereas the majority of obesity associted metagenes were derived from Creighton's data, which presents a problem of deciding on which data set the transformation matrices should be generated in.
+
+In theory, the metagenes generated from the application of \gls{svd} and the metagenes generated from transformation matrix would be exactly the same if the transformation matrix was derived from the same data set.
+For example, an obesity associted metagene generated from Creighton's data with \gls{svd} would have the same values as the metagenes generated in Creighton's data with the transformation matrix (that was derived in Creighton's data).
+Furthermore, if the \gls{svd}-derived metagenes and transformation matrix-derived metagenes were the same (or at least similar) in a different data set, this suggests that there is no difference in the data sets, at least in terms of the expression of the genetic signatures being investigated.
+In other words, the transformation matrix can be made in either data sets, in the original data set or in a different data set, if there is no difference in the \gls{svd}-derived or transformation matrix-derived metagenes.
 
 
 
 
-then the pathway associated metagenes were compared with the obesity associated metagenes
+
+
+
+
+
+
+
+
+
+
 
 
 
