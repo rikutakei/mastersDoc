@@ -123,11 +123,10 @@ For example, the \gls{bcat} pathway metagene was highly correlated in all of the
 The fact that some pathway associated metagenes were consistent across different data sets suggested that some of these genetic signatures were reliable and did not depend on the data set the transformation matrices were derived from.
 On the other hand, the genetic signatures that were not consistent across the data sets were likely to be dependent on the data set in which they were derived from, and therefore the transformation matrices for these signatures must be derived from Gatza's data set.
 
-% TODO: start from here
-In contrast to the pathway associated genetic signatures, all of the obesity associated genetic signatures showed high correlation of the metagenes across the different data sets.
-
-
-
+In contrast to the pathway associated genetic signatures, all of the obesity associated genetic signatures showed high correlation of the \gls{svd}- and transformation matrix-generated metagenes across the different data sets.
+This suggested that obesity associated genetic signatures were consistent across all data sets and the transformation matrices for these signatures could be made in any of the data sets.
+Taken together, transformation matrices for all the genetic  signatures were decided to be made in the Gatza's data set, since there were some pathway associated signatures that were specific to Gatza's data, but none of the obesity associated genetic signatures were specific to a data set.
+\\
 
 \begin{figure}[htpb]
 	\centering
@@ -137,13 +136,31 @@ In contrast to the pathway associated genetic signatures, all of the obesity ass
 	\label{fig:allmetacor_bar}
 \end{figure}
 
+\noindent
+To visually determine which pathway associated genetic signatures were most similar to the obesity associated genetic signatures, heatmaps were created with the metagenes for all of the genetic signatures.
+The directions of the pathway associated metagenes have already been determined in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, and the directions of the obesity associated metagenes were checked in Gatza's data set as described in \cref{sub:metagene_direction}.
+All of the metagenes were created in \gls{rma}-normalised Gatza's data set with \gls{svd}, and the metagene scores were plotted in a heatmap and clustered into groups (\cref{fig:gatza_allmeta}).
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=15,width=0.8\linewidth]{results2/all_meta_trans}
+	\caption{All metagenes in Gatza's data}
+	\label{fig:gatza_allmeta}
+\end{figure}
 
+From \cref{fig:gatza_allmeta}, all of the obesity associated metagenes from Creighton's data set clustered together into a group, but none of the pathway associated metagenes associated strongly with the obesity metagenes.
+Though \gls{her2} and p63 pathway metagenes were grouped next to the cluster of obesity metagenes, the similarity was at most about 0.6.
+Fuentes-Mattei's obesity associated metagene did not cluster together with the obesity metagenes from Creighton's data set, nor with any of the other pathway metagenes.
+The fact that Fuentes-Mattei's metagene did not cluster with Creighton's metagenes showed that the nature of Fuentes-Mattei's metagene was different from those metagenes found in Creighton's data set.
+Furthermore, their metagene did not cluster with Gatza's Akt pathway in the heatmap, even though \citet{Fuentes-Mattei2014} provided clear evidence that their metagene specifically activated the Akt/\gls{mtor} signalling pathway in a mouse model.
+This may have been due to the lack of consistency of the Akt pathway signature in different data sets (\cref{tab:svd_vs_tm_path}).
+Another likely reason could be that Fuentes-Mattei's genetic signature was not comprised only of the genes from the Akt pathway, but genes from other pathways as well, and so the metagene did not cluster together with the Akt pathway signature in the heatmap.
 
+The results in this section suggested that none of the obesity associated genetic signatures were similar or related to any of the pathway associated genetic signatures from the \citet{Gatza2010a} study.
 
+(add heatmaps of other data as well? or maybe in appendix)
 
-
-
+% Transformation matrices for all of the obesity and pathway associated genetic signatures were generated in Gatza's data.
 
 \section{Prediction of obesity associated metagene with pathway associate metagene}
 \label{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}

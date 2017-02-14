@@ -395,6 +395,8 @@ For this reason, the transformation matrix for a given set of genes was created 
 \subsection{Metagene direction}
 \label{sub:metagene_direction}
 
+% TODO: add example plots for metagene direction
+
 One thing to consider when analysing data with metagenes is the direction of the metagene.
 When \gls{svd} creates the metagene from the given data, it does not consider the direction of the signal, but only the magnitude of the signal in the data.
 Therefore, the metagene created by \gls{svd} can be either positively or negatively correlated to the phenotype that the set of genes reflect.
@@ -403,12 +405,15 @@ In this case, the generated metagene must be flipped in order to reflect the phe
 
 In this project, two types of metagenes were created: obesity associated and pathway associated metagenes.
 For obesity associated metagenes, the direction of the metagenes were checked with the obesity status and \gls{bmi} value of the samples from the data in which the metagene was derived from.
+When the data set did not have \gls{bmi}/\gls{bmi} status information for the samples, a set of common genes were taken from all of the obesity associated genetic signatures and their expressions compared with the metagene scores.
+Since all of the genetic signatures are associated with obesity, the genes that are common to all of the obesity associated genetic signatures will be related to the metagenes produced by these signatures, and therefore the expressions of these genes should be in line with the metagene scores.
+
 Checking the direction of the pathway metagenes from \citet{Gatza2010a} study is not as simple as the obesity associated metagenes, as the experimental design that identify which samples were treated to generate the pathway signature was not available.
 Due to this, it was not possible to validate whether the generated pathway metagene was in the right direction.
-
 As an alternative, the pathway metagenes were visually compared with the gene that represent the pathway using a heatmat, as the expression of this gene would most likely be affected the most by the pathway signature.
 For example, the Akt pathway metagene was compared with the AKT1 gene expression, and if the metagene was not in the same direction as the AKT1 gene expression, the metagene was flipped.
 \cref{tab:metagene_direction} summarises the genes used to check the direction of the pathway metagenes.
+
 \begin{table}[htb]
 	\caption{18 pathways from \citet{Gatza2010a} and its respective genes used to check the direction of the pathway metagene}
 	\label{tab:metagene_direction}
@@ -419,30 +424,31 @@ For example, the Akt pathway metagene was compared with the AKT1 gene expression
 			\rule{0pt}{2.25ex}Akt & AKT1\\
 			\gls{bcat}            & CTNNB1\\
 			E2F1                  & E2F1\\
-			\gls{egfr}            & EGFR\\
-			\gls{er}              & ESR1\\
-			\gls{her2}            & ERBB2\\
-			\gls{ifna}            & IFNA1\\
-			\gls{ifny}            & IFNG\\
+			\Gls{egfr}            & EGFR\\
+			\Gls{er}              & ESR1\\
+			\Gls{her2}            & ERBB2\\
+			\Gls{ifna}            & IFNA1\\
+			\Gls{ifny}            & IFNG\\
 			Myc                   & MYC\\
 			p53                   & TP53\\
 			p63                   & TP63\\
-			\gls{pi3k}            & PIK3CA\\
-			\gls{pr}              & PGR\\
+			\Gls{pi3k}            & PIK3CA\\
+			\Gls{pr}              & PGR\\
 			Ras                   & HRAS\\
-			\gls{stat3}           & STAT3\\
+			\Gls{stat3}           & STAT3\\
 			Src                   & SRC\\
-			\gls{tgfb}            & TGFB1\\
-			\gls{tnfa}            & TNF\\
+			\Gls{tgfb}            & TGFB1\\
+			\Gls{tnfa}            & TNF\\
 			\hline
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
 In addition to this, the correlation of the pathway metagene with its repective gene was checked to further aid the decision on whether the metagene is going in the correct direction.
 This was due to the fact that some of the metagenes were visually difficult to determine whether it was in the right direction.
 Therefore, the direction as well as the magnitude of the correlation value was also taken into account in making the decision whether to flip the metagene.
-Lastly, further on top of this, the clustering of the pathway metagenes with the other pathway metagenes were also considered.
+Lastly, the clustering of the pathway metagenes with the other pathway metagenes were also considered.
 It was known from \citet{Gatza2010a} study that some pathways clustered and grouped together with specific pathways, so the metagenes were flipped so that the grouping of the pathways matched the results from their study.
 
 \section{Obesity metagene prediction with pathway metagenes}
