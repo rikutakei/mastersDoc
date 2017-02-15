@@ -59,9 +59,8 @@ However, all of the pathway metagenes were derived from Gatza's data, whereas th
 In theory, the metagenes generated from the application of \gls{svd} and the metagenes generated from transformation matrix would be exactly the same if the transformation matrix was derived from the same data set.
 For example, an obesity associated metagene generated from Creighton's data with \gls{svd} would have the same values as the metagenes generated in Creighton's data with the transformation matrix (where the transformation matrix was derived from Creighton's data).
 Furthermore, if the \gls{svd}-derived metagenes and transformation matrix-derived metagenes were the same (or at least similar) in a different data set, this suggests that there was no difference in the data sets, at least in terms of the expression of the genetic signatures being investigated.
-In other words, the transformation matrix can be made in either the original data set or in a different data set, if there is no difference in the \gls{svd}-derived or transformation matrix-derived metagenes.
+In other words, the transformation matrix can be made in either the original data set or in a different data set if there was no difference in the \gls{svd}-derived or transformation matrix-derived metagenes.
 
-% TODO: start from here
 To decide which data set the transformation matrices for obesity and pathway associated genetic signatures should be generated in, the \gls{svd}- and transformation matrix(TM)-generated metagene scores were compared in all of the data sets.
 As in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, all data sets were normalised with the \gls{rma} method and metagenes were ranked based on the number of samples in each data set.
 Transformation matrices for the obesity associated genetic signatures were made in Creighton's data set and pathway associated genetic signatures were made in Gatza's data set.
@@ -160,12 +159,56 @@ The results in this section suggested that none of the obesity associated geneti
 
 (add heatmaps of other data as well? or maybe in appendix)
 
-% Transformation matrices for all of the obesity and pathway associated genetic signatures were generated in Gatza's data.
-
 \section{Prediction of obesity associated metagene with pathway associate metagene}
 \label{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}
 
-and lastly linear models were constructed based on the pathway metagenes and sample \gls{bmi}/\gls{bmi} status to predict the obesity associated metagenes.
+% and lastly linear models were constructed based on the pathway metagenes and sample \gls{bmi}/\gls{bmi} status to predict the obesity associated metagenes.
+
+To confirm that the obesity associated metagenes were not related to any of the biological pathway signatures from the \citet{Gatza2010a} study, linear models were created to predict the obesity metagene scores with the pathway metagene scores.
+If any of the pathway metagenes were significant in the linear model, this provides a strong evidence that the significant pathways in the model were related to the obesity metagene.
+% TODO: start from here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
