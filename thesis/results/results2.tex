@@ -157,7 +157,7 @@ Another likely reason could be that Fuentes-Mattei's genetic signature was not c
 
 The results in this section suggested that none of the obesity associated genetic signatures were similar or related to any of the pathway associated genetic signatures from the \citet{Gatza2010a} study.
 
-(add heatmaps of other data as well? or maybe in appendix)
+(add heatmaps of other data (Creighton/FM/Cris) as well? or maybe in appendix)
 
 \section{Prediction of obesity associated metagene with pathway associate metagene}
 \label{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}
@@ -165,11 +165,11 @@ The results in this section suggested that none of the obesity associated geneti
 % and lastly linear models were constructed based on the pathway metagenes and sample \gls{bmi}/\gls{bmi} status to predict the obesity associated metagenes.
 
 To confirm that the obesity associated metagenes were not related to any of the biological pathway signatures from the \citet{Gatza2010a} study, linear models were created to predict the obesity metagene scores with the pathway metagene scores.
-If any of the pathway metagenes were significant in the linear model, this provides a strong evidence that the significant pathways in the model were related to the obesity metagene.
-% TODO: start from here
+If any of the pathway metagenes were significant in the linear model, this provided evidence that the significant pathways in the linear model were related to the obesity metagene.
+Since most of the obesity metagenes were found in Creighton's data set and only Creighton's and Cris' data sets had \gls{bmi}/\gls{bmi} status information for the samples, Cris' data set was used as the training data set to create linear models for obesity metagene score prediction.
 
-
-
+Metagene scores used for the construction of linear models were generated from the application of the transformation matrices derived from Gatza's data (from \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}) to \gls{rma}-normalised Cris' data.
+For each of the obesity metagenes identified, seven linear models were created: \gls{bmi}-only, \gls{bmi} status-only, \gls{bmi} and \gls{bmi} status, pathway metagenes-only, and all of the combinations of pathway metagenes with \gls{bmi} and/or \gls{bmi} status.
 
 
 
