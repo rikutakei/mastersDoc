@@ -17,7 +17,10 @@
 \usepackage{natbib}                                 % package for reference management
 \usepackage{setspace}                               % package for setting line space (used in title page)
 \usepackage{xcolor,colortbl}                        % package for making colours
-\usepackage{booktabs}                        % package for better tables
+\usepackage{booktabs}                               % package for better looking tables
+\usepackage{longtable}                              % package for tables that span multiple pages
+\usepackage{siunitx}                                % package for scientific notations and units
+\usepackage{bm}                                % package for scientific notations and units
 
 % Define colour(s) for table rows:
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -32,6 +35,9 @@
 % Change the default cref name for appendix:
 \crefname{appcha}{Appendix}{Appendices}
 \crefname{appsec}{Appendix}{Appendices}
+
+% Make siunitx detect bold/italics/etc:
+\sisetup{detect-weight=true,detect-family=true,detect-inline-weight=text,table-parse-only}
 
 % Change the default url font:
 \urlstyle{rm}
