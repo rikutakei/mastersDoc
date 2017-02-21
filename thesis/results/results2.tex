@@ -240,20 +240,35 @@ However, ``sustained cell proliferation'' was one of the cancer hallmarks that \
 
 Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with all of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only} and \cref{app:b}).
 
+\bfseries \num{6.06d-7}
 
 \begin{table}[htpb]
 	\centering
 	\caption{Description of the linear models used to predict the CR obesity metagene, using only the sample \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene scores}
 	\label{tab:lm_pr_only}
 	\begin{threeparttable}
-			\begin{tabular}{llrS[detect-weight]}
-				Linear Model & Variables & Estimate &P-value\\
+			\begin{tabular}{llrS}
+				Linear Model & Variables & Estimate & {P-value}\\
 				\hline
 				\hline
-				\rule{0pt}{2.25ex}\gls{pr}-only & \gls{pr}   & 0.477  & {\num{6.06d-7}}\tnote{1}\\
+				\rule{0pt}{2.25ex}\gls{pr}-only                            & \gls{pr}   & 0.477  & {\bfseries \num{6.06d-7}}\tnote{*}\\
+				\hline
+				\rule{0pt}{2.25ex}\gls{bmi} and \gls{pr}                   & \gls{bmi}  & -0.002 & 0.586\\
+                                                                           & \gls{pr}   & 0.478  & {\bfseries \num{6.35d-7}}\\
+				\hline
+				\rule{0pt}{2.25ex}\gls{bmi} status and \gls{pr}            & Obese      & -0.085 & 0.176\\
+                                                                           & Overweight & -0.011 & 0.875\\
+                                                                           & \gls{pr}   & 0.471  & {\bfseries \num{8.25d-7}}\\
+				\hline
+				\rule{0pt}{2.25ex}\gls{bmi}, \gls{bmi} status and \gls{pr} & \gls{bmi}  & 0.007  & 0.237\\
+                                                                           & Obese      & -0.188 & {\bfseries 0.081}\\
+                                                                           & Overweight & -0.049 & 0.516\\
+                                                                           & \gls{pr}   & 0.459  & {\bfseries \num{1.54d-6}}\\
+				\hline
+				\hline
 			\end{tabular}
 			\begin{tablenotes}
-				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+				\item [*] All values in bold are statistically significant (p \textless{} 0.05).
 			\end{tablenotes}
 	\end{threeparttable}
 \end{table}
