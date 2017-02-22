@@ -557,6 +557,130 @@
 % myc_probes          0.436540  0.215944 2.022  0.04623  *
 % pr_probes           -0.134650 0.228668 -0.589 0.55746
 
+\begin{longtable}{llr{\bfseries}S}
+	\centering
+	\caption{Table showing the variables in the step wise linear models to predict the obesity metagenes}
+	\label{tab:stepwise_model}\\
+		Obesity metagene & Variables used in the model & Estimate & {P-value}\\
+		\hline
+	\endfirsthead
+	\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
+		\hline
+		\hline
+	\endhead
+		\hline
+		\hline
+		Cr         & Akt         & -0.3415   & \bfseries \num{4.43d-8}\\
+				   & \gls{egfr}  & 0.33852   & \bfseries \num{1.94d-05}\\
+				   & \gls{er}    & -0.20237  & \bfseries 0.00419\\
+				   & \gls{ifny}  & 0.12233   & 0.08700\\
+				   & \gls{pr}    & -0.33920  & \bfseries \num{2.09d-5}\\
+				   & Ras         & -0.22611  & \bfseries 0.00193\\
+				   & Src         & -0.11452  & 0.08177\\
+				   & \gls{tgfb}  & 0.55638   & \bfseries \textless{} \num{2d-16}\\
+				   & \gls{tnfa}  & -0.25501  & \bfseries 0.00616\\
+		\hline
+		CrOl       & Overweight  & 0.040918  & 0.074865\\
+				   & Obese       & -0.006381 & 0.756121\\
+				   & Akt         & -0.356713 & \bfseries \num{1.89d-07}\\
+				   & E2F1        & 0.160229  & \bfseries 0.005411\\
+				   & \gls{egfr}  & 0.148618  & 0.062683\\
+				   & p53         & 0.336552  & \bfseries \num{4.35d-05}\\
+				   & \gls{pr}    & -0.225423 & \bfseries 0.000639\\
+				   & Src         & -0.428758 & \bfseries \num{5.85d-10}\\
+				   & \gls{stat3} & -0.124118 & \bfseries 0.009658\\
+		\hline
+		Res        & Akt         & 0.24613   & \bfseries 0.000289\\
+				   & \gls{egfr}  & -0.46827  & \bfseries \num{2.16d-05}\\
+				   & \gls{er}    & 0.18400   & 0.061446\\
+				   & \gls{her2}  & 0.13835   & 0.118228\\
+				   & \gls{ifny}  & -0.21019  & \bfseries 0.044084\\
+				   & \gls{pr}    & 0.41195   & \bfseries 0.000300\\
+				   & Ras         & 0.26506   & \bfseries 0.010465\\
+				   & \gls{tgfb}  & -0.58075  & \bfseries \num{7.64d-11}\\
+				   & \gls{tnfa}  & 0.42200   & \bfseries 0.001834\\
+		\hline
+		ResOl      & Akt         & -0.33596  & \bfseries 0.000294\\
+				   & \gls{bcat}  & -0.19866  & 0.138953\\
+				   & E2F1        & 0.36059   & \bfseries 0.009325\\
+				   & \gls{egfr}  & 0.23421   & 0.056865\\
+				   & \gls{her2}  & -0.13652  & 0.121689\\
+				   & p53         & 0.38746   & \bfseries 0.000519\\
+				   & \gls{pi3k}  & -0.21881  & 0.148676\\
+				   & \gls{pr}    & -0.32228  & \bfseries 0.001656\\
+				   & Ras         & -0.28984  & \bfseries 0.033975\\
+				   & Src         & -0.40779  & \bfseries \num{5.26d-06}\\
+				   & \gls{stat3} & -0.11452  & 0.125609\\
+				   & \gls{tnfa}  & -0.11442  & 0.117023\\
+		\hline
+		Ca         & Akt         & -0.26243  & \bfseries \num{7.04d-06}\\
+				   & \gls{egfr}  & 0.36305   & \bfseries 0.000139\\
+				   & \gls{er}    & -0.18614  & \bfseries 0.030771\\
+				   & \gls{ifny}  & 0.22118   & \bfseries 0.013034\\
+				   & \gls{pr}    & -0.42911  & \bfseries \num{1.07d-05}\\
+				   & Ras         & -0.28124  & \bfseries 0.000898\\
+				   & \gls{tgfb}  & 0.76139   & \bfseries \textless{} \num{2d-16}\\
+				   & \gls{tnfa}  & -0.33200  & \bfseries 0.003919\\
+		\hline
+		CaOl       & Overweight  & 0.07613   & \bfseries 0.006875\\
+				   & Obese       & 0.01408   & 0.564622\\
+				   & Akt         & -0.44727  & \bfseries \num{2.43d-07}\\
+				   & \gls{bcat}  & -0.13463  & 0.140261\\
+				   & E2F1        & 0.33864   & \bfseries 0.001249\\
+				   & p53         & 0.28777   & \bfseries 0.000996\\
+				   & \gls{pr}    & -0.28255  & \bfseries \num{2.18d-05}\\
+				   & Src         & -0.44149  & \bfseries \num{2.02d-08}\\
+				   & \gls{tnfa}  & -0.14215  & \bfseries 0.013897\\
+		\hline
+		CaRes      & \gls{bcat}  & 0.26899   & 0.05238  \\
+				   & E2F1        & -0.22115  & 0.08848  \\
+				   & \gls{egfr}  & 0.44400   & \bfseries \num{6.67d-05 }\\
+				   & \gls{her2}  & -0.20304  & \bfseries 0.04615  \\
+				   & \gls{ifny}  & 0.32874   & \bfseries 0.00574  \\
+				   & \gls{pr}    & -0.28764  & \bfseries 0.00104  \\
+				   & Src         & -0.17989  & 0.05404  \\
+				   & \gls{tgfb}  & 0.52898   & \bfseries \num{2.15d-06 }\\
+				   & \gls{tnfa}  & -0.38677  & \bfseries 0.00564  \\
+		\hline
+		CaResOl    & \gls{bmi}   & 0.004314  & 0.108546\\
+				   & Overweight  & 0.033086  & 0.306390\\
+				   & Obese       & -0.062257 & 0.175776\\
+				   & Akt         & -0.309706 & \bfseries 0.000339\\
+				   & \gls{bcat}  & -0.198165 & 0.140502\\
+				   & E2F1        & 0.270471  & \bfseries 0.011450\\
+				   & \gls{egfr}  & 0.171219  & 0.113691\\
+				   & Myc         & 0.152007  & 0.056987\\
+				   & p53         & 0.294895  & \bfseries 0.003734\\
+				   & \gls{pr}    & -0.230896 & \bfseries 0.000823\\
+				   & Ras         & -0.270824 & \bfseries 0.044788\\
+				   & Src         & -0.512567 & \bfseries \num{2.72d-08}\\
+				   & \gls{tnfa}  & -0.103302 & 0.083449\\
+		\hline
+		Original   & \gls{bmi}   & 0.002696  & 0.14407\\
+				   & Overweight  & 0.010522  & 0.62856\\
+				   & Obese       & -0.061020 & 0.05542\\
+				   & Akt         & -0.238412 & \bfseries \num{4.93d-05}\\
+				   & E2F1        & 0.185085  & \bfseries 0.02754\\
+				   & \gls{egfr}  & 0.147219  & 0.07423\\
+				   & \gls{her2}  & -0.086804 & 0.14070\\
+				   & p53         & 0.416414  & \bfseries \num{5.83d-08}\\
+				   & \gls{pi3k}  & -0.216179 & \bfseries 0.03528\\
+				   & \gls{pr}    & -0.199097 & \bfseries 0.00253\\
+				   & Ras         & -0.200544 & \bfseries 0.00898\\
+				   & Src         & -0.543834 & \bfseries \num{2.10d-15}\\
+				   & \gls{stat3} & -0.093363 & \bfseries 0.02749\\
+		\hline
+		FM         & \gls{bmi}   & 0.011093  & \bfseries 0.036229\\
+				   & Overweight  & -0.153753 & \bfseries 0.014277\\
+				   & Obese       & -0.212483 & \bfseries 0.017378\\
+				   & p53         & 0.460800  & \bfseries 0.002512\\
+				   & \gls{pi3k}  & -0.426246 & \bfseries 0.000118\\
+				   & \gls{pr}    & -0.373119 & \bfseries 0.020737\\
+				   & \gls{stat3} & 0.248745  & \bfseries 0.019073\\
+				   & \gls{tgfb}  & 0.152925  & 0.128933\\
+		\hline
+		\hline
+	\end{longtable}
 
 
 \end{appendices}
