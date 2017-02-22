@@ -20,8 +20,7 @@
 \usepackage{booktabs}                               % package for better looking tables
 \usepackage{longtable}                              % package for tables that span multiple pages
 \usepackage{siunitx}                                % package for scientific notations and units
-\usepackage{etoolbox}                                % package for scientific notations and units
-\usepackage{bm}                                % package for scientific notations and units
+\usepackage{etoolbox}                               % package to 'robustify' \bfseries
 
 % Define colour(s) for table rows:
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -40,7 +39,6 @@
 % Make siunitx detect bold/italics/etc:
 \robustify\bfseries
 \sisetup{detect-all}
-% \sisetup{detect-weight=true,detect-family=true,detect-inline-weight=math,table-parse-only}
 
 % Change the default url font:
 \urlstyle{rm}

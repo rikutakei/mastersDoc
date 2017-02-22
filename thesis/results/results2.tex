@@ -74,6 +74,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 	\begin{tabular}{lcccc}
 		& Gatza & Creighton & Cris & Fuentes-Mattei\\
 		\hline
+		\hline
 		\rule{0pt}{2.25ex}Akt & 1.000 & 0.5190 & 0.5900 & 0.5563 \\
 		\gls{bcat}            & 1.000 & 0.9897 & 0.9977 & 0.9905 \\
 		E2F1                  & 1.000 & 0.9646 & 0.8438 & 0.9193 \\
@@ -92,7 +93,8 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		\gls{stat3}           & 1.000 & 0.1902 & 0.9159 & 0.6167 \\
 		\gls{tgfb}            & 1.000 & 0.9918 & 0.2543 & 0.9890 \\
 		\gls{tnfa}            & 1.000 & 0.6046 & 0.9365 & 0.4315 \\
-
+		\hline
+		\hline
 	\end{tabular}
 \end{table}
 
@@ -103,6 +105,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 	\begin{tabular}{lcccc}
 		& Creighton & Gatza  & Fuentes-Mattei & Cris\\
 		\hline
+		\hline
 		\rule{0pt}{2.25ex} Cr & 1.000     & 0.9985 & 0.9872 & 0.9161 \\
 		Res                   & 1.000     & 0.9987 & 0.9898 & 0.9652 \\
 		CrOl                  & 1.000     & 0.9982 & 0.9926 & 0.9715 \\
@@ -112,6 +115,8 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		CaOl                  & 1.000     & 0.9983 & 0.9937 & 0.9677 \\
 		CaResOl               & 1.000     & 0.9984 & 0.9952 & 0.9642 \\
 		Original              & 1.000     & 0.9928 & 0.9862 & 0.9344 \\
+		\hline
+		\hline
 	\end{tabular}
 \end{table}
 
@@ -182,9 +187,9 @@ In the model that predicted the FM metagene scores, the obesity status of the sa
 			Linear Model & Variables & Estimate & P-value\\
 			\hline
 			\hline
-			\rule{0pt}{2.25ex}\gls{bmi}-only                           & \gls{bmi}  & -0.0016 & 0.717\\
+			\rule{0pt}{2.25ex}\gls{bmi} only                           & \gls{bmi}  & -0.0016 & 0.717\\
 			\hline
-			\rule{0pt}{2.25ex}\gls{bmi} status-only                    & Overweight & -0.0126 & 0.871\\
+			\rule{0pt}{2.25ex}\gls{bmi} status only                    & Overweight & -0.0126 & 0.871\\
                                                                        & Obese      & -0.0981 & 0.166\\
 			\hline
 			\rule{0pt}{2.25ex}\gls{bmi} and \gls{bmi} status           & \gls{bmi}  & 0.0109  & 0.123\\
@@ -238,20 +243,19 @@ It was not surprising that the \gls{pr} pathway metagene showed significance in 
 The significance of the Myc metagene in the model for FM metagene was difficult to interpret, as there was no reported association of FM metagene with Myc pathway by \citet{Fuentes-Mattei2014}.
 However, ``sustained cell proliferation'' was one of the cancer hallmarks that \citet{Fuentes-Mattei2014} had shown to be related to their obesity genetic signature, so the Myc pathway metagene may have picked up the proliferation signal in the FM metagene.
 
-Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with all of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only} and \cref{app:b}).
-
-\bfseries \num{6.06d-7}
+Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with each of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only} and \cref{app:b}).
+As expected, all of the linear models showed significant contribution of the \gls{pr} metagene scores to the model for all obesity metagenes (except FM metagene; \cref{app:b}).
 
 \begin{table}[htpb]
 	\centering
 	\caption{Description of the linear models used to predict the CR obesity metagene, using only the sample \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene scores}
 	\label{tab:lm_pr_only}
 	\begin{threeparttable}
-			\begin{tabular}{llrS}
+			\begin{tabular}{llr{\bfseries}S}
 				Linear Model & Variables & Estimate & {P-value}\\
 				\hline
 				\hline
-				\rule{0pt}{2.25ex}\gls{pr}-only                            & \gls{pr}   & 0.477  & {\bfseries \num{6.06d-7}}\tnote{*}\\
+				\rule{0pt}{2.25ex}\gls{pr} only                            & \gls{pr}   & 0.477  & {\bfseries \num{6.06d-7}}\tnote{1}\\
 				\hline
 				\rule{0pt}{2.25ex}\gls{bmi} and \gls{pr}                   & \gls{bmi}  & -0.002 & 0.586\\
                                                                            & \gls{pr}   & 0.478  & {\bfseries \num{6.35d-7}}\\
@@ -261,59 +265,68 @@ Since the \gls{pr} pathway metagene showed significant association in many of th
                                                                            & \gls{pr}   & 0.471  & {\bfseries \num{8.25d-7}}\\
 				\hline
 				\rule{0pt}{2.25ex}\gls{bmi}, \gls{bmi} status and \gls{pr} & \gls{bmi}  & 0.007  & 0.237\\
-                                                                           & Obese      & -0.188 & {\bfseries 0.081}\\
+                                                                           & Obese      & -0.188 & 0.081\\
                                                                            & Overweight & -0.049 & 0.516\\
                                                                            & \gls{pr}   & 0.459  & {\bfseries \num{1.54d-6}}\\
 				\hline
 				\hline
 			\end{tabular}
 			\begin{tablenotes}
-				\item [*] All values in bold are statistically significant (p \textless{} 0.05).
+				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
 			\end{tablenotes}
 	\end{threeparttable}
 \end{table}
-% \begin{table}[htpb]
-% 	\centering
-% 	\caption{Description of the linear models used to predict the CR obesity metagene, using only the sample \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene scores}
-% 	\label{tab:lm_pr_only}
-% 	\begin{threeparttable}
-% 			\begin{tabular}{llrS}
-% 				Linear Model & Variables & Estimate &P-value\\
-% 				\hline
-% 				\hline
-% 				\rule{0pt}{2.25ex}\gls{pr}-only                            & \gls{pr}   & 0.477  & \num{6.06d-7}\tnote{1}\\
-% 				\hline
-% 				\rule{0pt}{2.25ex}\gls{bmi} and \gls{pr}                   & \gls{bmi}  & -0.002 & 0.586\\
-%                                                                            & \gls{pr}   & 0.478  & 6.35 \times10^{-7}\\
-% 				\hline
-% 				\rule{0pt}{2.25ex}\gls{bmi} status and \gls{pr}            & Obese      & -0.085 & 0.176\\
-%                                                                            & Overweight & -0.011 & 0.875\\
-%                                                                            & \gls{pr}   & 0.471  & 8.25 \times10^{-7}\\
-% 				\hline
-% 				\rule{0pt}{2.25ex}\gls{bmi}, \gls{bmi} status and \gls{pr} & \gls{bmi}  & 0.007  & 0.237\\
-%                                                                            & Obese      & -0.188 & 0.081\\
-%                                                                            & Overweight & -0.049 & 0.516\\
-%                                                                            & \gls{pr}   & 0.459  & 1.54 \times10^{-6}\\
-% 				\hline
-% 				\hline
-% 			\end{tabular}
-% 			\begin{tablenotes}
-% 				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
-% 			\end{tablenotes}
-% 	\end{threeparttable}
-% \end{table}
 
+To determine whether any of the linear models were able to predict the corresponding obesity metagene scores, the predicted metagene scores were generated from the models and then compared with the original scores.
+The predictions were first made in Cris' data, where the metagene scores generated from the application of transformation matrices (from Gatza's data set) were used to make the predictions.
+The predicted metagenes were then compared with the true metagenes that were originally generated from the transformation matrices (\cref{fig:predict_cris_cris}).
 
+The predicted metagenes from the \gls{bmi} only, \gls{bmi} status only and \gls{bmi} and \gls{bmi} status linear models were not significantly related to the true metagene in many of the obesity metagenes; though \gls{bmi} and \gls{bmi} status model showed significance in some metagenes (\cref{app:b}).
+On the other hand, all of the predicted metagenes generated from the models that contained any of the pathway metagenes showed significant association with the true metagene scores in all of the obesity metagenes (\cref{fig:predict_cris_cris,app:b}).
+However, the $R^2$ values for all of the predicted metagenes against the true metagenes were very low ($R^2$ \textless{} 0.4).
+Furthermore, all of the plots showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the linear models generated may not be as good as it looks in \cref{fig:predict_cris_cris}.
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=1,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=2,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=3,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=4,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=5,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=6,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=7,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=74,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=71,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=72,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\includegraphics[page=73,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
+	\caption{Comparison of predicted Cr metagenes with the true Cr metagene in Cris' data}
+	\label{fig:predict_cris_cris}
+\end{figure}
 
+To confirm the results shown in Cris' data set (training set), the linear models were applied to Creighton's data (test set).
+As shown in \cref{fig:predict_cr_cris}, all of the predicted metagenes generated from the linear models were statistically significantly associated with the true metagenes, although there were some exceptions in the models for other obesity metagenes (see \cref{app:b}).
+Similar to the results from Cris' data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.45) and the data points were widely spread out in the plots.
+Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be clinically significant, as the association of the predicted values were only weakly associated with the true values.
+\\
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=1,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=2,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=3,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=4,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=5,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=6,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=7,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=74,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=71,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=72,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\includegraphics[page=73,width=0.32\linewidth]{results2/prediction_cr_with_cris}
+	\caption{Comparison of predicted Cr metagenes with the true Cr metagene in Creighton's data}
+	\label{fig:predict_cr_cris}
+\end{figure}
 
-
-
-
-
-
-
+\noindent
 
 
 
