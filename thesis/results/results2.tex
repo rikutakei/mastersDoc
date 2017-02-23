@@ -18,11 +18,19 @@ It seemed like the normalisation methods of the data in which the transformation
 This meant that all of the data sets had to be normalised with a single normalisation method, so \gls{rma} normalisation method was used as this method was more reliable than the \gls{mas} method.
 Therefore, Gatza's data set was batch corrected first (\cref{sub:batch_correction}), then normalised with \gls{rma} method and the scores were ranked based on the number of samples in the data set.
 
-One thing to be noted from these scatter plots was that there were some pathway signatures that were more variable than the others.
-As an example, the \gls{tgfb} metagenes were significantly more dispersed compared to the \gls{pr} metagenes, even though these metagenes were both generated similarly in the same data set (add figure).
+One thing noted from these scatter plots was that there were some pathway signatures that were more variable than the others.
+As an example, the \gls{tgfb} metagenes were significantly more dispersed compared to the \gls{pr} metagenes, even though these metagenes were both generated similarly in the same data set (\cref{fig:gt_rma_vs_mas}).
 These differences were seen in other data sets as well (\cref{app:b}).
 This result provided evidence that some of the pathway genetic signatures from the \citet{Gatza2010a} study were more consistent across different data sets than the others.
 \\
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=75,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
+	\includegraphics[page=97,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
+	\caption{Example plot}
+	\label{fig:gt_rma_vs_mas}
+\end{figure}
 
 \noindent
 Before Gatza's pathway metagenes were compared with the obesity associated metagenes, the direction of Gatza's pathway metagenes had to be checked to make sure the metagenes were in the correct direction (\cref{sub:metagene_direction}).
@@ -284,7 +292,7 @@ The predicted metagenes were then compared with the true metagenes that were ori
 The predicted metagenes from the \gls{bmi} only, \gls{bmi} status only and \gls{bmi} and \gls{bmi} status linear models were not significantly related to the true metagene in many of the obesity metagenes; though \gls{bmi} and \gls{bmi} status model showed significance in some metagenes (\cref{app:b}).
 On the other hand, all of the predicted metagenes generated from the models that contained any of the pathway metagenes showed significant association with the true metagene scores in all of the obesity metagenes (\cref{fig:predict_cris_cris,app:b}).
 However, the $R^2$ values for all of the predicted metagenes against the true metagenes were very low ($R^2$ \textless{} 0.4).
-Furthermore, all of the plots in \cref{fig:predict_cris_cris, app:b} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
+Furthermore, all of the plots in \cref{fig:predict_cris_cris,app:b} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
 
 \begin{figure}[htpb]
 	\centering
@@ -306,7 +314,7 @@ Furthermore, all of the plots in \cref{fig:predict_cris_cris, app:b} showed clea
 To confirm the results shown in Cris' data set (training set), the linear models were applied to Creighton's data (test set).
 As shown in \cref{fig:predict_cr_cris}, all of the predicted metagenes generated from the linear models were statistically significantly associated with the true metagenes, although there were some exceptions in the models for other obesity metagenes (see \cref{app:b}).
 Similar to the results from Cris' data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.45) and the data points were widely spread out in the plots.
-Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be relevant to the obesity metagenes which the models predict, as the association of the predicted values were only weakly associated with the true values.
+Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be relevant to the obesity metagenes which the models predict, as the predicted values were only weakly associated with the true values.
 \\
 
 \begin{figure}[htpb]

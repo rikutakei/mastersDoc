@@ -415,28 +415,15 @@ Unfortunately, there were no \glspl{deg} expressed in all eight cancer types, wh
 	\end{threeparttable}
 \end{table}
 
-\section{Pathways enriched in obesity associated genes (haven't finished)}
-\label{sec:pathways_enriched_in_obesity_associated_genes}
+\section{Pathways enriched in \gls{icgc} data sets}
+\label{sec:pathways_enriched_in_icgc_data_sets}
 
-To check whether there were any significant pathways enriched in any of the \gls{icgc} cancer data sets that were associated with obesity, pathway enrichment analysis was carried out on each cancer type separately and then all cancer types combined (see \cref{sec:pathway_enrichment_analysis}).
+To check whether there were any significant pathways enriched in any of the \gls{icgc} cancer data sets that were associated with obesity, pathway enrichment analysis was carried out on each cancer type separately and then all cancer types combined (\cref{sec:pathway_enrichment_analysis}).
+Each cancer type was normalised with voom (\cref{ssub:rna_seq_data}) and pathway enrichment analysis was carried out as described in \cref{sec:pathway_enrichment_analysis}.
+Unfortunately, there were no pathways significantly enriched in any of the \gls{icgc} cancer types when analysed independent of one another.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Since there were no pathways enriched in any of the cancer types when analysed individually, all of the \gls{icgc} cancer data sets were combined to see if there were any pathways enriched in the combined data set.
+The combined data set was generated in two ways: first combined data set was created by voom normalising each cancer data set separately, combine all of the normalised cancer data sets into one, then applied batch correction to the data set (\cref{sub:batch_correction}); and the second combined data set was created by combining the cancer data sets into one first, then the combined data was voom normalised, and finally batch correction was applied to obtain the final data set.
+Each of the combined data sets were analysed for enriched pathways, but there were no pathways significantly enriched in either data sets.
+These results suggested that there were no biological pathways associated with obesity in the \gls{icgc} cancer data sets.
 
