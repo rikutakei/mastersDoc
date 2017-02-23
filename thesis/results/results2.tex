@@ -284,7 +284,7 @@ The predicted metagenes were then compared with the true metagenes that were ori
 The predicted metagenes from the \gls{bmi} only, \gls{bmi} status only and \gls{bmi} and \gls{bmi} status linear models were not significantly related to the true metagene in many of the obesity metagenes; though \gls{bmi} and \gls{bmi} status model showed significance in some metagenes (\cref{app:b}).
 On the other hand, all of the predicted metagenes generated from the models that contained any of the pathway metagenes showed significant association with the true metagene scores in all of the obesity metagenes (\cref{fig:predict_cris_cris,app:b}).
 However, the $R^2$ values for all of the predicted metagenes against the true metagenes were very low ($R^2$ \textless{} 0.4).
-Furthermore, all of the plots showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the linear models generated may not be as good as it looks in \cref{fig:predict_cris_cris}.
+Furthermore, all of the plots in \cref{fig:predict_cris_cris, app:b} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
 
 \begin{figure}[htpb]
 	\centering
@@ -306,7 +306,7 @@ Furthermore, all of the plots showed clearly that the data points in the scatter
 To confirm the results shown in Cris' data set (training set), the linear models were applied to Creighton's data (test set).
 As shown in \cref{fig:predict_cr_cris}, all of the predicted metagenes generated from the linear models were statistically significantly associated with the true metagenes, although there were some exceptions in the models for other obesity metagenes (see \cref{app:b}).
 Similar to the results from Cris' data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.45) and the data points were widely spread out in the plots.
-Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be clinically significant, as the association of the predicted values were only weakly associated with the true values.
+Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be relevant to the obesity metagenes which the models predict, as the association of the predicted values were only weakly associated with the true values.
 \\
 
 \begin{figure}[htpb]
@@ -330,33 +330,48 @@ Again, these results suggested that the predicted metagene scores from the linea
 Lastly, since only the ``consistent'' pathway metagenes were picked from all of the available pathway metagene scores, linear models were constructed with all of the pathway metagenes in a step wise fashion.
 Step wise construction of a linear model is where the variables for a model are selected computationally depending on the contribution of the variable to the resuting linear model, and thus contains only the variables that ``matter'' to the linear model.
 Sample \gls{bmi}, \gls{bmi} status and all of the pathway metagene scores were used to generate the step wise linear model for each of the obesity metagenes.
+The linear models that resulted from the step wise selection of the variables were summarised in \cref{app:b}.
 
+These models were used to predict the obesity metagenes in Cris' data to test the performance of the models.
+All of the models were able to make statistically significant prediction of the obesity metagenes in Cris' data set (\cref{fig:stepwise_cris}).
+Unlike the previous models, the step wise models showed very high $R^2$ values, where most predictions had $R^2$ \textgreater{} 0.85.
+The statistical significance and the strong association of the predicted metagenes were observed in Creighton's data set as well (\cref{fig:stepwise_cr}).
+Though the $R^2$ values were slightly lower than those from Cris' data set, the $R^2$ values were more promising than the non-step wise linear models.
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=1,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=2,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=3,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=4,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=5,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=6,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=7,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=8,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=9,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\includegraphics[page=10,width=0.32\linewidth]{results2/stepwise_cris_cris}
+	\caption{Comparison of predicted obesity metagenes with the true obesity metagene in Cris' data}
+	\label{fig:stepwise_cris}
+\end{figure}
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[page=1,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=2,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=3,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=4,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=5,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=6,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=7,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=8,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=9,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\includegraphics[page=10,width=0.32\linewidth]{results2/stepwise_cr_cris}
+	\caption{Comparison of predicted obesity metagenes with the true obesity metagene in Creighton's data}
+	\label{fig:stepwise_cr}
+\end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Taken together, these results suggested that the variables included in these step wise models were associated with the obesity metagenes identified in Creighton's and FM's data sets.
+However, there were no single common pathway that was present in all of the models; although Akt, \gls{egfr} and \gls{pr} pathway metagenes were frequently included in many of the models.
+The role of the pathways included in the models and the possible biological links of these pathways to the obesity metagenes remain unclear, and should be the focus for future investigations.
 
 
