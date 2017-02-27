@@ -1,12 +1,80 @@
 \chapter{Discussion}
 \label{cha:discussion}
 
+To conclude this thesis, all of the results were re-examined and summarised to highlight the key findings from this project.
+%TODO: add a little more content to the next sentence
+There were many limitations to this project and these limitations were adressed in \cref{sec:limitations}.
+Lastly, a conclusion was drawn from all of the evidences from this project and suggestions for future aims and experiments were made.
+
+
 \section{Summary of the results}
 \label{sec:summary_of_the_results}
 
 % TODO: -- Recap work
 % TODO: -- Put into context of very current literature
 % TODO:   	==> How does this project fit into the literature
+
+There were two main aims for this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the smaples that were not obese.
+These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
+\\
+
+\noindent
+\cref{cha:obesity_genetic_signatures_and_cancer} focussed mainly on establishing the link between the obesity associated genetic signatures from the \citet{Creighton2012} and the \citet{Fuentes-Mattei2014} studies with the sample \gls{bmi} and \gls{bmi} status, as reported by their studies.
+The obesity metagene generated from the obesity signature from the \citet{Creighton2012} study was able to ``capture'' the overall genetic expression patterns of the samples and significantly correlated with the sample \gls{bmi} and \gls{bmi} status in the CR data set.
+This result was in accordance with the description provided by Creighton \textit{et al.}.
+
+To see whether this obesity signature was able to show similar association with the sample \gls{bmi} and \gls{bmi} status in other cancer data sets, metagenes were created in each of the cancer data sets with the transformation matrix generated in the Creighton \textit{et al.} data set.
+The obesity metagenes were reflective of the gene expression patterns of the genes in the Creighton \textit{et al.} genetic signature where low and high metagene scores  corresponded to low and high gene expressions, respectively.
+Although obesity metagene scores reflected the gene expression patterns, the metagene was not significantly associated with the sample \gls{bmi}/\gls{bmi} status in any of the other cancer data sets, except for  the \gls{blca} data set which showed significant association only with the overweight group (discussed later in this section).
+
+Initially, these results were thought to be due to the obesity associated genetic signature being specific only to the Creighton \textit{et al.} data set.
+Therefore, a different obesity associated genetic signature from the \citet{Fuentes-Mattei2014} study was used to see whether this signature was able to show significant association with the sample \gls{bmi} and \gls{bmi} status in other cancer data sets.
+The results were similar to the obesity metagene from the \citet{Creighton2012} study; obesity metagene scores reflected the gene expression patterns but the scores were not significantly associated with the sample \gls{bmi}/\gls{bmi} status in any of the cancer data sets (except the \gls{blca} data set).
+Together with the results from CR obesity metagene, these results suggested that both CR and FM genetic signatures were only significant in the data set in which the signature was derived in (though this was not confirmed in the Fuentes-Mattei \textit{et al.} data set, as no sample \gls{bmi} information was available).
+
+The fact that both obesity associated genetic signatures identified by Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} showed no sign of significant association with sample \gls{bmi}/\gls{bmi} status in majority of the cancer data sets raised a question of whether these signatures were actually related to obesity, or a different clinical variable within the data set.
+This question led to the identification of the various versions of obesity associated genetic signatures in \cref{sub:identification_of_obesity_associated_genetic_signatures} that were controlled for clinical variables in the Creighton \textit{et al.} data set.
+All of the metagenes created from these clinical variable-controlled genetic signatures were consistent with the gene expression patterns but none of the metagenes showed significant association with the sample \gls{bmi}/\gls{bmi} status in the data set other than the Creighton \textit{et al.} data set, with the exception of \gls{blca} data set.
+
+In the \gls{blca} data set, many of the metagenes were associated with the overweight group with significant P-value and/or \gls{anova} P-value, but never with the obese group.
+This was unexpected, as all of the metagenes were generated based on the list of \glspl{deg} between the obese and the non-obese groups in the Creighton \textit{et al.} data set, and not the overweight group.
+In addition to the association of the metagenes with the overweight group, some metagenes showed significant association with sample \gls{bmi} in the \gls{blca} data set.
+It was difficult to conclude with confidence that those metagenes that showed significant association with the overweight group in \gls{blca} data set was truly due to the effect of the metagenes, as these metagenes were generated from the obese group and not the overweight group in the original data sets,  and there were no significant association of these metagenes in any other \gls{icgc} cancer data sets either.
+With that said, there is a possibility that the genotypes of the samples that are overweight in \gls{blca} data set are similar to the genotypes of the samples that are obese in the Creighton \textit{et al.} data set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
