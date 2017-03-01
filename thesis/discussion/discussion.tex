@@ -14,7 +14,7 @@ Lastly, a conclusion was drawn from all of the evidences from this project and s
 % TODO: -- Put into context of very current literature
 % TODO:   	==> How does this project fit into the literature
 
-There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the smaples that were not obese.
+There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
 These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
 \\
 
@@ -78,46 +78,35 @@ The heatmap revealed that all of the obesity metagenes that have originated from
 The clustering of the obesity metagene was not surprising, as the results from \cref{sub:_novel_obesity_associated_signatures_and_sample_bmi} already showed that the metagenes were highly correlated with one another.
 This result showed that all of the obesity metagenes created from the Creighton \textit{et al.} data associated with an unknown genetic signature that was not related to any of the pathway associated genetic signatures from the \citet{Gatza2010a} study.
 
-The obesity metagene from the \citet{Fuentes-Mattei2014} study was a cluster on its own, where the metagene did not cluster with any of the Creighton \textit{et al.} obesity metagenes nor with the Gatza \textit{et al.} pathway metagene.
+The obesity metagene from the \citet{Fuentes-Mattei2014} study was a cluster of its own, where the metagene did not group with any of the Creighton \textit{et al.} obesity metagenes nor with any of the Gatza \textit{et al.} pathway metagene.
 Though Fuentes-Mattei \textit{et al.} suggested a biological link with the Akt/\gls{mtor} pathway in their study, the result from the heatmap showed otherwise.
+This may have been due to the inconsistency of the pathway metagene scores across different data as mentioned in \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}.
+In fact, the Akt pathway metagene scores were variable across different cancer data sets (\cref{app:b}), which suggested the Akt pathway genetic signature was of poor quality.
 
+Though how unreliable the Akt pathway metagene scores may be, there is still a possibility that the FM obesity associated genetic signature may be unrelated to the Akt pathway, as Fuentes-Mattei \textit{et al.} validated their human breast tumour-derived genetic signature in a mouse model \citep{Fuentes-Mattei2014}.
+Mouse models are indeed helpful in studying biological processes \textit{in vivo}, especially when the cause and the outcome of the disease is well established.
+However, cancer is a complex genetic disorder which may be difficult to model accurately in mice.
+Furthermore, obesity is a disease that have a variety of biological effects (for example the release of adipokines and the disruption of the hormone levels) that could be acting in a different way in mice compared to humans, which further complicates the causal relationship between obesity and cancer.
+Nevertheless, the evidence shown by \citet{Fuentes-Mattei2014} was convincing and the role of Akt/\gls{mtor} pathway in obesity and cancer should be explored in greater details.
+(include this paragraph or not... tbh, I think this is a weak argument)
 
+To further investigate whether there were any evidence of a pathway signature being associated with the obesity associated genetic signatures, linear models were created in Cris' data set with the pathway metagene scores.
+First, linear models were created with the sample \gls{bmi}, \gls{bmi} status and a selection of the most ``consistent'' pathway metagene scores (based on the consistency across different data sets).
+From these linear models, \gls{pr} pathway metagene scores showed significant contribution to the model in predicting the obesity associated metagene scores in all of the linear models (apart from the FM obesity metagene).
+Therefore, linear models were also created with \gls{pr} pathway metagene in combination with the sample \gls{bmi}/\gls{bmi} status.
 
+The predictions of the obesity metagene scores were made using the linear models created in Cris' data set.
+All of the predicted obesity metagene scores significantly correlated with the true obesity metagene scores in both Cris' and Creighton's data sets.
+However, the $R^2$-values for all of these predictions were low (highest $R^2$ $\approx$ 0.42) with highly variable data points which suggested that, although the predictions reflected the true values significantly, the variables included in the linear models may not be as relevant to the obesity metagenes as it may seem from these plots.
 
+Since linear models were created only with the ``consistent'' pathway metagene scores, a step wise method was used to generate linear models that included all of the variables that allowed the model to predict the true obesity metagene the best.
+As shown by the results in \cref{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}, all of the models predicted the true obesity metagene scores with high $R^2$-value in Creighton's data set (highest $R^2$ $\approx$ 0.88) and were statistically significant.
+This meant that the variables that were significant in the linear models played a role in the obesity associated genetic signatures.
+However, out of all of the step wise linear models created, there was no single variable that was common to all of the linear models; although Akt, \gls{egfr} and \gls{pr} were included in many of the models, which suggested that these pathway signatures may have an important role in the obesity associated genetic signatures.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+With that said, even if these variables were related to the obesity associated genetic signatures, the fact that these results depend on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
+This was due to the lack of consistency of the metagenes across different cancer data sets, where more than half of the pathway metagenes showed a correlation of less than 0.8 in at least one data set (\cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes,app:b}), which meant that at least half of the signatures were specific to the Gatza \textit{et al.} data set.
+Thus, without further validation of the quality of the pathway associated genetic signatures and verification of the roles of these signatures in the biological relationship between obesity and cancer, these results should be interpreted with great caution.
 
 \section{Limitations}
 \label{sec:limitations}
