@@ -14,11 +14,9 @@ Lastly, a conclusion was drawn from all of the evidences from this project and s
 % TODO: -- Put into context of very current literature
 % TODO:   	==> How does this project fit into the literature
 
-There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
-These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
-\\
+\subsection{Obesity associated genetic signatures}
+\label{sub:obesity_associated_genetic_signatures}
 
-\noindent
 \cref{cha:obesity_genetic_signatures_and_cancer} focussed mainly on establishing the link between the obesity associated genetic signatures from the \citet{Creighton2012} and the \citet{Fuentes-Mattei2014} studies with the sample \gls{bmi} and \gls{bmi} status, as reported by their studies.
 The obesity associated genetic signature from the \citet{Creighton2012} study was examined first.
 The obesity metagene generated from the obesity signature from the \citet{Creighton2012} study was able to ``capture'' the overall genetic expression patterns of the samples, where low and high metagene scores  corresponded to low and high gene expressions, respectively.
@@ -27,7 +25,7 @@ Furthermore, the obesity metagene significantly correlated with the sample \gls{
 
 To see whether this obesity signature was able to show similar association with the sample \gls{bmi} and \gls{bmi} status in other cancer data sets, metagenes were created in each of the cancer data sets with the transformation matrix generated in the Creighton \textit{et al.} data set.
 Like in Creighton \textit{et al.} data set, the obesity metagenes were reflective of the gene expression patterns of the genes in the genetic signature.
-Although obesity metagene scores reflected the gene expression patterns, the metagene was not significantly associated with the sample \gls{bmi}/\gls{bmi} status in any of the other cancer data sets, except for  the \gls{blca} data set which showed significant association only with the overweight group (discussed later in this section).
+Although obesity metagene scores reflected the gene expression patterns, the metagene was not significantly associated with the sample \gls{bmi}/\gls{bmi} status in any of the other cancer data sets, except for  the \gls{blca} data set which showed significant association only with the overweight group (discussed later in \cref{sub:blca_and_obesity_metagenes}).
 
 Initially, these results were thought to be due to the obesity associated genetic signature being specific only to the Creighton \textit{et al.} data set.
 Therefore, a different obesity associated genetic signature from the \citet{Fuentes-Mattei2014} study was used to see whether this signature was able to show significant association with the sample \gls{bmi} and \gls{bmi} status in other cancer data sets.
@@ -38,7 +36,10 @@ The fact that both obesity associated genetic signatures identified by Creighton
 This question led to the identification of the various versions of obesity associated genetic signatures in \cref{sub:identification_of_obesity_associated_genetic_signatures} that were controlled for clinical variables (sex, age, ethnicity, menopause status, tumour grade, \gls{er}/\gls{her2}/\gls{pr} statuses and \gls{ln} status) in the Creighton \textit{et al.} data set.
 All of the metagenes created from these clinical variable-controlled genetic signatures were consistent with the gene expression patterns but none of the metagenes showed significant association with the sample \gls{bmi}/\gls{bmi} status in the data set other than the Creighton \textit{et al.} data set, with the exception of the overweight group in the \gls{blca} data set.
 
-In the \gls{blca} data set, many of the metagenes were associated with the overweight group with significant P-value and/or \gls{anova} P-value, but never with the obese group.
+\subsection{\gls{blca} data set and obesity metagenes}
+\label{sub:blca_and_obesity_metagenes}
+
+In the \gls{blca} data set, many of the obesity metagenes were associated with the overweight group with significant P-value and/or \gls{anova} P-value, but never with the obese group.
 This was unexpected, as all of the metagenes were generated based on the list of \glspl{deg} between the obese and the non-obese groups in the Creighton \textit{et al.} data set, and not the overweight group.
 In addition to the association of the metagenes with the overweight group, some metagenes showed significant association with sample \gls{bmi} in the \gls{blca} data set.
 It was difficult to conclude with confidence that those metagenes that showed significant association with the overweight group in \gls{blca} data set was truly due to the effect of the metagenes, as these metagenes were generated from the obese group and not the overweight group in the original data sets.
@@ -47,6 +48,9 @@ Furthermore, there were no significant association of these metagenes in any oth
 % TODO: search for any evidence of BLCA with breast cancers - add to this paragraph
 With that said, there is a possibility that the genotypes of the samples that are overweight in \gls{blca} data set are similar to those samples that are obese in the Creighton \textit{et al.} data set.
 \textit{(TODO: search for any evidence of relationship/connection between BLCA and breast cancers - add to this paragraph)}
+
+\subsection{Common obesity associated genes and pathways across multiple cancer types}
+\label{sub:common_obesity_associated_genes_and_pathways_across_multiple_cancer_types}
 
 The results so far have provided strong evidence that the obesity associated genetic signatures from the Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} data sets were not associated with the sample \gls{bmi}/\gls{bmi} status.
 In the last attempt to identify any genes that were common across multiple cancer types that were also associated with obesity, gene expression analyses were carried out on the \gls{icgc} cancer data sets (\cref{sec:common_genes_across_multiple_cancer_types}).
@@ -57,18 +61,24 @@ The simulation results also showed that the number of \glspl{deg} identified in 
 However, as observed by the results from the simulation, there were many genes identified by chance alone, which suggested that majority of the \glspl{deg} found in the eight cancer types were false positives.
 This apparently high level of \Glspl{type1} was not only observed in the \gls{icgc} data sets, but also in the Creighton \textit{et al.} data set when gene expression analyses were carried out to generate various obesity associated genetic signatures in \cref{sub:identification_of_obesity_associated_genetic_signatures}.
 
-The fact that there were so many false positives in the \glspl{deg} from the \gls{icgc} data sets indicated that the use of the sample \gls{bmi}/\gls{bmi} status as the variable for gene expression analysis was prone to \Glspl{type1}.
-This meant that there were very little evidence of true obesity associated genetic signatures in the data sets that have been explored in this project, or perhaps the sample \gls{bmi}/\gls{bmi} status was not enough to pin point the underlying biological relationship between obesity and cancer.
-Even if \gls{bmi} and/or \gls{bmi} status was enough to identify the genes that were truly associated with obesity, it would not be a trivial task to identify the truly obesity associated genes from those that were not.
-This raises an important question of whether the sample \gls{bmi}/\gls{bmi} status was enough to uncover the true association between obesity and cancer (adressed in \cref{sec:limitations,sec:future_directions}).
-
 Finally, pathway enrichment analysis was carried out in the \gls{icgc} data sets to investigate whether there were any pathways that significantly associated with obesity (\cref{sec:pathways_enriched_in_icgc_data_sets}).
 There were no pathways enriched in any of the \gls{icgc} data sets, nor the combined \gls{icgc} data set.
 Even though there was no significantly enriched  pathway in the \gls{icgc} data sets, it was evident from the obesity metagenes from Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} data sets that these metagenes were associated with the gene expressions.
 This suggested that the metagenes were able to identify some sort of genetic pattern in the data, even though these metagenes were not significantly associated with obesity.
-\\
 
-\noindent
+\subsection{False positives in gene expression analyses}
+\label{sub:false_positives_in_gene_expression_analyses}
+
+The fact that there were so many false positives in the \glspl{deg} from the \gls{icgc} data sets indicated that the use of the sample \gls{bmi}/\gls{bmi} status as the ``treatment'' conditions for gene expression analysis was prone to \Glspl{type1}.
+This meant that there were very little evidence of true obesity associated genetic signatures in any of the data sets that have been explored in this project, or perhaps the sample \gls{bmi}/\gls{bmi} status was not enough to pinpoint the underlying biological relationship between obesity and cancer.
+Even if the sample \gls{bmi} and/or \gls{bmi} status was enough to identify the genes that were truly associated with obesity, it would not be a trivial task to identify the truly obesity associated genes from those that were not.
+This raises an important question of whether the sample \gls{bmi}/\gls{bmi} status was appropriate to uncover the true association between obesity and cancer (adressed in \cref{sec:limitations,sec:future_directions}).
+
+\textit{(need to add more content here...?)}
+
+\subsection{Genetic signature captured by the obesity metagenes}
+\label{sub:genetic_signature_captured_by_the_obesity_metagenes}
+
 In \cref{cha:obesity_associated_genetic_signature_and_pathway_signatures}, analyses were carried out to determine what the genetic pattern the obesity metagenes from \cref{cha:obesity_genetic_signatures_and_cancer} were associating with.
 The pathway associated genetic signatures from the \citet{Gatza2010a} study were used to establish the biological connection with the obesity associated genetic signatures.
 In order to make the obesity and pathway associated genetic signatures comparable with one another, the orientations of the metagenes were examined so that all of the metagenes were ``correct'' (\cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}).
@@ -90,10 +100,17 @@ Furthermore, obesity is a disease that have a variety of biological effects (for
 Nevertheless, the evidence shown by \citet{Fuentes-Mattei2014} was convincing and the role of Akt/\gls{mtor} pathway in obesity and cancer should be explored in greater details.
 (include this paragraph or not... tbh, I think this is a weak argument)
 
+\subsection{Linear models to predict obesity metagenes}
+\label{sub:linear_models_to_predict_obesity_metagenes}
+
 To further investigate whether there were any evidence of a pathway signature being associated with the obesity associated genetic signatures, linear models were created in Cris' data set with the pathway metagene scores.
 First, linear models were created with the sample \gls{bmi}, \gls{bmi} status and a selection of the most ``consistent'' pathway metagene scores (based on the consistency across different data sets).
-From these linear models, \gls{pr} pathway metagene scores showed significant contribution to the model in predicting the obesity associated metagene scores in all of the linear models (apart from the FM obesity metagene).
-Therefore, linear models were also created with \gls{pr} pathway metagene in combination with the sample \gls{bmi}/\gls{bmi} status.
+From these linear models, \gls{pr} pathway metagene scores showed significant contribution to the model in predicting the obesity associated metagene scores in all of the linear models, with the exception of the FM obesity metagene (where Myc was the significant variable; \cref{app:b}).
+
+This was not surprising since all but FM obesity metagene were derived from the Creighton \textit{et al.} data set, and therefore the FM obesity metagene was likely to be different to those from the Creighton \textit{et al.} data set.
+Adding to this, difference in these metagenes were also shown in the heatmap of the obesity and pathway metagenes mentioned earlier, where the FM metagene clustered with neither the CR obesity metagenes nor with any other pathway metagenes.
+This implied that the FM metagene differed fundamentally from the CR obesity metagenes.
+Nevertheless, to clarify the significance of the \gls{pr} pathway with the obesity metagenes, linear models were also created with \gls{pr} pathway metagene in combination with the sample \gls{bmi}/\gls{bmi} status.
 
 The predictions of the obesity metagene scores were made using the linear models created in Cris' data set.
 All of the predicted obesity metagene scores significantly correlated with the true obesity metagene scores in both Cris' and Creighton's data sets.
@@ -104,12 +121,30 @@ As shown by the results in \cref{sec:prediction_of_obesity_associated_metagene_w
 This meant that the variables that were significant in the linear models played a role in the obesity associated genetic signatures.
 However, out of all of the step wise linear models created, there was no single variable that was common to all of the linear models; although Akt, \gls{egfr} and \gls{pr} were included in many of the models, which suggested that these pathway signatures may have an important role in the obesity associated genetic signatures.
 
+\subsection{Significance of the pathway associated signatures}
+\label{sub:significance_of_pr_pathway}
+
+% -- PR may have been significant only because it was from Cris' data?
+
 With that said, even if these variables were related to the obesity associated genetic signatures, the fact that these results depend on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
 This was due to the lack of consistency of the metagenes across different cancer data sets, where more than half of the pathway metagenes showed a correlation of less than 0.8 in at least one data set (\cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes,app:b}), which meant that at least half of the signatures were specific to the Gatza \textit{et al.} data set.
 Thus, without further validation of the quality of the pathway associated genetic signatures and verification of the roles of these signatures in the biological relationship between obesity and cancer, these results should be interpreted with great caution.
 
 \section{Limitations}
 \label{sec:limitations}
+
+\subsection{Definition of obesity}
+\label{sub:definition_of_obesity}
+
+
+
+
+
+
+\subsection{Quality of the data}
+\label{sub:quality_of_the_data}
+
+% talk about number of samples...?
 
 % -- Limitations of this project
 
@@ -140,8 +175,15 @@ Thus, without further validation of the quality of the pathway associated geneti
 % -- FM metagene not clustering with AKT
 %		-- due to shitty akt pathway signature, or difference in mouse model.
 
-% Linear model prediction stuff
-% -- PR may have been significant only because it was from Cris' data?
+
+\subsection{Quality of the genetic signatures}
+\label{sub:quality_of_the_genetic_signatures}
+
+
+
+
+
+
 
 
 
@@ -149,6 +191,11 @@ Thus, without further validation of the quality of the pathway associated geneti
 \section{Conclusion}
 \label{sec:conclusion}
 
+There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
+These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
+\\
+
+\noindent
 
 
 
@@ -157,7 +204,6 @@ Thus, without further validation of the quality of the pathway associated geneti
 \section{Future directions}
 \label{sec:future_directions}
 
-% -- future directions
 
 
 
