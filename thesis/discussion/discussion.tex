@@ -13,6 +13,9 @@ Lastly, a conclusion was drawn from all of the evidences from this project and s
 % TODO: -- Put into context of very current literature
 % TODO:   	==> How does this project fit into the literature
 
+% There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
+% These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively, and will be answered in \cref{sec:conclusion}.
+
 \subsection{Obesity associated genetic signatures}
 \label{sub:obesity_associated_genetic_signatures}
 
@@ -35,7 +38,7 @@ The fact that both obesity associated genetic signatures identified by Creighton
 This question led to the identification of the various versions of obesity associated genetic signatures in \cref{sub:identification_of_obesity_associated_genetic_signatures} that were controlled for clinical variables (sex, age, ethnicity, menopause status, tumour grade, \gls{er}/\gls{her2}/\gls{pr} statuses and \gls{ln} status) in the Creighton \textit{et al.} data set.
 All of the metagenes created from these clinical variable-controlled genetic signatures were consistent with the gene expression patterns but none of the metagenes showed significant association with the sample \gls{bmi}/\gls{bmi} status in the data set other than the Creighton \textit{et al.} data set, with the exception of the overweight group in the \gls{blca} data set.
 
-\subsection{\gls{blca} data set and obesity metagenes}
+\subsection{\gls{blca} data set and the obesity metagenes}
 \label{sub:blca_and_obesity_metagenes}
 
 In the \gls{blca} data set, many of the obesity metagenes were associated with the overweight group with significant P-value and/or \gls{anova} P-value, but never with the obese group.
@@ -65,7 +68,7 @@ There were no pathways enriched in any of the \gls{icgc} data sets, nor the comb
 Even though there was no significantly enriched  pathway in the \gls{icgc} data sets, it was evident from the obesity metagenes from Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} data sets that the obesity metagenes were associated with the sample gene expressions.
 This suggested that the metagenes were able to identify some sort of genetic pattern in the data, even though these metagenes were not significantly associated with obesity.
 
-\subsection{False positives in gene expression analyses}
+\subsection{False positives in the gene expression analyses}
 \label{sub:false_positives_in_gene_expression_analyses}
 
 The fact that there were so many false positives in the \glspl{deg} from the \gls{icgc} data sets indicated that the use of the sample \gls{bmi}/\gls{bmi} status as the ``treatment'' conditions for gene expression analysis was prone to \Glspl{type1}.
@@ -99,7 +102,7 @@ Furthermore, obesity is a disease that have a variety of biological effects (for
 Nevertheless, the evidence shown by \citet{Fuentes-Mattei2014} was convincing and the role of Akt/\gls{mtor} pathway in obesity and cancer should be explored in greater details.
 \textit{(include this paragraph or not... tbh, I think this is a weak argument)}
 
-\subsection{Linear models to predict obesity metagenes}
+\subsection{Linear models to predict the obesity metagenes}
 \label{sub:linear_models_to_predict_obesity_metagenes}
 
 To further investigate whether there were any evidence of a pathway signature being associated with the obesity associated genetic signatures, linear models were created in Cris' data set with the pathway metagene scores.
@@ -120,14 +123,12 @@ As shown by the results in \cref{sec:prediction_of_obesity_associated_metagene_w
 This meant that the variables that were significant in the linear models played a role in the obesity associated genetic signatures.
 However, there was no single variable that was common to all of the linear models, but Akt, \gls{egfr} and \gls{pr} were included in many of the models, which suggested that these pathway signatures may have an important role in the obesity associated genetic signatures.
 
-\subsection{Significance of the pathway associated signatures with obesity associated signatures}
+\subsection{Significance of the pathway associated signatures with the obesity associated signatures}
 \label{sub:significance_of_pr_pathway}
-
-% -- PR may have been significant only because it was from Cris' data?
 
 The linear models that were created from the ``consistent'' pathway signatures in Cris' data set showed significant association of the \gls{pr} pathway with the obesity metagenes.
 But was this due to the true biological relationship between the \gls{pr} pathway and the obesity metagenes, or only because the models were created in Cris' data set?
-In fact, the proportion of the samples that were \gls{pr}$^+$ was greater in Cris' data set (62 \gls{pr}$^+$ and 37 \gls{pr}$^-$) compared with the Creighton's data set (48 \gls{pr}$^+$ and 50 \gls{pr}$^-$), which implied that the Cris' data set was biased towards \gls{pr} status and hence \gls{pr} pathway signature.
+In fact, the proportion of the samples that were \gls{pr}$^+$ was greater in Cris' data set (62 \gls{pr}$^+$ and 37 \gls{pr}$^-$ samples) compared with the Creighton's data set (48 \gls{pr}$^+$ and 50 \gls{pr}$^-$ samples), which implied that the Cris' data set was biased towards \gls{pr} status and hence \gls{pr} pathway signature.
 
 However, with this logic, \gls{er} pathway signature would have also been biased, as the  sample  \gls{er} status was similar to the \gls{pr} status in either data sets: 72 and 58 \gls{er}$^+$ and 27 and 42 \gls{er}$^-$ samples in Cris' and Creighton's data sets, respectively.
 The fact that the \gls{er} pathway signature was not significant in the models suggested that the obesity metagenes were related to the \gls{pr} pathway irrespective of the sample \gls{pr} status.
@@ -135,22 +136,50 @@ With that said, the \gls{pr} status of a sample does not necessarily reflect the
 
 In the step wise linear models, many variables were identified to be significantly associated with the obesity metagenes.
 With that said, even if these variables were related to the obesity associated genetic signatures, the fact that these results depend on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
-This was due to the lack of consistency of the metagenes across different cancer data sets, where more than half of the pathway metagenes showed a correlation of less than 0.8 in at least one data set (\cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes,app:b}), which meant that at least half of the signatures were specific to the Gatza \textit{et al.} data set.
+This was due to the lack of consistency of the metagenes across different cancer data sets, where more than half of the pathway metagenes showed a correlation of less than 0.8 in at least one data set (\cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes,app:b}).
+This meant that at least half of the signatures were specific to the Gatza \textit{et al.} data set and could be highly variable in other data sets.
 Thus, without further validation of the quality of the pathway associated genetic signatures and verification of the roles of these signatures in the biological relationship between obesity and cancer, these results should be interpreted with great caution.
 
 \section{Limitations}
 \label{sec:limitations}
 
+% There were many limitations to this project, though some have already been mentioned in \cref{sec:summary_of_the_results}.
+
 \subsection{Definition of obesity}
-\label{sub:definition_of_obesity}
+\label{sub:discussion_definition_of_obesity}
 
+First and possibly the most important limitation to this project was the use of \gls{bmi} as a measurement for obesity and its subsequent classification of the samples based on \gls{bmi}.
+It was important to define the obese phenotype accurately, as all of the obesity associated genetic signatures, gene expression analyses and pathway enrichment analysis were dependent on the patient \gls{bmi} status.
+\Gls{bmi} is perhaps the most popular measurement to estimate the central adiposity owing to the relative ease of measurement in clinical settings, and hence used in various clinical trials and large epidemiological studies as an indication of the patients' metabolic state.
+However, there have been studies that showed other measurements, such as waist-to-height ratio and waist-to-hip ratio, to be a better representation of the central adiposity of the patient \citep{Dalton2003,Lee2008}.
 
+Perhaps the reason why there were so many false positives when gene expression analyses were carried out in \cref{sub:false_positives_in_gene_expression_analyses} was because \gls{bmi} was used to classify the patients into their corresponding \gls{bmi} statuses, instead of another measurement.
+It was likely that the sample \gls{bmi} (and therefore \gls{bmi} status) was not good enough a phenotypic characteristic to describe the underlying biology driven by obesity.
+Since the gene expression analyses were based on such ``vague'' parameter, it may have picked up so many genes that were apparently related to obesity when in fact the genes were not related to obesity at all.
 
-
-
+Ideally, multiple measurements that are indicative of obesity should be made in order to determine the obesity status of the patients to make a more accurate classification.
+% Taking these extra measurements could be the difference between 
+Additional measurements such as blood lipid profiles and insulin levels may also help understand the underlying biological state in which the patients are in, and would greatly help focus on the genes that are truly affecting the patients.
+However, these measurements will be difficult to carry out in a systematic fashion in a clinical setting, and to collate existing patient data with these measurements to make a data set that is large enough for the analyses done in this project may be impossible.
+Nevertheless, even the measurement of waist circumference will significantly help describe the obesity phenotype more accurately in future investigations.
 
 \subsection{Quality of the data}
 \label{sub:quality_of_the_data}
+
+Second limitation was the quality of the data sets in which this project have used.
+All of the data sets used in this project were from an online and publicly available source, and the types of data sets used were either microarray or \gls{rnaseq} data.
+
+First problem -- different studies generated different data sets in a different way/method
+
+second problem -- micorarry vs. rna seq data
+
+third problem -- pure quality of the data
+
+
+
+
+
+
 
 % talk about number of samples...?
 
@@ -187,8 +216,8 @@ Thus, without further validation of the quality of the pathway associated geneti
 \subsection{Quality of the genetic signatures}
 \label{sub:quality_of_the_genetic_signatures}
 
-
-
+The final limitation to consider was the quality of the genetic signatures used in this project.
+This limitation is partly related to the previous section, as all of the genetic signatures were derived from the data sets used by other groups.
 
 
 
@@ -201,9 +230,10 @@ Thus, without further validation of the quality of the pathway associated geneti
 
 There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
 These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
-\\
 
-\noindent
+As shown clearly by the results from \cref{cha:obesity_genetic_signatures_and_cancer}, there seemed to be no  genetic signature that were able to differntiate between the samples that were obese from those that were not, across different cancer types.
+
+Furthermore, there seemed to be no genes that were differentially expressed between the obese and the non-obese patients that were also common between different cancer types.
 
 
 
