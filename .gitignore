@@ -32,3 +32,4 @@
 *.fls
 *.fdb_latexmk
 *pk
+.DS_Store

@@ -132,7 +132,7 @@ In fact, the proportion of the samples that were \gls{pr}$^+$ was greater in Cri
 
 However, with this logic, \gls{er} pathway signature would have also been biased, as the  sample  \gls{er} status was similar to the \gls{pr} status in either data sets: 72 and 58 \gls{er}$^+$ and 27 and 42 \gls{er}$^-$ samples in Cris' and Creighton's data sets, respectively.
 The fact that the \gls{er} pathway signature was not significant in the models suggested that the obesity metagenes were related to the \gls{pr} pathway irrespective of the sample \gls{pr} status.
-With that said, the \gls{pr} status of a sample does not necessarily reflect the level of the \gls{pr} pathway activity, the samples in Cris' data may have stronger \gls{pr} characteristics than the Creighton's data and therefore cannot deny the possibility of the bias.
+With that said, the \gls{pr} status of a sample does not necessarily reflect the level of the \gls{pr} pathway activity; the samples in Cris' data may have stronger \gls{pr} characteristics than the Creighton's data and therefore cannot deny the possibility of the bias.
 
 In the step wise linear models, many variables were identified to be significantly associated with the obesity metagenes.
 With that said, even if these variables were related to the obesity associated genetic signatures, the fact that these results depend on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
@@ -238,25 +238,15 @@ This limitation is partly related to \cref{sub:quality_of_the_data}, as  the ide
 Firstly, the obesity signatures identified by both Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} relied on the definition of obesity based on the sample \gls{bmi} values.
 As discussed in \cref{sub:discussion_definition_of_obesity}, the use of \gls{bmi} may not have been the best measurement for central adiposity.
 In fact, both Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} signatures associated with different pathway associated signatures in \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes,sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}, which suggested that obesity as defined by \gls{bmi} was not enough to reveal the underlying biological characteristic of obesity, and hence showed association with different pathway signatures.
-Furthermore, as mentioned in \cref{sub:quality_of_the_data}, it was likely that the Creighton \textit{et al.} data set, and perhaps other data sets as well, was of poor quality and may have affected the ability of the signatures as a marker for obesity in cancer.
+Furthermore, as mentioned in \cref{sub:quality_of_the_data}, it was likely that the Creighton \textit{et al.} data set (and perhaps other data sets as well) was of poor quality and may have affected the ability of the generated signatures as a marker for obesity in cancer.
 
-Secondly for the pathway associated genetic signatures, 
+Secondly, the method in which the pathway associated genetic signatures were defined in the Gatza \textit{et al.} study may have been questionable.
+In their studies, Gatza \textit{et al.} used model cell lines to identify the pathway associated genetic signatures by altering the expression of the representative gene for the pathway, and decided all of the genes affected by the change in representative gene expression were associated with that pathway \citep{Gatza2010a} (add Gatza's old paper).
+However, some of these pathway associated genetic signatures were derived in different cell lines to one another, which meant that it was possible for some of the pathway signatures to be defined incorrectly.
+In fact, as seen in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study,sec:pathway_associated_metagenes_and_obesity_associated_metagenes}, some pathway signatures produced more consistent metagenes from the data sets than the other signatures.
+These results were merely an indication that the pathway signatures were generated incorrectly and it was not possible to determine whether these signatures were truly associated to the corresponding pathways.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Taken together, the quality of both the obesity and the pathway associated genetic signatures may not have been good and, in combination with poor quality data, may have produced unexpected results.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -265,12 +255,16 @@ There were two main aims to this project: firstly to determine whether there wer
 These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively.
 
 As shown clearly by the results from \cref{cha:obesity_genetic_signatures_and_cancer}, there seemed to be no  genetic signature that were able to differntiate between the samples that were obese from those that were not, across different cancer types.
+Furthermore, there were no genes differentially expressed between obese and non-obese patients that were common across multiple cancer types.
+These results have suggested that there were no obesity specific genetic signatures that were common across different cancer types.
 
-Furthermore, there seemed to be no genes that were differentially expressed between the obese and the non-obese patients that were also common between different cancer types.
+The results from \cref{cha:obesity_associated_genetic_signature_and_pathway_signatures} showed that the obesity associated genetic signatures generated from the Creighton \textit{et al.} data set were different from those generated from the Fuentes-Mattei \textit{et al.} data set.
+None of the pathway associated genetic signatures was similar to any of the obesity associated genetic signatures in the heatmap.
+The results from the linear model prediction suggested a possible association of the obesity associated genetic signatures with the Akt, \gls{egfr} and \gls{pr} pathways.
 
-
-
-
+To summarise, there were no common genetic signatures that associated with the obesity status of the patients.
+However, the Akt, \gls{egfr} and \gls{pr} pathways may have a role in promoting the tumour progression in obese patients.
+Further investigations with good quality data sets and larger patient cohorts are required to clarify the biological relationship between obesity and cancer.
 
 \section{Future directions}
 \label{sec:future_directions}
