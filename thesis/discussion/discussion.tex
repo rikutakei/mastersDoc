@@ -12,9 +12,6 @@ Lastly, a conclusion was drawn from all of the evidences from this project and s
 % TODO: -- Put into context of very current literature
 % TODO:   	==> How does this project fit into the literature
 
-% There were two main aims to this project: firstly to determine whether there were any obesity specific genetic signatures that could be tranferred across multiple cancer types; and secondly to investigate whether there were any biological pathways dysregulated in the samples that were obese compared to the samples that were not obese.
-% These aims were addressed in \cref{cha:obesity_genetic_signatures_and_cancer,cha:obesity_associated_genetic_signature_and_pathway_signatures}, resepectively, and will be answered in \cref{sec:conclusion}.
-
 \subsection{Obesity associated genetic signatures}
 \label{sub:obesity_associated_genetic_signatures}
 
@@ -50,9 +47,10 @@ In addition to the association of the metagenes with the overweight group, some 
 It was difficult to conclude with confidence that those metagenes that showed significant association with the overweight group in \gls{blca} data set was truly due to the effect of the metagenes, as these metagenes were generated from the obese group and not the overweight group in the original data sets.
 Furthermore, there were no significant association of these metagenes in any other \gls{icgc} cancer data sets and provided no further evidence that supported the results presented in the \gls{blca} data set.
 
-% TODO: search for any evidence of BLCA with breast cancers - add to this paragraph
 With that said, there is a possibility that the genotypes of the samples that are overweight in \gls{blca} data set are similar to those samples that are obese in the Creighton \textit{et al.} data set.
-\textit{(TODO: search for any evidence of relationship/connection between BLCA and breast cancers - add to this paragraph)}
+In fact, \citet{Damrauer2014} have identified ``basal-like'' and ``luminal''  subtypes in bladder cancer that resembled the corresponding subtypes in breast cancer, and suggested that bladder  and breast cancers may have common physiological properties.
+Since all of the obesity associated genetic signatures were derived from breast cancer data sets, it made sense that these signatures were significant in the \gls{blca} data set, as bladder cancer and breast cancer could have been biologically similar to one another.
+However, the degree of similarity between these two cancer types are not yet known and further analyses are required for a definitive explanation of the results.
 
 \subsection{Common obesity associated genes and pathways across multiple cancer types}
 \label{sub:common_obesity_associated_genes_and_pathways_across_multiple_cancer_types}
@@ -102,11 +100,11 @@ Though Fuentes-Mattei \textit{et al.} suggested a biological link with the Akt/\
 This may have been due to the inconsistency of the pathway metagene scores across different data sets as mentioned in \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}.
 In fact, the Akt pathway metagene scores were variable across different cancer data sets (\cref{app:b}), which suggested the Akt pathway genetic signature was of poor quality.
 
-Though how unreliable the Akt pathway metagene scores may be, there is still a possibility that the FM obesity associated genetic signature may be unrelated to the Akt pathway, as Fuentes-Mattei \textit{et al.} validated their human breast tumour-derived genetic signature in a mouse model \citep{Fuentes-Mattei2014}.
-Mouse models are indeed helpful in studying biological processes \textit{in vivo}, especially when the cause and the outcome of the disease is well established.
-However, cancer is a complex genetic disorder which may be difficult to model accurately in mice.
-Furthermore, obesity is a disease that have a variety of biological effects (for example the release of adipokines and the disruption of the hormone levels) that could be acting in a different way in mice compared to humans, which further complicates the causal relationship between obesity and cancer.
-Nevertheless, the evidence shown by \citet{Fuentes-Mattei2014} was convincing and the role of Akt/\gls{mtor} pathway in obesity and cancer should be explored in greater details.
+(Though how unreliable the Akt pathway metagene scores may be, there is still a possibility that the FM obesity associated genetic signature may be unrelated to the Akt pathway, as Fuentes-Mattei \textit{et al.} validated their human breast tumour-derived genetic signature in a mouse model \citep{Fuentes-Mattei2014}.
+	Mouse models are indeed helpful in studying biological processes \textit{in vivo}, especially when the cause and the outcome of the disease is well established.
+	However, cancer is a complex genetic disorder which may be difficult to model accurately in mice.
+	Furthermore, obesity is a disease that have a variety of biological effects (for example the release of adipokines and the disruption of the hormone levels) that could be acting in a different way in mice compared to humans, which further complicates the causal relationship between obesity and cancer.
+	Nevertheless, the evidence shown by \citet{Fuentes-Mattei2014} was convincing and the role of Akt/\gls{mtor} pathway in obesity and cancer should be explored in greater details.)
 \textit{(include this paragraph or not... tbh, I think this is a weak argument)}
 
 \subsection{Linear models to predict the obesity metagenes}
@@ -240,7 +238,7 @@ Further investigations with good quality data sets and larger patient cohorts ar
 This project have managed to show that there were no obesity specific genes  that were common across multiple cancer types.
 Although this study failed to identify obesity specific genes that affected tumour biology, it is likely that there is some complex mechanism underlying the relationship between obesity and cancer; otherwise many of the clinical and epidemiological associations between obesity and cancer would not make any sense.
 Since Akt, \gls{egfr} and \gls{pr} pathways were signicant in the linear models that predicted the obesity metagenes, more thorough investigation of these pathways may be a good start to clarify the relationship.
-The apparent significance of the obesity associated genetic signatures in \gls{blca} data set was interesting as well, and deeper analysis of this data set may help further understand the biology of \gls{blca} and its association with obesity.
+Further analyses of \gls{blca} may help clarify the similarity between bladder and breast cancer types and provide an insight into the association between the obesity associated genetic signatures and \gls{blca}.
 
 In this project, the lack of association of the obesity associated genetic signatures with any of the cancer types could have been due to the quality of both the raw data sets and the genetic signatures used in this project.
 Therefore, careful selection of the raw data sets with sufficient, and if possible, additional information (such as waist circumference) about the samples and well-validated genetic signatures will be essential for future investigations.
