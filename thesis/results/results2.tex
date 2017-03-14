@@ -28,7 +28,10 @@ This result provided evidence that some of the pathway genetic signatures from t
 	\centering
 	\includegraphics[page=76,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
 	\includegraphics[page=100,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
-	\caption{Comparison of the metagenes generated in the \gls{mas} normalised GT data set from the application of the transformation matrices derived from either the \gls{rma} or \gls{mas} normalised data}
+	\caption[Comparison of the pathway metagenes generated in the \acrshort{mas} normalised GT data set from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data]{Comparison of the pathway metagenes generated in the \acrshort{mas} normalised GT data set from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data.
+	Only the \gls{bcat} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
+	The scatter plots for the other pathway metagenes are shown in \cref{sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}.
+	}
 	\label{fig:gt_rma_vs_mas}
 \end{figure}
 
@@ -45,7 +48,8 @@ Comparing these groups with the results presented by \citet{Gatza2010a} (see \cr
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[page=15,width=0.7\linewidth]{results2/gatza_meta_trans}
-	\caption{Heatmap of all the pathway metagenes from the \citet{Gatza2010a} study in GT data set}
+	\caption[Heatmap of the Pearson correlation of all the pathway metagenes with one another in the \acrshort{rma}-normalised GT data]{Heatmap showing the Pearson correlation of all the pathway metagenes from the \citet{Gatza2010a} study with one another  in the GT data set.
+		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.}
 	\label{fig:gatza_meta_dir}
 \end{figure}
 
@@ -78,7 +82,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 \begin{table}[htpb]
 	\centering
 	\begin{threeparttable}
-	\caption{Summary of the Spearman correlations of the pathway metagenes generated from \gls{svd} and the application of the transformation matrices\tnote{1} in GT, CR, \gls{nzbc} and FM data sets}
+	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets][Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets]
 	\label{tab:svd_vs_tm_path}
 		\begin{tabular}{lcccc}
 			& GT & CR & \gls{nzbc} & FM\\
@@ -116,7 +120,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 \begin{table}[htpb]
 	\centering
 	\begin{threeparttable}
-		\caption{Summary of the Spearman correlations of the obesity metagenes generated from \gls{svd} and the application of the transformation matrices\tnote{1} in GT, CR, \gls{nzbc} and FM data sets}
+	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets][Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets]
 		\label{tab:svd_vs_tm_obs}
 		\begin{tabular}{lcccc}
 			& CR & GT & FM & \gls{nzbc}\\
@@ -158,7 +162,10 @@ Taken together, transformation matrices for all the genetic  signatures were dec
 	\centering
 	\includegraphics[page=2,width=0.45\linewidth]{results2/allmetacor_bar}
 	\includegraphics[page=16,width=0.45\linewidth]{results2/allmetacor_bar}
-	\caption{Visual comparison of the Spearman correlations of \gls{svd}-derived and transformation matrix-derived \gls{bcat} and \gls{stat3} metagenes across different data sets}
+	\caption[Bar plots showing the Spearman correlation of the \gls{svd}- and TM-derived pathway metagenes across different data sets]{Bar plots showing the Spearman correlations of the \gls{svd}-derived and the transformation matrix-derived \gls{bcat} and \gls{stat3} metagenes across different data sets.
+	Only the \gls{bcat} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
+	The scatter plots for the other pathway metagenes are shown in \cref{sec:comparison_of_the_correlation_of_svd_and_tm_generated_pathway_metagenes}.
+	}
 	\label{fig:allmetacor_bar}
 \end{figure}
 
@@ -170,7 +177,8 @@ All of the metagenes were created in \gls{rma}-normalised GT data set with \gls{
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[page=15,width=0.8\linewidth]{results2/all_meta_trans}
-	\caption{Heatmap of all the pathway and obesity metagenes in GT data set}
+	\caption[Heatmap of the Pearson correlation of all the pathway and obesity metagenes with one another in the \acrshort{rma}-normalised GT data]{Heatmap showing the Pearson correlation of all the pathway and obesity metagenes  with one another  in the \gls{rma}-normalised GT data set.
+		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.}
 	\label{fig:gatza_allmeta}
 \end{figure}
 
@@ -202,7 +210,7 @@ In the model that predicted the FM metagene scores, the obesity status of the sa
 
 \begin{table}[htpb]
 	\centering
-	\caption{Description of the linear models used to predict the Cr obesity metagene in \gls{nzbc} data set}
+	\caption{Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity metagene}
 	\label{tab:lm_sig_var}
 	\begin{threeparttable}
 		\begin{tabular}{llrr}
@@ -272,7 +280,7 @@ As expected, all of the linear models showed significant contribution of the \gl
 
 \begin{table}[htpb]
 	\centering
-	\caption{Description of the linear models used to predict the Cr obesity metagene in \gls{nzbc} data set, using only the sample \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene scores}
+	\caption[Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the sample \gls{bmi}, \gls{bmi} status and the \acrshort{pr} pathway metagene score]{Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the sample \gls{bmi}, \gls{bmi} status and the \gls{pr} pathway metagene score}
 	\label{tab:lm_pr_only}
 	\begin{threeparttable}
 			\begin{tabular}{llr{\bfseries}S}
@@ -325,7 +333,11 @@ Furthermore, all of the plots in \cref{fig:predict_cris_cris,app:b} showed clear
 	\includegraphics[page=71,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
 	\includegraphics[page=72,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
 	\includegraphics[page=73,width=0.32\linewidth]{results2/prediction_cris_with_cris(cris_model)}
-	\caption{Comparison of the predicted Cr metagenes with the true Cr metagene in the \gls{nzbc} data}
+	\caption[Comparison of the predicted Cr metagene scores with the Cr metagene score from the \gls{nzbc} data]{ Box plot and scatter plots comparing the Cr metagene score predicted by the different linear models constructed from the \gls{nzbc} data, with the Cr metagene score from the \gls{nzbc} data.
+	Only the results from the models used to predict the Cr metagene scores are shown.
+	The summary of the statistics for the other obesity metagenes in the \gls{nzbc} data are shown in \cref{sec:summary_statistics_of_the_predicted_obesity_metagenes_with_sample_bmi_bmi_status_in_nzbc_and_cr_data}.
+	P-values and $R^2$-value are as described in previous figures.
+	}
 	\label{fig:predict_cris_cris}
 \end{figure}
 
@@ -348,7 +360,11 @@ Again, these results suggested that the predicted metagene scores from the linea
 	\includegraphics[page=71,width=0.32\linewidth]{results2/prediction_cr_with_cris}
 	\includegraphics[page=72,width=0.32\linewidth]{results2/prediction_cr_with_cris}
 	\includegraphics[page=73,width=0.32\linewidth]{results2/prediction_cr_with_cris}
-	\caption{Comparison of the predicted Cr metagenes with the true Cr metagene in the CR data}
+	\caption[Comparison of the predicted Cr metagene scores with the Cr metagene score from the CR data]{ Box plot and scatter plots comparing the Cr metagene score predicted by the different linear models constructed from the \gls{nzbc} data, with the Cr metagene score from the CR data.
+	Only the results from the models used to predict the Cr metagene scores are shown.
+	The summary of the statistics for the other obesity metagenes in the CR data are shown in \cref{sec:summary_statistics_of_the_predicted_obesity_metagenes_with_sample_bmi_bmi_status_in_nzbc_and_cr_data}.
+	P-values and $R^2$-value are as described in previous figures.
+	}
 	\label{fig:predict_cr_cris}
 \end{figure}
 
@@ -360,7 +376,7 @@ The linear models that resulted from the step wise selection of the variables we
 
 \begin{longtable}{llr{\bfseries}S}
 	\centering
-	\caption{Description of the step wise linear models used to predict all of the obesity metagenes in \gls{nzbc} data set}
+	\caption[Description of the step wise linear models constructed from the \gls{nzbc} data to predict all of the obesity metagenes]{Description of the step wise linear models constructed from the \gls{nzbc} data to predict all of the obesity metagenes}
 	\label{tab:stepwise_model}\\
 		Obesity metagene & Variables used in the model & Estimate & {P-value}\\
 		\hline
@@ -501,7 +517,8 @@ Though the $R^2$ values were slightly lower than those from \gls{nzbc} data set,
 	\includegraphics[page=8,width=0.32\linewidth]{results2/stepwise_cris_cris}
 	\includegraphics[page=9,width=0.32\linewidth]{results2/stepwise_cris_cris}
 	\includegraphics[page=10,width=0.32\linewidth]{results2/stepwise_cris_cris}
-	\caption{Comparison of the predicted obesity metagenes with the true obesity metagene in \gls{nzbc} data}
+	\caption[Comparison of all the obesity metagene scores predicted from the step wise linear models with the obesity metagene scores from the \gls{nzbc} data]{Scatter plots comparing all of the obesity metagene scores predicted by the step wise linear models constructed from the \gls{nzbc} data, with the corresponding obesity metagene scores from the \gls{nzbc} data.
+	P-values and $R^2$-value are as described in previous figures.}
 	\label{fig:stepwise_cris}
 \end{figure}
 
@@ -517,7 +534,8 @@ Though the $R^2$ values were slightly lower than those from \gls{nzbc} data set,
 	\includegraphics[page=8,width=0.32\linewidth]{results2/stepwise_cr_cris}
 	\includegraphics[page=9,width=0.32\linewidth]{results2/stepwise_cr_cris}
 	\includegraphics[page=10,width=0.32\linewidth]{results2/stepwise_cr_cris}
-	\caption{Comparison of the predicted obesity metagenes with the true obesity metagene in CR data}
+	\caption[Comparison of all the obesity metagene scores predicted from the step wise linear models with the obesity metagene scores from the CR data]{Scatter plots comparing all of the obesity metagene scores predicted by the step wise linear models constructed from the \gls{nzbc} data, with the corresponding obesity metagene scores from the CR data.
+	P-values and $R^2$-value are as described in previous figures.}
 	\label{fig:stepwise_cr}
 \end{figure}
 
