@@ -75,14 +75,14 @@ In other words, the transformation matrix can be made in either the original dat
 
 To decide which data set the transformation matrices for obesity and pathway associated genetic signatures should be generated in, the \gls{svd}- and transformation matrix(TM)-generated metagene scores were compared in all of the data sets.
 As in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, all data sets were normalised with the \gls{rma} method and metagenes were ranked based on the number of samples in each data set.
-Transformation matrices for the obesity associated genetic signatures were made in CR data set and pathway associated genetic signatures were made in GT data set.
+Transformation matrices for the obesity associated genetic signatures were made in CR data set and pathway associated genetic signatures were made in the GT data set.
 Metagenes for all of the obesity and pathway associated genetic signatures were generated in all of the data sets with \gls{svd} and transformation matrices.
 The Spearman correlation of the \gls{svd}-generated and TM-generated metagene scores were calculated for each genetic signatures (\cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}).
 
 \begin{table}[htpb]
 	\centering
 	\begin{threeparttable}
-	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets][Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets]
+	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets]{Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived pathway metagenes in the GT, CR, \gls{nzbc} and FM data sets}
 	\label{tab:svd_vs_tm_path}
 		\begin{tabular}{lcccc}
 			& GT & CR & \gls{nzbc} & FM\\
@@ -111,7 +111,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		\end{tabular}
 		\begin{tablenotes}
 			\begin{footnotesize}
-				\item [1] Transformation matrices were derived from the GT data set.
+				\item [1] Transformation matrices were derived from the \gls{rma}-normalised GT data set.
 			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
@@ -120,7 +120,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 \begin{table}[htpb]
 	\centering
 	\begin{threeparttable}
-	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets][Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets]
+	\caption[Summary of the Spearman correlations of the \gls{svd}- and TM-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets]{Summary of the Spearman correlations of the \gls{svd}- and transformation matrix\tnote{1}-derived obesity metagenes in the GT, CR, \gls{nzbc} and FM data sets}
 		\label{tab:svd_vs_tm_obs}
 		\begin{tabular}{lcccc}
 			& CR & GT & FM & \gls{nzbc}\\
@@ -140,7 +140,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		\end{tabular}
 			\begin{tablenotes}
 				\begin{footnotesize}
-				\item [1] Transformation matrices were derived from the CR data set.
+				\item [1] Transformation matrices were derived from the \gls{rma}-normalised CR data set.
 				\end{footnotesize}
 			\end{tablenotes}
 	\end{threeparttable}

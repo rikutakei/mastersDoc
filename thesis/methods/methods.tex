@@ -637,29 +637,78 @@ Furthermore, the model that was created based on the significant variables can b
 If the predicted metagene was similar to the original metagene, then it provides an evidence that the pathway used to construct the model was associated with the obesity metagene.
 
 %TODO: re-write the linear model stuff:
-Four linear models were created in the \gls{nzbc} to predict the obesity associated metagene from the \citet{Creighton2012} study.
-The first model used the sample \gls{bmi} value or \gls{bmi} status by itself, the second model with the sample \gls{bmi} value, \gls{bmi} status and selected pathway associated metagenes, the third model with selected pathway associated metagenes, and the last model was constructed with just the \gls{pr} pathway.
-The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
 
-In deciding on the pathways to be used for the construction of the linear model, the correlation of different versions of pathway metagenes, \gls{svd}-derived and transformation matrix-derived, in different data sets were used.
+Eleven linear models were created in the \gls{nzbc} to predict the obesity associated metagene from the \citet{Creighton2012} study.
+First seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway associated metagene scores.
+The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
+In deciding on the pathways to be used for the construction of the linear model, the correlation of the \gls{svd}- and transformation matrix-derived pathway metagene scores in different data sets were examined.
+
 When a transformation matrix is applied to the data set in which it was derived from, the resulting metagene is identical to the one created from the direct application of \gls{svd}.
 Therefore, theoretically, if the metagene derived from a transformation matrix is similar to the metagene created from \gls{svd}, then it shows that the genetic signature is consistent and reliable across different data sets.
 The above mentioned pathways had high correlation value between the \gls{svd}-derived and transformation matrix-derived pathway metagenes, and so it was used in the construction of the linear model.
 
-% TODO: possibly extra analyses here (gradual pathway inclusion in the model, using all the pathway...?)
+The last four linear models were constructed with the different combinations of the sample \gls{bmi}, \gls{bmi} status and the \gls{pr} pathway metagene.
+The reason the \gls{pr} pathway metagene was used separately was because in the initial analysis, the \gls{pr} pathway metagene was the only pathway associated genetic signature that came up as significant in the other linear models (\cref{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}).
+All of the created linear models are summarised in \cref{tab:lm_model_method}.
 
-The predicted obesity metagenes that were created in the \gls{nzbc} data set was compared with the original obesity metagene from the \citet{Creighton2012} data set.
-Both Pearson and Spearman correlation was calculated to assess the relationship between the predicted and original metagenes.
-Scatter plots were also created to visually compare the two metagene scores.
+\begin{table}[htpb]
+	\centering
+	\begin{threeparttable}
+		\caption{Summary of all the linear models constructed in the \gls{nzbc} data}
+		\label{tab:lm_model_method}
+		\begin{tabular}{l}
+			Linear models\\
+			\hline
+			\hline
+			\gls{bmi} only\\
+			\gls{bmi} status only\\
+			Selected pathways only\tnote{1}\\
+			\gls{bmi} and \gls{bmi} status\\
+			\gls{bmi} and selected pathways\tnote{1}\\
+			\gls{bmi} status and selected pathways\tnote{1}\\
+			\gls{bmi}, \gls{bmi} status and selected pathways\tnote{1}\\
+			\gls{pr} pathway only\\
+			\gls{pr} pathway and \gls{bmi}\\
+			\gls{pr} pathway and \gls{bmi} status\\
+			\gls{pr} pathway, \gls{bmi} and \gls{bmi} status\\
+			\hline
+			\hline
+		\end{tabular}
+		\begin{tablenotes}
+			\begin{footnotesize}
+			\item [1] \gls{bcat}, \gls{er}, \gls{ifna}, \Gls{ifny}, Myc and \gls{pr} pathway metagene scores were used.
+			\end{footnotesize}
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+In addition to these eleven linear models, a linear model was created with the sample \gls{bmi}, \gls{bmi} status and all of the pathway associated metagenes using a stepwise approach.
+Step wise approach allows the construction of a linear model that best fit the data, given a set of variables.
+There are three approaches in creating a linear model in a step wise method: top-down, bottom-up, and both.
+
+In a top-down approach, all of the variables are first included in the linear model.
+At each step, a variable is removed from the model and the \gls{aic} of the model is compared with the original model to determine whether the variable should remain in the model or not.
+This will result in a model with the variables that are most significant to the model.
+In a bottom-up approach, the model begins with no variable and adds one variable at a time to the model.
+If the variable increased the ability of the model to predict the response variable, then the variable is included in the model.
+Again, this will result in a model with only the variables that are significant in predicting the response variable.
+Alternatively, both methods in combination can be used, where the model begins with all of the variables and at each step, a variable can be added to or removed from the linear model.
+In this project, the combination of top-down and bottom-up approaches was used to create the step wise linear model.
+
+The obesity metagenes that were predicted from the linear models in the \gls{nzbc} data set was compared with the original obesity metagene scores.
+Where appropriate, p-values, \gls{anova} p-values and  $R^2$-values were calculated to assess the relationship between the predicted and the original metagene scores.
+Scatter plots and box plots were also created to visually compare the two metagene scores.
 
 \section{Plot creation}
 \label{sec:plot_creation}
 
-\subsection{Box and scatter plots}
+\subsection{Bar, box and scatter plots}
 \label{sub:box_and_scatter_plots}
 
+Bar plots were plotted to visualise the correlation between the \gls{svd}- and transformation matrix-derived obesity and pathway metagene scores in different data sets.
+The \texttt{barplot} function from the \textit{graphics} package in \gls{r} was used to plot the bar plots.
 Box plots and scatter plots were used to visualise the association of a metagene with some of the clinical variables of the data.
-Box plots and scatter plots were plotted using the \texttt{boxplot} and \texttt{plot} functions from the \textit{graphics} package in \gls{r}, respectively.
+Box plots and scatter plots were plotted using the \texttt{boxplot} and \texttt{plot} functions, respectively, from the \textit{graphics} package in \gls{r}.
 The p-value and \gls{anova} p-value in the box plots were calculated using the \texttt{t.test} and \texttt{aov} functions from the \textit{stats} package in \gls{r}, respectively.
 The line of best fit and the $R^2$-value of the line were taken from the summary statistics produced by the \texttt{lm} function from the \textit{stats} package in \gls{r}.
 
@@ -670,35 +719,20 @@ To visualise the association of the sample metagene scores with the sample gene 
 Heatmap is an effective method to visualise such data, as the ordering of the genes and/or samples may be controlled based on certain values, for example metagene scores.
 Furthermore, heatmaps are able to cluster the samples and/or genes based on the ``distance'' between the data, or in other words, how closely related the data are.
 Heatmaps were created using the \texttt{heatmap.2} function from the \textit{gplots} package in \gls{r} \citep{gplots}.
+For the heatmaps that required two bars above the heatmap (like those that investigate the directionality of the pathway metagenes), the heatmaps were created with the \texttt{heatmap.2x} function developed by Tom Kelly (\url{https://github.com/TomKellyGenetics/heatmap.2x}).
 
 \subsection{Venn diagrams}
 \label{sub:venn_diagrams}
 
-
+To summarise the number of \glspl{deg} from the gene expression analyses of the Creighton \textit{et al.} data that overlapped with the original Creighton \textit{et al.} obesity associated genetic signature, Venn diagrams were plotted.
+Venn diagrams were plotted using the \texttt{venn} function from the \textit{gplots} package in \gls{r} \citep{gplots}.
+The \texttt{overLapper} function (from \url{http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/overLapper.R}) was also used to help plot the Venn diagram \citep{Girke2016}.
 
 \subsection{Additional colours}
 \label{sub:additional_colours}
 
+Some colour palettes such as the colours used by MATLAB are not installed in \gls{r} by default.
+For a colour palette used in MATLAB, the \texttt{matlab.like} function from the \textit{colorRamps} package in \gls{r} was used \citep{Keitt2012}.
+For the pastel colour palette used in the bar plots, the \texttt{brewer.pal} function from the \textit{RColorBrewer} package in \gls{r} was used \citep{Neuwirth2014}.
 
-
-% TODO: talk about spearman correlation?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%TODO: add Spearman and Pearson correlation?
