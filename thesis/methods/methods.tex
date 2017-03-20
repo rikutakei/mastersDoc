@@ -33,8 +33,9 @@ Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\
 \subsubsection{\gls{nzbc} data}
 \label{ssub:nzbc_data}
 
+To provide an insight into the relevance of the obesity associated genetic signatures in \gls{nz} patient cohort, the \gls{nzbc} data set used by \citet{Print2016} were used.
 The raw Affymetrix HGU133A microarray gene expression data files from the \citet{Print2016} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE3\-6771).
-Clinical data for the samples (age, ethnicity, tumour grade, breast cancer subtype, \gls{er}/\gls{pr} statuses, \gls{ln} status, \gls{bmi} and treatments used) in this study was obtained from Professor Cris Print (personal communication with Assoc. Prof. Mik Black).
+Clinical data for the samples (age, ethnicity, tumour grade, breast cancer subtype, \gls{er}/\gls{pr} statuses, \gls{ln} status, \gls{bmi} and treatments used) in this study was obtained from Prof. Cris Print (personal communication with Assoc. Prof. Mik Black).
 
 \subsubsection{\citet{Gatza2010a} data}
 \label{ssub:gatza2010a_data}
@@ -78,6 +79,7 @@ Likewise, any obesity associated or pathway associated gene probes were converte
 		\end{footnotesize}
 	\end{TableNotes}
 	
+	\newpage
 	\begin{longtable}{lcc}
 		\caption{Summary of the clinical variables in the Creighton \textit{et al.} and \gls{nzbc} microarray data}
 		\label{tab:clin_summary}\\
@@ -136,7 +138,7 @@ Likewise, any obesity associated or pathway associated gene probes were converte
 		\hspace{1em} Unknown                 & 0  & 3 \\
 		\hline
 		\hline
-		\hspace{12em}\insertTableNotes
+		\insertTableNotes
 	\end{longtable}
 \end{ThreePartTable}
 
@@ -285,8 +287,7 @@ Though the normalisation methods were not specified in the \citet{Creighton2012}
 This means that \gls{rnaseq} data must be processed in a different manner to microarray data.
 However, by analysing \gls{rnaseq} data as a count data, it limits the range of statistical tools and types of analyses that can be done on the data, as many tools are designed for normally distributed data, like the light intensity measures from the microarray data \citep{Law2014}.
 
-To overcome this limitation, \citet{Law2014} developed a method called ``variance modelling at the observational level'', or ``voom'', that allows any \gls{rnaseq} data to be used in any existing statistical analysis pipeline that is precision weight aware, including pipelines used for microarray data analyses.
-% TODO: check the meaning of precision weight in the above sentence
+To overcome this limitation, \citet{Law2014} developed a method called ``variance modelling at the observational level'', or ``voom'', that allows any \gls{rnaseq} data to be used in ``any statistical pipeline for microarray data that is precision weight aware''.
 In brief, voom first constructs a standard deviation trend from the logged \gls{cpm} value of the genes (experimental design, treatment conditions and other factors are taken into account).
 This trend is then used to interpolate the standard deviation of the observation based on its predicted count size, and the inverse square of the predicted standard deviation is used as the weight  for that observation.
 The weights of the observations and the logged \gls{cpm} can then be used in other statistical pipelines that allow the input of quantitative weights \citep{Law2014}.
@@ -363,8 +364,7 @@ In the \texttt{eBayes} function, statistical parameters are estimated from the d
 The summary statistics from the \texttt{eBayes} function can be displayed with the \texttt{topTable} function (\textit{limma}) and includes the estimate of the fold change of the gene expression in log$_2$, average gene expression level in log$_2$, moderated \textit{t}-statistic, raw p-value of the gene, multiple hypothesis testing adjusted p-value, and \textit{B}-statistic.
 The first value shows the estimate of the log$_2$ fold change of the gene expression compared with the reference group, so this represents the log$_2$ fold change of the gene expression in the obese samples relative to the non-obese group.
 The second value presents the log$_2$ value of the average expression of the gene across all of the arrays/samples.
-%TODO: more details on simple Bayesian method
-The moderated \textit{t}-statistic is the same as normal \textit{t}-statistic, but its standard error has been adjusted by a simple Bayesian method \citep{Smyth2005}.
+The moderated \textit{t}-statistic is the same as normal \textit{t}-statistic, but its standard error has been adjusted (or ``shrunk'') toward a common value by a simple Bayesian method \citep{Smyth2005}.
 Raw p-value and adjusted p-value represent the p-value of the gene before and after it has been corrected for multiple hypothesis testing, respectively.
 Lastly, the value of \textit{B}-statistic represents the log-odds that the gene is differentially expressed, where \textit{B}-statistic of 0 shows that there is a 50\% chance the gene is differentially expressed \citep{Smyth2005}.
 
@@ -609,22 +609,39 @@ It was known from the \citet{Gatza2010a} study that some pathways clustered and 
 	\hline
 	\endlastfoot
 	\rule{0pt}{2.25ex}Akt         & AKT1   & Also known as protein kinase B; involved in cell survival\\
+	\hline
 	\rule{0pt}{2.25ex}\gls{bcat}  & CTNNB1 & $\beta$-catenin; involved in the Wnt signalling pathway and cell-cell adhesion\\
+	\hline
 	\rule{0pt}{2.25ex}E2F1        & E2F1   & Member of the E2F transcription factor family in higher eukaryotes; involved in cell cycle regulation\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{egfr}  & EGFR   & Also known as ERBB1 or HER1; involved in signalling the pathways for cell proliferation \\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{er}    & ESR1   & Involved in cell cycle regulation, cell proliferation and cell survival\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{her2}  & ERBB2  & Also known as ERBB2; involved in cell proliferaion and apoptosis\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{ifna}  & IFNA1  & Cytokine involved in innate immune response against viral infection\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{ifny}  & IFNG   & Cytokine critical for innate and adaptive immune response\\
+	\hline
 	\rule{0pt}{2.25ex}Myc         & MYC    & Transcription factor involved in cell proliferaion, cell growth and apoptosis\\
+	\hline
 	\rule{0pt}{2.25ex}p53         & TP53   & Tumour suppressor protein involved in \acrshort{dna} repair, cell cycle regulation and apoptosis\\
+	\hline
 	\rule{0pt}{2.25ex}p63         & TP63   & Involved in development\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{pi3k}  & PIK3CA & Involved in cell growth, cell proliferaion, cell differentiation and cell survival\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{pr}    & PGR    & Signal transducer that activates other signalling pathways; involved in cell proliferation\\
+	\hline
 	\rule{0pt}{2.25ex}Ras         & HRAS   & Involved in cell proliferaion, cell differentiation, cell adhesion, apoptosis and cell migration\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{stat3} & STAT3  & Involved in cell growth and apoptosis\\
+	\hline
 	\rule{0pt}{2.25ex}Src         & SRC    & Involved in cell survival, angiogenesis, cell proliferation and cell invasion\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{tgfb}  & TGFB1  & Involved in cell proliferation, cell differentiation and apoptosis\\
+	\hline
 	\rule{0pt}{2.25ex}\Gls{tnfa}  & TNF    & Involved in immune response, inflammation and apoptosis\\
 \end{longtable}
 
@@ -635,8 +652,6 @@ To determine whether the obesity metagene was associated with any of the pathway
 This was based on the idea that, if a clinical variable or a pathway metagene was a significant part of the model for the obesity metagene, then that clinical variable or pathway metagene may be associated with the obesity metagene.
 Furthermore, the model that was created based on the significant variables can be used to predict the obesity metagene, which can be used to compare the values with the original obesity metagene.
 If the predicted metagene was similar to the original metagene, then it provides an evidence that the pathway used to construct the model was associated with the obesity metagene.
-
-%TODO: re-write the linear model stuff:
 
 Eleven linear models were created in the \gls{nzbc} to predict the obesity associated metagene from the \citet{Creighton2012} study.
 First seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway associated metagene scores.
