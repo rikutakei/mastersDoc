@@ -3,79 +3,85 @@
 
 In this chapter, the underlying biological mechanism of the obesity associated signatures from CR data were investigated.
 In doing so, the pathway genetic signatures from the \citet{Gatza2010a} study (GT) were utilised to determine which biological pathways the obesity associated genetic signatures were most similar to.
-First, the direction of GT pathway associated genetic signatures were resolved; then the pathway associated metagenes were compared with the obesity associated metagenes; and lastly linear models were constructed based on the pathway metagenes and sample \gls{bmi}/\gls{bmi} status to predict the obesity associated metagenes.
+First, the direction of GT pathway associated genetic signatures were resolved, then the pathway associated metagenes were compared with the obesity associated metagenes, and lastly linear models were constructed based on the pathway metagenes and patient \gls{bmi} to predict the obesity associated metagenes.
 
 \section{Pathway associated genetic signatures from \citet{Gatza2010a} study}
 \label{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}
 
-Pathway associated genetic signatures from the \citet{Gatza2010a} study were examined for their consistency with the reported results.
-In the \citet{Gatza2010a} study, their data comprised of samples from different data sets from other studies, \gls{mas}-normalised and the metagene scores were ranked with probit.
-However, the analyses so far have used \gls{rma}-normalisation method and ranked based on the number of samples present in the data.
-To decide which normalisation or ranking methods were suitable for the analysis, the different methods were compared in GT data (see \cref{app:b}).
-Results shown in \cref{app:b} clarified that there was no significant difference in the ranking methods used.
-Correlation and scatter plots of the different combinations of transformation matrices (derived from either \gls{rma}- or \gls{mas}-normalised data) with \gls{rma}- or \gls{mas}-normalised data were calculated and plotted.
-From these results, it seemed like the normalisation methods of the data in which the transformation matrices were applied to had the most significant effect on the resulting metagenes, rather than the transformation matrices themselves (\cref{app:b}).
-This meant that all of the data sets had to be normalised with a single normalisation method, so the \gls{rma} normalisation method was used as this method was more reliable than the \gls{mas} method.
-Therefore, GT data set was batch corrected first (\cref{sub:batch_correction}), then normalised with \gls{rma} method and the scores were ranked based on the number of samples in the data set.
+Pathway associated genetic signatures from the \citet{Gatza2010a} study were first examined in the GT data to make sure the results from their paper was reproducible.
 
-One thing noted from these scatter plots was that there were some pathway signatures that were more variable than the others.
+\subsection{Ranking and normalisation methods}
+\label{sub:ranking_and_normalisation_methods}
+
+In the \citet{Gatza2010a} study, their data comprised of samples from different data sets from other studies, \gls{mas}-normalised and the metagene scores were transformed to a scale between 0 to 1 using a probit function.
+However, the analyses so far have used \gls{rma} normalisation method and ranked based on the number of samples present in the data (fractional ranking; \cref{sub:ranking_of_the_metagene_scores}).
+To decide which normalisation methods or ranking approaches were suitable for the analysis, the different methods were compared in the GT data (\cref{sec:ranking_method_for_the_pathway_associated_genetic_signatures,sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}).
+Results shown in \cref{sec:ranking_method_for_the_pathway_associated_genetic_signatures} clarified that there was no significant difference in the ranking approaches used.
+Correlation and scatter plots of the different combinations of transformation matrices (derived from either the \gls{rma}- or \gls{mas}-normalised GT data) with the  GT data normalised with the different methods were calculated and plotted.
+From these results, it was clear the normalisation methods used had the most significant effect on the resulting metagenes, rather than the transformation matrices themselves (\cref{sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}).
+This meant that all of the data sets had to be normalised with a single normalisation method, so the \gls{rma} normalisation method was used as this method was more reliable than the \gls{mas} method.
+%TODO: add reference for the above sentence
+Therefore, the GT data set was batch corrected first (\cref{sub:batch_correction}), then normalised with the \gls{rma} method and the metagene scores were ranked with fractional ranking (\cref{sub:ranking_of_the_metagene_scores}).
+
+One thing noted from these scatter plots was that there were some pathway signatures that were more variable than the others (\cref{sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}).
 As an example, the \gls{tgfb} metagenes were significantly more dispersed compared to the \gls{pr} metagenes, even though both of these metagenes were generated in the same data set through similar processes (\cref{fig:gt_rma_vs_mas}).
-These differences were seen in other data sets as well (\cref{app:b}).
-This result provided evidence that some of the pathway genetic signatures from the \citet{Gatza2010a} study were more consistent across different data sets than the others.
-\\
+These differences were seen in other data sets as well (\cref{fig:appendix/gt_meta_rma_mas_other_data}).
+This result provided evidence that some of the pathway genetic signatures from the \citet{Gatza2010a} study were less variable across different data sets than the others.
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[page=76,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
 	\includegraphics[page=100,width=0.45\linewidth]{results2/allmeta_rma_vs_mas}
 	\caption[Comparison of the pathway metagenes generated in the \acrshort{mas} normalised GT data set from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data]{Comparison of the pathway metagenes generated in the \acrshort{mas} normalised GT data set from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data.
-	Only the \gls{bcat} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
+	Only the \gls{pr} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
 	The scatter plots for the other pathway metagenes are shown in \cref{sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}.
 	}
 	\label{fig:gt_rma_vs_mas}
 \end{figure}
 
-\noindent
-Before GT pathway metagenes were compared with the obesity associated metagenes, the direction of GT pathway metagenes had to be checked to make sure the metagenes were in the correct direction (\cref{sub:metagene_direction}).
-% Each pathway metagenes was generated from GT data set and the direction of the metagene was checked with the expression of the representative pathway gene (\cref{tab:metagene_direction}), and the groupings of the pathways were considered as well.
+\subsection{Pathway metagene directionality}
+\label{sub:pathway_metagene_directionality}
+
+Before GT pathway metagenes were compared with the obesity associated metagenes, the direction of the GT pathway metagenes had to be checked to make sure the metagenes were in the ``correct'' direction (\cref{sub:metagene_direction}).
 The correlation of all the pathway metagenes with one another were plotted as a heatmap in \cref{fig:gatza_meta_dir}.
 The most prominent group had five pathways (E2F1, \gls{pi3k}, Myc, \gls{bcat} and Ras) that clustered at the top right hand corner of the heatmap.
-% TODO: add additional info about why these pathways clustered together?
-Other groups included \gls{ifna}/\gls{ifny}/\gls{tnfa} pathways, \gls{er}/\gls{pr}/p53 pathway and p63/\gls{her2} pathways.
+Other groups included \gls{ifna}/\gls{ifny}/\gls{tnfa} pathways, \gls{er}/\gls{pr}/p53 pathways and p63/\gls{her2} pathways.
 In addition to these highly correlated groups, \gls{stat3}/\gls{tgfb}/Src/\gls{egfr}/Akt pathways showed little correlation with one another.
-Comparing these groups with the results presented by \citet{Gatza2010a} (see \cref{app:b}), the identified groups approximately resembled the groups identified in their study, which confirmed that the directions of GT pathway metagenes were similar to those used by Gatza \textit{et al.}.
+Comparing these groups with the results presented by \citet{Gatza2010a} (\cref{sec:result_from_gatza2010a_study}), the identified clusters approximately resembled the pathway groups identified in by Gatza \textit{et al.}, which confirmed that the directions of GT pathway metagenes were consistent with those used by Gatza \textit{et al.}.
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[page=15,width=0.7\linewidth]{results2/gatza_meta_trans}
-	\caption[Heatmap of the Pearson correlation of all the pathway metagenes with one another in the \acrshort{rma}-normalised GT data]{Heatmap showing the Pearson correlation of all the pathway metagenes from the \citet{Gatza2010a} study with one another  in the GT data set.
-		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.}
+	\caption[Heatmap of the Pearson correlation of all the pathway metagenes with one another in the \acrshort{rma} normalised GT data]{Heatmap showing the Pearson correlation of all the pathway metagenes from the \citet{Gatza2010a} study with one another  in the \gls{rma} normalised GT data set.
+		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.
+		Refer to \cref{tab:metagene_direction} for the detailed descriptions of the abbreviations used.
+		}
 	\label{fig:gatza_meta_dir}
 \end{figure}
 
-To see whether the directionality of GT pathway metagenes were being transferred across to other data sets properly, pathway metagenes were generated in other data sets with the transformation matrices and the groupings of the metagenes were examined.
+To see whether the directionality of the GT pathway metagenes were being transferred across to other data sets properly, pathway metagenes were generated in other data sets with the transformation matrices and the groupings of the metagenes were examined.
 CR, FM and \gls{nzbc} data were \gls{rma}-normalised and transformation matrices of the pathway genetic signatures (derived from GT data set) were applied to the data sets.
 The metagenes were plotted in a heatmap (shown in \cref{app:b}), which showed similar groupings  as seen in \cref{fig:gatza_meta_dir}.
 This result confirmed that the pathway metagenes were acting similarly in all the data sets in which the transformation matrices have been applied to.
 
-% In order to investigate what the underlying biological mechanism of the obesity associated genetic signatures was, GT pathway associated genetic signatures were used to create linear models to predict the obesity associated metagene scores.
-% Before linear models were created, GT pathway metagenes were checked for their directionality to ensure that the pathway metagenes were acting as reported by \citet{Gatza2010a} (see \cref{sub:metagene_direction}).
-
 \section{Pathway associated metagenes and obesity associated metagenes}
 \label{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}
 
-Results from previous section confirmed that the pathway metagenes from the \citet{Gatza2010a} study were in the correct directions, and that the pathway metagenes were behaving as expected in different data sets.
+Results from the previous section confirmed that the pathway metagenes from the \citet{Gatza2010a} study were in the correct directions, and that the pathway metagenes were behaving as expected in the different data sets.
 Now that the directions of the pathway metagenes were established, these metagenes were ready for comparison with the obesity associated metagenes.
-However, all of the pathway metagenes were derived from GT data, whereas the majority of the obesity associated metagenes were derived from CR data, which presents a problem of deciding on which data set the transformation matrices should be generated in.
+However, all of the pathway metagenes were derived from the GT data, whereas the majority of the obesity associated metagenes were derived from the CR data, which presents a problem in terms of deciding which data set the transformation matrices should be generated in.
 
-In theory, the metagenes generated from the application of \gls{svd} and the metagenes generated from transformation matrix would be exactly the same if the transformation matrix was derived from the same data set.
-For example, an obesity associated metagene generated from CR data with \gls{svd} would have the same values as the metagenes generated in CR data with the transformation matrix (where the transformation matrix was derived from CR data).
-Furthermore, if the \gls{svd}-derived metagenes and transformation matrix-derived metagenes were the same (or at least similar) in a different data set, this suggests that there was no difference in the data sets, at least in terms of the expression of the genetic signatures being investigated.
+\subsection{Obesity and pathway metagene transformation matrices}
+\label{sub:obesity_and_pathway_metagene_transformation_matrices}
+
+Metagenes generated from the application of \gls{svd} and metagenes generated from the transformation matrix are exactly the same if the transformation matrix is derived from the same data set.
+For example, an obesity associated metagene generated from the CR data with \gls{svd} would have the same values as the metagenes generated in the CR data with the transformation matrix (where the transformation matrix was derived from CR data).
+Furthermore, if the \gls{svd}-derived metagenes and transformation matrix-derived metagenes were the same (or at least similar) in a different data set, this suggests that the metagene-related biology contained in the two data sets is highly similar.
 In other words, the transformation matrix can be made in either the original data set or in a different data set if there was no difference in the \gls{svd}-derived or transformation matrix-derived metagenes.
 
 To decide which data set the transformation matrices for obesity and pathway associated genetic signatures should be generated in, the \gls{svd}- and transformation matrix(TM)-generated metagene scores were compared in all of the data sets.
-As in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, all data sets were normalised with the \gls{rma} method and metagenes were ranked based on the number of samples in each data set.
-Transformation matrices for the obesity associated genetic signatures were made in CR data set and pathway associated genetic signatures were made in the GT data set.
+As in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, all data sets were normalised with the \gls{rma} method and metagenes were ranked with fractional ranking.
+Transformation matrices for the obesity associated genetic signatures were made in the CR data set and the pathway associated genetic signatures were made in the GT data set.
 Metagenes for all of the obesity and pathway associated genetic signatures were generated in all of the data sets with \gls{svd} and transformation matrices.
 The Spearman correlation of the \gls{svd}-generated and TM-generated metagene scores were calculated for each genetic signatures (\cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}).
 
@@ -111,7 +117,7 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		\end{tabular}
 		\begin{tablenotes}
 			\begin{footnotesize}
-				\item [1] Transformation matrices were derived from the \gls{rma}-normalised GT data set.
+				\item [1] Transformation matrices were derived from the \gls{rma} normalised GT data set.
 			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
@@ -140,73 +146,77 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 		\end{tabular}
 			\begin{tablenotes}
 				\begin{footnotesize}
-				\item [1] Transformation matrices were derived from the \gls{rma}-normalised CR data set.
+				\item [1] Transformation matrices were derived from the \gls{rma} normalised CR data set.
 				\end{footnotesize}
 			\end{tablenotes}
 	\end{threeparttable}
 \end{table}
 
-In \cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}, the obesity and pathway associated genetic signatures had a correlatin of 1 in CRs and GT data sets respectively, as the transformation matrices were generated in those data sets.
+In \cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}, the obesity and pathway associated genetic signatures had a correlation of 1 in CR and GT data sets respectively, as the transformation matrices were generated in those data sets.
 The correlations of the obesity and pathway metagenes were variable across different data sets, which was as expected since all the data sets were different from one another.
 However, what was unexpected was the fact that there were some genetic signatures that were highly correlated in all of the data sets, whereas the metagene correlation of other signatures were highly variable across different data sets.
-For example, the \gls{bcat} pathway metagene was highly correlated in all of the data sets (\textgreater{} 0.98), whereas the \gls{stat3} pathway metagene was variable across different data sets, ranging from 0.1902 to 0.9159 (\cref{tab:svd_vs_tm_path,fig:allmetacor_bar}).
+For example, the \gls{bcat} pathway metagene was highly correlated in all of the data sets (\textgreater{} 0.98), whereas the \gls{stat3} pathway metagene was variable across different data sets, ranging from 0.1902 to 0.9159 (\cref{tab:svd_vs_tm_path}).
+% For example, the \gls{bcat} pathway metagene was highly correlated in all of the data sets (\textgreater{} 0.98), whereas the \gls{stat3} pathway metagene was variable across different data sets, ranging from 0.1902 to 0.9159 (\cref{tab:svd_vs_tm_path,fig:allmetacor_bar}).
 The fact that some pathway associated metagenes were consistent across different data sets suggested that some of these genetic signatures were reliable and did not depend on the data set the transformation matrices were derived from.
-On the other hand, the genetic signatures that were not consistent across the data sets were likely to be dependent on the data set in which they were derived from, and therefore the transformation matrices for these signatures must be derived from GT data set.
+On the other hand, the genetic signatures that were not consistent across the data sets were likely to be dependent on the data set in which they were derived from, and therefore the transformation matrices for these signatures must be derived from the GT data set.
+This also showed that the tumour biology may be different for different data sets, likely due to the difference in the patient cohorts that were selected for each of the studies.
 
-In contrast to the pathway associated genetic signatures, all of the obesity associated genetic signatures showed high correlation of the \gls{svd}- and transformation matrix-generated metagenes across the different data sets.
-This suggested that obesity associated genetic signatures were consistent across all data sets and the transformation matrices for these signatures could be made in any of the data sets.
-Taken together, transformation matrices for all the genetic  signatures were decided to be made in the GT data set, since there were some pathway associated signatures that were specific to GT data, but none of the obesity associated genetic signatures were specific to a data set.
-\\
+In contrast to the pathway associated genetic signatures, all of the obesity associated genetic signatures showed high correlation for the \gls{svd}- and transformation matrix-generated metagenes across the different data sets.
+This suggested that the obesity associated genetic signatures were relatively consistent across all data sets, and the transformation matrices for these signatures could be made in any of the data sets.
+For simplicity, it was decided that the transformation matrices for all the genetic  signatures would be made in the GT data set, since there were some pathway associated signatures that were specific to the GT data, but none of the obesity associated genetic signatures were specific to a data set.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[page=2,width=0.45\linewidth]{results2/allmetacor_bar}
-	\includegraphics[page=16,width=0.45\linewidth]{results2/allmetacor_bar}
-	\caption[Bar plots showing the Spearman correlation of the \gls{svd}- and TM-derived pathway metagenes across different data sets]{Bar plots showing the Spearman correlations of the \gls{svd}-derived and the transformation matrix-derived \gls{bcat} and \gls{stat3} metagenes across different data sets.
-	Only the \gls{bcat} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
-	The scatter plots for the other pathway metagenes are shown in \cref{sec:comparison_of_the_correlation_of_svd_and_tm_generated_pathway_metagenes}.
-	}
-	\label{fig:allmetacor_bar}
-\end{figure}
+% \begin{figure}[htpb]
+% 	\centering
+% 	\includegraphics[page=2,width=0.45\linewidth]{results2/allmetacor_bar}
+% 	\includegraphics[page=16,width=0.45\linewidth]{results2/allmetacor_bar}
+% 	\caption[Bar plots showing the Spearman correlation of the \gls{svd}- and TM-derived pathway metagenes across different data sets]{Bar plots showing the Spearman correlations of the \gls{svd}-derived and the transformation matrix-derived \gls{bcat} and \gls{stat3} metagenes across different data sets.
+% 	Only the \gls{bcat} (left) and the \gls{tgfb}  (right) pathway metagenes are shown.
+% 	The scatter plots for the other pathway metagenes are shown in \cref{sec:comparison_of_the_correlation_of_svd_and_tm_generated_pathway_metagenes}.
+% 	}
+% 	\label{fig:allmetacor_bar}
+% \end{figure}
 
-\noindent
+\subsection{Comparison of the obesity and pathway associated signatures}
+\label{sub:comparison_of_the_obesity_and_pathway_associated_signatures}
+
 To visually determine which pathway associated genetic signatures were most similar to the obesity associated genetic signatures, heatmaps were created with the metagenes for all of the genetic signatures.
 The directions of the pathway associated metagenes have already been determined in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, and the directions of the obesity associated metagenes were checked in GT data set as described in \cref{sub:metagene_direction}.
-All of the metagenes were created in \gls{rma}-normalised GT data set with \gls{svd}, and the metagene scores were plotted in a heatmap and clustered into groups (\cref{fig:gatza_allmeta}).
+All of the metagenes were created in the GT data set (normalised with \gls{rma}) using \gls{svd}, and the metagene scores were plotted in a heatmap and clustered into groups (\cref{fig:gatza_allmeta}).
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[page=15,width=0.8\linewidth]{results2/all_meta_trans}
 	\caption[Heatmap of the Pearson correlation of all the pathway and obesity metagenes with one another in the \acrshort{rma}-normalised GT data]{Heatmap showing the Pearson correlation of all the pathway and obesity metagenes  with one another  in the \gls{rma}-normalised GT data set.
-		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.}
+		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.
+		Refer to \cref{tab:metagene_direction,tab:mg_abbrev} for the detailed descriptions of the abbreviations used.
+		}
 	\label{fig:gatza_allmeta}
 \end{figure}
 
-From \cref{fig:gatza_allmeta}, all of the obesity associated metagenes from CR data set clustered together into a group, but none of the pathway associated metagenes associated strongly with the obesity metagenes.
-Though \gls{her2} and p63 pathway metagenes were grouped next to the cluster of obesity metagenes, the similarity was at most about 0.6.
-FM obesity associated metagene did not cluster together with the obesity metagenes from CR data set, nor with any of the other pathway metagenes.
-The fact that FM metagene did not cluster with any of the CR metagenes showed that the nature of FM metagene was different from those metagenes found in CR data set.
-Furthermore, their metagene did not cluster with the Akt pathway in the heatmap, even though \citet{Fuentes-Mattei2014} provided clear evidence that their metagene specifically activated the Akt/\gls{mtor} signalling pathway in a mouse model.
-This may have been due to the lack of consistency of the Akt pathway signature in different data sets (\cref{tab:svd_vs_tm_path}).
-Another likely reason could be that FM genetic signature was not comprised only of the genes from the Akt pathway, but genes from other pathways as well, and so the metagene did not cluster together with the Akt pathway signature in the heatmap.
+In \cref{fig:gatza_allmeta}, all of the obesity associated metagenes from the CR data set cluster together into a group, but none of the pathway associated metagenes correlated strongly with the obesity metagenes.
+Though \gls{her2} and p63 pathway metagenes were grouped next to the cluster of obesity metagenes, the similarity was at most about 0.6  (Pearson correlation; \cref{fig:gatza_allmeta}).
+FM obesity associated metagene did not cluster together with the obesity metagenes from the CR data set, nor with any of the other pathway metagenes.
+The fact that the FM metagene did not cluster with any of the CR metagenes showed that the nature of the FM metagene was different from those metagenes found in the CR data set.
+Furthermore, the FM metagene did not cluster with the Akt pathway in the heatmap, even though \citet{Fuentes-Mattei2014} provided clear evidence that their metagene specifically activated the Akt/\gls{mtor} signalling pathway in a mouse model.
+This may have been due to the lack of consistency of the Akt pathway signature in the different data sets (\cref{tab:svd_vs_tm_path}).
+Another likely reason could be that FM genetic signature was not comprised only of the genes from the Akt pathway, but genes from the other pathways as well, and so the metagene did not cluster together with the Akt pathway signature in the heatmap.
 
 The results in this section suggested that none of the obesity associated genetic signatures were similar or related to any of the pathway associated genetic signatures from the \citet{Gatza2010a} study.
-
-(add heatmaps of other data (Creighton/FM/Cris) as well? or maybe in appendix)
 
 \section{Prediction of obesity associated metagenes with pathway associate metagenes}
 \label{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}
 
-% and lastly linear models were constructed based on the pathway metagenes and sample \gls{bmi}/\gls{bmi} status to predict the obesity associated metagenes.
-
 To confirm that the obesity associated metagenes were not related to any of the biological pathway signatures from the \citet{Gatza2010a} study, linear models were created to predict the obesity metagene scores with the pathway metagene scores.
-If any of the pathway metagenes were significant in the linear model, this provided evidence that the significant pathways in the linear model were related to the obesity metagene.
-Since most of the obesity metagenes were found in CR data set and only CR and \gls{nzbc} data sets had \gls{bmi}/\gls{bmi} status information for the samples, \gls{nzbc} data set was used as the training data set to create linear models for obesity metagene score prediction.
+If any of the pathway metagenes were significant in the linear model, this would provide evidence that the significant pathways in the linear model were related to the obesity metagene.
+Since most of the obesity metagenes were found in the CR data set, and only the CR and the \gls{nzbc} data sets had \gls{bmi} information for the patients, \gls{nzbc} data set was used as the training data set to create the linear models for obesity metagene score prediction.
 
-Metagene scores used for the construction of linear models were generated from the application of the transformation matrices derived from GT data (from \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}) to \gls{rma}-normalised \gls{nzbc} data.
+\subsection{Linear model prediction in the \gls{nzbc} and CR data sets}
+\label{sub:linear_model_prediction_in_the_nzbc_and_cr_data_sets}
+
+Metagene scores used for the construction of linear models were generated from the application of the transformation matrices derived from the GT data (from \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}) to \gls{rma} normalised \gls{nzbc} data.
 For each of the obesity metagenes identified, seven linear models were created: \gls{bmi}-only, \gls{bmi} status-only, \gls{bmi} and \gls{bmi} status, pathway metagenes-only, and all of the combinations of pathway metagenes with \gls{bmi} and/or \gls{bmi} status.
-The only variables that showed significance in any of the models that predicted the obesity metagenes taken from the CR data set were \gls{pr} metagene and whether samples were obese or not (\cref{tab:lm_sig_var}).
-In the model that predicted the FM metagene scores, the obesity status of the samples and Myc metagene score were significant, but the \gls{pr} metagene score was not (\cref{app:b}).
+The only variables that showed significance in any of the models that predicted the obesity metagenes taken from the CR data set were the \gls{pr} metagene and whether the patients were obese or not (\cref{tab:lm_sig_var}).
+In the model that predicted the FM metagene scores, the obesity status of the patients and Myc metagene score were significant, but the \gls{pr} metagene score was not (\cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 
 \begin{table}[htpb]
 	\centering
@@ -270,17 +280,21 @@ In the model that predicted the FM metagene scores, the obesity status of the sa
 	\end{threeparttable}
 \end{table}
 
-All of the models constructed from sample \gls{bmi}, \gls{bmi} status and/or GT pathway metagene scores confirmed that none of the pathways were significant, except for the \gls{pr} and Myc pathway metagene scores in the models for CR metagenes and FM metagene, respectively.
-It was not surprising that the \gls{pr} pathway metagene showed significance in the models generated in \gls{nzbc} data set, as \gls{pr} status was very strongly correlated with \gls{nzbc} data set.
-The significance of the Myc metagene in the model for FM metagene was difficult to interpret, as there was no reported association of FM metagene with Myc pathway by \citet{Fuentes-Mattei2014}.
-However, ``sustained cell proliferation'' was one of the cancer hallmarks that \citet{Fuentes-Mattei2014} had shown to be related to their obesity genetic signature, so the Myc pathway metagene may have picked up the proliferation signal in the FM metagene.
+The models constructed from the patient \gls{bmi}, \gls{bmi} status and/or GT pathway metagene scores confirmed that none of the pathways were significant, except for the \gls{pr} and Myc pathway metagene scores in the models for the CR metagenes and the FM metagene, respectively.
+It was not surprising that the \gls{pr} pathway metagene showed significance in the models generated in \gls{nzbc} data set, as majority of the patients in the \gls{nzbc} data set were \gls{pr}$^+$ (\cref{tab:clin_summary}).
+The significance of the Myc metagene in the model for FM metagene was difficult to interpret, as there was no reported association of the FM metagene with the Myc pathway by \citet{Fuentes-Mattei2014}.
+\textit{MYC} is an oncogene that encodes the Myc transcription factor that, when overexpressed, disrupts various pathways that directly promote tumour growth and proliferation, and has a central role in many of the cancer hallmarks \citep{Coller2000,Hanahan2000}.
+``Sustained cell proliferation'' was one of the cancer hallmarks that \citet{Fuentes-Mattei2014} had shown to be related to their obesity associated genetic signature, which could be the reason why the Myc pathway metagene showed up as a significant variable in the linear model.
 
-Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with each of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only} and \cref{app:b}).
-As expected, all of the linear models showed significant contribution of the \gls{pr} metagene scores to the model for all obesity metagenes (except FM metagene; \cref{app:b}).
+Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with each of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+As expected, all of the linear models showed significant contribution of the \gls{pr} metagene scores to the model for all obesity metagenes (except FM metagene; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+% Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made just with the \gls{pr} metagene scores.
+% For each of the CR and FM obesity metagenes, linear models were constructed using the patient \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene as predictor variables (\cref{tab:lm_pr_only}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+% As expected, all of the linear models showed significant contribution of the \gls{pr} metagene scores to the model for all obesity metagenes (except FM metagene; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 
 \begin{table}[htpb]
 	\centering
-	\caption[Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the sample \gls{bmi}, \gls{bmi} status and the \acrshort{pr} pathway metagene score]{Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the sample \gls{bmi}, \gls{bmi} status and the \gls{pr} pathway metagene score}
+	\caption[Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the patient \gls{bmi}, \gls{bmi} status and the \acrshort{pr} pathway metagene score]{Description of the linear models constructed from the \gls{nzbc} data to predict the Cr obesity, using only the patient \gls{bmi}, \gls{bmi} status and the \gls{pr} pathway metagene score}
 	\label{tab:lm_pr_only}
 	\begin{threeparttable}
 			\begin{tabular}{llr{\bfseries}S}
@@ -312,13 +326,14 @@ As expected, all of the linear models showed significant contribution of the \gl
 \end{table}
 
 To determine whether any of the linear models were able to predict the corresponding obesity metagene scores, the predicted metagene scores were generated from the models and then compared with the original scores.
-The predictions were first made in \gls{nzbc} data, where the metagene scores generated from the application of transformation matrices (from GT data set) were used to make the predictions.
-The predicted metagenes were then compared with the true metagenes that were originally generated from the transformation matrices (\cref{fig:predict_cris_cris}).
+The original obesity metagene scores from the \gls{nzbc} were generated from the application of TM that were derived from the \gls{rma}-normalised GT data set.
+These \gls{nzbc} obesity metagene scores were then compared with the metagene scores that were predicted by the linear models (\cref{fig:predict_cris_cris}).
 
-The predicted metagenes from the \gls{bmi} only, \gls{bmi} status only and \gls{bmi} and \gls{bmi} status linear models were not significantly related to the true metagene in many of the obesity metagenes; though \gls{bmi} and \gls{bmi} status model showed significance in some metagenes (\cref{app:b}).
-On the other hand, all of the predicted metagenes generated from the models that contained any of the pathway metagenes showed significant association with the true metagene scores in all of the obesity metagenes (\cref{fig:predict_cris_cris,app:b}).
+The predicted metagenes from all of the patient \gls{bmi}-related linear models were not significantly related to the original metagene scores in many of the obesity metagenes (\cref{fig:predict_cris_cris}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+On the other hand, all of the predicted metagenes generated from the models that used the pathway metagene scores showed significant association with the original metagene scores (\cref{fig:predict_cris_cris}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 However, the $R^2$ values for all of the predicted metagenes against the true metagenes were very low ($R^2$ \textless{} 0.4).
-Furthermore, all of the plots in \cref{fig:predict_cris_cris,app:b} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
+All of the plots in \cref{fig:predict_cris_cris,sec:summary_of_the_linear_models_in_nzbc_data} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
+Furthermore, these results suggested that most of the variations in the Cr (and other) obesity metagenes were being explained by the \gls{pr} metagene and the patient \gls{bmi} contributed very little to the prediction.
 
 \begin{figure}[htpb]
 	\centering
@@ -341,11 +356,12 @@ Furthermore, all of the plots in \cref{fig:predict_cris_cris,app:b} showed clear
 	\label{fig:predict_cris_cris}
 \end{figure}
 
-To confirm the results shown in \gls{nzbc} data set (training set), the linear models were applied to CR data (test set).
-As shown in \cref{fig:predict_cr_cris}, all of the predicted metagenes generated from the linear models were statistically significantly associated with the true metagenes, although there were some exceptions in the models for other obesity metagenes (see \cref{app:b}).
-Similar to the results from \gls{nzbc} data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.43) and the data points were widely spread out in the plots.
+%TODO: comment on the negative relationship of the predicted and true obesity metagenes in the CR data
+
+To confirm the results shown in the \gls{nzbc} data set (the training set), the linear models were applied to CR data (the test set).
+As shown in \cref{fig:predict_cr_cris}, all of the predicted Cr metagene generated from the linear models were statistically significantly associated with the true Cr metagenes in CR data, but there were some exceptions in the models for the other obesity metagenes (\cref{sec:summary_statistics_of_the_predicted_obesity_metagenes_with_sample_bmi_bmi_status_in_nzbc_and_cr_data}).
+Similar to the results from the \gls{nzbc} data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.43) in the CR data set and the data points were widely spread out in the plots.
 Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be relevant to the obesity metagenes which the models predict, as the predicted values were only weakly associated with the true values.
-\\
 
 \begin{figure}[htpb]
 	\centering
@@ -368,17 +384,19 @@ Again, these results suggested that the predicted metagene scores from the linea
 	\label{fig:predict_cr_cris}
 \end{figure}
 
-\noindent
+\subsection{Stepwise linear model prediction in \gls{nzbc} and CR data sets}
+\label{sub:stepwise_linear_model_prediction_in_nzbc_and_cr_data_sets}
+
 Lastly, since only the ``consistent'' pathway metagenes were picked from all of the available pathway metagene scores, linear models were constructed with all of the pathway metagenes in a step wise fashion.
-Step wise construction of a linear model is where the variables for a model are selected computationally depending on the contribution of the variable to the resuting linear model, and thus contains only the variables that ``matter'' to the linear model.
-Sample \gls{bmi}, \gls{bmi} status and all of the pathway metagene scores were used to generate the step wise linear model for each of the obesity metagenes.
+Step wise construction of a linear model is where the variables for a model are selected computationally depending on the contribution of the variable to the resulting linear model, and thus contains only the variables that ``matter'' to the final linear model.
+Patient \gls{bmi}, \gls{bmi} status and all of the pathway metagene scores were used to generate the step wise linear model for each of the obesity metagenes.
 The linear models that resulted from the step wise selection of the variables were summarised in \cref{tab:stepwise_model}.
 
 \begin{longtable}{llr{\bfseries}S}
 	\centering
 	\caption[Description of the step wise linear models constructed from the \gls{nzbc} data to predict all of the obesity metagenes]{Description of the step wise linear models constructed from the \gls{nzbc} data to predict all of the obesity metagenes}
 	\label{tab:stepwise_model}\\
-		Obesity metagene & Variables used in the model & Estimate & {P-value}\\
+		Obesity metagene & Variables retained in the model & Estimate & {P-value}\\
 		\hline
 	\endfirsthead
 	\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
@@ -388,122 +406,122 @@ The linear models that resulted from the step wise selection of the variables we
 		\hline
 		\hline
 		Cr         & Akt         & -0.3415   & \bfseries \num{4.43d-8}\\
-				   & \gls{egfr}  & 0.33852   & \bfseries \num{1.94d-05}\\
-				   & \gls{er}    & -0.20237  & \bfseries 0.00419\\
-				   & \gls{ifny}  & 0.12233   & 0.08700\\
-				   & \gls{pr}    & -0.33920  & \bfseries \num{2.09d-5}\\
-				   & Ras         & -0.22611  & \bfseries 0.00193\\
-				   & Src         & -0.11452  & 0.08177\\
-				   & \gls{tgfb}  & 0.55638   & \bfseries \textless{} \num{2d-16}\\
-				   & \gls{tnfa}  & -0.25501  & \bfseries 0.00616\\
+				   & \gls{egfr}  & 0.3385   & \bfseries \num{1.94d-05}\\
+				   & \gls{er}    & -0.2024  & \bfseries 0.004190\\
+				   & \gls{ifny}  & 0.1223   & 0.08700\\
+				   & \gls{pr}    & -0.3392  & \bfseries \num{2.09d-5}\\
+				   & Ras         & -0.2261  & \bfseries 0.001930\\
+				   & Src         & -0.1145  & 0.08177\\
+				   & \gls{tgfb}  & 0.5564   & \bfseries \textless{} \num{2d-16}\\
+				   & \gls{tnfa}  & -0.2550  & \bfseries 0.006160\\
 		\hline
-		CrOl       & Overweight  & 0.040918  & 0.074865\\
-				   & Obese       & -0.006381 & 0.756121\\
-				   & Akt         & -0.356713 & \bfseries \num{1.89d-07}\\
-				   & E2F1        & 0.160229  & \bfseries 0.005411\\
-				   & \gls{egfr}  & 0.148618  & 0.062683\\
-				   & p53         & 0.336552  & \bfseries \num{4.35d-05}\\
-				   & \gls{pr}    & -0.225423 & \bfseries 0.000639\\
-				   & Src         & -0.428758 & \bfseries \num{5.85d-10}\\
-				   & \gls{stat3} & -0.124118 & \bfseries 0.009658\\
+		CrOl       & Overweight  & 0.04092  & 0.07487\\
+				   & Obese       & -0.006381 & 0.7561\\
+				   & Akt         & -0.3567 & \bfseries \num{1.89d-07}\\
+				   & E2F1        & 0.1602  & \bfseries 0.005411\\
+				   & \gls{egfr}  & 0.1486  & 0.06268\\
+				   & p53         & 0.3366  & \bfseries \num{4.35d-05}\\
+				   & \gls{pr}    & -0.2254 & \bfseries 0.0006390\\
+				   & Src         & -0.4288 & \bfseries \num{5.85d-10}\\
+				   & \gls{stat3} & -0.1241 & \bfseries 0.009658\\
 		\hline
-		Res        & Akt         & 0.24613   & \bfseries 0.000289\\
-				   & \gls{egfr}  & -0.46827  & \bfseries \num{2.16d-05}\\
-				   & \gls{er}    & 0.18400   & 0.061446\\
-				   & \gls{her2}  & 0.13835   & 0.118228\\
-				   & \gls{ifny}  & -0.21019  & \bfseries 0.044084\\
-				   & \gls{pr}    & 0.41195   & \bfseries 0.000300\\
-				   & Ras         & 0.26506   & \bfseries 0.010465\\
-				   & \gls{tgfb}  & -0.58075  & \bfseries \num{7.64d-11}\\
-				   & \gls{tnfa}  & 0.42200   & \bfseries 0.001834\\
+		Res        & Akt         & 0.2461   & \bfseries 0.0002890\\
+				   & \gls{egfr}  & -0.4683  & \bfseries \num{2.16d-05}\\
+				   & \gls{er}    & 0.1840   & 0.06145\\
+				   & \gls{her2}  & 0.1384   & 0.1182\\
+				   & \gls{ifny}  & -0.2102  & \bfseries 0.04408\\
+				   & \gls{pr}    & 0.4120   & \bfseries 0.0003000\\
+				   & Ras         & 0.2651   & \bfseries 0.01047\\
+				   & \gls{tgfb}  & -0.5808  & \bfseries \num{7.64d-11}\\
+				   & \gls{tnfa}  & 0.4220   & \bfseries 0.001834\\
 		\hline
-		ResOl      & Akt         & -0.33596  & \bfseries 0.000294\\
-				   & \gls{bcat}  & -0.19866  & 0.138953\\
-				   & E2F1        & 0.36059   & \bfseries 0.009325\\
-				   & \gls{egfr}  & 0.23421   & 0.056865\\
-				   & \gls{her2}  & -0.13652  & 0.121689\\
-				   & p53         & 0.38746   & \bfseries 0.000519\\
-				   & \gls{pi3k}  & -0.21881  & 0.148676\\
-				   & \gls{pr}    & -0.32228  & \bfseries 0.001656\\
-				   & Ras         & -0.28984  & \bfseries 0.033975\\
-				   & Src         & -0.40779  & \bfseries \num{5.26d-06}\\
-				   & \gls{stat3} & -0.11452  & 0.125609\\
-				   & \gls{tnfa}  & -0.11442  & 0.117023\\
+		ResOl      & Akt         & -0.3360  & \bfseries 0.0002940\\
+				   & \gls{bcat}  & -0.1987  & 0.1390\\
+				   & E2F1        & 0.3606   & \bfseries 0.009325\\
+				   & \gls{egfr}  & 0.2342   & 0.05687\\
+				   & \gls{her2}  & -0.1365  & 0.1217\\
+				   & p53         & 0.3875   & \bfseries 0.0005190\\
+				   & \gls{pi3k}  & -0.2188  & 0.1487\\
+				   & \gls{pr}    & -0.3223  & \bfseries 0.001656\\
+				   & Ras         & -0.2898  & \bfseries 0.03398\\
+				   & Src         & -0.4078  & \bfseries \num{5.26d-06}\\
+				   & \gls{stat3} & -0.1145  & 0.1256\\
+				   & \gls{tnfa}  & -0.1144  & 0.1170\\
 		\hline
-		Ca         & Akt         & -0.26243  & \bfseries \num{7.04d-06}\\
-				   & \gls{egfr}  & 0.36305   & \bfseries 0.000139\\
-				   & \gls{er}    & -0.18614  & \bfseries 0.030771\\
-				   & \gls{ifny}  & 0.22118   & \bfseries 0.013034\\
-				   & \gls{pr}    & -0.42911  & \bfseries \num{1.07d-05}\\
-				   & Ras         & -0.28124  & \bfseries 0.000898\\
-				   & \gls{tgfb}  & 0.76139   & \bfseries \textless{} \num{2d-16}\\
-				   & \gls{tnfa}  & -0.33200  & \bfseries 0.003919\\
+		Ca         & Akt         & -0.2624  & \bfseries \num{7.04d-06}\\
+				   & \gls{egfr}  & 0.3631   & \bfseries 0.0001390\\
+				   & \gls{er}    & -0.1861  & \bfseries 0.03077\\
+				   & \gls{ifny}  & 0.2212   & \bfseries 0.01303\\
+				   & \gls{pr}    & -0.4291  & \bfseries \num{1.07d-05}\\
+				   & Ras         & -0.2812  & \bfseries 0.0008980\\
+				   & \gls{tgfb}  & 0.7614   & \bfseries \textless{} \num{2d-16}\\
+				   & \gls{tnfa}  & -0.3320  & \bfseries 0.003919\\
 		\hline
 		CaOl       & Overweight  & 0.07613   & \bfseries 0.006875\\
-				   & Obese       & 0.01408   & 0.564622\\
-				   & Akt         & -0.44727  & \bfseries \num{2.43d-07}\\
-				   & \gls{bcat}  & -0.13463  & 0.140261\\
-				   & E2F1        & 0.33864   & \bfseries 0.001249\\
-				   & p53         & 0.28777   & \bfseries 0.000996\\
-				   & \gls{pr}    & -0.28255  & \bfseries \num{2.18d-05}\\
-				   & Src         & -0.44149  & \bfseries \num{2.02d-08}\\
-				   & \gls{tnfa}  & -0.14215  & \bfseries 0.013897\\
+				   & Obese       & 0.01408   & 0.5646\\
+				   & Akt         & -0.4473  & \bfseries \num{2.43d-07}\\
+				   & \gls{bcat}  & -0.1346  & 0.1403\\
+				   & E2F1        & 0.3386   & \bfseries 0.001249\\
+				   & p53         & 0.2878   & \bfseries 0.0009960\\
+				   & \gls{pr}    & -0.2826  & \bfseries \num{2.18d-05}\\
+				   & Src         & -0.4415  & \bfseries \num{2.02d-08}\\
+				   & \gls{tnfa}  & -0.1422  & \bfseries 0.01390\\
 		\hline
-		CaRes      & \gls{bcat}  & 0.26899   & 0.05238  \\
-				   & E2F1        & -0.22115  & 0.08848  \\
-				   & \gls{egfr}  & 0.44400   & \bfseries \num{6.67d-05 }\\
-				   & \gls{her2}  & -0.20304  & \bfseries 0.04615  \\
-				   & \gls{ifny}  & 0.32874   & \bfseries 0.00574  \\
-				   & \gls{pr}    & -0.28764  & \bfseries 0.00104  \\
-				   & Src         & -0.17989  & 0.05404  \\
-				   & \gls{tgfb}  & 0.52898   & \bfseries \num{2.15d-06 }\\
-				   & \gls{tnfa}  & -0.38677  & \bfseries 0.00564  \\
+		CaRes      & \gls{bcat}  & 0.2690   & 0.05238  \\
+				   & E2F1        & -0.2212  & 0.08848  \\
+				   & \gls{egfr}  & 0.4440   & \bfseries \num{6.67d-05 }\\
+				   & \gls{her2}  & -0.2030  & \bfseries 0.04615  \\
+				   & \gls{ifny}  & 0.3287   & \bfseries 0.005740  \\
+				   & \gls{pr}    & -0.2876  & \bfseries 0.001040  \\
+				   & Src         & -0.1799  & 0.05404  \\
+				   & \gls{tgfb}  & 0.5290   & \bfseries \num{2.15d-06 }\\
+				   & \gls{tnfa}  & -0.3868  & \bfseries 0.005640  \\
 		\hline
-		CaResOl    & \gls{bmi}   & 0.004314  & 0.108546\\
-				   & Overweight  & 0.033086  & 0.306390\\
-				   & Obese       & -0.062257 & 0.175776\\
-				   & Akt         & -0.309706 & \bfseries 0.000339\\
-				   & \gls{bcat}  & -0.198165 & 0.140502\\
-				   & E2F1        & 0.270471  & \bfseries 0.011450\\
-				   & \gls{egfr}  & 0.171219  & 0.113691\\
-				   & Myc         & 0.152007  & 0.056987\\
-				   & p53         & 0.294895  & \bfseries 0.003734\\
-				   & \gls{pr}    & -0.230896 & \bfseries 0.000823\\
-				   & Ras         & -0.270824 & \bfseries 0.044788\\
-				   & Src         & -0.512567 & \bfseries \num{2.72d-08}\\
-				   & \gls{tnfa}  & -0.103302 & 0.083449\\
+		CaResOl    & \gls{bmi}   & 0.004310  & 0.1086\\
+				   & Overweight  & 0.03309  & 0.3064\\
+				   & Obese       & -0.06226 & 0.1758\\
+				   & Akt         & -0.3097 & \bfseries 0.0003390\\
+				   & \gls{bcat}  & -0.1982 & 0.1405\\
+				   & E2F1        & 0.2705  & \bfseries 0.01145\\
+				   & \gls{egfr}  & 0.1712  & 0.1137\\
+				   & Myc         & 0.1520  & 0.05699\\
+				   & p53         & 0.2949  & \bfseries 0.003734\\
+				   & \gls{pr}    & -0.2309 & \bfseries 0.0008230\\
+				   & Ras         & -0.2708 & \bfseries 0.04479\\
+				   & Src         & -0.5126 & \bfseries \num{2.72d-08}\\
+				   & \gls{tnfa}  & -0.1033 & 0.08345\\
 		\hline
-		Or         & \gls{bmi}   & 0.002696  & 0.14407\\
-				   & Overweight  & 0.010522  & 0.62856\\
-				   & Obese       & -0.061020 & 0.05542\\
-				   & Akt         & -0.238412 & \bfseries \num{4.93d-05}\\
-				   & E2F1        & 0.185085  & \bfseries 0.02754\\
-				   & \gls{egfr}  & 0.147219  & 0.07423\\
-				   & \gls{her2}  & -0.086804 & 0.14070\\
-				   & p53         & 0.416414  & \bfseries \num{5.83d-08}\\
-				   & \gls{pi3k}  & -0.216179 & \bfseries 0.03528\\
-				   & \gls{pr}    & -0.199097 & \bfseries 0.00253\\
-				   & Ras         & -0.200544 & \bfseries 0.00898\\
-				   & Src         & -0.543834 & \bfseries \num{2.10d-15}\\
-				   & \gls{stat3} & -0.093363 & \bfseries 0.02749\\
+		Or         & \gls{bmi}   & 0.002696  & 0.1441\\
+				   & Overweight  & 0.01052  & 0.62856\\
+				   & Obese       & -0.06102 & 0.05542\\
+				   & Akt         & -0.2384 & \bfseries \num{4.93d-05}\\
+				   & E2F1        & 0.1851  & \bfseries 0.02754\\
+				   & \gls{egfr}  & 0.1472  & 0.07423\\
+				   & \gls{her2}  & -0.08680 & 0.1407\\
+				   & p53         & 0.4164  & \bfseries \num{5.83d-08}\\
+				   & \gls{pi3k}  & -0.2162 & \bfseries 0.03528\\
+				   & \gls{pr}    & -0.1991 & \bfseries 0.002530\\
+				   & Ras         & -0.2005 & \bfseries 0.008980\\
+				   & Src         & -0.5438 & \bfseries \num{2.10d-15}\\
+				   & \gls{stat3} & -0.0934 & \bfseries 0.02749\\
 		\hline
-		FM         & \gls{bmi}   & 0.011093  & \bfseries 0.036229\\
-				   & Overweight  & -0.153753 & \bfseries 0.014277\\
-				   & Obese       & -0.212483 & \bfseries 0.017378\\
-				   & p53         & 0.460800  & \bfseries 0.002512\\
-				   & \gls{pi3k}  & -0.426246 & \bfseries 0.000118\\
-				   & \gls{pr}    & -0.373119 & \bfseries 0.020737\\
-				   & \gls{stat3} & 0.248745  & \bfseries 0.019073\\
-				   & \gls{tgfb}  & 0.152925  & 0.128933\\
+		FM         & \gls{bmi}   & 0.01109  & \bfseries 0.03623\\
+				   & Overweight  & -0.1538 & \bfseries 0.01428\\
+				   & Obese       & -0.2125 & \bfseries 0.01738\\
+				   & p53         & 0.4608  & \bfseries 0.002512\\
+				   & \gls{pi3k}  & -0.4262 & \bfseries 0.0001180\\
+				   & \gls{pr}    & -0.3731 & \bfseries 0.02074\\
+				   & \gls{stat3} & 0.2487  & \bfseries 0.01907\\
+				   & \gls{tgfb}  & 0.1529  & 0.1289\\
 		\hline
 		\hline
 	\end{longtable}
 
-These models were used to predict the obesity metagenes in \gls{nzbc} data to test the performance of the models.
-All of the models were able to make statistically significant prediction of the obesity metagenes in \gls{nzbc} data set (\cref{fig:stepwise_cris}).
-Unlike the previous models, the step wise models showed very high $R^2$ values, where most predictions had $R^2$ \textgreater{} 0.85.
-The statistical significance and the strong association of the predicted metagenes were observed in CR data set as well (\cref{fig:stepwise_cr}).
-Though the $R^2$ values were slightly lower than those from \gls{nzbc} data set, the $R^2$ values were more promising than the non-step wise linear models.
+These models were used to predict the obesity metagenes in the \gls{nzbc} data to test the performance of the models.
+All of the models were able to make statistically significant prediction of the original obesity metagenes in the \gls{nzbc} data set (\cref{fig:stepwise_cris}).
+Unlike the previous models, the stepwise models showed very high $R^2$ values, where most predictions had $R^2$ \textgreater{} 0.85.
+The statistical significance and the strong association of the predicted metagenes were observed in the CR data set as well (\cref{fig:stepwise_cr}).
+Though the $R^2$ values were slightly lower than those from the \gls{nzbc} data set, the $R^2$ values from the CR data prediction were more promising than the predictions made by the non-stepwise linear models.
 
 \begin{figure}[htpb]
 	\centering
@@ -539,7 +557,8 @@ Though the $R^2$ values were slightly lower than those from \gls{nzbc} data set,
 	\label{fig:stepwise_cr}
 \end{figure}
 
-Taken together, these results suggested that the variables included in these step wise models were associated with the obesity metagenes identified in CR and FM data sets.
-However, there were no single common pathway that was present in all of the models; although Akt, \gls{egfr} and \gls{pr} pathway metagenes were frequently included in many of the models.
+Taken together, these results suggested that the variables included in these step wise models were relevant to the biology of the obesity metagenes identified in the CR and FM data sets.
+However, there were no single common pathway that was present in all of the models; although Akt, \gls{egfr} and \gls{pr} pathway metagenes were frequently included in many of the stepwise models.
 The role of the pathways included in the models and the possible biological links of these pathways to the obesity metagenes remain unclear, and should be the focus for future investigations.
 
+% TODO: update the stepwise linear model table and the scatter plots

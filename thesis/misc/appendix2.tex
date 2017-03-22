@@ -1,3 +1,8 @@
+\begin{appendices}
+	\crefalias{chapter}{appcha}
+	\crefalias{section}{appsec}
+	\renewcommand{\thesection}{\Alph{chapter}\arabic{section}}
+
 	\chapter{Additional results from \cref{cha:obesity_associated_genetic_signature_and_pathway_signatures}}
 	\label{app:b}
 
@@ -44,8 +49,11 @@
 	\label{sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}
 
 	To investigate whether the normalisation methods were important in the creation of the pathway associated genetic signature transformation matrices, and whether the normalisation methods of the data affected the resulting metagenes, transformation matrices were generated in \gls{rma} or \gls{mas} normalised GT data set and then applied to the \gls{rma} or \gls{mas} normalised GT data set.
-	The results in \cref{fig:appendix/gt_meta_rma_mas} showed less variability of the metagene scores when the metagenes were derived from the data with the same normalisation method (for example, metagenes derived from \gls{rma} normalised data), regardless of the transformation matrix used to produce the metagenes.
+	The results in \cref{fig:appendix/gt_meta_rma_mas} showed less variability of the metagene scores when the metagenes were derived from the data with the same normalisation method, regardless of the transformation matrix used to produce the metagenes.
 	This was most clearly demonstrated by the \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, p53 and \gls{pr} pathway associated genetic signatures.
+
+	As mentioned in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study} some of the pathway metagenes showed greater variability than the other pathway metagene scores.
+	This was also seen in other data sets as well (only the \gls{pr} and \gls{tgfb} metagenes shown; \cref{fig:appendix/gt_meta_rma_mas_other_data}).
 
 	\begin{figure}[htp!]
 		\centering
@@ -219,13 +227,27 @@
 		\caption[]{figure}
 	\end{figure}
 
+	\begin{figure}[htp!]
+		\centering
+		\includegraphics[width=0.32\linewidth,page=244]{appendix/allmeta_rma_vs_mas}
+		\includegraphics[width=0.32\linewidth,page=412]{appendix/allmeta_rma_vs_mas}
+		\includegraphics[width=0.32\linewidth,page=580]{appendix/allmeta_rma_vs_mas}\\
+		\includegraphics[width=0.32\linewidth,page=268]{appendix/allmeta_rma_vs_mas}
+		\includegraphics[width=0.32\linewidth,page=436]{appendix/allmeta_rma_vs_mas}
+		\includegraphics[width=0.32\linewidth,page=604]{appendix/allmeta_rma_vs_mas}
+		\caption[Comparison of the pathway metagenes generated in the \acrshort{mas} normalised CR, FM and \gls{nzbc} data sets from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data]{Comparison of the pathway metagenes generated in the \acrshort{mas} normalised CR, FM and \gls{nzbc} data sets from the application of the transformation matrices derived from either the \acrshort{rma} or \acrshort{mas} normalised GT data.
+	Only the \gls{pr} (top) and the \gls{tgfb}  (bottom) pathway metagenes are shown, due to the large number of scatter plots generated.
+	}
+		\label{fig:appendix/gt_meta_rma_mas_other_data}
+	\end{figure}
+
 	\newpage
 
 
 	\section{Additional results used to determine the directionality of the pathway metagenes}
 	\label{sec:additional_results_to_determine_the_directionality_of_the_pathway_metagenes}
 
-	The directionality of the pathway metagenes were determined by comparing the metagene values with the gene expression of the representative gene for the pathway associated genetic signature, as well as the gene expression pattern of the pathway signature (\cref{fig:appendix/gt_meta_rma_mas}).
+	The directionality of the pathway metagenes were determined by comparing the metagene values with the gene expression of the representative gene for the pathway associated genetic signature, as well as the gene expression pattern of the pathway signature (\cref{fig:appendix/gt_pathmeta_rank}).
 	Together with the original results presented by \citet{Gatza2010a} (\cref{sec:result_from_gatza2010a_study}), the final directions of the pathway metagenes were decided.
 
 	\begin{figure}[htp!]
@@ -240,7 +262,7 @@
 		For each pathway associated genetic signature, the gene expression pattern of the signature was plotted in the heatmap.
 		The expression of the representative gene for the pathway signature (see \cref{tab:metagene_direction} in \cref{sub:metagene_direction}) was plotted seaparately as a bar above the pathway metagene scores.
 		}
-		\label{fig:appendix/gt_meta_rma_mas}
+		\label{fig:appendix/gt_pathmeta_rank}
 	\end{figure}
 
 	\begin{figure}[htpb]
@@ -290,7 +312,7 @@
 		\includegraphics[width=0.65\linewidth,page=7]{appendix/gatza_meta_trans}
 		\caption[Heatmaps of the Pearson correlation of all the pathway metagenes in the \gls{rma}-normalised CR, \gls{nzbc} and FM data]{Heatmaps showing the correlation of all of the pathway metagenes with one another in \gls{rma} normalised CR, \gls{nzbc} and FM data sets.
 		High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top left histogram.}
-		\label{fig:appendix/gt_meta_rma_mas}
+		\label{fig:appendix/gt_pathmeta_other_data}
 	\end{figure}
 
 	\begin{figure}[htpb]
@@ -385,7 +407,7 @@
 		\includegraphics[width=0.7\linewidth,page=3]{appendix/all_meta_trans}
 		\caption[Heatmaps of the Pearson correlation of all the obesity and the pathway metagenes with one another in the \gls{rma}-normalised CR, \gls{nzbc} and FM data]{Heatmaps showing the correlation of all of the pathway and obesity metagenes with one another in the \gls{rma}-normalised CR, \gls{nzbc} and FM data sets.
 		}
-		\label{fig:appendix/gt_meta_rma_mas}
+		\label{fig:appendix/all_meta_other_data}
 	\end{figure}
 
 	\begin{figure}[htpb]
@@ -1275,7 +1297,8 @@
 	\section{Summary statistics of the predicted obesity metagenes with sample \gls{bmi}/\gls{bmi} status in \gls{nzbc} and CR data}
 	\label{sec:summary_statistics_of_the_predicted_obesity_metagenes_with_sample_bmi_bmi_status_in_nzbc_and_cr_data}
 
-	
+	Instead of presenting 11 scatter plots for the 10 obesity metagenes used in this project, all of the R$^2$- and p-values were summarised in \cref{tab:prediction_summary_cris}.
+
 	\begin{TableNotes}
 		\begin{footnotesize}
 		\item [1] All values in bold are statistically significant (p \textless{} 0.05).
