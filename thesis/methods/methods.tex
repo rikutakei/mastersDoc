@@ -10,8 +10,8 @@ All statistical analyses and data manipulation were carried out with \gls{r} (ve
 \label{sec:data}
 
 The raw microarray data from the \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Gatza2010a}  studies were downloaded from the \gls{geo} website (\citealp{Edgar2002}; \citetalias{GEO}).
-In addition to these breast cancer data sets, the raw microarray data set from a cohort of \gls{nz} breast cancer patients used in the \citet{Print2016} study was also downloaded from the \gls{geo} website.
-\gls{rnaseq} and clinical data of multiple different cancer types were downloaded from the \gls{icgc} (\citetalias{ICGC}; \citealp{Zhang2011}) and \gls{tcga} \citepalias{TCGA}, respectively.
+In addition to these breast cancer data sets, the raw microarray data set from a cohort of \gls{nz} breast cancer patients used in the \citet{Print2016} study was downloaded from the \gls{geo} website.
+\gls{rnaseq} and clinical data of multiple different cancer types were downloaded from the \gls{icgc} (\citetalias{ICGC}; \citealp{Zhang2011}) and \gls{tcga} \citepalias{TCGA} websites, respectively.
 
 \subsection{Breast cancer data}
 \label{sub:breast_cancer_data}
@@ -28,6 +28,7 @@ Clinical data of the samples (age, ethnicity, tumour grade, menopause status, \g
 
 The raw Affymetrix HGU\-133A microarray gene expression data files from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE\-20194).
 Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\gls{her2} statuses, and treatments used) in this study was also downloaded from the \gls{geo} database (same \gls{geo} accession ID).
+Patient height, weight and \gls{bmi} information were not available in this data set.
 130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the Supplementary Table 3 from their paper.
 
 \subsubsection{\gls{nzbc} data}
@@ -51,7 +52,7 @@ The Akt, \gls{bcat}, E2F1, \gls{egfr}, \gls{er}, \gls{her2}, \gls{ifna}, \gls{if
 All of the microarray data used gene probe IDs to refer to the genes, and therefore these probe IDs had to be converted into their corresponding gene symbols.
 The gene probe IDs in the raw data were converted into their corresponding gene symbols using the \textit{hgu133a.db} package in \gls{r} \citep{hgu133}.
 Since multiple gene probe sets match back to a single gene of interest in a microarray chip, there were conflicting expression data for some of the genes after the conversion of the gene probe sets into gene symbols.
-For the gene symbols that had multiple probe set entries, a single probe set was chosen to represent the gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}, using the default parameters (which chose the probe set with a maximum mean value) \citep{Langfelder2008}.
+For the gene symbols that had multiple probe set entries, a single probe set was chosen to represent the gene symbol by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r}, using the default parameters (which chose the probe set with a maximum mean expression value) \citep{Langfelder2008}.
 Likewise, any obesity associated or pathway associated gene probes were converted into gene symbols.
 
 \begin{table}[htpb]
@@ -80,62 +81,65 @@ Likewise, any obesity associated or pathway associated gene probes were converte
 	\end{TableNotes}
 	
 	\newpage
-	\begin{longtable}{lcc}
-		\caption{Summary of the clinical variables in the Creighton \textit{et al.} and \gls{nzbc} microarray data}
+	\begin{longtable}{lccc}
+		\caption{Summary of the clinical variables in the Creighton \textit{et al.},  Fuentes-Mattei \textit{et al.} and \gls{nzbc} microarray data}
 		\label{tab:clin_summary}\\
-		Clinical variable & Creighton \textit{et al.} & \gls{nzbc} \\
+		Clinical variable & Creighton \textit{et al.} & Fuentes-Mattei \textit{et al.} & \gls{nzbc} \\
+		\hline
+		\hline
 		\endfirsthead
 		\multicolumn{3}{c}{\tablename\ \thetable{}\ (continued)}\\
+		\hline
+		\hline
 		\endhead
-		\hline
-		\hline
 		\rule{0pt}{2.25ex}Age \\
-		\hspace{1em} Min.                    & 30 & 31 \\
-		\hspace{1em} Max.                    & 72 & 92 \\
-		\hspace{1em} Mean                    & 49 & 59 \\
-		\hspace{1em} Median                  & 48 & 60 \\
+		\hspace{1em} Min.                    & 30 & 26 & 31 \\
+		\hspace{1em} Max.                    & 72 & 79 & 92 \\
+		\hspace{1em} Mean                    & 49 & 52 & 59 \\
+		\hspace{1em} Median                  & 48 & 51 & 60 \\
 		\hline
 		\rule{0pt}{2.25ex}Ethnicity         \\
-		\hspace{1em} Caucasian               & 77 & 71 \\
-		\hspace{1em} African-American        & 16 & 0  \\
-		\hspace{1em} \gls{nz} M\=aori        & 0  & 10 \\
-		\hspace{1em} Pacific Islands         & 0  & 14 \\
-		\hspace{1em} Asian                   & 10 & 4  \\
+		\hspace{1em} Caucasian        & 77 & 176 & 71 \\
+		\hspace{1em} African-American & 16 & 29  & 0  \\
+		\hspace{1em} \gls{nz} M\=aori & 0  & 0   & 10 \\
+		\hspace{1em} Pacific Islands  & 0  & 0   & 14 \\
+		\hspace{1em} Asian            & 10 & 18  & 4  \\
+		\hspace{1em} Other            & 0  & 55  & 0  \\
 		\hline
 		\rule{0pt}{2.25ex}\gls{bmi} status  \\
-		\hspace{1em} Normal weight           & 36 & 28 \\
-		\hspace{1em} Overweight              & 29 & 28 \\
-		\hspace{1em} Obese                   & 38 & 43 \\
+		\hspace{1em} Normal weight           & 36 & NA\tnote{1} & 28 \\
+		\hspace{1em} Overweight              & 29 & NA & 28 \\
+		\hspace{1em} Obese                   & 38 & NA & 43 \\
 		\hline
 		\rule{0pt}{2.25ex}Menopause status  \\
-		\hspace{1em} Premenopause            & 49 & NA\tnote{1}\\
-		\hspace{1em} Perimenopause           & 9  & NA \\
-		\hspace{1em} Postmenopause           & 45 & NA \\
+		\hspace{1em} Premenopause            & 49 & NA & NA\\
+		\hspace{1em} Perimenopause           & 9  & NA & NA \\
+		\hspace{1em} Postmenopause           & 45 & NA & NA \\
 		\hline
 		\rule{0pt}{2.25ex}Tumour grade      \\
-		\hspace{1em} 1                       & 14 & 11 \\
-		\hspace{1em} 2                       & 35 & 39 \\
-		\hspace{1em} 3                       & 54 & 49 \\
+		\hspace{1em} 1                       & 14 & 13 & 11 \\
+		\hspace{1em} 2                       & 35 & 104 & 39 \\
+		\hspace{1em} 3                       & 54 & 150 & 49 \\
 		\hline
 		\rule{0pt}{2.25ex}\gls{er} status   \\
-		\hspace{1em} \gls{er}$^+$            & 58 & 72 \\
-		\hspace{1em} \gls{er}$^-$            & 42 & 27 \\
-		\hspace{1em} Unknown                 & 3  & 0  \\
+		\hspace{1em} \gls{er}$^+$            & 58 & 164 & 72 \\
+		\hspace{1em} \gls{er}$^-$            & 42 & 114 & 27 \\
+		\hspace{1em} Unknown                 & 3  & 0  & 0  \\
 		\hline
 		\rule{0pt}{2.25ex}\gls{pr} status   \\
-		\hspace{1em} \gls{pr}$^+$            & 48 & 62 \\
-		\hspace{1em} \gls{pr}$^-$            & 50 & 37 \\
-		\hspace{1em} Unknown                 & 5  & 0  \\
+		\hspace{1em} \gls{pr}$^+$            & 48 & 121 & 62 \\
+		\hspace{1em} \gls{pr}$^-$            & 50 & 157 & 37 \\
+		\hspace{1em} Unknown                 & 5  & 0  & 0  \\
 		\hline
 		\rule{0pt}{2.25ex}\gls{her2} status \\
-		\hspace{1em} \gls{her2}$^+$          & 12 & NA \\
-		\hspace{1em} \gls{her2}$^-$          & 54 & NA \\
-		\hspace{1em} Unknown                 & 37 & NA \\
+		\hspace{1em} \gls{her2}$^+$          & 12 & 59 & NA \\
+		\hspace{1em} \gls{her2}$^-$          & 54 & 219 & NA \\
+		\hspace{1em} Unknown                 & 37 & 0 & NA \\
 		\hline
 		\rule{0pt}{2.25ex}\gls{ln} status   \\
-		\hspace{1em} \gls{ln}$^+$            & 14 & 56\\
-		\hspace{1em} \gls{ln}$^-$            & 89 & 40\\
-		\hspace{1em} Unknown                 & 0  & 3 \\
+		\hspace{1em} \gls{ln}$^+$            & 14 & NA & 56\\
+		\hspace{1em} \gls{ln}$^-$            & 89 & NA & 40\\
+		\hspace{1em} Unknown                 & 0  & NA & 3 \\
 		\hline
 		\hline
 		\insertTableNotes
@@ -158,20 +162,20 @@ The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, 
 \subsubsection{Data formatting and processing}
 \label{ssub:data_formatting_and_processing}
 
-The raw \gls{rnaseq} data from the \gls{icgc} database were formatted in a way that the count data of all the genes were listed for one sample, then the count data for all the genes for the next sample, and so on.
+The raw \gls{rnaseq} data from the \gls{icgc} database were formatted in such a way that the count data of all the genes were listed for one sample, then the count data for all the genes for the next sample, and so on.
 This data format was highly inconvenient for later analyses so the data were reformatted into a ``gene by sample'' matrix format using the \textit{dplyr} package in \gls{r}.
 
 Another problem with the data was the sample ID in the \gls{rnaseq} data.
 Though similar to the \gls{tcga} sample IDs, the \gls{icgc} IDs in the \gls{rnaseq} data had an extra identification code in the sample names.
 To associate each sample in the raw \gls{rnaseq} data from the \gls{icgc} database with the correct samples in the clinical data from the \gls{tcga} database, the \gls{icgc} IDs were re-coded so they matched the \gls{tcga} IDs.
-After the IDs were re-coded, all of the samples were checked to see if there were any duplicates in either the \gls{icgc} \gls{rnaseq} data or \gls{tcga} clinical data.
+After the IDs were re-coded, all of the samples were checked to see if there were any duplicates in either the \gls{icgc} \gls{rnaseq} data or the \gls{tcga} clinical data.
 Where there was a duplicate in the sample ID, a single sample with the highest mean expression value was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r} \citep{Langfelder2008}.
 
 Since some of the samples did not have either height or weight data, these samples were removed from the analyses.
 In each of the eight cancer types, the \gls{tcga} sample IDs in the clinical data were cross-checked with the sample IDs in the \gls{rnaseq} data, and vice versa.
 Any samples that did not have either the clinical information or the \gls{rnaseq} data were removed from the analyses.
 This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in this project.
-See \cref{tab:samplesize} for a summary of the number of samples included in the analyses for each cancer type.
+See \cref{tab:samplesize} for a summary of the total number of samples included in the analyses for each cancer type.
 
 \begin{table}[htpb]
 	\caption{Summary of the total number of samples included in the analyses for each cancer type}
@@ -189,6 +193,42 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 			READ                   & 154 & 73    \\
 			SKCM                   & 430 & 218   \\
 			UCEC                   & 508 & 482   \\
+			\hline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\section{\Gls{bmi}}
+\label{sec:bmi}
+
+\subsection{\gls{bmi} Calculation}
+\label{subsec:bmicalc}
+
+Where missing, \cref{eq:bmicalc} was used to calculate the \gls{bmi} of the samples in all of the cancer data with height and weight data available (\cref{sec:data}).
+
+\begin{equation}
+	\label{eq:bmicalc}
+	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
+\end{equation}
+
+\subsection{\gls{bmi} Classification}
+\label{subsec:bmiclassification}
+
+Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight (25 $\leq$ \gls{bmi} \textless{} 30) or obese (\gls{bmi} $\geq$ 30) based on the \gls{who} definition (\cref{tab:whobmiclass}).
+\cref{eq:bmicalc,tab:whobmiclass} were used to calculate and group the patients from the \gls{icgc} cancer data into appropriate \gls{bmi} classes (\cref{tab:icgc_bmi}).
+
+\begin{table}[htb]
+	\caption{\gls{who} defined \gls{bmi} classification}
+	\label{tab:whobmiclass}
+	\begin{center}
+		\begin{tabular}{lc}
+			Classification & \gls{bmi} Value\\
+			\hline
+			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
+			Normal weight/lean & 20.0$\sim$24.9\\
+			Overweight & 25.0$\sim$29.9\\
+			Obese & $\geq{}$ 30.0\\
 			\hline
 			\hline
 		\end{tabular}
@@ -219,50 +259,14 @@ See \cref{tab:samplesize} for a summary of the number of samples included in the
 	\end{center}
 \end{table}
 
-\section{\Gls{bmi}}
-\label{sec:bmi}
-
-\subsection{\gls{bmi} Calculation}
-\label{subsec:bmicalc}
-
-Where missing, \cref{eq:bmicalc} was used to calculate the \gls{bmi} of the samples in all of the cancer data with height and weight data available (\cref{sec:data}).
-
-\begin{equation}
-	\label{eq:bmicalc}
-	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
-\end{equation}
-
-\subsection{\gls{bmi} Classification}
-\label{subsec:bmiclassification}
-
-Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight (25 $\leq$ \gls{bmi} \textless{} 30) or obese (\gls{bmi} $\geq$ 30) based on the \gls{who} definition (\cref{tab:whobmiclass}).
-
-\begin{table}[htb]
-	\caption{\gls{who} defined \gls{bmi} classification}
-	\label{tab:whobmiclass}
-	\begin{center}
-		\begin{tabular}{lc}
-			Classification & \gls{bmi} Value\\
-			\hline
-			\rule{0pt}{2.25ex}Underweight & \textless{} 20.0\\
-			Normal weight/lean & 20.0$\sim$24.9\\
-			Overweight & 25.0$\sim$29.9\\
-			Obese & $\geq{}$ 30.0\\
-			\hline
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
-
 \section{Data processing}
 \label{sec:datproc}
 
 \subsection{Data normalisation}
 \label{sub:data_normalisation}
 
-All of the data were normalised to remove any experimental bias, errors and noise, so only the true biological signals are considered in the analyses.
 Any experimental procedure is prone to errors due to differences in experimental conditions, machinery used to measure signals and technical procedures in different laboratories, just to name a few.
-In order to remove these experimental noises and focus on the true biological signals in the raw data.
+All of the data were normalised to remove such experimental bias, errors and noise, so only the true biological signals are considered in the analyses.
 
 \subsubsection{Microarray data}
 \label{ssub:microarray_data}
@@ -278,14 +282,14 @@ In fact, the \gls{rma} method showed better identification of the true signals t
 
 The raw microarray data were normalised using both \gls{rma} and \gls{mas} methods, each done separately on a copy of the data.
 The reason why the \gls{mas} method was used as well as the \gls{rma} method was becuase the \gls{mas} normalisation method was used in the \citet{Gatza2010a} study.
-Though the normalisation methods were not specified in the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies, to allow for data comparison between different datasets and accurate result validation of some of the studies, both \gls{rma} and \gls{mas} methods were used to normalise the microarray data.
+Though the normalisation methods were not specified in the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies, to allow for data comparison between different datasets and accurate result validation of some of the studies, both \gls{rma} and \gls{mas} methods were considered for normalising the microarray data.
 
 \subsubsection{RNA-seq data}
 \label{ssub:rna_seq_data}
 
 \gls{rnaseq} data are fundamentally different to microarray data, as \gls{rnaseq} data is a count data of transcript fragments, while microarray data is a continuous data based on the intensity of the probe pairs.
 This means that \gls{rnaseq} data must be processed in a different manner to microarray data.
-However, by analysing \gls{rnaseq} data as a count data, it limits the range of statistical tools and types of analyses that can be done on the data, as many tools are designed for normally distributed data, like the light intensity measures from the microarray data \citep{Law2014}.
+However, by analysing \gls{rnaseq} data as a count data, it limits the range of statistical tools and types of analyses that can be done on the data, as many tools are designed for normally distributed data like the light intensity measures from the microarray data \citep{Law2014}.
 
 To overcome this limitation, \citet{Law2014} developed a method called ``variance modelling at the observational level'', or ``voom'', that allows any \gls{rnaseq} data to be used in ``any statistical pipeline for microarray data that is precision weight aware''.
 In brief, voom first constructs a standard deviation trend from the logged \gls{cpm} value of the genes (experimental design, treatment conditions and other factors are taken into account).
@@ -336,7 +340,7 @@ The second combined data set was created by first combining the cancer data sets
 
 In some cases, an analysis was repeated a number of times to provide statistical evidence that the observed results did not occur by chance.
 All of the simulated results must be derived from a randomised data, and by comparing the observed results with the results that occured by chance, simulation analysis provides statistical evidence for the observed results.
-When a simulation was required, none of the values in the original data were modified but the values in the original data were assigned randomly to different samples; in other words, the samples were shuffled.
+When a simulation was required, none of the values in the original data were modified, but instead the values in the original data were assigned randomly to different samples; in other words, the samples were shuffled.
 This provided a random set of data in which a simulation could be conducted with.
 The samples were shuffled with the \texttt{sample} function from the \textit{base} package in \gls{r}, and were reshuffled for each simulation.
 
@@ -530,7 +534,7 @@ With respect to this project, \gls{svd} was used to assess whether the metagenes
 To do this, the normalised original expression data was reduced in size so that it only included the genes of interest (either obesity or pathway associated) and the samples, then \texttt{svd} function from the \textit{base} package in \gls{r} was used to apply \gls{svd} to the matrix.
 The first principal component was taken from the $V$ matrix and was used as the metagene scores for each samples in the data set.
 
-Another important property of \gls{svd} is that the signal used to create the metagene in the first data set can be directly applied to other data set to obtain the metagene scores in that data set.
+Another important property of \gls{svd} is that the signal used to create the metagene in the first data set can be directly applied to other data sets to obtain the metagene scores for the samples in those data set.
 Rearrangement of \cref{eq:svd} for $V^T$ gives the following equation:
 \begin{equation}
 	\label{eq:transmat}
@@ -538,7 +542,7 @@ Rearrangement of \cref{eq:svd} for $V^T$ gives the following equation:
 \end{equation}
 where $U^{T}D^{-1}$ will be referred to as the ``transformation matrix'' hereafter.
 Clearly, by substituting the data matrix $X$ with another data matrix, the transformation matrix allows for the generation of the metagene for that data set.
-The reason why the transformation matrix is used instead of independently applying \gls{svd} to the other data set is because the signature, and therefore the metagene, from a single data set is dependent on the signal within its data set.
+The reason why the transformation matrix is used instead of independently applying \gls{svd} to the other data set is because the genetic signature, and therefore the metagene, from a single data set is dependent on the signal within its data set.
 Therefore, the metagenes created independently from different data sets using \gls{svd} do not have the same weighting as the metagene from the original data set, and consequently does not provide a fair comparison of the metagenes across different data sets.
 For this reason, the transformation matrix for a given set of genes was created in the data set in which the genes were first identified in, and then transformed into other data sets to obatain the metagenes.
 
@@ -546,13 +550,13 @@ For this reason, the transformation matrix for a given set of genes was created 
 \label{sub:ranking_of_the_metagene_scores}
 
 Two different approaches were taken in order to rank the metagene scores of the samples.
-The first approach was to rank the metagene scores with the \texttt{rank} function from the \textit{base} package in \gls{r}, then divided the ranked scores with the total number of samples in the data set to obtain a ranked metagene scores between 0 and 1.
-In most analyses, this approach was used to assess the association of the metagene with the sample gene expressions and clinical variables.
+The first approach was to rank the metagene scores with the \texttt{rank} function from the \textit{base} package in \gls{r}, then divided the ranked scores with the total number of samples in the data set to obtain a ranked metagene scores between 0 and 1 (known as fractional ranking).
+In most analyses, fractional ranking was used to assess the association of the metagene with the sample gene expressions and clinical variables.
 
-An alternative ranking method was used in the Gatza \textit{et al.} data to compare the different ranking methods.
-In this method, the sample metagene scores were ranked based on the probit function.
-To do this, the sample metagene scores were scaled and centered using the \texttt{scale} function from the \textit{base} pakage in \gls{r}, then the \texttt{pnorm} function from the \textit{stats} package was used rank the metagene scores.
-Unless stated otherwise, all of the metagenes in this project were ranked based on the number of samples and not with the probit method.
+An alternative approach called probit transformation was used in the Gatza \textit{et al.} data.
+In this transformation, the sample metagene scores were transformed with the probit function.
+To do this, the sample metagene scores were scaled and centered using the \texttt{scale} function from the \textit{base} pakage in \gls{r}, then the \texttt{pnorm} function from the \textit{stats} package was used to transform the metagene scores so that the scores were between 0 and 1.
+Unless stated otherwise, all of the metagenes in this project were fractionally ranked.
 
 \subsection{Metagene direction}
 \label{sub:metagene_direction}
@@ -568,7 +572,7 @@ In this case, the direction of the generated metagene must be corrected in order
 	\includegraphics[width=0.45\linewidth,page=5]{methods/gtrmastdrank_incorrect}
 	\hfill
 	\includegraphics[width=0.45\linewidth,page=5]{methods/gtrmastdrank_corrected}
-	\caption[Example heatmaps showing the direction of the uncorrected and corrected \acrshort{er} pathway metagene with the gene expression of the \acrshort{er} pathway genetic signature in the \acrshort{rma}-normalised Gatza \textit{et al.} data.]{Heatmaps showing the direction of the unflipped (left) and flipped (right) \gls{er} pathway metagene with the gene expression of the \gls{er} pathway genetic signature in the \gls{rma}-normalised Gatza \textit{et al.} data.
+	\caption[Example heatmaps showing the direction of the uncorrected and corrected \acrshort{er} pathway metagene with the gene expression of the \acrshort{er} pathway genetic signature in the \acrshort{rma}-normalised Gatza \textit{et al.} data.]{Heatmaps showing the direction of the uncorrected (left) and corrected (right) \gls{er} pathway metagene with the gene expression of the \gls{er} pathway genetic signature in the \gls{rma}-normalised Gatza \textit{et al.} data.
 	Level of gene expression is represented in the top right histogram, where low and high gene expression are colour-coded with blue and red, respectively.
 	Each row of the heatmap represents a gene from the \gls{er} genetic signature, and each column of the heatmap represents a sample from the Gatza \textit{et al.} data.
 	The \textit{ESR1} gene expressions of the samples are shown as a separate row at top of the heatmap with the sample \gls{er} metagene scores below the \textit{ESR1} gene expression, and the tree diagram of the heirarchical clustering of the genes is shown on the left of the heatmap.
@@ -577,21 +581,21 @@ In this case, the direction of the generated metagene must be corrected in order
 \end{figure}
 
 In this project, two types of metagenes were created: obesity associated and pathway associated metagenes.
-For obesity associated metagenes, the direction of the metagenes were checked with the obesity status and \gls{bmi} value of the samples from the data in which the metagene was derived from.
-When the data set did not have \gls{bmi}/\gls{bmi} status information for the samples, a set of common genes were taken from all of the obesity associated genetic signatures and their expressions compared with the metagene scores.
-Since all of the genetic signatures are associated with obesity, the genes that are common to all of the obesity associated genetic signatures will be related to the metagenes produced by these signatures, and therefore the expressions of these genes should be in line with the metagene scores.
+For obesity associated metagenes, the direction of the metagenes were checked with the patient obesity status and \gls{bmi} value from the data in which the metagene was derived from.
+When the data set did not have \gls{bmi} or \gls{bmi} status information for the patients (for example the Gatza \textit{et al.} data set), a set of genes that were common in all obesity associated genetic signatures were taken and the expression of these common genes were compared with the metagene scores.
+The genes that are common to all of the obesity associated genetic signatures will be related to the metagenes produced by these signatures, and therefore the expressions of these genes should be in line with the metagene scores.
 
 Checking the direction of the pathway metagenes from \citet{Gatza2010a} study is not as simple as the obesity associated metagenes, as the experimental design that identify which samples were treated to generate the pathway signature was not available.
-Due to this, it was not possible to validate whether the generated pathway metagene was in the ``right'' direction.
+Due to this, it was not possible to validate whether the generated pathway metagene was in the ``correct'' direction.
 As an alternative, the pathway metagenes were visually compared with the gene that represent the pathway using a heatmap, as the expression of this gene would likely be affected the most by the pathway signature.
 For example, the \gls{er} pathway metagene was compared with the \textit{ESR1} gene expression, and if the metagene was not in the same direction as the \textit{ESR1} gene expression, the direction of the metagene was corrected (\cref{fig:methods/meta_dir}).
 \cref{tab:metagene_direction} summarises the genes used to check the direction of each of the pathway metagenes.
 
-In addition to this, the correlation of the pathway metagene with its repective gene was checked to further aid the decision on whether the metagene is going in the correct direction.
+In addition to this, the correlation value of the pathway metagene with its respective gene was checked to further aid the decision on whether the metagene is going in the correct direction.
 This was due to the fact that some of the metagenes were visually difficult to determine whether it was in the right direction or not.
 Therefore, the direction as well as the magnitude of the correlation value was also taken into account in making the decision of whether to change the direction of the metagene.
 Lastly, the clustering of the pathway metagenes with the other pathway metagenes were also considered.
-It was known from the \citet{Gatza2010a} study that some pathways clustered and grouped together with certain pathways, so the direction of some of the metagenes were altered in order to keep the grouping of the pathways matched to the results in their paper.
+It was known from the \citet{Gatza2010a} study that some pathways clustered and grouped together with certain pathways, so the direction of some of the metagenes were altered in order to keep the grouping of the pathways matched to the results in their paper (\cref{sec:result_from_gatza2010a_study}).
 
 \begin{longtable}{llp{8cm}}
 	\caption{18 pathways from \citet{Gatza2010a} and its respective genes used to check the direction of the pathway metagene}
@@ -651,19 +655,20 @@ It was known from the \citet{Gatza2010a} study that some pathways clustered and 
 To determine whether the obesity metagene was associated with any of the pathway metagenes, a linear model was constructed with some clinical variables and pathway metagenes, which was then used to predict the obesity metagene.
 This was based on the idea that, if a clinical variable or a pathway metagene was a significant part of the model for the obesity metagene, then that clinical variable or pathway metagene may be associated with the obesity metagene.
 Furthermore, the model that was created based on the significant variables can be used to predict the obesity metagene, which can be used to compare the values with the original obesity metagene.
-If the predicted metagene was similar to the original metagene, then it provides an evidence that the pathway used to construct the model was associated with the obesity metagene.
+If the predicted metagene was similar to the original metagene, then it provides an evidence that the variables used to construct the model was associated with the obesity metagene.
 
+Since the \gls{nzbc} data was the only data set other than the Creighton \textit{et al.} data set that had the patient \gls{bmi} information, all of the linear models were constructed in the \gls{nzbc} data set.
 Eleven linear models were created in the \gls{nzbc} to predict the obesity associated metagene from the \citet{Creighton2012} study.
 First seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway associated metagene scores.
 The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
 In deciding on the pathways to be used for the construction of the linear model, the correlation of the \gls{svd}- and transformation matrix-derived pathway metagene scores in different data sets were examined.
 
 When a transformation matrix is applied to the data set in which it was derived from, the resulting metagene is identical to the one created from the direct application of \gls{svd}.
-Therefore, theoretically, if the metagene derived from a transformation matrix is similar to the metagene created from \gls{svd}, then it shows that the genetic signature is consistent and reliable across different data sets.
+Therefore, if the metagene derived from a transformation matrix is similar to the metagene created from \gls{svd}, then it shows that the genetic signature is consistent and reliable across different data sets.
 The above mentioned pathways had high correlation value between the \gls{svd}-derived and transformation matrix-derived pathway metagenes, and so it was used in the construction of the linear model.
 
 The last four linear models were constructed with the different combinations of the sample \gls{bmi}, \gls{bmi} status and the \gls{pr} pathway metagene.
-The reason the \gls{pr} pathway metagene was used separately was because in the initial analysis, the \gls{pr} pathway metagene was the only pathway associated genetic signature that came up as significant in the other linear models (\cref{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}).
+The reason that the \gls{pr} pathway metagene was used separately was because in the initial analysis, the \gls{pr} pathway metagene was the only pathway associated genetic signature that came up as significant in the other linear models (\cref{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}).
 All of the created linear models are summarised in \cref{tab:lm_model_method}.
 
 \begin{table}[htpb]
@@ -697,9 +702,9 @@ All of the created linear models are summarised in \cref{tab:lm_model_method}.
 	\end{threeparttable}
 \end{table}
 
-In addition to these eleven linear models, a linear model was created with the sample \gls{bmi}, \gls{bmi} status and all of the pathway associated metagenes using a stepwise approach.
-Step wise approach allows the construction of a linear model that best fit the data, given a set of variables.
-There are three approaches in creating a linear model in a step wise method: top-down, bottom-up, and both.
+In addition to these eleven linear models, a linear model was created with the sample \gls{bmi}, \gls{bmi} status and all of the pathway associated metagenes (Akt, \gls{bcat}, E2F1, \gls{egfr}, \gls{er}, \gls{her2}, \gls{ifna}, \gls{ifny}, Myc, p53, p63, \gls{pi3k}, \gls{pr}, Ras, \gls{stat3}, Src, \gls{tgfb} and \gls{tnfa}) using a stepwise approach.
+Stepwise approach allows the construction of a linear model that best fit the data, given a set of variables.
+There are three approaches in creating a linear model in a stepwise method: top-down, bottom-up, and both.
 
 In a top-down approach, all of the variables are first included in the linear model.
 At each step, a variable is removed from the model and the \gls{aic} of the model is compared with the original model to determine whether the variable should remain in the model or not.
@@ -707,12 +712,12 @@ This will result in a model with the variables that are most significant to the 
 In a bottom-up approach, the model begins with no variable and adds one variable at a time to the model.
 If the variable increased the ability of the model to predict the response variable, then the variable is included in the model.
 Again, this will result in a model with only the variables that are significant in predicting the response variable.
-Alternatively, both methods in combination can be used, where the model begins with all of the variables and at each step, a variable can be added to or removed from the linear model.
-In this project, the combination of top-down and bottom-up approaches was used to create the step wise linear model.
+Alternatively, both methods in combination can be used, where the model begins with all or none of the variables, and at each step a variable can be added to or removed from the linear model.
+In this project, the combination of top-down and bottom-up approaches (beginning with no variables in the model) was used to create the stepwise linear model.
 
 The obesity metagenes that were predicted from the linear models in the \gls{nzbc} data set was compared with the original obesity metagene scores.
 Where appropriate, p-values, \gls{anova} p-values and  $R^2$-values were calculated to assess the relationship between the predicted and the original metagene scores.
-Scatter plots and box plots were also created to visually compare the two metagene scores.
+Scatter plots and box plots were also created to visually compare the two metagene scores (\cref{sub:box_and_scatter_plots}).
 
 \section{Plot creation}
 \label{sec:plot_creation}

@@ -2,8 +2,6 @@
 %% Glossary terms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% TODO: make sure you get a proper definitions for all of these glossary terms
-
 \newglossaryentry{rnaseq}{
 	name=RNA-seq,
 	description={sequence data using transcriptome}
@@ -12,6 +10,12 @@
 \newglossaryentry{r}{
 	name=R,
 	description={Statistical programming language}
+}
+
+\newglossaryentry{immunoediting}{
+	name=Immunoediting,
+	text=immunoediting,
+	description={Process where the immune system successfully eliminates the highly immunogenic cancer cells during surveillance, but fails to eliminate the weakly immunogenic cells}
 }
 
 \newglossaryentry{metagene}{
@@ -77,118 +81,177 @@
 	description={A set of concepts and categories in a subject area or domain that shows their properties and the relations between them}
 }
 
+\newglossaryentry{carcinogen}{
+	name=Carcinogen,
+	text=carcinogen,
+	plural=carcinogens,
+	description={A substance capable of causing cancer}
+}
+
+\newglossaryentry{passenger}{
+	name=Passanger mutation,
+	text=passanger,
+	description={Mutations that have neither a selective advantage nor contribute to tumour progression}
+}
+
+\newglossaryentry{driver}{
+	name=Driver mutation,
+	text=driver,
+	description={Mutations that helps tumorigenesis and its subsequent progression}
+}
+
+\newglossaryentry{somatic}{
+	name=Somatic mutation,
+	text=somatic mutation,
+	plural=somatic mutations,
+	description={Mutations that are acquried by the cell over the course of the lifetime of an individual}
+}
+
+\newglossaryentry{germline}{
+	name=Germline mutation,
+	text=germline mutation,
+	plural=germline mutations,
+	description={Mutations that are passed on from the parents}
+}
+
+\newglossaryentry{stability}{
+	name=Stability gene,
+	text=stability gene,
+	plural=stability genes,
+	description={Genes that are involved in \acrshort{dna} repair mechanisms}
+}
+
+\newglossaryentry{allele}{
+	name=Allele,
+	text=allele,
+	plural=alleles,
+	description={Variant form of a given gene}
+}
+
+\newglossaryentry{suppressor}{
+	name=Tumour suppressor gene,
+	text=tumour suppressor,
+	description={Genes that prevent or ``decelerate'' the process of tumorigenesis and/or tumour progression}
+}
+
+\newglossaryentry{oncogene}{
+	name=Oncogene,
+	text=oncogene,
+	plural=oncogenes,
+	description={Genes that promote or ``accelerate'' the process of tumorigenesis and/or tumour progression}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Acronym terms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newacronym[longplural={Disability-Adjusted Life Years}]{daly}{DALY}{Disability-Adjusted Life Year}
+\newacronym[longplural={genome wide association studies},\glsshortpluralkey={GWAS}]{gwas}{GWAS}{genome wide association study}
+\newacronym{acth}{ACTH}{adrenocorticotropic hormone}
+\newacronym{agrp}{AGRP}{agouti-related protein}
+\newacronym{aic}{AIC}{Akaike Information Criterion}
+\newacronym{aid}{AID}{activation-induced cytidine deaminase}
+\newacronym{anova}{ANOVA}{analysis of variance}
+\newacronym{apobec}{APOBEC}{apolipoprotein B mRNA editing enzyme, catalytic polypeptide-like}
+\newacronym{atp}{ATP}{adenosine triphosphate}
+\newacronym{bcat}{BCAT}{$\beta$-catenin}
+\newacronym{bcl2}{Bcl-2}{B-cell lymphoma 2}
+\newacronym{ber}{BER}{base-excision repair}
+\newacronym{bh3}{BH3}{Bcl-2 homology 3}
 \newacronym{blca}{BLCA}{bladder urothelial carcinoma}
+\newacronym{bmi}{BMI}{body mass index}
+\newacronym{camera}{CAMERA}{correlation adjusted mean rank gene set test}
+\newacronym{cart}{CART}{cocaine and amphetamine related transcript}
+\newacronym{cdna}{cDNA}{complimentary DNA}
 \newacronym{cesc}{CESC}{cervical squamous cell carcinoma and endocervical adenocarcinoma}
 \newacronym{coad}{COAD}{colon adenocarcinoma}
+\newacronym{cpm}{cpm}{counts per million}
+\newacronym{cyp}{CYP}{cytochrome P450}
+\newacronym{deg}{DEG}{differentially expressed gene}
+\newacronym{dna}{DNA}{deoxyribonucleic acid}
+\newacronym{egfr}{EGFR}{epidermal growth factor receptor}
+\newacronym{emt}{EMT}{endothelial-mesenchymal transition}
+\newacronym{erk}{ERK}{extracellular signal regulated kinase}
+\newacronym{er}{ER}{estrogen receptor}
+\newacronym{fcs}{FCS}{functional class scoring}
+\newacronym{fc}{FC}{fold change}
+\newacronym{fdr}{FDR}{false discovery rate}
+\newacronym{fto}{FTO}{fat mass and obesity associated}
+\newacronym{fto}{FTO}{fat mass and obesity associated}
+\newacronym{fwer}{FWER}{family-wise error rate}
+\newacronym{g1}{G1}{Gap 1}
+\newacronym{gaba}{GABA}{$\gamma$-aminobutyric acid}
+\newacronym{geo}{GEO}{Gene Expression Omnibus}
+\newacronym{ghsr}{GHSR}{growth hormone secretagogue receptor}
+\newacronym{go}{GO}{Gene Ontology}
+\newacronym{gpcr}{GPCR}{G-protein coupled receptor}
+\newacronym{gsea}{GSEA}{Gene Set Enrichment Analysis}
+\newacronym{her2}{HER2}{human epidermal growth factor receptor 2}
+\newacronym{icgc}{ICGC}{International Cancer Genome Consortium}
+\newacronym{ifna}{IFN$\alpha$}{interferon-$\alpha$}
+\newacronym{ifny}{IFN$\gamma$}{interferon-$\gamma$}
+\newacronym{igfbp}{IGFBP}{insulin-like growth factor binding protein}
+\newacronym{igf}{IGF}{insulin-like growth factor}
+\newacronym{il10}{IL-10}{interleukin-10}
+\newacronym{il6}{IL-6}{interleukin-6}
+\newacronym{irs}{IRS}{insulin receptor substrate}
+\newacronym{jak}{JAK}{janus kinase}
+\newacronym{kegg}{KEGG}{Kyoto Encyclopedia of Genes and Genomes}
 \newacronym{kirp}{KIRP}{kidney renal clear cell carcinoma}
 \newacronym{lihc}{LIHC}{liver hepatocellular carcinoma}
-\newacronym{read}{READ}{rectum adenocarcinoma}
-\newacronym{skcm}{SKCM}{skin cutaneous melanoma}
-\newacronym{ucec}{UCEC}{uterine corpus endometrial carcinoma}
-\newacronym{geo}{GEO}{Gene Expression Omnibus}
-\newacronym{tcga}{TCGA}{The Cancer Genome Atlas}
-\newacronym{icgc}{ICGC}{International Cancer Genome Consortium}
-\newacronym{bmi}{BMI}{body mass index}
-\newacronym{who}{WHO}{World Health Organization}
 \newacronym{ln}{LN}{lymph node}
-\newacronym{pr}{PR}{progesterone receptor}
-\newacronym{er}{ER}{estrogen receptor}
-\newacronym{her2}{HER2}{human epidermal growth factor receptor 2}
-\newacronym{svd}{SVD}{singular value decomposition}
-\newacronym{rma}{RMA}{robust multi array}
 \newacronym{mas}{MAS5}{microarray analysis suite 5.0}
-\newacronym{fdr}{FDR}{false discovery rate}
-\newacronym{fwer}{FWER}{family-wise error rate}
-\newacronym{go}{GO}{Gene Ontology}
-\newacronym{kegg}{KEGG}{Kyoto Encyclopedia of Genes and Genomes}
-\newacronym{usa}{USA}{United States of America}
-\newacronym{npy}{NPY}{neuropeptide Y}
-\newacronym{agrp}{AGRP}{agouti-related protein}
-\newacronym{pomc}{POMC}{pro-opiomelanocortin}
-\newacronym{cart}{CART}{cocaine and amphetamine related transcript}
 \newacronym{mc1r}{MC1R}{melanocortin 1 receptor}
 \newacronym{mc4r}{MC4R}{melanocortin 4 receptor}
-\newacronym{msh}{MSH}{melanocyte-stimulating hormone}
-\newacronym{nyr1}{Y1R}{neuropeptide Y1 receptor}
-\newacronym{acth}{ACTH}{adrenocorticotropic hormone}
-\newacronym{ghsr}{GHSR}{growth hormone secretagogue receptor}
-\newacronym{gaba}{GABA}{$\gamma$-aminobutyric acid}
-\newacronym{irs}{IRS}{insulin receptor substrate}
-\newacronym{anova}{ANOVA}{analysis of variance}
-\newacronym{pi3k}{PI3K}{phosphatidylinositol 3-kinase}
-\newacronym{jak}{JAK}{janus kinase}
-\newacronym{pc1}{PC1}{prohormone convertase 1}
-\newacronym{fto}{FTO}{fat mass and obesity associated}
-\newacronym{fto}{FTO}{fat mass and obesity associated}
-\newacronym{snp}{SNP}{single nucleotide polymorphism}
-\newacronym{rb}{RB}{retinoblastoma-associated}
-\newacronym{opa}{OPA}{obesity policy action}
-\newacronym{g1}{G1}{Gap 1}
-\newacronym{bcl2}{Bcl-2}{B-cell lymphoma 2}
-\newacronym{bh3}{BH3}{Bcl-2 homology 3}
-\newacronym{dna}{DNA}{deoxyribonucleic acid}
-\newacronym{vegf}{VEGF}{vascular endothelial growth factor}
-\newacronym{vegfa}{VEGF-A}{vascular endothelial growth factor-A}
-\newacronym{tsp1}{TSP-1}{thrombospondin-1}
-\newacronym{emt}{EMT}{endothelial-mesenchymal transition}
 \newacronym{met}{MET}{mesenchymal-endothelial transition}
-\newacronym{gsea}{GSEA}{Gene Set Enrichment Analysis}
-\newacronym{aid}{AID}{activation-induced cytidine deaminase}
-\newacronym{apobec}{APOBEC}{apolipoprotein B mRNA editing enzyme, catalytic polypeptide-like}
-\newacronym{nfkb}{NF-$\kappa$B}{nuclear factor $\kappa$B}
-\newacronym{stat3}{STAT3}{signal transducer and activator of transcription 3}
-\newacronym{il6}{IL-6}{interleukin-6}
-\newacronym{il10}{IL-10}{interleukin-10}
-\newacronym{atp}{ATP}{adenosine triphosphate}
-\newacronym{pep}{PEP}{phosphoenol pyruvate}
 \newacronym{mmr}{MMR}{mismatch repair}
-\newacronym{mtor}{mTOR}{mammalian target of rapamycin}
-\newacronym{ner}{NER}{nucleotide-excision repair}
-\newacronym{ber}{BER}{base-excision repair}
-\newacronym{uv}{UV}{ultraviolet}
-\newacronym{deg}{DEG}{differentially expressed gene}
-\newacronym{pah}{PAH}{polycyclic aromatic hydrocarbon}
-\newacronym{nnk}{NNK}{4-(methylnitrosamino)-1-(3-pyridyl)-1-butanone}
-\newacronym{ros}{ROS}{reactive oxygen species}
-\newacronym{cyp}{CYP}{cytochrome P450}
-\newacronym{igf}{IGF}{insulin-like growth factor}
-\newacronym{igfbp}{IGFBP}{insulin-like growth factor binding protein}
-\newacronym{gpcr}{GPCR}{G-protein coupled receptor}
-\newacronym{pm}{PM}{perfect match}
 \newacronym{mm}{MM}{mismatch}
-\newacronym{tlr}{TLR}{Toll-like receptor}
-\newacronym{cpm}{cpm}{counts per million}
-\newacronym{m}{$\mu$}{mean}
-\newacronym{sd}{$\sigma$}{standard deviation}
-\newacronym{prr}{PRR}{pattern recognition receptor}
-\newacronym{ssdna}{ssDNA}{single-stranded DNA}
-\newacronym{camera}{CAMERA}{correlation adjusted mean rank gene set test}
-\newacronym{ora}{ORA}{over representation analysis}
-\newacronym{fcs}{FCS}{functional class scoring}
-\newacronym{wmw}{WMW}{Wilcoxon-Mann-Whitney}
-\newacronym{vif}{VIF}{variance inflation factor}
-\newacronym{erk}{ERK}{extracellular signal regulated kinase}
-\newacronym{cdna}{cDNA}{complimentary DNA}
-\newacronym{rna}{RNA}{ribonucleic acid}
 \newacronym{mrna}{mRNA}{messenger RNA}
+\newacronym{msh}{MSH}{melanocyte-stimulating hormone}
+\newacronym{mtor}{mTOR}{mammalian target of rapamycin}
+\newacronym{m}{$\mu$}{mean}
+\newacronym{ner}{NER}{nucleotide-excision repair}
+\newacronym{nfkb}{NF-$\kappa$B}{nuclear factor $\kappa$B}
 \newacronym{ngs}{NGS}{next generation sequencing}
-\newacronym{fc}{FC}{fold change}
-\newacronym{ifny}{IFN$\gamma$}{interferon-$\gamma$}
-\newacronym{ifna}{IFN$\alpha$}{interferon-$\alpha$}
-\newacronym{tgfb}{TGF$\beta$}{transforming growth factor-$\beta$}
-\newacronym{tnfa}{TNF$\alpha$}{tumour necrosis factor-$\alpha$}
-\newacronym{bcat}{BCAT}{$\beta$-catenin}
-\newacronym{egfr}{EGFR}{epidermal growth factor receptor}
-\newacronym[longplural={genome wide association studies},\glsshortpluralkey={GWAS}]{gwas}{GWAS}{genome wide association study}
-\newacronym{stat}{STAT}{signal transducer and activator of transcription}
-\newacronym{pyy}{PYY$_{3-36}$}{peptide YY$_{3-36}$}
+\newacronym{nnk}{NNK}{4-(methylnitrosamino)-1-(3-pyridyl)-1-butanone}
+\newacronym{npy}{NPY}{neuropeptide Y}
+\newacronym{nyr1}{Y1R}{neuropeptide Y1 receptor}
 \newacronym{nzbc}{NZBC}{New Zealand Breast Cancer}
-\newacronym{aic}{AIC}{Akaike Information Criterion}
 \newacronym{nz}{NZ}{New Zealand}
-\newacronym[longplural={Disability-Adjusted Life Years}]{daly}{DALY}{Disability-Adjusted Life Year}
+\newacronym{opa}{OPA}{obesity policy action}
+\newacronym{ora}{ORA}{over representation analysis}
+\newacronym{pah}{PAH}{polycyclic aromatic hydrocarbon}
+\newacronym{pc1}{PC1}{prohormone convertase 1}
+\newacronym{pep}{PEP}{phosphoenol pyruvate}
+\newacronym{pi3k}{PI3K}{phosphatidylinositol 3-kinase}
+\newacronym{pm}{PM}{perfect match}
+\newacronym{pomc}{POMC}{pro-opiomelanocortin}
+\newacronym{prr}{PRR}{pattern recognition receptor}
+\newacronym{pr}{PR}{progesterone receptor}
+\newacronym{pyy}{PYY$_{3-36}$}{peptide YY$_{3-36}$}
+\newacronym{rb}{RB}{retinoblastoma-associated}
+\newacronym{read}{READ}{rectum adenocarcinoma}
+\newacronym{rma}{RMA}{robust multi array}
+\newacronym{rna}{RNA}{ribonucleic acid}
+\newacronym{ros}{ROS}{reactive oxygen species}
+\newacronym{sd}{$\sigma$}{standard deviation}
+\newacronym{skcm}{SKCM}{skin cutaneous melanoma}
+\newacronym{snp}{SNP}{single nucleotide polymorphism}
+\newacronym{ssdna}{ssDNA}{single-stranded DNA}
+\newacronym{stat3}{STAT3}{signal transducer and activator of transcription 3}
+\newacronym{stat}{STAT}{signal transducer and activator of transcription}
+\newacronym{svd}{SVD}{singular value decomposition}
+\newacronym{tcga}{TCGA}{The Cancer Genome Atlas}
+\newacronym{tgfb}{TGF$\beta$}{transforming growth factor-$\beta$}
+\newacronym{tlr}{TLR}{Toll-like receptor}
+\newacronym{tnfa}{TNF$\alpha$}{tumour necrosis factor-$\alpha$}
+\newacronym{tsp1}{TSP-1}{thrombospondin-1}
+\newacronym{ucec}{UCEC}{uterine corpus endometrial carcinoma}
+\newacronym{usa}{USA}{United States of America}
+\newacronym{uv}{UV}{ultraviolet}
+\newacronym{vegfa}{VEGF-A}{vascular endothelial growth factor-A}
+\newacronym{vegf}{VEGF}{vascular endothelial growth factor}
+\newacronym{vif}{VIF}{variance inflation factor}
+\newacronym{who}{WHO}{World Health Organization}
+\newacronym{wmw}{WMW}{Wilcoxon-Mann-Whitney}
 

@@ -3,7 +3,7 @@
 
 % Preamble:
 \usepackage[T1]{fontenc}                            % package for specifying output font encoding
-\usepackage[acronym]{glossaries}                    % package for making glossaries
+\usepackage[acronym,style=super]{glossaries}                    % package for making glossaries
 \usepackage[flushleft]{threeparttablex}             % package to add notes at the bottom of the table
 \usepackage[font=footnotesize,format=hang]{caption} % package for formatting figure caption
 \usepackage[hidelinks, colorlinks]{hyperref}        % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
@@ -78,7 +78,7 @@
 % If you want to compile specific files, uncomment the line below and add the filenames in the {} :
 % \includeonly{{./intro/intro}}
 % \includeonly{{./methods/methods}}
-\includeonly{{./results/results2},{./discussion/discussion},{./misc/appendix2}}
+% \includeonly{{./results/results2},{./discussion/discussion},{./misc/appendix2}}
 % \includeonly{{./results/results}}
 % \includeonly{{./results/results2}}
 % \includeonly{{./discussion/discussion}}
@@ -123,7 +123,7 @@
 
 \addcontentsline{toc}{section}{Glossary}
 
-\printglossary[style=altlist]
+\printglossary[style=super]
 
 \clearpage
 
@@ -156,6 +156,6 @@
 \addcontentsline{toc}{chapter}{\bibname}
 
 % Print out the bibliography:
-\bibliography{./MSc,./msc2,./msc3}
+\bibliography{./MSc,./MSc2,./MSc3}
 
 \end{document}
