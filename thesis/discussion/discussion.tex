@@ -51,6 +51,24 @@ In fact, \citet{Damrauer2014} have identified ``basal-like'' and ``luminal''  su
 Since all of the obesity associated genetic signatures were derived from breast cancer data sets, it made sense that these signatures were significant in the \gls{blca} data set, as bladder cancer and breast cancer could have been biologically similar to one another.
 However, the degree of similarity between these two cancer types are not yet known and further analyses are required for a definitive explanation of the results.
 
+\subsection{Use of \gls{svd} and transformation matrix as a valid method}
+\label{sub:use_of_svd_and_transformation_matrix_as_a_valid_method}
+
+From all of these results so far, one may question how robust or appropriate the use of \gls{svd} and transformation matrices are to generate metagenes in other data sets.
+It appeared as though the CR data-derived obesity associated genetic signatures correlated significantly in the CR data, but as soon as these metagenes were generated in the other data sets via the application of transformation matrices, the correlation became insignificant.
+One possible reason for this was that the obesity metagenes were not actually associated to obesity phenotype in the other data sets.
+Another reason could be that the methodology used were not appropriate for investigating the association between the phenotype and its associated phenotype.
+
+The appropriateness of the use of \gls{svd} and transformation matrices were examined with different genetic signatures: \gls{er} and \gls{pr} pathway associated genetic signatures from the \citet{Gatza2010a} study (covered in \cref{sec:results_for_er_and_pr_metagene_analysis}).
+Three data sets (CR, FM and \gls{nzbc}) were used, as these data sets have both \gls{er} and \gls{pr} status information available for the patients.
+\gls{svd} was first applied to the \gls{rma} normalised CR data to obtain the \gls{er} and \gls{pr} metagenes, along with the transformation matrices for each of the genetic signatures.
+Both the \gls{er} and \gls{pr} metagenes showed good accordance with the gene expressions of the genetic signature in the heatmap, and also showed significant association with the patient \gls{er} and \gls{pr} statuses (\cref{sec:results_for_er_and_pr_metagene_analysis}).
+
+Transformation matrices were applied to the FM and \gls{nzbc} data sets to generate the appropriate pathway metagenes in the data sets.
+Both the \gls{er} and \gls{pr} pathway metagenes showed similar overall gene expression patterning in the heatmap as the CR data (\cref{sec:results_for_er_and_pr_metagene_analysis}).
+Furthermore, both the \gls{er} and \gls{pr} pathway metagenes from these data sets showed significant association with the patient \gls{er} and \gls{pr} statuses, respectively (\cref{sec:results_for_er_and_pr_metagene_analysis}).
+These results clearly showed that the general approach of using \gls{svd} and transformation matrix was appropriate for examining the association of the genetic signatures with the patient phenotype.
+
 \subsection{Common obesity associated genes and pathways across multiple cancer types}
 \label{sub:common_obesity_associated_genes_and_pathways_across_multiple_cancer_types}
 
