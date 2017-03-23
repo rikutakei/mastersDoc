@@ -154,7 +154,6 @@ Likewise, any obesity associated or pathway associated gene probes were converte
 
 The clinical data for all available cancer types (33 types in total) were downloaded from \gls{tcga} database (last accessed 1 April 2015) and were checked for both the height and weight data for each sample.
 Any cancer type with no height and/or weight data for the samples was excluded from the project, as no \gls{bmi} information can be obtained without these data.
-
 Out of these 33 cancer types with clinical data, 14 cancer types had both height and weight data.
 However, only 8 cancer types out of these 14 types had \gls{rnaseq} data available from the \gls{icgc} database (last accessed 7 September 2015), so only those 8 cancer types were downloaded and used in this project.
 The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, \gls{lihc}, \gls{read}, \gls{skcm}, \gls{ucec}.
@@ -173,8 +172,8 @@ Where there was a duplicate in the sample ID, a single sample with the highest m
 
 Since some of the samples did not have either height or weight data, these samples were removed from the analyses.
 In each of the eight cancer types, the \gls{tcga} sample IDs in the clinical data were cross-checked with the sample IDs in the \gls{rnaseq} data, and vice versa.
-Any samples that did not have either the clinical information or the \gls{rnaseq} data were removed from the analyses.
-This ensured that both clinical and \gls{rnaseq} data were available for all of the samples that were included in this project.
+Any samples that did not have either the patient \gls{bmi} information or the \gls{rnaseq} data were removed from the analyses.
+This ensured that both \gls{bmi} and \gls{rnaseq} data were available for all of the samples that were included in this project.
 See \cref{tab:samplesize} for a summary of the total number of samples included in the analyses for each cancer type.
 
 \begin{table}[htpb]
@@ -298,7 +297,7 @@ The weights of the observations and the logged \gls{cpm} can then be used in oth
 
 The raw \gls{rnaseq} data were normalised in two different ways depending on the analysis.
 For gene expression analyses (\cref{sec:gene_expression_analysis}) and pathway enrichment analyses (\cref{sec:pathway_enrichment_analysis}), voom normalisation from the \textit{limma} package in \gls{r} was used to normalise the data \citep{Ritchie2015}.
-For the purposes of data visualisation (\cref{sec:plot_creation}) or application of the metagene transformation matrices (\cref{sub:svd}) on the \gls{rnaseq} data, the raw data had 1 added (to prevent logging of 0) and then logged to the base of 10.
+For the purposes of data visualisation (\cref{sec:plot_creation}) or the application of the metagene transformation matrices (\cref{sub:svd}) on the \gls{rnaseq} data, the raw data had 1 added (to prevent logging of 0) and then logged to the base of 10.
 
 \subsection{Data standardisation}
 \label{sub:data_standardisation}
@@ -315,9 +314,8 @@ For example, a gene from the raw data might have a strong association with \gls{
 To prevent such confounding effect, all of the clinical variables except those that are of interest were adjusted with the use of linear models.
 
 A linear model was created from the Creighton \textit{et al.} data with age, ethnicity, menopause status, tumour grade, hormone (\gls{er}, \gls{pr}, and \gls{her2}) statuses  and \gls{ln} status included in the model.
-In addition to this model, another linear model was constructed with the Creighton \textit{et al.} data with only the Caucasian patients included in the data (same clinical variables, except, ethnicity were used in the model); this was to completely remove the effect of ethnicity.
-Once a linear model was fitted to the Creighton \textit{et al.} data, the remaining data, or the ``residual data'', represented the data that had been corrected for all of the unwanted variables.
-This residual data was used in the analyses that required focus on certain variables without the other variables affecting the result.
+In addition to this model, another linear model was constructed with the Creighton \textit{et al.} data with only the Caucasian patients included in the data to completely remove the effect of ethnicity (same clinical variables were controlled for, except ethnicity).
+Once a linear model was fitted to the Creighton \textit{et al.} data, the remaining data, or the ``residual data'', represented the data that had been corrected for the effects of the unwanted variables, and was used in the analyses that required focus on certain variables without the other variables affecting the result.
 
 \subsection{Batch correction}
 \label{sub:batch_correction}
@@ -327,13 +325,13 @@ These differences between experiments introduces systematic non-biological diffe
 The problem with the batch effect is that the normalisation methods do not control and adjust for the effect \citep{Johnson2007}.
 Fortunately, \citet{Johnson2007} developed a method to correct for batch effects in the data, using an empirical Bayesian framework.
 
-Since the data used in \citet{Gatza2010a} study was a combination of multiple microarray data from various studies, the batch effect had to be corrected before any analysis was carried out.
+The data used in \citet{Gatza2010a} study was a combination of multiple microarray data from various studies, so the batch effect had to be corrected before any analysis was carried out.
 Each microarray dataset was normalised with either \gls{rma} or \Gls{mas} separately then combined together into a single dataset, and the batch effect was corrected with the \texttt{ComBat} function (an implementation of the batch correcting method by \citet{Johnson2007}) from the \textit{sva} package in \gls{r} \citep{Leek2012}.
 
 \gls{icgc} cancer data were also corrected for batch effect for the pathway enrichment analysis (\cref{sec:pathway_enrichment_analysis}).
 Two combined data sets were created with the \gls{icgc} data.
-The first combined data set was created by voom normalising each cancer data set separately, combine all of the normalised cancer data sets into one, then applied batch correction to the data set (\cref{sub:batch_correction}).
-The second combined data set was created by first combining the cancer data sets into one, then the combined data was voom normalised, and then the batch effect was corrected to obtain the final data set.
+The first data set was created by voom normalising each cancer data set separately, combine all of the normalised cancer data sets into one, then applied batch correction to the data set (\cref{sub:batch_correction}).
+The second data set was created by first combining the cancer data sets into one, then the combined data was voom normalised, and then the batch effect was corrected to obtain the final data set.
 
 \subsection{Sample randomisation in simulation analysis}
 \label{sub:sample_randomisation_in_simulation_analysis}
@@ -397,7 +395,6 @@ With \gls{fdr}, the p-values are ordered and ranked from the lowest to the highe
 \end{equation}
 where $P_{(i)}$ is the p-value of the ordered and ranked $i$th hypothesis, $m$ is the total number of hypotheses, and $q^*$ is the threshold value \citep{Benjamini1995a}.
 From \cref{eq:fdr}, the adjusted p-value from \gls{fdr} control is the product of the p-value with the number of hypotheses, divided by its rank.
-
 Since \gls{fdr} method controls \gls{type1} in a less conservative manner than the \gls{fwer} methods, the \gls{fdr} method was used to identify the \glspl{deg} for gene expression analyses.
 
 \section{Pathway enrichment analysis}
@@ -406,11 +403,10 @@ Since \gls{fdr} method controls \gls{type1} in a less conservative manner than t
 Identification of \glspl{deg} provides a list of genes that may have a role in a particular experimental setting.
 With that said, it is often difficult for the investigators to provide a plausible biological explanation with just a long list of \glspl{deg}, as the list lacks the link between the genes and the biological cause \citep{Khatri2012}.
 Therefore, given a list of \glspl{deg}, it is important for any researcher to undertake pathway enrichment analysis in order to obtain useful insights into the underlying biological mechanisms the \glspl{deg} may be involved in.
+Both \acrfull{ora} and \acrfull{fcs} can be used to identify whether certain pathways are enriched, given a list of \glspl{deg}.
 
 \subsection{\Gls{ora} and \gls{fcs}}
 \label{sub:ora_and_fcs}
-
-Though the approaches differ between the two, both \acrfull{ora} and \acrfull{fcs} are used to identify whether certain pathways are enriched, given a list of \glspl{deg}.
 
 \subsubsection{\Gls{ora}}
 \label{ssub:ora}
@@ -553,7 +549,7 @@ Two different approaches were taken in order to rank the metagene scores of the 
 The first approach was to rank the metagene scores with the \texttt{rank} function from the \textit{base} package in \gls{r}, then divided the ranked scores with the total number of samples in the data set to obtain a ranked metagene scores between 0 and 1 (known as fractional ranking).
 In most analyses, fractional ranking was used to assess the association of the metagene with the sample gene expressions and clinical variables.
 
-An alternative approach called probit transformation was used in the Gatza \textit{et al.} data.
+An alternative approach called probit transformation was used by \citet{Gatza2010a}.
 In this transformation, the sample metagene scores were transformed with the probit function.
 To do this, the sample metagene scores were scaled and centered using the \texttt{scale} function from the \textit{base} pakage in \gls{r}, then the \texttt{pnorm} function from the \textit{stats} package was used to transform the metagene scores so that the scores were between 0 and 1.
 Unless stated otherwise, all of the metagenes in this project were fractionally ranked.
@@ -575,7 +571,7 @@ In this case, the direction of the generated metagene must be corrected in order
 	\caption[Example heatmaps showing the direction of the uncorrected and corrected \acrshort{er} pathway metagene with the gene expression of the \acrshort{er} pathway genetic signature in the \acrshort{rma}-normalised Gatza \textit{et al.} data.]{Heatmaps showing the direction of the uncorrected (left) and corrected (right) \gls{er} pathway metagene with the gene expression of the \gls{er} pathway genetic signature in the \gls{rma}-normalised Gatza \textit{et al.} data.
 	Level of gene expression is represented in the top right histogram, where low and high gene expression are colour-coded with blue and red, respectively.
 	Each row of the heatmap represents a gene from the \gls{er} genetic signature, and each column of the heatmap represents a sample from the Gatza \textit{et al.} data.
-	The \textit{ESR1} gene expressions of the samples are shown as a separate row at top of the heatmap with the sample \gls{er} metagene scores below the \textit{ESR1} gene expression, and the tree diagram of the heirarchical clustering of the genes is shown on the left of the heatmap.
+	The \textit{ESR1} gene expressions of the samples are shown as a separate row at the top of the heatmap with the sample \gls{er} metagene scores shown below the \textit{ESR1} gene expression, and the tree diagram of the heirarchical clustering of the genes is shown on the left of the heatmap.
 	}
 	\label{fig:methods/meta_dir}
 \end{figure}
