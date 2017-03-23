@@ -4,7 +4,7 @@
 % Preamble:
 \usepackage[T1]{fontenc}                            % package for specifying output font encoding
 \usepackage[acronym]{glossaries}                    % package for making glossaries
-\usepackage[flushleft]{threeparttablex}              % package to add notes at the bottom of the table
+\usepackage[flushleft]{threeparttablex}             % package to add notes at the bottom of the table
 \usepackage[font=footnotesize,format=hang]{caption} % package for formatting figure caption
 \usepackage[hidelinks, colorlinks]{hyperref}        % package for hyperlinking references - hidelinks option removes the ugly boxes around the huperlinks
 \usepackage[md]{titlesec}                           % package for tweaking the chapter/section/subsection titles format
@@ -77,13 +77,15 @@
 
 % If you want to compile specific files, uncomment the line below and add the filenames in the {} :
 % \includeonly{{./intro/intro}}
-% \includeonly{{./methods/methods},{./results/results2},{./discussion/discussion},{./misc/appendix2}}
+% \includeonly{{./methods/methods}}
+\includeonly{{./results/results2},{./discussion/discussion},{./misc/appendix2}}
 % \includeonly{{./results/results}}
 % \includeonly{{./results/results2}}
 % \includeonly{{./discussion/discussion}}
 % \includeonly{{./misc/appendix}}
 % \includeonly{{./misc/appendix2}}
 
+% Define some alias for very long citations:
 \defcitealias{TCGA}{NCI and NHGRI, 2016}
 \defcitealias{ICGC}{ICGC, 2016}
 \defcitealias{GEO}{NCBI, 2016}

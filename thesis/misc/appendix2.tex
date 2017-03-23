@@ -1,7 +1,7 @@
-\begin{appendices}
-	\crefalias{chapter}{appcha}
-	\crefalias{section}{appsec}
-	\renewcommand{\thesection}{\Alph{chapter}\arabic{section}}
+% \begin{appendices}
+% 	\crefalias{chapter}{appcha}
+% 	\crefalias{section}{appsec}
+% 	\renewcommand{\thesection}{\Alph{chapter}\arabic{section}}
 
 	\chapter{Additional results from \cref{cha:obesity_associated_genetic_signature_and_pathway_signatures}}
 	\label{app:b}
@@ -1299,137 +1299,140 @@
 
 	Instead of presenting 11 scatter plots for the 10 obesity metagenes used in this project, all of the R$^2$- and p-values were summarised in \cref{tab:prediction_summary_cris}.
 
-	\begin{TableNotes}
-		\begin{footnotesize}
-		\item [1] All values in bold are statistically significant (p \textless{} 0.05).
-		\end{footnotesize}
-	\end{TableNotes}
-
-	\begin{longtable}{llc{\bfseries}S}
-		\centering
-		\caption[Summary of the statistics from the comparison of all the predicted obesity metagene scores with the corresponding obesity metagenes from the \gls{nzbc} data]{Table summarising the linear model statistics from the comparison of the various linear model-predicted obesity metagenes scores with the corresponding obesity metagene scores from the \gls{nzbc} data set for all of the obesity metagenes}
-		\label{tab:prediction_summary_cris}\\
-		Obesity metagene & Model                         & R$^2$      & P-value   \\
-		\endfirsthead
-		\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
-		\hline
-		\hline
-		\endhead
-		\hline
-		\hline
-		\rule{0pt}{2.25ex}Cr      & \gls{bmi} only                           & 0.001852   & 0.2797              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.02834    & 0.05237             \\
-                                  & Pathways only                            & 0.2416     & 1.431e-07 \tnote{1} \\
-                                  & \gls{bmi} and pathways                   & 0.2466     & 1.031e-07           \\
-                                  & \gls{bmi} status and pathways            & 0.2719     & 1.883e-08           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2814     & 9.811e-09           \\
-                                  & \gls{pr} only                            & 0.2041     & 1.604e-06           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.2047     & 1.54e-06            \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.2249     & 4.237e-07           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2372     & 1.908e-07           \\
-		\hline
-		\rule{0pt}{2.25ex}CrOl    & \gls{bmi} only                           & 0.001295   & 0.2910              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03509    & 0.03517             \\
-                                  & Pathways only                            & 0.2041     & 1.604e-06           \\
-                                  & \gls{bmi} and pathways                   & 0.2173     & 6.941e-07           \\
-                                  & \gls{bmi} status and pathways            & 0.2411     & 1.48e-07            \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2597     & 4.308e-08           \\
-                                  & \gls{pr} only                            & 0.2024     & 1.786e-06           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.2056     & 1.458e-06           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.2212     & 5.398e-07           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2336     & 2.417e-07           \\
-		\hline
-		\rule{0pt}{2.25ex}Res     & \gls{bmi} only                           & 0.0008245  & 0.3011              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.02452    & 0.06579             \\
-                                  & Pathways only                            & 0.2785     & 1.196e-08           \\
-                                  & \gls{bmi} and pathways                   & 0.2780     & 1.233e-08           \\
-                                  & \gls{bmi} status and pathways            & 0.2914     & 4.887e-09           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.3195     & 6.576e-10           \\
-                                  & \gls{pr} only                            & 0.2331     & 2.492e-07           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.2349     & 2.215e-07           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.2538     & 6.38e-08            \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2631     & 3.421e-08           \\
-		\hline
-		\rule{0pt}{2.25ex}ResOl   & \gls{bmi} only                           & -0.002442  & 0.3851              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03878    & 0.02835             \\
-                                  & Pathways only                            & 0.2384     & 1.762e-07           \\
-                                  & \gls{bmi} and pathways                   & 0.2371     & 1.927e-07           \\
-                                  & \gls{bmi} status and pathways            & 0.2670     & 2.616e-08           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2878     & 6.263e-09           \\
-                                  & \gls{pr} only                            & 0.2251     & 4.198e-07           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.2257     & 4.044e-07           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.2392     & 1.675e-07           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2568     & 5.207e-08           \\
-		\hline
-		\rule{0pt}{2.25ex}Ca      & \gls{bmi} only                           & -0.0004067 & 0.3296              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03576    & 0.03383             \\
-                                  & Pathways only                            & 0.2043     & 1.585e-06           \\
-                                  & \gls{bmi} and pathways                   & 0.2077     & 1.28e-06            \\
-                                  & \gls{bmi} status and pathways            & 0.2342     & 2.321e-07           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2487     & 8.927e-08           \\
-                                  & \gls{pr} only                            & 0.1362     & 0.0001009           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1364     & 9.944e-05           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.1643     & 1.876e-05           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1744     & 1.012e-05           \\
-		\hline
-		\rule{0pt}{2.25ex}CaOl    & \gls{bmi} only                           & -0.006593  & 0.5509              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.0301     & 0.04718             \\
-                                  & Pathways only                            & 0.1323     & 0.0001273           \\
-                                  & \gls{bmi} and pathways                   & 0.1347     & 0.0001106           \\
-                                  & \gls{bmi} status and pathways            & 0.1487     & 4.802e-05           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.1657     & 1.725e-05           \\
-                                  & \gls{pr} only                            & 0.1103     & 0.0004599           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1106     & 0.0004539           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.1235     & 0.0002134           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1383     & 8.92e-05            \\
-		\hline
-		\rule{0pt}{2.25ex}CaRes   & \gls{bmi} only                           & 0.001142   & 0.2943              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03048    & 0.04612             \\
-                                  & Pathways only                            & 0.2181     & 6.586e-07           \\
-                                  & \gls{bmi} and pathways                   & 0.2373     & 1.902e-07           \\
-                                  & \gls{bmi} status and pathways            & 0.2431     & 1.298e-07           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2501     & 8.152e-08           \\
-                                  & \gls{pr} only                            & 0.1566     & 2.979e-05           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1586     & 2.654e-05           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.1844     & 5.485e-06           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1957     & 2.707e-06           \\
-		\hline
-		\rule{0pt}{2.25ex}CaResOl & \gls{bmi} only                           & -0.006037  & 0.5225              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.0413     & 0.02449             \\
-                                  & Pathways only                            & 0.1719     & 1.183e-05           \\
-                                  & \gls{bmi} and pathways                   & 0.1721     & 1.167e-05           \\
-                                  & \gls{bmi} status and pathways            & 0.1961     & 2.642e-06           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2095     & 1.141e-06           \\
-                                  & \gls{pr} only                            & 0.1571     & 2.894e-05           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1574     & 2.843e-05           \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.17       & 1.327e-05           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1939     & 3.044e-06           \\
-		\hline
-		\rule{0pt}{2.25ex}Or      & \gls{bmi} only                           & 0.0008035  & 0.3015              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03699    & 0.03147             \\
-                                  & Pathways only                            & 0.2554     & 5.738e-08           \\
-                                  & \gls{bmi} and pathways                   & 0.2568     & 5.234e-08           \\
-                                  & \gls{bmi} status and pathways            & 0.28       & 1.075e-08           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2974     & 3.194e-09           \\
-                                  & \gls{pr} only                            & 0.2388     & 1.717e-07           \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.2382     & 1.79e-07            \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.2531     & 6.663e-08           \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2684     & 2.382e-08           \\
-		\hline
-		\rule{0pt}{2.25ex}FM      & \gls{bmi} only                           & -0.008238  & 0.6563              \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.07438    & 0.003652            \\
-                                  & Pathways only                            & 0.268      & 2.449e-08           \\
-                                  & \gls{bmi} and pathways                   & 0.2645     & 3.106e-08           \\
-                                  & \gls{bmi} status and pathways            & 0.3067     & 1.654e-09           \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.3653     & 2.112e-11           \\
-                                  & \gls{pr} only                            & -0.004177  & 0.4434              \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.007149   & 0.1946              \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.0394     & 0.02734             \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1166     & 0.0003183           \\
-		\hline
-		\hline
-		\insertTableNotes
-	\end{longtable}
+	\begin{ThreePartTable}
+			\begin{TableNotes}
+				\begin{footnotesize}
+				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+				\end{footnotesize}
+			\end{TableNotes}
+		
+			\begin{longtable}{llc{\bfseries}S}
+				\centering
+				\caption[Summary of the statistics from the comparison of all the predicted obesity metagene scores with the corresponding obesity metagenes from the \gls{nzbc} data]{Table summarising the linear model statistics from the comparison of the various linear model-predicted obesity metagenes scores with the corresponding obesity metagene scores from the \gls{nzbc} data set for all of the obesity metagenes}
+				\label{tab:prediction_summary_cris}\\
+				Obesity metagene & Model                         & R$^2$      & P-value   \\
+				\endfirsthead
+				\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
+				\hline
+				\hline
+				\endhead
+				\hline
+				\hline
+				\rule{0pt}{2.25ex}Cr      & \gls{bmi} only                           & 0.001852   & 0.2797              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.02834    & 0.05237             \\
+		                                  & Pathways only                            & 0.2416     & 1.431e-07 \tnote{1} \\
+		                                  & \gls{bmi} and pathways                   & 0.2466     & 1.031e-07           \\
+		                                  & \gls{bmi} status and pathways            & 0.2719     & 1.883e-08           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2814     & 9.811e-09           \\
+		                                  & \gls{pr} only                            & 0.2041     & 1.604e-06           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.2047     & 1.54e-06            \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.2249     & 4.237e-07           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2372     & 1.908e-07           \\
+				\hline
+				\rule{0pt}{2.25ex}CrOl    & \gls{bmi} only                           & 0.001295   & 0.2910              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03509    & 0.03517             \\
+		                                  & Pathways only                            & 0.2041     & 1.604e-06           \\
+		                                  & \gls{bmi} and pathways                   & 0.2173     & 6.941e-07           \\
+		                                  & \gls{bmi} status and pathways            & 0.2411     & 1.48e-07            \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2597     & 4.308e-08           \\
+		                                  & \gls{pr} only                            & 0.2024     & 1.786e-06           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.2056     & 1.458e-06           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.2212     & 5.398e-07           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2336     & 2.417e-07           \\
+				\hline
+				\rule{0pt}{2.25ex}Res     & \gls{bmi} only                           & 0.0008245  & 0.3011              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.02452    & 0.06579             \\
+		                                  & Pathways only                            & 0.2785     & 1.196e-08           \\
+		                                  & \gls{bmi} and pathways                   & 0.2780     & 1.233e-08           \\
+		                                  & \gls{bmi} status and pathways            & 0.2914     & 4.887e-09           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.3195     & 6.576e-10           \\
+		                                  & \gls{pr} only                            & 0.2331     & 2.492e-07           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.2349     & 2.215e-07           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.2538     & 6.38e-08            \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2631     & 3.421e-08           \\
+				\hline
+				\rule{0pt}{2.25ex}ResOl   & \gls{bmi} only                           & -0.002442  & 0.3851              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03878    & 0.02835             \\
+		                                  & Pathways only                            & 0.2384     & 1.762e-07           \\
+		                                  & \gls{bmi} and pathways                   & 0.2371     & 1.927e-07           \\
+		                                  & \gls{bmi} status and pathways            & 0.2670     & 2.616e-08           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2878     & 6.263e-09           \\
+		                                  & \gls{pr} only                            & 0.2251     & 4.198e-07           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.2257     & 4.044e-07           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.2392     & 1.675e-07           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2568     & 5.207e-08           \\
+				\hline
+				\rule{0pt}{2.25ex}Ca      & \gls{bmi} only                           & -0.0004067 & 0.3296              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03576    & 0.03383             \\
+		                                  & Pathways only                            & 0.2043     & 1.585e-06           \\
+		                                  & \gls{bmi} and pathways                   & 0.2077     & 1.28e-06            \\
+		                                  & \gls{bmi} status and pathways            & 0.2342     & 2.321e-07           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2487     & 8.927e-08           \\
+		                                  & \gls{pr} only                            & 0.1362     & 0.0001009           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1364     & 9.944e-05           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.1643     & 1.876e-05           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1744     & 1.012e-05           \\
+				\hline
+				\rule{0pt}{2.25ex}CaOl    & \gls{bmi} only                           & -0.006593  & 0.5509              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.0301     & 0.04718             \\
+		                                  & Pathways only                            & 0.1323     & 0.0001273           \\
+		                                  & \gls{bmi} and pathways                   & 0.1347     & 0.0001106           \\
+		                                  & \gls{bmi} status and pathways            & 0.1487     & 4.802e-05           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.1657     & 1.725e-05           \\
+		                                  & \gls{pr} only                            & 0.1103     & 0.0004599           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1106     & 0.0004539           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.1235     & 0.0002134           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1383     & 8.92e-05            \\
+				\hline
+				\rule{0pt}{2.25ex}CaRes   & \gls{bmi} only                           & 0.001142   & 0.2943              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03048    & 0.04612             \\
+		                                  & Pathways only                            & 0.2181     & 6.586e-07           \\
+		                                  & \gls{bmi} and pathways                   & 0.2373     & 1.902e-07           \\
+		                                  & \gls{bmi} status and pathways            & 0.2431     & 1.298e-07           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2501     & 8.152e-08           \\
+		                                  & \gls{pr} only                            & 0.1566     & 2.979e-05           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1586     & 2.654e-05           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.1844     & 5.485e-06           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1957     & 2.707e-06           \\
+				\hline
+				\rule{0pt}{2.25ex}CaResOl & \gls{bmi} only                           & -0.006037  & 0.5225              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.0413     & 0.02449             \\
+		                                  & Pathways only                            & 0.1719     & 1.183e-05           \\
+		                                  & \gls{bmi} and pathways                   & 0.1721     & 1.167e-05           \\
+		                                  & \gls{bmi} status and pathways            & 0.1961     & 2.642e-06           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2095     & 1.141e-06           \\
+		                                  & \gls{pr} only                            & 0.1571     & 2.894e-05           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1574     & 2.843e-05           \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.17       & 1.327e-05           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1939     & 3.044e-06           \\
+				\hline
+				\rule{0pt}{2.25ex}Or      & \gls{bmi} only                           & 0.0008035  & 0.3015              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03699    & 0.03147             \\
+		                                  & Pathways only                            & 0.2554     & 5.738e-08           \\
+		                                  & \gls{bmi} and pathways                   & 0.2568     & 5.234e-08           \\
+		                                  & \gls{bmi} status and pathways            & 0.28       & 1.075e-08           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2974     & 3.194e-09           \\
+		                                  & \gls{pr} only                            & 0.2388     & 1.717e-07           \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.2382     & 1.79e-07            \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.2531     & 6.663e-08           \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.2684     & 2.382e-08           \\
+				\hline
+				\rule{0pt}{2.25ex}FM      & \gls{bmi} only                           & -0.008238  & 0.6563              \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.07438    & 0.003652            \\
+		                                  & Pathways only                            & 0.268      & 2.449e-08           \\
+		                                  & \gls{bmi} and pathways                   & 0.2645     & 3.106e-08           \\
+		                                  & \gls{bmi} status and pathways            & 0.3067     & 1.654e-09           \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.3653     & 2.112e-11           \\
+		                                  & \gls{pr} only                            & -0.004177  & 0.4434              \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.007149   & 0.1946              \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.0394     & 0.02734             \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1166     & 0.0003183           \\
+				\hline
+				\hline
+				\insertTableNotes
+			\end{longtable}
+		
+	\end{ThreePartTable}
 
 	\begin{table}[htpb]
 		\centering
@@ -1457,131 +1460,139 @@
 	\end{table}
 
 
-	\begin{longtable}{llc{\bfseries}S}
-		\centering
-		\caption[Summary of the statistics from the comparison of all the predicted obesity metagene scores with the corresponding obesity metagenes from the CR data]{Table summarising the linear model statistics from the comparison of the various linear model-predicted obesity metagenes scores with the corresponding obesity metagene scores from the CR data set for all of the obesity metagenes}
-		\label{tab:prediction_summary_cr}\\
-		Obesity metagene & Model                         & R$^2$      & P-value   \\
-		\endfirsthead
-		\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
-		\hline
-		\hline
-		\endhead
-		\hline
-		\hline
-		\rule{0pt}{2.25ex}Cr      & \gls{bmi} only                           & 0.1239     & 0.000157  \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.0471     & 0.01568   \\
-                                  & Pathways only                            & 0.1756     & 6.307e-06 \\
-                                  & \gls{bmi} and pathways                   & 0.1407     & 5.596e-05 \\
-                                  & \gls{bmi} status and pathways            & 0.05509    & 0.009721  \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04186    & 0.02147   \\
-                                  & \gls{pr} only                            & 0.1327     & 9.191e-05 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1116     & 0.0003317 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.03887    & 0.02571   \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.04176    & 0.02161   \\
-		\hline
-		\rule{0pt}{2.25ex}CrOl    & \gls{bmi} only                           & 0.18       & 4.738e-06 \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.06523    & 0.005312  \\
-                                  & Pathways only                            & 0.1296     & 0.000111  \\
-                                  & \gls{bmi} and pathways                   & 0.09006    & 0.00121   \\
-                                  & \gls{bmi} status and pathways            & 0.02455    & 0.06179   \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.01941    & 0.08532   \\
-                                  & \gls{pr} only                            & 0.1817     & 4.249e-06 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1558     & 2.188e-05 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.07293    & 0.003359  \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.07116    & 0.003732  \\
-		\hline
-		\rule{0pt}{2.25ex}Res     & \gls{bmi} only                           & 0.09072    & 0.001163  \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.04082    & 0.02287   \\
-                                  & Pathways only                            & 0.2263     & 2.275e-07 \\
-                                  & \gls{bmi} and pathways                   & 0.2012     & 1.206e-06 \\
-                                  & \gls{bmi} status and pathways            & 0.1184     & 0.0002191 \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.1005     & 0.0006487 \\
-                                  & \gls{pr} only                            & 0.1419     & 5.195e-05 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1224     & 0.0001718 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.05342    & 0.01074   \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.05419    & 0.01026   \\
-		\hline
-		\rule{0pt}{2.25ex}ResOl   & \gls{bmi} only                           & 0.1535     & 2.536e-05 \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.0466     & 0.01615   \\
-                                  & Pathways only                            & 0.1581     & 1.899e-05 \\
-                                  & \gls{bmi} and pathways                   & 0.1329     & 9.083e-05 \\
-                                  & \gls{bmi} status and pathways            & 0.05085    & 0.01252   \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04523    & 0.01754   \\
-                                  & \gls{pr} only                            & 0.2067     & 8.421e-07 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1936     & 1.979e-06 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.1149     & 0.0002723 \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1097     & 0.0003713 \\
-		\hline
-		\rule{0pt}{2.25ex}Ca      & \gls{bmi} only                           & 0.07979    & 0.002233  \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.05026    & 0.01297   \\
-                                  & Pathways only                            & 0.2379     & 1.042e-07 \\
-                                  & \gls{bmi} and pathways                   & 0.2081     & 7.653e-07 \\
-                                  & \gls{bmi} status and pathways            & 0.09383    & 0.0009655 \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.07756    & 0.00255   \\
-                                  & \gls{pr} only                            & 0.09938    & 0.000692  \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.08114    & 0.00206   \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.01059    & 0.1512    \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.008212   & 0.1774    \\
-		\hline
-		\rule{0pt}{2.25ex}CaOl    & \gls{bmi} only                           & 0.1242     & 0.0001542 \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.05609    & 0.009156  \\
-                                  & Pathways only                            & 0.08453    & 0.001683  \\
-                                  & \gls{bmi} and pathways                   & 0.07397    & 0.003157  \\
-                                  & \gls{bmi} status and pathways            & 0.003647   & 0.244     \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.0003557  & 0.3111    \\
-                                  & \gls{pr} only                            & 0.1253     & 0.0001444 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1243     & 0.0001534 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.02838    & 0.04876   \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.02625    & 0.0556    \\
-		\hline
-		\rule{0pt}{2.25ex}CaRes   & \gls{bmi} only                           & 0.05877    & 0.007805  \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.0415     & 0.02194   \\
-                                  & Pathways only                            & 0.2438     & 6.952e-08 \\
-                                  & \gls{bmi} and pathways                   & 0.2037     & 1.023e-06 \\
-                                  & \gls{bmi} status and pathways            & 0.1132     & 0.0003018 \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.0995     & 0.0006872 \\
-                                  & \gls{pr} only                            & 0.1096     & 0.0003748 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.08751    & 0.001409  \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.02671    & 0.05406   \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.02392    & 0.06429   \\
-		\hline
-		\rule{0pt}{2.25ex}CaResOl & \gls{bmi} only                           & 0.1167     & 0.0002439 \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.04905    & 0.01395   \\
-                                  & Pathways only                            & 0.07821    & 0.002453  \\
-                                  & \gls{bmi} and pathways                   & 0.06736    & 0.004681  \\
-                                  & \gls{bmi} status and pathways            & -0.0005575 & 0.3338    \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & -0.003248  & 0.4151    \\
-                                  & \gls{pr} only                            & 0.1632     & 1.377e-05 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1628     & 1.412e-05 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.05905    & 0.007678  \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.05391    & 0.01043   \\
-		\hline
-		\rule{0pt}{2.25ex}Or      & \gls{bmi} only                           & 0.1246     & 0.0001508 \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.03912    & 0.02533   \\
-                                  & Pathways only                            & 0.1649     & 1.237e-05 \\
-                                  & \gls{bmi} and pathways                   & 0.1311     & 0.0001014 \\
-                                  & \gls{bmi} status and pathways            & 0.05614    & 0.009131  \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04897    & 0.01402   \\
-                                  & \gls{pr} only                            & 0.1805     & 4.604e-06 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.1626     & 1.431e-05 \\
-                                  & \gls{bmi} status and \gls{pr}            & 0.08503    & 0.001634  \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.08819    & 0.001353  \\
-		\hline
-		\rule{0pt}{2.25ex}FM      & \gls{bmi} only                           & -0.004507  & 0.4632    \\
-                                  & \gls{bmi} and \gls{bmi} status           & 0.01947    & 0.08502   \\
-                                  & Pathways only                            & 0.4202     & 8.085e-14 \\
-                                  & \gls{bmi} and pathways                   & 0.4213     & 7.317e-14 \\
-                                  & \gls{bmi} status and pathways            & 0.3386     & 6.885e-11 \\
-                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2734     & 8.759e-09 \\
-                                  & \gls{pr} only                            & 0.09798    & 0.0007529 \\
-                                  & \gls{bmi} and \gls{pr}                   & 0.09642    & 0.0008267 \\
-                                  & \gls{bmi} status and \gls{pr}            & -0.00988   & 0.9634    \\
-                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & -0.008862  & 0.7478    \\
-		\hline
-		\hline
-		\insertTableNotes
-	\end{longtable}
+	\begin{ThreePartTable}
+			\begin{TableNotes}
+				\begin{footnotesize}
+				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+				\end{footnotesize}
+			\end{TableNotes}
+
+			\begin{longtable}{llc{\bfseries}S}
+				\centering
+				\caption[Summary of the statistics from the comparison of all the predicted obesity metagene scores with the corresponding obesity metagenes from the CR data]{Table summarising the linear model statistics from the comparison of the various linear model-predicted obesity metagenes scores with the corresponding obesity metagene scores from the CR data set for all of the obesity metagenes}
+				\label{tab:prediction_summary_cr}\\
+				Obesity metagene & Model                         & R$^2$      & P-value   \\
+				\endfirsthead
+				\multicolumn{4}{c}{\tablename\ \thetable{}\ (continued)}\\
+				\hline
+				\hline
+				\endhead
+				\hline
+				\hline
+				\rule{0pt}{2.25ex}Cr      & \gls{bmi} only                           & 0.1239     & 0.000157  \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.0471     & 0.01568   \\
+		                                  & Pathways only                            & 0.1756     & 6.307e-06 \\
+		                                  & \gls{bmi} and pathways                   & 0.1407     & 5.596e-05 \\
+		                                  & \gls{bmi} status and pathways            & 0.05509    & 0.009721  \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04186    & 0.02147   \\
+		                                  & \gls{pr} only                            & 0.1327     & 9.191e-05 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1116     & 0.0003317 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.03887    & 0.02571   \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.04176    & 0.02161   \\
+				\hline
+				\rule{0pt}{2.25ex}CrOl    & \gls{bmi} only                           & 0.18       & 4.738e-06 \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.06523    & 0.005312  \\
+		                                  & Pathways only                            & 0.1296     & 0.000111  \\
+		                                  & \gls{bmi} and pathways                   & 0.09006    & 0.00121   \\
+		                                  & \gls{bmi} status and pathways            & 0.02455    & 0.06179   \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.01941    & 0.08532   \\
+		                                  & \gls{pr} only                            & 0.1817     & 4.249e-06 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1558     & 2.188e-05 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.07293    & 0.003359  \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.07116    & 0.003732  \\
+				\hline
+				\rule{0pt}{2.25ex}Res     & \gls{bmi} only                           & 0.09072    & 0.001163  \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.04082    & 0.02287   \\
+		                                  & Pathways only                            & 0.2263     & 2.275e-07 \\
+		                                  & \gls{bmi} and pathways                   & 0.2012     & 1.206e-06 \\
+		                                  & \gls{bmi} status and pathways            & 0.1184     & 0.0002191 \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.1005     & 0.0006487 \\
+		                                  & \gls{pr} only                            & 0.1419     & 5.195e-05 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1224     & 0.0001718 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.05342    & 0.01074   \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.05419    & 0.01026   \\
+				\hline
+				\rule{0pt}{2.25ex}ResOl   & \gls{bmi} only                           & 0.1535     & 2.536e-05 \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.0466     & 0.01615   \\
+		                                  & Pathways only                            & 0.1581     & 1.899e-05 \\
+		                                  & \gls{bmi} and pathways                   & 0.1329     & 9.083e-05 \\
+		                                  & \gls{bmi} status and pathways            & 0.05085    & 0.01252   \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04523    & 0.01754   \\
+		                                  & \gls{pr} only                            & 0.2067     & 8.421e-07 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1936     & 1.979e-06 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.1149     & 0.0002723 \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.1097     & 0.0003713 \\
+				\hline
+				\rule{0pt}{2.25ex}Ca      & \gls{bmi} only                           & 0.07979    & 0.002233  \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.05026    & 0.01297   \\
+		                                  & Pathways only                            & 0.2379     & 1.042e-07 \\
+		                                  & \gls{bmi} and pathways                   & 0.2081     & 7.653e-07 \\
+		                                  & \gls{bmi} status and pathways            & 0.09383    & 0.0009655 \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.07756    & 0.00255   \\
+		                                  & \gls{pr} only                            & 0.09938    & 0.000692  \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.08114    & 0.00206   \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.01059    & 0.1512    \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.008212   & 0.1774    \\
+				\hline
+				\rule{0pt}{2.25ex}CaOl    & \gls{bmi} only                           & 0.1242     & 0.0001542 \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.05609    & 0.009156  \\
+		                                  & Pathways only                            & 0.08453    & 0.001683  \\
+		                                  & \gls{bmi} and pathways                   & 0.07397    & 0.003157  \\
+		                                  & \gls{bmi} status and pathways            & 0.003647   & 0.244     \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.0003557  & 0.3111    \\
+		                                  & \gls{pr} only                            & 0.1253     & 0.0001444 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1243     & 0.0001534 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.02838    & 0.04876   \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.02625    & 0.0556    \\
+				\hline
+				\rule{0pt}{2.25ex}CaRes   & \gls{bmi} only                           & 0.05877    & 0.007805  \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.0415     & 0.02194   \\
+		                                  & Pathways only                            & 0.2438     & 6.952e-08 \\
+		                                  & \gls{bmi} and pathways                   & 0.2037     & 1.023e-06 \\
+		                                  & \gls{bmi} status and pathways            & 0.1132     & 0.0003018 \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.0995     & 0.0006872 \\
+		                                  & \gls{pr} only                            & 0.1096     & 0.0003748 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.08751    & 0.001409  \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.02671    & 0.05406   \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.02392    & 0.06429   \\
+				\hline
+				\rule{0pt}{2.25ex}CaResOl & \gls{bmi} only                           & 0.1167     & 0.0002439 \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.04905    & 0.01395   \\
+		                                  & Pathways only                            & 0.07821    & 0.002453  \\
+		                                  & \gls{bmi} and pathways                   & 0.06736    & 0.004681  \\
+		                                  & \gls{bmi} status and pathways            & -0.0005575 & 0.3338    \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & -0.003248  & 0.4151    \\
+		                                  & \gls{pr} only                            & 0.1632     & 1.377e-05 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1628     & 1.412e-05 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.05905    & 0.007678  \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.05391    & 0.01043   \\
+				\hline
+				\rule{0pt}{2.25ex}Or      & \gls{bmi} only                           & 0.1246     & 0.0001508 \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.03912    & 0.02533   \\
+		                                  & Pathways only                            & 0.1649     & 1.237e-05 \\
+		                                  & \gls{bmi} and pathways                   & 0.1311     & 0.0001014 \\
+		                                  & \gls{bmi} status and pathways            & 0.05614    & 0.009131  \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.04897    & 0.01402   \\
+		                                  & \gls{pr} only                            & 0.1805     & 4.604e-06 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.1626     & 1.431e-05 \\
+		                                  & \gls{bmi} status and \gls{pr}            & 0.08503    & 0.001634  \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & 0.08819    & 0.001353  \\
+				\hline
+				\rule{0pt}{2.25ex}FM      & \gls{bmi} only                           & -0.004507  & 0.4632    \\
+		                                  & \gls{bmi} and \gls{bmi} status           & 0.01947    & 0.08502   \\
+		                                  & Pathways only                            & 0.4202     & 8.085e-14 \\
+		                                  & \gls{bmi} and pathways                   & 0.4213     & 7.317e-14 \\
+		                                  & \gls{bmi} status and pathways            & 0.3386     & 6.885e-11 \\
+		                                  & \gls{bmi}, \gls{bmi} status and pathways & 0.2734     & 8.759e-09 \\
+		                                  & \gls{pr} only                            & 0.09798    & 0.0007529 \\
+		                                  & \gls{bmi} and \gls{pr}                   & 0.09642    & 0.0008267 \\
+		                                  & \gls{bmi} status and \gls{pr}            & -0.00988   & 0.9634    \\
+		                                  & \gls{bmi}, \gls{bmi} status and \gls{pr} & -0.008862  & 0.7478    \\
+				\hline
+				\hline
+				\insertTableNotes
+			\end{longtable}
+	\end{ThreePartTable}
 
 	\begin{table}[htpb]
 		\centering

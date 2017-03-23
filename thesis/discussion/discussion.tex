@@ -155,11 +155,15 @@ In fact, the proportion of the samples that were \gls{pr}$^+$ was greater in the
 
 However, with this logic, the \gls{er} pathway signature would as likely to be associated, as the  sample  \gls{er} status was similar to the \gls{pr} status in either data sets: 72 \gls{er}$^+$ and 27 \gls{er}$^-$ samples in the \gls{nzbc} data, and 58 \gls{er}$^+$ and  42 \gls{er}$^-$ samples in the  CR data set.
 The fact that the \gls{er} pathway signature was not significant in the models suggested that the obesity metagenes were related to the \gls{pr} pathway irrespective of the sample \gls{pr} status.
-Furthermore, both the \gls{nzbc} and the CR data sets showed strong association between the \gls{pr} and \gls{er} pathway metagenes with the patient \gls{pr} and \gls{er} status, respectively (\cref{})(add reference to pr and er graph).
+Furthermore, both the \gls{nzbc} and the CR data sets showed strong association between the \gls{pr} and \gls{er} pathway metagenes with the patient \gls{pr} and \gls{er} status, respectively (\cref{sec:results_for_er_and_pr_metagene_analysis}).
 Since both \gls{er} and \gls{pr} signatures were significantly associated with the patient \gls{er} and \gls{pr} satuses, both signatures would have been as equally likely to show up significant in the models, supporting the idea that the \gls{er} and \gls{pr} statuses were independent of the apparent significance of these signatures in the models.
 
 In the step wise linear models, many variables were identified to be significantly associated with the obesity metagenes.
-With that said, even if these variables were related to the obesity associated genetic signatures, the fact that these results depended on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
+This suggested that the pathway associated genetic signatures that were signicant in these models may be biologically related to the obesity phenotype, or perhaps the obesity associated genetic signatures were detecting the signals from these pathways rather than the signals from the phenotype.
+In fact, many of the variables included in the linear models were pathway metagenes that negatively correlated with the obesity metagenes in \cref{fig:gatza_allmeta} (\cref{sub:comparison_of_the_obesity_and_pathway_associated_signatures}).
+Therefore, it may be possible that these pathways (Akt, \gls{er}, \gls{egfr}, \gls{pr}, p53, Src and \gls{tgfb}) are related to the underlying biological mechanism that drives breast tumour development, and potentially associated with the patient \gls{bmi} as well.
+
+With that said, even if these pathway signatures were related to the obesity associated genetic signatures, the fact that these results depended on the pathway associated genetic signatures from the \citet{Gatza2010a} study makes the results questionable.
 This was due to the lack of consistency of the metagenes across different cancer data sets, where more than half of the pathway metagenes showed a correlation of less than 0.8 in at least one data set (\cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}).
 This meant that at least half of the signatures were specific to the GT data set and could be highly variable in the other data sets, reflecting the potential differences in the cohorts (at the molecular level).
 Thus, without further validation of the quality of the pathway associated genetic signatures and verification of the roles of these signatures in the biological relationship between obesity and cancer, these results should be interpreted with care.
@@ -226,7 +230,7 @@ In their studies, Gatza \textit{et al.} used model cell lines to identify the pa
 However, some of these pathway associated genetic signatures were derived in different cell lines to one another, which meant that some pathway signatures may not reflect the true pathway activity \textit{in vivo}.
 In fact, as seen in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study,sec:pathway_associated_metagenes_and_obesity_associated_metagenes}, some pathway signatures produced more consistent metagenes from the data sets than the other signatures.
 These results were merely an indication that the pathway signatures may have reflected the pathway activities poorly, and it was not possible to determine whether these signatures were truly related to the corresponding pathways, as the original data was not available to reference the signatures back for validation.
-With that said, few of the pathway signatures correlated well with some clinical variables (such as \gls{er} and \gls{pr}), so not all signatures may have been of poor quality (\cref{}) (add reference to pr and er graph).
+With that said, few of the pathway signatures correlated well with some clinical variables (such as \gls{er} and \gls{pr}), so not all signatures may have been of poor quality (\cref{sec:results_for_er_and_pr_metagene_analysis}).
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -239,6 +243,7 @@ Furthermore, there were no genes differentially expressed between obese and non-
 These results have suggested that there were no obesity specific genetic signatures that were common across different cancer types.
 The results from \cref{cha:obesity_associated_genetic_signature_and_pathway_signatures} showed that the obesity associated genetic signatures generated from the Creighton \textit{et al.} data set were different from those generated from the Fuentes-Mattei \textit{et al.} data set.
 None of the pathway associated genetic signatures was similar to any of the obesity associated genetic signatures in the heatmap.
+% re-write sentence below:
 The results from the linear model prediction suggested a possible association of the obesity associated genetic signatures with the Akt, \gls{egfr} and \gls{pr} pathways.
 
 To summarise, there were no common genetic signatures that significantly associated with the obesity status of the patients.
