@@ -175,6 +175,18 @@ In each of the eight cancer types, the \gls{tcga} sample IDs in the clinical dat
 Any samples that did not have either the patient \gls{bmi} information or the \gls{rnaseq} data were removed from the analyses.
 This ensured that both \gls{bmi} and \gls{rnaseq} data were available for all of the samples that were included in this project.
 See \cref{tab:samplesize} for a summary of the total number of samples included in the analyses for each cancer type.
+Where missing, \cref{eq:bmicalc} was used to calculate the \gls{bmi} of the samples in all of the cancer data with height and weight data available (\cref{sec:data}).
+\\
+
+\begin{equation}
+	\label{eq:bmicalc}
+	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
+\end{equation}
+\\
+
+\noindent
+Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight (25 $\leq$ \gls{bmi} \textless{} 30) or obese (\gls{bmi} $\geq$ 30) based on the \gls{who} definition (\cref{tab:whobmiclass}).
+\cref{eq:bmicalc,tab:whobmiclass} were used to calculate and group the patients from the \gls{icgc} cancer data into appropriate \gls{bmi} classes (\cref{tab:icgc_bmi}).
 
 \begin{table}[htpb]
 	\caption{Summary of the total number of samples included in the analyses for each cancer type}
@@ -197,25 +209,6 @@ See \cref{tab:samplesize} for a summary of the total number of samples included 
 		\end{tabular}
 	\end{center}
 \end{table}
-
-\section{\Gls{bmi}}
-\label{sec:bmi}
-
-\subsection{\gls{bmi} Calculation}
-\label{subsec:bmicalc}
-
-Where missing, \cref{eq:bmicalc} was used to calculate the \gls{bmi} of the samples in all of the cancer data with height and weight data available (\cref{sec:data}).
-
-\begin{equation}
-	\label{eq:bmicalc}
-	\gls{bmi} = \frac{Weight (kg)}{Height^2(m^2)}\\
-\end{equation}
-
-\subsection{\gls{bmi} Classification}
-\label{subsec:bmiclassification}
-
-Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight (25 $\leq$ \gls{bmi} \textless{} 30) or obese (\gls{bmi} $\geq$ 30) based on the \gls{who} definition (\cref{tab:whobmiclass}).
-\cref{eq:bmicalc,tab:whobmiclass} were used to calculate and group the patients from the \gls{icgc} cancer data into appropriate \gls{bmi} classes (\cref{tab:icgc_bmi}).
 
 \begin{table}[htb]
 	\caption{\gls{who} defined \gls{bmi} classification}
@@ -280,7 +273,7 @@ The \gls{rma} method is based on the observation that \gls{pm} is a mixture of b
 In fact, the \gls{rma} method showed better identification of the true signals than the other methods, including \Gls{mas} method \citep{Irizarry2003}.
 
 The raw microarray data were normalised using both \gls{rma} and \gls{mas} methods, each done separately on a copy of the data.
-The reason why the \gls{mas} method was used as well as the \gls{rma} method was becuase the \gls{mas} normalisation method was used in the \citet{Gatza2010a} study.
+The reason why the \gls{mas} method was used as well as the \gls{rma} method was because the \gls{mas} normalisation method was used in the \citet{Gatza2010a} study.
 Though the normalisation methods were not specified in the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies, to allow for data comparison between different datasets and accurate result validation of some of the studies, both \gls{rma} and \gls{mas} methods were considered for normalising the microarray data.
 
 \subsubsection{RNA-seq data}
@@ -337,7 +330,7 @@ The second data set was created by first combining the cancer data sets into one
 \label{sub:sample_randomisation_in_simulation_analysis}
 
 In some cases, an analysis was repeated a number of times to provide statistical evidence that the observed results did not occur by chance.
-All of the simulated results must be derived from a randomised data, and by comparing the observed results with the results that occured by chance, simulation analysis provides statistical evidence for the observed results.
+All of the simulated results must be derived from a randomised data, and by comparing the observed results with the results that occurred by chance, simulation analysis provides statistical evidence for the observed results.
 When a simulation was required, none of the values in the original data were modified, but instead the values in the original data were assigned randomly to different samples; in other words, the samples were shuffled.
 This provided a random set of data in which a simulation could be conducted with.
 The samples were shuffled with the \texttt{sample} function from the \textit{base} package in \gls{r}, and were reshuffled for each simulation.
@@ -352,14 +345,14 @@ Since there were thousands of genes to be hypothesis tested, adjustment for mult
 \label{sub:limma}
 
 \textit{limma} is a package that contains variety of tools to analyse gene expression data using linear models-based methods, developed by \citet{Ritchie2015}.
-For gene expression analysis, \textit{limma} package fits a linear model in a genewise manner and produce test statistics that allow the assessment of whether the gene is differentially expressed or not between certain groups of samples \citep{Ritchie2015}.
+For gene expression analysis, \textit{limma} package fits a linear model in a gene-wise manner and produce test statistics that allow the assessment of whether the gene is differentially expressed or not between certain groups of samples \citep{Ritchie2015}.
 In this project, the gene expression analysis was carried out to identify \glspl{deg} in the samples that were obese compared to the samples that were non-obese group.
 
 Before the data was analysed using the \textit{limma} analysis pipeline, it was normalised as described in \cref{sub:data_normalisation}: \nameref{sub:data_normalisation}.
 In addition to this, a design matrix that describes the experimental design (obese versus non-obese) was created from the clinical data.
 To create the design matrix, the samples were divided into two groups, the obese group and the non-obese group, and the constructed group information was used in the \texttt{model.matrix} function (in \textit{limma} package) to form the design matrix.
 
-The \texttt{lmFit} function (\textit{limma}) was used to fit a linear model to the normalised data, using the experiental design information from the design matrix.
+The \texttt{lmFit} function (\textit{limma}) was used to fit a linear model to the normalised data, using the experimental design information from the design matrix.
 The output of this function was used in the \texttt{eBayes} function (\textit{limma}) to identify the \glspl{deg} from the data.
 In the \texttt{eBayes} function, statistical parameters are estimated from the data and these parameters are used in the empirical Bayes approach to calculate the summary statistics used for the ranking and identification of \glspl{deg} \citep{Smyth2004}.
 
@@ -377,7 +370,7 @@ In the case where there were more than 1000 \glspl{deg}, the top 799 probe sets 
 \label{sub:multiple_hypothesis_testing_correction}
 
 In an experiment where there are multiple hypotheses being tested, the rate or proportion of \gls{type1} appearing from the experiment must be controlled.
-The probability of \gls{type1} occuring for a single hypopthesis is usually controlled at some significance threshold $\alpha$, which is usually set at 0.05 \citep{Shaffer1995}.
+The probability of \gls{type1} occurring for a single hypothesis is usually controlled at some significance threshold $\alpha$, which is usually set at 0.05 \citep{Shaffer1995}.
 In a typical microarray experiment, there are over 20,000 gene probes to be tested for differential expression, and with a significance threshold of $\alpha = 0.05$, this would yield approximately 1,000 \glspl{type1}.
 In other words, 1,000 gene probes would be identified as differentially expressed, when in fact they are not.
 
@@ -421,7 +414,7 @@ Lastly, by treating each gene individually, the analysis ignores the biological 
 
 In general, the \gls{fcs} methods measure gene-level statistics from the given data, then aggregate these statistics into pathway-level statistics, which is then used to calculate the statistical significance of the pathway \citep{Khatri2012}.
 There are two major classes of methods when calculating the statistical significance: self-contained or competitive tests \citep{Goeman2007}.
-Self-contained tests are more appropriate in assessing whether a biological process is significantly involved in an expreiment, whereas the competitive tests are better for selecting the most relevant biological processes from those that are not \citep{Wu2012}.
+Self-contained tests are more appropriate in assessing whether a biological process is significantly involved in an experiment, whereas the competitive tests are better for selecting the most relevant biological processes from those that are not \citep{Wu2012}.
 
 The main difference between the two classes is the definition of the null hypothesis.
 Letting $G$ be the gene set of interest and $G^c$ its compliment, then in the self-contained tests, the null hypothesis is formulated as follows:
@@ -434,32 +427,32 @@ whereas in the competitive tests, the null hypothesis is defined as:
 	}
 \end{quote}
 These hypotheses show that the self-contained tests care only about the genes defined in the gene set, but the competitive tests examine the genes in the defined set as well as the genes not present in the set \citep{Wu2012}.
-Due to the fact that self-contained tests do not take into account for the genes not defined in the gene set, self-contained tests are more restrictive compared to competitive tests.
+Due to the fact that self-contained tests do not take into account the genes not defined in the gene set, self-contained tests are more restrictive compared to competitive tests.
 The restrictive property of the self-contained tests give it greater power, as they are able to reject the null hypothesis at a higher accuracy for more gene sets than the competitive tests \citep{Goeman2007}.
 However, as \citet{Goeman2007} stated in their paper, ``the competitive types of test can be said to voluntarily relinquish some power in order to make a stronger statement''.
 In fact, the \gls{gsea} method (developed by \citet{Subramanian2005}), one of the first and perhaps the most popular \gls{fcs} methods, uses the competitive test approach.
 
 The \Gls{fcs} approach addresses some of the limitations presented by the \gls{ora} methods.
 By calculating the statistical significance per pathway, the \gls{fcs} approach takes into account of all of the genes involved in the pathways, and not just the genes that are differentially expressed.
-Furthermore, the \gls{fcs} approach also detect small but consistant and coordinated changes in the expression of the genes, unlike in the \gls{ora} where molecular measurements are completely ignored \citep{Khatri2012}.
+Furthermore, the \gls{fcs} approach also detects small but consistent and coordinated changes in the expression of the genes, unlike in the \gls{ora} where molecular measurements are completely ignored \citep{Khatri2012}.
 
 Though the \gls{fcs} approach improves on the \gls{ora} approach, there are still some limitations.
-Since the analyses that use \gls{fcs} compare the pathways independently from one another, it ignores the interactive nature of the biological pathways.
-Another limitation is that the \gls{fcs} methods use the molecular measurements to rank the genes, but they do not consider these changes into further analysis \citep{Khatri2012}.
-For example, if one gene was expressed with a 2-fold change, whereas another gene was expressed with a 20-fold change, the \gls{fcs} method will rank these genes accordingly (first, second, and so on) and disregard the fact that the second gene should be weighted ten times as more than the first gene \citep{Khatri2012}.
+Since the analyses that use \gls{fcs} compare the pathways independently of one another, they ignores the interactive nature of biological pathways.
+Another limitation is that the \gls{fcs} methods use the molecular measurements to rank the genes, but they do not consider these changes in further analysis \citep{Khatri2012}.
+For example, if one gene was expressed with a 2-fold change, whereas another gene was expressed with a 20-fold change, the \gls{fcs} method will rank these genes accordingly (first, second, and so on) and disregard the fact that the second gene is much more highly expressed \citep{Khatri2012}.
 Although both approaches have their own limitations, it is clear that \gls{fcs} approach have more advantages over \gls{ora} methods.
 
 \subsection{\Gls{camera}}
 \label{sub:camera}
 
 \Acrfull{camera} is a competitive \gls{fcs}-based method developed by \citet{Wu2012}, implemented as the \texttt{camera} function in the \textit{limma} package \citep{Ritchie2015}.
-Briefly, \gls{camera} fits a linear model in a genewise manner and calculates the genewise test statistics using the log\gls{fc} between the conditions (for example, obese and non-obese samples).
-These genewise test statistics are used in the \gls{wmw} rank sum test to question whether a pathway is significantly enriched in the data \citep{Wu2012}.
+Briefly, \gls{camera} fits a linear model in a gene-wise manner and calculates the gene-wise test statistics using the log\gls{fc} between the conditions (for example, obese and non-obese samples).
+These gene-wise test statistics are used in the \gls{wmw} rank sum test to question whether a pathway is significantly enriched in the data \citep{Wu2012}.
 
 One problem with the other \gls{fcs}-based methods is that these methods do not consider the inter-gene correlation of the gene set being tested \citep{Wu2012}.
 Since other methods assume that all the genes are equivalent under the null hypothesis, inter-gene correlation of the genes in a gene set will violate this assumption \citep{Wu2012}.
 As a consequence, the \gls{type1} rate is increased in these methods.
-However, \Gls{camera} accounts for this correlation by estimating the \gls{vif} from the genewise correlation and the number of genes in the gene set \citep{Wu2012}.
+However, \Gls{camera} accounts for this correlation by estimating the \gls{vif} from the gene-wise correlation and the number of genes in the gene set \citep{Wu2012}.
 
 \gls{camera} was used in this project to identify the pathways that were enriched in the samples from obese patients compared with the samples from non-obese patients, as \gls{camera} provided a competitive \gls{fcs}-based method.
 
@@ -482,7 +475,7 @@ Examples of terms used in molecular function are ``kinase activity'', ``transpor
 Lastly, cellular components refers to the location in which the gene product is active, such as ``Golgi apparatus'' and ``nuclear membrane''.
 
 The \textit{GO.db} package was used to load the \gls{go} database into \gls{r} \citep{Carlson2016}.
-Only the human related \gls{go} terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried by using the gene symbol.
+Only the human related \gls{go} terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried using the gene symbol.
 
 \subsubsection{\gls{kegg} database}
 \label{ssub:kegg_database}
@@ -491,16 +484,16 @@ Only the human related \gls{go} terms were used in pathway enrichment analysis, 
 The \gls{kegg} database also curates other information such as the approved drugs in US and Japan and genes related to diseases, making it a great tool for exploring the biological significance of genes and pathways \citep{Kanehisa2008}.
 
 The \textit{KEGG.db} package was used to load the \gls{kegg} database into \gls{r} \citep{kegg}.
-Only the human related \gls{kegg} terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried by using the gene symbol.
+Only the human related \gls{kegg} terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried using the gene symbol.
 
 \subsubsection{Reactome database}
 \label{ssub:Reactome_database}
 
-The Reactome database is a ``curated, peer-reviewed resource of humana biological processes'' \citep{Joshi2005}.
-Reactome database is constructed base on the reactions that have direct evidence from the literature, which are connected into a higher order pathway structures \citep{Joshi2005}.
+The Reactome database is a ``curated, peer-reviewed resource of human biological processes'' \citep{Joshi2005}.
+The Reactome database is constructed based on the reactions that have direct evidence from the literature, which are connected into higher order pathway structures \citep{Joshi2005}.
 
 The \textit{reactome.db} package was used to load the Reactome database into \gls{r} \citep{reactome}.
-Only the human related Reactome terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried by using the gene symbol.
+Only the human related Reactome terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried using the gene symbol.
 
 \section{Metagene analysis}
 \label{sec:metagene_analysis}
@@ -537,7 +530,7 @@ where $U^{T}D^{-1}$ will be referred to as the ``transformation matrix'' hereaft
 Clearly, by substituting the data matrix $X$ with another data matrix, the transformation matrix allows for the generation of the metagene for that data set.
 The reason why the transformation matrix is used instead of independently applying \gls{svd} to the other data set is because the genetic signature, and therefore the metagene, from a single data set is dependent on the signal within its data set.
 Therefore, the metagenes created independently from different data sets using \gls{svd} do not have the same weighting as the metagene from the original data set, and consequently does not provide a fair comparison of the metagenes across different data sets.
-For this reason, the transformation matrix for a given set of genes was created in the data set in which the genes were first identified in, and then transformed into other data sets to obatain the metagenes.
+For this reason, the transformation matrix for a given set of genes was created in the data set in which the genes were first identified in, and then transformed into other data sets to obtain the metagenes.
 
 \subsection{Ranking of the metagene scores}
 \label{sub:ranking_of_the_metagene_scores}
@@ -548,7 +541,7 @@ In most analyses, fractional ranking was used to assess the association of the m
 
 An alternative approach called probit transformation was used by \citet{Gatza2010a}.
 In this transformation, the sample metagene scores were transformed with the probit function.
-To do this, the sample metagene scores were scaled and centered using the \texttt{scale} function from the \textit{base} pakage in \gls{r}, then the \texttt{pnorm} function from the \textit{stats} package was used to transform the metagene scores so that the scores were between 0 and 1.
+To do this, the sample metagene scores were scaled and centered using the \texttt{scale} function from the \textit{base} package in \gls{r}, then the \texttt{pnorm} function from the \textit{stats} package was used to transform the metagene scores so that the scores were between 0 and 1.
 Unless stated otherwise, all of the metagenes in this project were fractionally ranked.
 
 \subsection{Metagene direction}
@@ -568,7 +561,7 @@ In this case, the direction of the generated metagene must be corrected in order
 	\caption[Example heatmaps showing the direction of the uncorrected and corrected \acrshort{er} pathway metagene with the gene expression of the \acrshort{er} pathway genetic signature in the \acrshort{rma}-normalised Gatza \textit{et al.} data.]{Heatmaps showing the direction of the uncorrected (left) and corrected (right) \gls{er} pathway metagene with the gene expression of the \gls{er} pathway genetic signature in the \gls{rma}-normalised Gatza \textit{et al.} data.
 	Level of gene expression is represented in the top right histogram, where low and high gene expression are colour-coded with blue and red, respectively.
 	Each row of the heatmap represents a gene from the \gls{er} genetic signature, and each column of the heatmap represents a sample from the Gatza \textit{et al.} data.
-	The \textit{ESR1} gene expressions of the samples are shown as a separate row at the top of the heatmap with the sample \gls{er} metagene scores shown below the \textit{ESR1} gene expression, and the tree diagram of the heirarchical clustering of the genes is shown on the left of the heatmap.
+	The \textit{ESR1} gene expressions of the samples are shown as a separate row at the top of the heatmap with the sample \gls{er} metagene scores shown below the \textit{ESR1} gene expression, and the tree diagram of the hierarchical clustering of the genes is shown on the left of the heatmap.
 	}
 	\label{fig:methods/meta_dir}
 \end{figure}
@@ -615,23 +608,23 @@ It was known from the \citet{Gatza2010a} study that some pathways clustered and 
 	\hline
 	\rule{0pt}{2.25ex}\Gls{er}    & ESR1   & Involved in cell cycle regulation, cell proliferation and cell survival\\
 	\hline
-	\rule{0pt}{2.25ex}\Gls{her2}  & ERBB2  & Also known as ERBB2; involved in cell proliferaion and apoptosis\\
+	\rule{0pt}{2.25ex}\Gls{her2}  & ERBB2  & Also known as ERBB2; involved in cell proliferation and apoptosis\\
 	\hline
 	\rule{0pt}{2.25ex}\Gls{ifna}  & IFNA1  & Cytokine involved in innate immune response against viral infection\\
 	\hline
 	\rule{0pt}{2.25ex}\Gls{ifny}  & IFNG   & Cytokine critical for innate and adaptive immune response\\
 	\hline
-	\rule{0pt}{2.25ex}Myc         & MYC    & Transcription factor involved in cell proliferaion, cell growth and apoptosis\\
+	\rule{0pt}{2.25ex}Myc         & MYC    & Transcription factor involved in cell proliferation, cell growth and apoptosis\\
 	\hline
 	\rule{0pt}{2.25ex}p53         & TP53   & Tumour suppressor protein involved in \acrshort{dna} repair, cell cycle regulation and apoptosis\\
 	\hline
 	\rule{0pt}{2.25ex}p63         & TP63   & Involved in development\\
 	\hline
-	\rule{0pt}{2.25ex}\Gls{pi3k}  & PIK3CA & Involved in cell growth, cell proliferaion, cell differentiation and cell survival\\
+	\rule{0pt}{2.25ex}\Gls{pi3k}  & PIK3CA & Involved in cell growth, cell proliferation, cell differentiation and cell survival\\
 	\hline
 	\rule{0pt}{2.25ex}\Gls{pr}    & PGR    & Signal transducer that activates other signalling pathways; involved in cell proliferation\\
 	\hline
-	\rule{0pt}{2.25ex}Ras         & HRAS   & Involved in cell proliferaion, cell differentiation, cell adhesion, apoptosis and cell migration\\
+	\rule{0pt}{2.25ex}Ras         & HRAS   & Involved in cell proliferation, cell differentiation, cell adhesion, apoptosis and cell migration\\
 	\hline
 	\rule{0pt}{2.25ex}\Gls{stat3} & STAT3  & Involved in cell growth and apoptosis\\
 	\hline
@@ -696,19 +689,19 @@ All of the created linear models are summarised in \cref{tab:lm_model_method}.
 \end{table}
 
 In addition to these eleven linear models, a linear model was created with the sample \gls{bmi}, \gls{bmi} status and all of the pathway associated metagenes (Akt, \gls{bcat}, E2F1, \gls{egfr}, \gls{er}, \gls{her2}, \gls{ifna}, \gls{ifny}, Myc, p53, p63, \gls{pi3k}, \gls{pr}, Ras, \gls{stat3}, Src, \gls{tgfb} and \gls{tnfa}) using a stepwise approach.
-Stepwise approach allows the construction of a linear model that best fit the data, given a set of variables.
-There are three approaches in creating a linear model in a stepwise method: top-down, bottom-up, and both.
+The stepwise approach allows the construction of a linear model that best fits the data, given a set of variables.
+There are three approaches in creating a linear model in a stepwise method: forward, backward, and both.
 
-In a top-down approach, all of the variables are first included in the linear model.
-At each step, a variable is removed from the model and the \gls{aic} of the model is compared with the original model to determine whether the variable should remain in the model or not.
-This will result in a model with the variables that are most significant to the model.
-In a bottom-up approach, the model begins with no variable and adds one variable at a time to the model.
+In a backward (also known as ``top-down'') approach, all of the variables are first included in the linear model.
+At each step, a variable is removed from the model and the \gls{bic} of the model is compared with the original model to determine whether the variable should remain in the model or not.
+This will result in a model with the variables that are jointly most predictive.
+In a forward, or ``bottom-up'', approach, the model begins with no variable and adds one variable at a time to the model.
 If the variable increased the ability of the model to predict the response variable, then the variable is included in the model.
-Again, this will result in a model with only the variables that are significant in predicting the response variable.
+Again, this will result in a model with only the variables that are contributing to predicting the response variable.
 Alternatively, both methods in combination can be used, where the model begins with all or none of the variables, and at each step a variable can be added to or removed from the linear model.
-In this project, the combination of top-down and bottom-up approaches (beginning with no variables in the model) was used to create the stepwise linear model.
+In this project, the combination of forward and backward approaches (beginning with no variables in the model) was used to create the stepwise linear model.
 
-The obesity metagenes that were predicted from the linear models in the \gls{nzbc} data set was compared with the original obesity metagene scores.
+The obesity metagenes that were predicted from the linear models in the \gls{nzbc} data set were compared with the original obesity metagene scores.
 Where appropriate, p-values, \gls{anova} p-values and  $R^2$-values were calculated to assess the relationship between the predicted and the original metagene scores.
 Scatter plots and box plots were also created to visually compare the two metagene scores (\cref{sub:box_and_scatter_plots}).
 
@@ -737,7 +730,7 @@ For the heatmaps that required two bars above the heatmap (like those that inves
 \subsection{Venn diagrams}
 \label{sub:venn_diagrams}
 
-To summarise the number of \glspl{deg} from the gene expression analyses of the Creighton \textit{et al.} data that overlapped with the original Creighton \textit{et al.} obesity associated genetic signature, Venn diagrams were plotted.
+To summarise the number of \glspl{deg} from the gene expression analyses of the Creighton \textit{et al.} data that overlapped with the original Creighton \textit{et al.} obesity associated genetic signature, Venn diagrams were used.
 Venn diagrams were plotted using the \texttt{venn} function from the \textit{gplots} package in \gls{r} \citep{gplots}.
 The \texttt{overLapper} function (from \url{http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/overLapper.R}) was also used to help plot the Venn diagram \citep{Girke2016}.
 
@@ -745,7 +738,8 @@ The \texttt{overLapper} function (from \url{http://faculty.ucr.edu/~tgirke/Docum
 \label{sub:additional_colours}
 
 Some colour palettes such as the colours used by MATLAB are not installed in \gls{r} by default.
+In the \citet{Gatza2010a} study, Gatza \textit{et al.} used MATLAB to generate all of their plots in their paper.
+Since a visual comparison had to be made with one of the plots from the \citet{Gatza2010a} study, some of the heatmaps in this project required MATLAB-like colours for a more accurate comparison with their results.
 For a colour palette used in MATLAB, the \texttt{matlab.like} function from the \textit{colorRamps} package in \gls{r} was used \citep{Keitt2012}.
 For the pastel colour palette used in the bar plots, the \texttt{brewer.pal} function from the \textit{RColorBrewer} package in \gls{r} was used \citep{Neuwirth2014}.
 
-%TODO: add Spearman and Pearson correlation?
