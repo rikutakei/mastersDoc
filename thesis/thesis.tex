@@ -103,12 +103,12 @@
 
 \begin{document}
 
+% Set line spacing to double space:
+\onehalfspacing
+
 \include{./misc/title}
 
 \pagenumbering{roman} % set page numbering to roman numeral
-
-% Set line spacing to double space:
-\onehalfspacing
 
 \include{./misc/abstract}
 
@@ -136,6 +136,9 @@
 
 \printglossary[style=super]
 
+% Need to set line spacing to single space, otherwise it inserts a blank page for an unknown reason:
+\singlespacing
+
 \clearpage
 
 \addcontentsline{toc}{section}{Acronyms}
@@ -143,6 +146,9 @@
 \printglossary[type=\acronymtype,style=super]
 
 \clearpage
+
+% Reset the spacing to 1.5:
+\onehalfspacing
 
 \pagenumbering{arabic} % revert the page numbering to normal numbering
 \glsresetall
