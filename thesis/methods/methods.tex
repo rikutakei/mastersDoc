@@ -161,13 +161,13 @@ The selected cancer types were: \gls{blca}, \gls{cesc}, \gls{coad}, \gls{kirp}, 
 \subsubsection{Data formatting and processing}
 \label{ssub:data_formatting_and_processing}
 
-The raw \gls{rnaseq} data from the \gls{icgc} database were formatted in such a way that the count data of all the genes were listed for one sample, then the count data for all the genes for the next sample, and so on.
+The raw \gls{rnaseq} data from the \gls{icgc} database were formatted so that the count data of all the genes were listed for one sample, then the count data for all the genes for the next sample, and so on.
 This data format was highly inconvenient for later analyses so the data were reformatted into a ``gene by sample'' matrix format using the \textit{dplyr} package in \gls{r}.
 
 Another problem with the data was the sample ID in the \gls{rnaseq} data.
 Though similar to the \gls{tcga} sample IDs, the \gls{icgc} IDs in the \gls{rnaseq} data had an extra identification code in the sample names.
-To associate each sample in the raw \gls{rnaseq} data from the \gls{icgc} database with the correct samples in the clinical data from the \gls{tcga} database, the \gls{icgc} IDs were re-coded so they matched the \gls{tcga} IDs.
-After the IDs were re-coded, all of the samples were checked to see if there were any duplicates in either the \gls{icgc} \gls{rnaseq} data or the \gls{tcga} clinical data.
+To associate each sample in the raw \gls{rnaseq} data from the \gls{icgc} database with the correct samples in the clinical data from the \gls{tcga} database, the \gls{icgc} IDs were re-coded to match the \gls{tcga} IDs.
+After the IDs were re-coded, samples were checked to see if there were any duplicates in either the \gls{icgc} \gls{rnaseq} data or the \gls{tcga} clinical data.
 Where there was a duplicate in the sample ID, a single sample with the highest mean expression value was chosen to represent that particular ID by using the \texttt{collapseRows} function in the \textit{WGCNA} package in \gls{r} \citep{Langfelder2008}.
 
 Since some of the samples did not have either height or weight data, these samples were removed from the analyses.
@@ -228,7 +228,7 @@ Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight 
 \end{table}
 
 \begin{table}[htpb]
-	\caption{Summary of the sample \gls{bmi} status in the \gls{icgc} cancer data}
+	\caption{Summary of the patient \gls{bmi} status in the \gls{icgc} cancer data}
 	\label{tab:icgc_bmi}
 	\begin{center}
 		\begin{tabular}{lcccc}
@@ -482,7 +482,6 @@ Only the human related \gls{go} terms were used in pathway enrichment analysis, 
 
 \gls{kegg} is a genomic database constructed by \citet{Kanehisa2000} that store information about genes, pathways and ligands for a variety of species.
 The \gls{kegg} database also curates other information such as the approved drugs in US and Japan and genes related to diseases, making it a great tool for exploring the biological significance of genes and pathways \citep{Kanehisa2008}.
-
 The \textit{KEGG.db} package was used to load the \gls{kegg} database into \gls{r} \citep{kegg}.
 Only the human related \gls{kegg} terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried using the gene symbol.
 
@@ -491,7 +490,6 @@ Only the human related \gls{kegg} terms were used in pathway enrichment analysis
 
 The Reactome database is a ``curated, peer-reviewed resource of human biological processes'' \citep{Joshi2005}.
 The Reactome database is constructed based on the reactions that have direct evidence from the literature, which are connected into higher order pathway structures \citep{Joshi2005}.
-
 The \textit{reactome.db} package was used to load the Reactome database into \gls{r} \citep{reactome}.
 Only the human related Reactome terms were used in pathway enrichment analysis, and these terms were organised into a format so that the pathways were able to be queried using the gene symbol.
 
@@ -643,7 +641,7 @@ This was based on the idea that, if a clinical variable or a pathway metagene wa
 Furthermore, the model that was created based on the significant variables can be used to predict the obesity metagene, which can be used to compare the values with the original obesity metagene.
 If the predicted metagene was similar to the original metagene, then it provides an evidence that the variables used to construct the model was associated with the obesity metagene.
 
-Since the \gls{nzbc} data was the only data set other than the Creighton \textit{et al.} data set that had the patient \gls{bmi} information, all of the linear models were constructed in the \gls{nzbc} data set.
+Since the \gls{nzbc} data was the only data set (other than the Creighton \textit{et al.} data set) that had the patient \gls{bmi} information, all of the linear models were constructed in the \gls{nzbc} data set.
 Eleven linear models were created in the \gls{nzbc} to predict the obesity associated metagene from the \citet{Creighton2012} study.
 First seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway associated metagene scores.
 The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
@@ -727,12 +725,16 @@ Furthermore, heatmaps are able to cluster the samples and/or genes based on the 
 Heatmaps were created using the \texttt{heatmap.2} function from the \textit{gplots} package in \gls{r} \citep{gplots}.
 For the heatmaps that required two bars above the heatmap (like those that investigate the directionality of the pathway metagenes), the heatmaps were created with the \texttt{heatmap.2x} function developed by Tom Kelly (\url{https://github.com/TomKellyGenetics/heatmap.2x}).
 
+\vspace{-2mm}
+
 \subsection{Venn diagrams}
 \label{sub:venn_diagrams}
 
 To summarise the number of \glspl{deg} from the gene expression analyses of the Creighton \textit{et al.} data that overlapped with the original Creighton \textit{et al.} obesity associated genetic signature, Venn diagrams were used.
 Venn diagrams were plotted using the \texttt{venn} function from the \textit{gplots} package in \gls{r} \citep{gplots}.
 The \texttt{overLapper} function (from \url{http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/overLapper.R}) was also used to help plot the Venn diagram \citep{Girke2016}.
+
+\vspace{-2mm}
 
 \subsection{Additional colours}
 \label{sub:additional_colours}

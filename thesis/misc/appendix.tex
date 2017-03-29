@@ -2,6 +2,10 @@
 	\crefalias{chapter}{appcha}
 	\crefalias{section}{appsec}
 	\renewcommand{\thesection}{\Alph{chapter}\arabic{section}}
+	\renewcommand{\thetable}{S\arabic{table}}
+	\renewcommand{\thefigure}{S\arabic{figure}}
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
 
 	\chapter{Additional results from \cref{cha:obesity_genetic_signatures_and_cancer}}
 	\label{app:a}
@@ -256,7 +260,7 @@
 		\caption{Name}
 	\end{figure}
 
-	\section{Remainder of the results of the other Creighton \textit{et al.} obesity metagenes in the \gls{icgc} cancer data sets}
+	\section{Remainder of the results of the other CR obesity metagenes in the \gls{icgc} cancer data sets}
 	\label{sec:rest_of_the_cr_icgc_cancer_heatmap_results}
 
 	As shown in \cref{fig:appendix/cr_icgc_heatmap}, the original obesity metagene from the Creighton \textit{et al.} study was reflective of the sample gene expression levels of the obesity associated genetic signature in all of the other \gls{icgc} cancer data sets.
@@ -393,7 +397,7 @@
 			ResOl   & 0.3120                      & 0.1738  & 0.3198             & -0.004513  & 0.5048              \\
 			Ca      & 0.2431                      & 0.2142  & 0.3591             & -0.005582  & 0.5743              \\
 			CaRes   & 0.2327                      & 0.2344  & 0.3738             & -0.006250  & 0.6279              \\
-			CaOl    & 0.3426                      & 0.2775  & 0.4693             & -0.007333  & 0.77469             \\
+			CaOl    & 0.3426                      & 0.2775  & 0.4693             & -0.007333  & 0.7747             \\
 			CaResOl & 0.2643                      & 0.1315  & 0.2410             & -0.001408  & 0.3649              \\
 			\hline
 			\hline
@@ -474,7 +478,9 @@
 			\hline
 		\end{tabular}
 		\begin{tablenotes}
-		\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+			\begin{footnotesize}
+				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table}
@@ -502,7 +508,9 @@
 			\hline
 		\end{tabular}
 		\begin{tablenotes}
-		\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+			\begin{footnotesize}
+				\item [1] All values in bold are statistically significant (p \textless{} 0.05).
+			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table}
@@ -576,7 +584,9 @@ The complete list of all the pathways significantly enriched using different pat
 			\hline
 		\end{tabular}
 		\begin{tablenotes}
-			\item [1] Not available (no pathway enriched)
+			\begin{footnotesize}
+				\item [1] Not available (no pathway enriched)
+			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table}
@@ -602,7 +612,9 @@ The complete list of all the pathways significantly enriched using different pat
 			\hline
 		\end{tabular}
 		\begin{tablenotes}
-			\item [1] Not available (no pathway enriched)
+			\begin{footnotesize}
+				\item [1] Not available (no pathway enriched)
+			\end{footnotesize}
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table}

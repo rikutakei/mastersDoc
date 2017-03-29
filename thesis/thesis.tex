@@ -72,12 +72,6 @@
 \addtocontents{lof}{\protect\noaddvspace}
 \addtocontents{lot}{\protect\noaddvspace}
 
-% Remove empty page before glossary and acronyms:
-% \renewcommand*{\glsclearpage}{\cleardoublepage}
-% \let\cleardoublepage\relax
-% \renewcommand*{\glsclearpage}{}
-% \renewcommand*{\glsclearpage}{\clearpage}
-
 % For generating glossaries:
 \include{./misc/glossary}
 \makeglossaries
@@ -87,13 +81,14 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % If you want to compile specific files, uncomment the line below and add the filenames in the {} :
-% \includeonly{{./misc/title},{./misc/acknowledgement}}
+% \includeonly{{./misc/title},{./misc/abstract},{./misc/acknowledgement},{./methods/methods},{./intro/intro},{./results/results},{./results/results2},{./discussion/discussion}}
+\includeonly{{./misc/title},{./misc/abstract},{./misc/acknowledgement}}
 % \includeonly{{./intro/intro}}
 % \includeonly{{./methods/methods}}
 % \includeonly{{./results/results2},{./discussion/discussion},{./misc/appendix},{./misc/appendix2}}
 % \includeonly{{./results/results}}
 % \includeonly{{./results/results2}}
-\includeonly{{./discussion/discussion}}
+% \includeonly{{./discussion/discussion}}
 % \includeonly{{./misc/appendix}}
 % \includeonly{{./misc/appendix2}}
 
