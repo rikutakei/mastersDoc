@@ -323,6 +323,7 @@ These \gls{nzbc} obesity metagene scores were then compared with the metagene sc
 
 The predicted metagenes from all of the patient \gls{bmi}-related linear models were not significantly related to the original metagene scores in many of the obesity metagenes (\cref{fig:predict_cris_cris}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 On the other hand, all of the predicted metagenes generated from the models that used the pathway metagene scores showed significant association with the original metagene scores (\cref{fig:predict_cris_cris}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+% TODO: check r-squared values
 However, the $R^2$ values for all of the predicted metagenes against the original metagenes were very low ($R^2$ \textless{} 0.4).
 All of the plots in \cref{fig:predict_cris_cris,sec:summary_of_the_linear_models_in_nzbc_data} showed clearly that the data points in the scatter plots were highly variable, suggesting that even though the association between the predicted and the true metagene scores were statistically significant, the variables in the linear models may not be strongly associated to the obesity metagene.
 Furthermore, the fact that all of the predictions made with the models that contained the \gls{pr} metagene showed greater correlation with the true metagene values suggested that most of the variations in the Cr (and other) obesity metagenes were being explained by the \gls{pr} metagene alone, and the patient \gls{bmi} contributed very little to the prediction.
@@ -350,6 +351,7 @@ Furthermore, the fact that all of the predictions made with the models that cont
 
 To confirm the results shown in the \gls{nzbc} data set (the training set), the linear models were applied to CR data (the test set).
 As shown in \cref{fig:predict_cr_cris}, all of the predicted Cr metagene generated from the linear models were statistically significantly associated with the true Cr metagenes in CR data, but there were some exceptions in the models for the other obesity metagenes (\cref{sec:summary_statistics_of_the_predicted_obesity_metagenes_with_sample_bmi_bmi_status_in_nzbc_and_cr_data}).
+% TODO: check r-squared values
 Similar to the results from the \gls{nzbc} data set, all of the $R^2$ values were low ($R^2$ \textless{} 0.43) in the CR data set and the data points were widely spread out in the plots.
 Again, these results suggested that the predicted metagene scores from the linear models may be statistically significant, but may not be relevant to the obesity metagenes which the models predict, as the predicted values were only weakly associated with the true values.
 
@@ -388,6 +390,7 @@ The linear models that resulted from the stepwise selection of the variables wer
 
 These models were used to predict the obesity metagenes in the \gls{nzbc} data to test the performance of the models.
 All of the models were able to make statistically significant prediction of the original obesity metagenes in the \gls{nzbc} data set (\cref{fig:stepwise_cris}).
+% TODO: check r-squared values
 Unlike the previous models, the stepwise models showed very high $R^2$ values, where most predictions had $R^2$ \textgreater{} 0.80.
 The statistical significance and the strong association of the predicted metagenes were observed in the CR data set as well (\cref{fig:stepwise_cr}).
 Though the $R^2$ values were slightly lower than those from the \gls{nzbc} data set, the $R^2$ values from the CR data predictions were more promising than the predictions made by the non-stepwise linear models.
