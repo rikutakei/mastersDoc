@@ -6,7 +6,7 @@ In this chapter, the previously identified obesity associated genetic signatures
 After this, novel obesity associated genetic signatures are identified in the Creighton \textit{et al.} (CR) data set and was compared with the obesity associated genetic signatures from the \citet{Creighton2012} and the \citet{Fuentes-Mattei2014}  studies.
 Lastly, the presence of common genes or pathways associated with obesity in multiple types of cancer is explored using the data sets from \gls{icgc} (\citetalias{ICGC}; \citealp{Zhang2011}).
 
-\section{Obesity associated genetic signature from \citet{Creighton2012} study}
+\section{Obesity associated genetic signature from the\\\citet{Creighton2012} study}
 \label{sec:creighton_obesity_metagene}
 
 An obesity metagene was created using the obesity associated genetic signature from the \citet{Creighton2012} study.
@@ -106,15 +106,13 @@ Furthermore, the obesity associated genetic signature was not dependent on the c
 
 One possible reason why the obesity metagene from the \citet{Creighton2012} study did not show significant association with other data sets could be because the genetic signature was in fact not an obesity specific signature, but a signature that was detected due to another clinical variable (investigated in \cref{sec:creighton_obesity_metagene_new}).
 Another reason for this apparent lack of association could be that the obesity associated genetic signature was too specific to the CR data and was not a broad obesity associated genetic signature, but an obesity associated signature that was specific to the patient cohort that was profiled in the \citet{Creighton2012} publication.
-% Another reason for this apparent lack of association could be that the genetic signature was too specific to the data and was not a broad obesity associated genetic signature, but an obesity associated signature that was specific to the samples that were profiled in the Creighton \textit{et al.} publication.
 
-\section{Obesity associated genetic signature from \citet{Fuentes-Mattei2014} study}
+\section{Obesity associated genetic signature from the\\\citet{Fuentes-Mattei2014} study}
 \label{sec:fm_obesity_metagene}
 
 The obesity associated genetic signature from the \citet{Creighton2012} study was not associated with patient \gls{bmi} or \gls{bmi} status in majority of the cancer data sets, so the obesity associated genetic signature from the \citet{Fuentes-Mattei2014} study (FM) was examined to see whether this obesity metagene was able to significantly associate with the patient \gls{bmi} and \gls{bmi} status across different  data sets.
 Since the FM data set did not have patient \gls{bmi} information, the FM obesity metagene was not able to be compared with the patient \gls{bmi} or \gls{bmi} status in the original FM data.
 Nevertheless, the transformation matrix was still generated in the FM data and applied first to the microarray data (CR and \gls{nzbc} data sets) then to the \gls{icgc} data sets to see whether the FM obesity metagene associated with patient \gls{bmi} and \gls{bmi} status in these data sets.
-% However, the transformation matrix was generated in the FM data and applied to other cancer data sets  to see whether the FM obesity metagene associated with patient \gls{bmi} and \gls{bmi} status in those data sets.
 
 The FM data was normalised with the \gls{rma} method and \gls{svd} was performed on the normalised FM data to obtain the transformation matrix.
 The transformation matrix was used to transform the \gls{rma} normalised CR data to extract the FM obesity metagene scores in the CR data.
@@ -151,7 +149,7 @@ As with all the results in this chapter so far, the FM obesity metagene did not 
 The FM obesity metagene significantly associated with the overweight group (but not with the obese group), and also had a significant \gls{anova} p-value \cref{fig:fmmetaicgc}.
 On the contrary to the association of the metagene with the patient \gls{bmi} status, the FM obesity metagene was not associated with the patient \gls{bmi}.
 These results suggested that the samples from the patients that were overweight in the \gls{blca} data set had similar biological properties as the samples taken from the patients that were obese in the FM data set.
-However, due to the fact that the FM obesity metagene lacked association with the patient \gls{bmi} in the \gls{blca} data set and that the metagene did not show any significant association in any of the other \gls{icgc} cancer types, it was difficult to determine whether the observed association of the FM obesity metagene with the overweight group was truly reflective of the quality of the FM metagene or observed by chance.
+However, due to the fact that the FM obesity metagene lacked association with the patient \gls{bmi} in the \gls{blca} data set, and that the metagene did not show any significant association in any of the other \gls{icgc} cancer types, it was difficult to determine whether the observed association of the FM obesity metagene with the overweight group was truly reflective of the quality of the FM metagene or observed by chance.
 
 \begin{figure}[htp!]
 	\centering
@@ -169,7 +167,7 @@ These results showed that the obesity associated genetic signature from the \cit
 This meant that both the Creighton \textit{et al.} and Fuentes-Mattei \textit{et al.} obesity metagenes may have been too specific to the original data set in which the signatures were identified in.
 Furthermore, there was a possibility that these obesity associated metagenes were not related to obesity, but associated with a different clinical variable that may be closely related to \gls{bmi} (\cref{sec:creighton_obesity_metagene_new}).
 
-\section{Novel obesity associated genetic signatures from \citet{Creighton2012} data set}
+\section{Novel obesity associated genetic signatures from the \citet{Creighton2012} data set}
 \label{sec:creighton_obesity_metagene_new}
 
 \subsection{Identification of novel obesity associated genetic signatures}
@@ -256,12 +254,12 @@ Additionally, the correlation of all of the obesity metagenes were examined to s
 As clearly shown in \cref{fig:cr_meta_cor}, there were two distinct groups within the eight metagenes: the first group contained the obesity metagenes that were not overlapped with the Or metagene (Cr, Res, Ca and CaRes), while the other group had the overlapped metagenes (CrOl, ResOl, CaOl and CaResOl).
 With that said, all eight metagenes showed high correlation with one another (lowest correlation approximately at 0.85), which suggested that all of these metagenes were detecting similar underlying biological mechanism from the data, as would be expected.
 
-\begin{figure}[htpb]
+\begin{figure}[tpb]
 	\centering
 	\includegraphics[width=0.8\linewidth]{results1/cr_meta_cor}
 	\caption[Pearson correlation of all eight obesity metagenes identified in the CR data]{Heatmap showing the Pearson correlation of all eight obesity associated metagenes from the CR data with one another.
 	\gls{svd} was applied to the \gls{rma} normalised CR data to generate each of the eight metagenes.
-	High and low correlation were represented as red and blue, respectively, where the colours were matched with the values on the scale shown in the top right histogram.
+	High and low correlation were represented as red and yellow, respectively, where the colours were matched with the values on the scale shown in the top right histogram.
 	The lowest correlation was 0.8469, between the CrOl and the CaRes metagenes.
 	}
 	\label{fig:cr_meta_cor}

@@ -57,24 +57,24 @@ However, the degree of similarity between these two cancer types are not yet kno
 From all of these results so far, one may question how robust or appropriate the use of \gls{svd} and transformation matrices are to generate metagenes in other data sets.
 It appeared as though the CR data-derived obesity associated genetic signatures correlated significantly in the CR data, but as soon as these metagenes were generated in the other data sets via the application of transformation matrices, the correlation became insignificant.
 One possible reason for this was that the obesity metagenes were not actually associated to the obesity phenotype in the other data sets.
-Another reason could be that the methodology used were not appropriate for investigating the association between the phenotype and its associated phenotype.
+Another reason could be that the methodology used was not appropriate for investigating the association between the phenotype and its associated phenotype.
 
 The appropriateness of the use of \gls{svd} and transformation matrices were examined with different genetic signatures: \gls{er} and \gls{pr} pathway associated genetic signatures from the \citet{Gatza2010a} study (covered in \cref{sec:results_for_er_and_pr_metagene_analysis}).
 Three data sets (CR, FM and \gls{nzbc}) were used, as these data sets have both \gls{er} and \gls{pr} status information available for the patients.
 \gls{svd} was first applied to the \gls{rma} normalised CR data to obtain the \gls{er} and \gls{pr} metagenes, along with the transformation matrices for each of the genetic signatures.
-Both the \gls{er} and \gls{pr} metagenes showed good concordance with the gene expression profiles of the genetic signature in the heatmap, and also showed significant association with the patient \gls{er} and \gls{pr} statuses (\cref{sec:results_for_er_and_pr_metagene_analysis}).
+Both the \gls{er} and \gls{pr} metagenes showed good concordance with the gene expression profiles of the genetic signature in the heatmap, and also showed significant association with patient \gls{er} and \gls{pr} statuses (\cref{sec:results_for_er_and_pr_metagene_analysis}).
 
 Transformation matrices were applied to the FM and \gls{nzbc} data sets to generate the appropriate pathway metagenes in the data sets.
 Both the \gls{er} and \gls{pr} pathway metagenes showed similar overall gene expression patterning in the heatmap as the CR data (\cref{sec:results_for_er_and_pr_metagene_analysis}).
-Furthermore, both the \gls{er} and \gls{pr} pathway metagenes from these data sets show significant association with the patient \gls{er} and \gls{pr} statuses, respectively (\cref{sec:results_for_er_and_pr_metagene_analysis}).
+Furthermore, both the \gls{er} and \gls{pr} pathway metagenes from these data sets show significant association with patient \gls{er} and \gls{pr} statuses, respectively (\cref{sec:results_for_er_and_pr_metagene_analysis}).
 These results clearly showed that the general approach of using \gls{svd} and transformation matrices was appropriate for examining the association of the genetic signatures with the patient phenotype.
 
 \subsection{Common obesity associated genes and pathways across multiple cancer types}
 \label{sub:common_obesity_associated_genes_and_pathways_across_multiple_cancer_types}
 
-The results so far have provided strong evidence that the obesity associated genetic signatures from the CR and the FM data sets were not associated with the patient \gls{bmi}.
-In the last attempt to identify any obesity associated genes that were common across multiple cancer types, gene expression analyses were carried out on the \gls{icgc} cancer data sets using samples for which patient \gls{bmi} information were available (\cref{sec:common_genes_across_multiple_cancer_types}).
-There were many \glspl{deg} identified by each of the \gls{icgc} cancer types, but there were no genes in common for all eight cancer types, and this observation was supported by the results from the simulation.
+The results so far have provided strong evidence that the obesity associated genetic signatures from the CR and the FM data sets were not associated with patient \gls{bmi}.
+In a last attempt to identify any obesity associated genes that were common across multiple cancer types, gene expression analyses were carried out on the \gls{icgc} cancer data sets using samples for which patient \gls{bmi} information was available (\cref{sec:common_genes_across_multiple_cancer_types}).
+There were many \glspl{deg} identified in each of the \gls{icgc} cancer types, but there were no genes in common for all eight cancer types, and this observation was supported by the results from the simulation.
 
 The simulation results also showed that the number of \glspl{deg} identified in these cancer types were greater than one would expect by chance.
 However, as observed by the results from the simulation, there were many genes identified by chance alone, which suggested that majority of the \glspl{deg} found in the eight cancer types were false positives.
@@ -82,12 +82,12 @@ This apparently high level of \Glspl{type1} was not only observed in the \gls{ic
 
 Finally, pathway enrichment analysis was carried out in the \gls{icgc} data sets (first with each cancer type separately, then all cancer types combined) to investigate whether there were any pathways that significantly associated with obesity (\cref{sec:pathways_enriched_in_icgc_data_sets}).
 There were not many pathways identified from the \gls{kegg} and the Reactome pathway databases that were significantly enriched in the \gls{icgc} cancer data sets.
-There was a substantial number of \gls{go} terms that were significantly enriched in the \gls{icgc} data, but there was no pathways that were common across all cancer types.
-One thing noted from these results was that all three databases (\gls{go}, \gls{kegg} and Reactome) identified ``ABC transport'' pathway as significantly enriched in the \gls{cesc} data set.
+There were a substantial number of \gls{go} terms that were significantly enriched in the \gls{icgc} data, but there were no pathways that were common across all cancer types.
+One thing noted from these results was that all three databases (\gls{go}, \gls{kegg} and Reactome) identified the ``ABC transport'' pathway as significantly enriched in the \gls{cesc} data set.
 This suggests that the ``ABC transport'' pathway may have an important role in \gls{cesc} tumour development in obese patients.
 There was no significantly enriched pathway that was associated with obesity in the combined \gls{icgc} data sets.
 
-Although there was no common pathway that associated with obesity in the \gls{icgc} data sets, it was evident from the CR and FM obesity metagenes that the obesity metagenes were associated with the gene expressions of the obesity signatures.
+Although there was no common pathway that associated with obesity in the \gls{icgc} data sets, it was evident from the CR and FM obesity metagenes that the obesity metagenes were associated with the gene expression of the obesity signatures.
 This suggested that the metagenes were able to identify some sort of genetic pattern in the data, even though these metagenes were not significantly associated with obesity.
 
 \subsection{False positives in the gene expression analyses}
@@ -142,7 +142,7 @@ Nevertheless, the models did explain some variations in the obesity metagenes, b
 Since linear models were created only with the ``consistent'' pathway metagene scores, a step wise method was used to generate linear models that included the patient \gls{bmi}, \gls{bmi} status and all of the pathway metagenes that allowed the model to predict the true obesity metagene the best.
 As shown by the results in \cref{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}, all of the models predicted the true obesity metagene scores with high $R^2$-value in the CR data set (highest $R^2$ $\approx$ 0.8869) and were statistically significant.
 This meant that the variables that were significant in the linear models played a role in the obesity associated genetic signatures.
-There was no single pathway signature that was common to all of the linear models, but Akt, \gls{egfr} and Src pathway metagenes were included in many of the models, which suggested that these pathway signatures may have an important role in the obesity associated genetic signatures (\cref{sub:stepwise_linear_model_prediction_in_nzbc_and_cr_data_sets}).
+There was no single pathway signature that was common to all of the linear models, but Akt, \gls{egfr}, \gls{tgfb} and Src pathway metagenes were included in many of the models, which suggested that these pathway signatures may have an important role in the obesity associated genetic signatures (\cref{sub:stepwise_linear_model_prediction_in_nzbc_and_cr_data_sets}).
 
 \subsection{Significance of the pathway associated signatures with the obesity associated signatures}
 \label{sub:significance_of_pr_pathway}
@@ -244,7 +244,7 @@ None of the pathway associated genetic signatures showed positive correlation wi
 However, strong negative correlation with the Akt, \gls{er}, \gls{egfr}, \gls{pr}, p53, Src and \gls{tgfb} pathways, suggesting that the obesity associated genetic signatures were picking up the signals from these pathways, rather than the signals from the obesity phenotype of the patients.
 
 To summarise, there were no common genetic signatures that significantly associated with the obesity status of the patients.
-However, the Akt, \gls{egfr} and Src pathways may have a role in promoting the tumour progression in patients that are obese.
+However, the Akt, \gls{egfr}, \gls{tgfb} and Src pathways may have a role in promoting the tumour progression in patients that are obese.
 Further investigations with good quality data sets and larger patient cohorts are required to clarify the biological relationship between obesity and cancer.
 
 \section{Future directions}
@@ -252,7 +252,7 @@ Further investigations with good quality data sets and larger patient cohorts ar
 
 This project has managed to show that there were no obesity specific genes  that were common across multiple cancer types.
 Although this study failed to identify obesity specific genes that affected tumour biology, it is likely that there is some complex mechanism underlying the relationship between obesity and cancer; otherwise many of the clinical and epidemiological associations between obesity and cancer risk would not make any sense.
-Since Akt, \gls{egfr} and \gls{pr} pathways were significant in the linear models that predicted the obesity metagenes, more thorough investigation of these pathways may be a good start to clarify the relationship.
+Since Akt, \gls{egfr}, \gls{tgfb} and Src pathways were significant in the linear models that predicted the obesity metagenes, more thorough investigation of these pathways may be a good start to clarify the relationship.
 Further analyses of \gls{blca} may help clarify the similarity between bladder and breast cancer types and provide insight into the association between the obesity associated genetic signatures and \gls{blca}.
 
 In this project, the lack of association of the obesity associated genetic signatures with any of the cancer types could have been due to the quality of both the raw data sets and the genetic signatures used in this project.

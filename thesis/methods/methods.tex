@@ -10,7 +10,7 @@ All statistical analyses and data manipulation were carried out with \gls{r} (ve
 \label{sec:data}
 
 The raw microarray data from the \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Gatza2010a}  studies were downloaded from the \gls{geo} website (\citealp{Edgar2002}; \citetalias{GEO}).
-In addition to these breast cancer data sets, the raw microarray data set from a cohort of \gls{nz} breast cancer patients used in the \citet{Print2016} study was downloaded from the \gls{geo} website.
+In addition to these breast cancer data sets, the raw microarray data set from a cohort of \gls{nz} breast cancer patients used in the \citet{Print2016} study was downloaded from the \gls{geo} website (abbreviated as \gls{nzbc} data hereafter).
 \gls{rnaseq} and clinical data of multiple different cancer types were downloaded from the \gls{icgc} (\citetalias{ICGC}; \citealp{Zhang2011}) and \gls{tcga} \citepalias{TCGA} websites, respectively.
 
 \subsection{Breast cancer data}
@@ -31,7 +31,7 @@ Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\
 Patient height, weight and \gls{bmi} information were not available in this data set.
 130 obesity associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the Supplementary Table 3 from their paper.
 
-\subsubsection{\gls{nzbc} data}
+\subsubsection{\acrfull{nzbc} data}
 \label{ssub:nzbc_data}
 
 To provide an insight into the relevance of the obesity associated genetic signatures in \gls{nz} patient cohort, the \gls{nzbc} data set used by \citet{Print2016} were used.
@@ -188,7 +188,7 @@ Where missing, \cref{eq:bmicalc} was used to calculate the \gls{bmi} of the samp
 Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight (25 $\leq$ \gls{bmi} \textless{} 30) or obese (\gls{bmi} $\geq$ 30) based on the \gls{who} definition (\cref{tab:whobmiclass}).
 \cref{eq:bmicalc,tab:whobmiclass} were used to calculate and group the patients from the \gls{icgc} cancer data into appropriate \gls{bmi} classes (\cref{tab:icgc_bmi}).
 
-\begin{table}[htpb]
+\begin{table}[p]
 	\caption{Summary of the total number of samples included in the analyses for each cancer type}
 	\label{tab:samplesize}
 	\begin{center}
@@ -210,7 +210,7 @@ Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight 
 	\end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[p]
 	\caption{\gls{who} defined \gls{bmi} classification}
 	\label{tab:whobmiclass}
 	\begin{center}
@@ -227,7 +227,7 @@ Samples were classified as normal weight (\gls{bmi} \textless{} 25), overweight 
 	\end{center}
 \end{table}
 
-\begin{table}[htpb]
+\begin{table}[p]
 	\caption{Summary of the patient \gls{bmi} status in the \gls{icgc} cancer data}
 	\label{tab:icgc_bmi}
 	\begin{center}
