@@ -16,7 +16,6 @@
 *.ilg
 *.ind
 *.ist
-*.jpg
 *.lof
 *.log
 *.lot
@@ -24,8 +23,6 @@
 *.mtc
 *.mtc1
 *.out
-*.pdf
-*.png
 *.synctex.gz
 *.toc
 *.xml
@@ -33,3 +30,4 @@
 *.fdb_latexmk
 *pk
 *.DS_Store
+*.directory
