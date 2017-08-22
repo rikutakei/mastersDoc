@@ -1,20 +1,20 @@
-\chapter{Obesity associated genetic signatures and pathway signatures}
+\chapter{Obesity-associated genetic signatures and pathway signatures}
 \label{cha:obesity_associated_genetic_signature_and_pathway_signatures}
 
-In this chapter, the underlying biological mechanism of the obesity associated signatures from the CR data were investigated.
-In doing so, the pathway genetic signatures from the \citet{Gatza2010a} study (GT) were utilised to determine which biological pathways the obesity associated genetic signatures were most similar to.
-First, the direction of GT pathway associated genetic signatures were resolved, then the pathway associated metagenes were compared with the obesity associated metagenes, and lastly linear models were constructed based on the pathway metagenes and patient \gls{bmi} to predict the obesity associated metagenes.
+In this chapter, the underlying biological mechanism of the obesity-associated signatures from the CR data were investigated.
+In doing so, the pathway genetic signatures from the \citet{Gatza2010a} study (GT) were utilised to determine which biological pathways the obesity-associated genetic signatures were most similar to.
+First, the direction of GT pathway-associated genetic signatures were resolved, then the pathway-associated metagenes were compared with the obesity-associated metagenes, and lastly linear models were constructed based on the pathway metagenes and patient \gls{bmi} to predict the obesity-associated metagenes.
 
 \vspace{-3mm}
 
-\section{Pathway associated genetic signatures from the\\\citet{Gatza2010a} study}
+\section{Pathway-associated genetic signatures from the\\\citet{Gatza2010a} study}
 \label{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}
 
 \subsection{Ranking and normalisation methods for pathway metagenes}
 \label{sub:ranking_and_normalisation_methods}
 
 In the \citet{Gatza2010a} study, their data comprised of samples from different studies which were aggregated into a single data set that was \gls{mas} normalised, and the metagene scores were transformed to a scale between 0 to 1 using a probit function.
-However, the analyses so far have used the \gls{rma} normalisation method and ranked based on the number of samples present in the data (fractional ranking; \cref{sub:ranking_of_the_metagene_scores}).
+However, the analyses so far have used the \gls{rma}-normalisation method and ranked based on the number of samples present in the data (fractional ranking; \cref{sub:ranking_of_the_metagene_scores}).
 To decide which normalisation methods or ranking approaches were suitable for the analysis, the different methods were compared in the GT data (\cref{sec:ranking_method_for_the_pathway_associated_genetic_signatures,sec:normalisation_method_for_pathway_associated_genetic_signature_transformation_matrices}).
 Results shown in \cref{sec:ranking_method_for_the_pathway_associated_genetic_signatures} clarified that there was no substantive difference in the ranking approaches used.
 
@@ -43,9 +43,9 @@ Taken together, it was decided that the GT data set should be batch corrected fi
 \subsection{Pathway metagene directionality}
 \label{sub:pathway_metagene_directionality}
 
-Before GT pathway metagenes were compared with the obesity associated metagenes, the direction of the GT pathway metagenes had to be checked to make sure that the metagenes were in the ``correct'' direction (\cref{sub:metagene_direction}).
+Before GT pathway metagenes were compared with the obesity-associated metagenes, the direction of the GT pathway metagenes had to be checked to make sure that the metagenes were in the ``correct'' direction (\cref{sub:metagene_direction}).
 The correlation of all the pathway metagenes with one another were plotted as a heatmap in \cref{fig:gatza_meta_dir}.
-The most prominent group had five pathways (E2F1, \gls{pi3k}, Myc, \gls{bcat} and Ras) that clustered at the top right hand corner of the heatmap.
+The most prominent group had five pathways (E2F1, \gls{pi3k}, Myc, \gls{bcat} and Ras) that clustered at the top left hand corner of the heatmap.
 Other groups included \gls{ifna}/\gls{ifny}/\gls{tnfa} pathways, \gls{er}/\gls{pr}/p53 pathways and p63/\gls{her2} pathways.
 In addition to these highly correlated groups, \gls{stat3}/\gls{tgfb}/Src/\gls{egfr}/Akt pathways showed little correlation with one another.
 Comparing these groups with the results presented by \citet{Gatza2010a} (\cref{sec:result_from_gatza2010a_study}), the identified clusters approximately resembled the pathway groups identified in by Gatza \textit{et al.}, which confirmed that the directions of GT pathway metagenes were consistent with those used by Gatza \textit{et al.}.
@@ -65,25 +65,25 @@ CR, FM and \gls{nzbc} data were \gls{rma} normalised and transformation matrices
 The metagenes were plotted in a heatmap (shown in \cref{sec:correlation_of_the_gt_pathway_metagenes_in_other_cancer_data_sets}), which showed similar groupings  as seen in \cref{fig:gatza_meta_dir}.
 This result confirmed that the pathway metagenes were acting similarly in all of the data sets in which the transformation matrices have been applied to.
 
-\section{Pathway associated metagenes and obesity associated metagenes}
+\section{Pathway-associated metagenes and obesity-associated metagenes}
 \label{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}
 
 Results from the previous section confirmed that the pathway metagenes from the \citet{Gatza2010a} study were in the correct directions, and that the pathway metagenes were behaving as expected in the different data sets.
-Now that the directions of the pathway metagenes were established, these metagenes were ready for comparison with the obesity associated metagenes.
-However, all of the pathway metagenes were derived from the GT data, whereas the majority of the obesity associated metagenes were derived from the CR data, which presents a problem in terms of deciding which data set the transformation matrices should be generated in.
+Now that the directions of the pathway metagenes were established, these metagenes were ready for comparison with the obesity-associated metagenes.
+However, all of the pathway metagenes were derived from the GT data, whereas the majority of the obesity-associated metagenes were derived from the CR data, which presents a problem in terms of deciding which data set the transformation matrices should be generated in.
 
 \subsection{Obesity and pathway metagene transformation matrices}
 \label{sub:obesity_and_pathway_metagene_transformation_matrices}
 
 Metagenes generated from the application of \gls{svd} and metagenes generated from the transformation matrix are exactly the same if the transformation matrix is derived from the same data set.
-For example, an obesity associated metagene generated from the CR data with \gls{svd} would have the same values as the metagenes generated in the CR data with the transformation matrix (since the transformation matrix was derived from the CR data).
+For example, an obesity-associated metagene generated from the CR data with \gls{svd} would have the same values as the metagenes generated in the CR data with the transformation matrix (since the transformation matrix was derived from the CR data).
 Furthermore, if the \gls{svd}-derived metagenes and transformation matrix-derived metagenes were the same (or at least similar) in a different data set, this suggests that the metagene-related biology contained in the two data sets is highly similar.
 In other words, the transformation matrix can be made in either the original data set or in a different data set if there was no difference in the \gls{svd}-derived or transformation matrix-derived metagenes.
 
-To decide which data set the transformation matrices for obesity and pathway associated genetic signatures should be generated in, the \gls{svd}- and transformation matrix(TM)-generated metagene scores were compared in all of the data sets.
+To decide which data set the transformation matrices for obesity and pathway-associated genetic signatures should be generated in, the \gls{svd}- and transformation matrix(TM)-generated metagene scores were compared in all of the data sets.
 As in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, all data sets were normalised with the \gls{rma} method and metagenes were ranked with fractional ranking.
-TMs for the obesity associated genetic signatures were made in the CR data set and the TMs for pathway associated genetic signatures were made in the GT data set.
-Metagenes for all of the obesity and pathway associated genetic signatures were generated in all of the data sets with \gls{svd} and TMs.
+TMs for the obesity-associated genetic signatures were made in the CR data set and the TMs for pathway-associated genetic signatures were made in the GT data set.
+Metagenes for all of the obesity and pathway-associated genetic signatures were generated in all of the data sets with \gls{svd} and TMs.
 The Spearman correlation of the \gls{svd}-generated and TM-generated metagene scores were calculated for each genetic signatures (\cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}).
 
 \begin{table}[tpb]
@@ -153,23 +153,23 @@ The Spearman correlation of the \gls{svd}-generated and TM-generated metagene sc
 	\end{threeparttable}
 \end{table}
 
-In \cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}, the obesity and pathway associated genetic signatures had a correlation of 1 in CR and GT data sets respectively, as the obesity and pathway TMs were generated in the CR and GT data sets, respectively.
+In \cref{tab:svd_vs_tm_path,tab:svd_vs_tm_obs}, the obesity and pathway-associated genetic signatures had a correlation of 1 in CR and GT data sets respectively, as the obesity and pathway TMs were generated in the CR and GT data sets, respectively.
 The correlations of the obesity and pathway metagenes were variable across different data sets, which was as expected since all the data sets were different from one another.
 However, what was unexpected was the fact that there were some pathway genetic signatures that were highly correlated in all of the data sets, and there were others that varied considerably across different data sets.
 For example, the \gls{bcat} pathway metagene was highly correlated in all of the data sets (\textgreater{} 0.98), whereas the \gls{stat3} pathway metagene was variable across different data sets, ranging from 0.1902 to 0.9159 (\cref{tab:svd_vs_tm_path}; \cref{sec:comparison_of_the_correlation_of_svd_and_tm_generated_pathway_metagenes}).
-The fact that some pathway associated metagenes were consistent across different data sets suggested that some of these genetic signatures were reliable and did not depend on the data set the transformation matrices were derived from.
+The fact that some pathway-associated metagenes were consistent across different data sets suggested that some of these genetic signatures were reliable and did not depend on the data set the transformation matrices were derived from.
 On the other hand, the genetic signatures that were not consistent across the data sets were likely to be dependent on the data set in which they were derived from, and therefore the transformation matrices for these signatures must be derived from the GT data set.
 This also showed that the tumour biology may be different across the data sets, likely due to the difference in the patient cohorts that were selected for each of the studies.
 
-In contrast to the pathway associated genetic signatures, all of the obesity associated genetic signatures showed high correlation for the \gls{svd}- and transformation matrix-generated metagenes across the different data sets.
-This suggested that the obesity associated genetic signatures were relatively consistent across all data sets, and the transformation matrices for these signatures could be made in any of the data sets.
-For simplicity, it was decided that the transformation matrices for all the genetic  signatures would be made in the GT data set, since there were some pathway associated signatures that were specific to the GT data.
+In contrast to the pathway-associated genetic signatures, all of the obesity-associated genetic signatures showed high correlation for the \gls{svd}- and transformation matrix-generated metagenes across the different data sets.
+This suggested that the obesity-associated genetic signatures were relatively consistent across all data sets, and the transformation matrices for these signatures could be made in any of the data sets.
+For simplicity, it was decided that the transformation matrices for all the genetic  signatures would be made in the GT data set, since there were some pathway-associated signatures that were specific to the GT data.
 
-\subsection{Comparison of the obesity and pathway associated signatures}
+\subsection{Comparison of the obesity and pathway-associated signatures}
 \label{sub:comparison_of_the_obesity_and_pathway_associated_signatures}
 
-To visually determine which pathway associated genetic signatures were most similar to the obesity associated genetic signatures, heatmaps were created with the metagenes for all of the genetic signatures.
-The directions of the pathway associated metagenes have already been determined in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, and the directions of the obesity associated metagenes were checked in GT data set as described in \cref{sub:metagene_direction}.
+To visually determine which pathway-associated genetic signatures were most similar to the obesity-associated genetic signatures, heatmaps were created with the metagenes for all of the genetic signatures.
+The directions of the pathway-associated metagenes have already been determined in \cref{sec:pathway_associated_genetic_signatures_from_gatza2010a_study}, and the directions of the obesity-associated metagenes were checked in GT data set as described in \cref{sub:metagene_direction}.
 All of the metagenes were created in the GT data set (normalised with \gls{rma}) using \gls{svd}, and the metagene scores were plotted in a heatmap and clustered into groups (\cref{fig:gatza_allmeta}).
 
 \begin{figure}[tb]
@@ -182,27 +182,27 @@ All of the metagenes were created in the GT data set (normalised with \gls{rma})
 	\label{fig:gatza_allmeta}
 \end{figure}
 
-In \cref{fig:gatza_allmeta}, all of the obesity associated metagenes from the CR data set cluster together into a group, but none of the pathway associated metagenes had  a strong positive correlation with the obesity metagenes.
+In \cref{fig:gatza_allmeta}, all of the obesity-associated metagenes from the CR data set cluster together into a group, but none of the pathway-associated metagenes had  a strong positive correlation with the obesity metagenes.
 Though the  \gls{her2} and p63 pathway metagenes were grouped next to the cluster of obesity metagenes, the similarity was at most about 0.6  (Pearson correlation; \cref{fig:gatza_allmeta}).
-With that said, these obesity associated metagenes seem to have a strong negative correlation with some of the pathway associated genetic signatures, such as the Akt, \gls{er}, \gls{egfr}, \gls{pr}, p53, Src and \gls{tgfb} pathways, and this strong negative correlation was observed in the other data sets as well (\cref{sec:correlation_of_the_pathway_and_obesity_metagenes_in_other_cancer_data_sets}).
-In fact,  high Or metagene scores related to lower levels of gene expression for the genes in the Or signature (\cref{fig:crmetaheat}; \cref{sec:creighton_obesity_metagene}), and therefore it could be possible that many of the genes in the Or signature (and the other obesity associated signatures from the CR data) may be positively correlated with the genes in these pathway signatures.
-This suggests that the obesity associated genetic signatures from the CR data may be related to these pathway signatures, rather than the obesity phenotype of the patients.
+With that said, these obesity-associated metagenes seem to have a strong negative correlation with some of the pathway-associated genetic signatures, such as the Akt, \gls{er}, \gls{egfr}, \gls{pr}, p53, Src and \gls{tgfb} pathways, and this strong negative correlation was observed in the other data sets as well (\cref{sec:correlation_of_the_pathway_and_obesity_metagenes_in_other_cancer_data_sets}).
+In fact,  high Or metagene scores related to lower levels of gene expression for the genes in the Or signature (\cref{fig:crmetaheat}; \cref{sec:creighton_obesity_metagene}), and therefore it could be possible that many of the genes in the Or signature (and the other obesity-associated signatures from the CR data) may be positively correlated with the genes in these pathway signatures.
+This suggests that the obesity-associated genetic signatures from the CR data may be related to these pathway signatures, rather than the obesity phenotype of the patients.
 
-The FM obesity associated metagene did not cluster together with the obesity metagenes from the CR data set, nor with any of the other pathway metagenes.
-The fact that the FM metagene did not cluster with any of the CR metagenes showed that the signals captures by the FM metagene was different from those metagenes found in the CR data set.
+The FM obesity-associated metagene did not cluster together with the obesity metagenes from the CR data set, nor with any of the other pathway metagenes.
+The fact that the FM metagene did not cluster with any of the CR metagenes showed that the signals captured by the FM metagene was different from those metagenes found in the CR data set.
 Furthermore, the FM metagene did not cluster with the Akt pathway in the heatmap, even though \citet{Fuentes-Mattei2014} provided clear evidence that their metagene specifically activated the Akt/\gls{mtor} signalling pathway in a mouse model.
 This may have been due to the lack of consistency of the Akt pathway signature in the different data sets (\cref{tab:svd_vs_tm_path}).
 Another likely reason could be that FM genetic signature was not comprised only of the genes from the Akt pathway, but genes from the other pathways as well, and so the metagene did not cluster together with the Akt pathway signature in the heatmap.
 
-The results in this section suggested that none of the obesity associated genetic signatures were positively correlated with any of the pathway associated genetic signatures from the \citet{Gatza2010a} study.
-However, some pathway signatures were negatively correlated with the obesity associated genetic signatures, which meant that the obesity signatures were likely capturing the signals from these signatures  rather than the biological signals from the obesity phenotype of the patient.
+The results in this section suggested that none of the obesity-associated genetic signatures were positively correlated with any of the pathway-associated genetic signatures from the \citet{Gatza2010a} study.
+However, some pathway signatures were negatively correlated with the obesity-associated genetic signatures, which meant that the obesity signatures were likely capturing the signals from these signatures  rather than the biological signals from the obesity phenotype of the patient.
 
 \vspace{-3mm}
 
-\section{Prediction of obesity associated metagenes with pathway associated metagenes}
+\section{Prediction of obesity-associated metagenes with pathway-associated metagenes}
 \label{sec:prediction_of_obesity_associated_metagene_with_pathway_associate_metagene}
 
-To confirm the biological relationship between the obesity associated metagenes with the pathway associated metagenes from the \citet{Gatza2010a} study, linear models were created to predict the obesity metagene scores with the pathway metagene scores.
+To confirm the biological relationship between the obesity-associated metagenes with the pathway-associated metagenes from the \citet{Gatza2010a} study, linear models were created to predict the obesity metagene scores with the pathway metagene scores.
 If any of the pathway metagenes were significant in the linear model, this would provide evidence that the significant pathways in the linear model were related to the obesity metagene.
 Since most of the obesity metagenes were found in the CR data set, and only the CR and the \gls{nzbc} data sets had \gls{bmi} information for the patients, \gls{nzbc} data set was used as the training data set to create the linear models for obesity metagene score prediction.
 
@@ -210,7 +210,7 @@ Since most of the obesity metagenes were found in the CR data set, and only the 
 \label{sub:linear_model_prediction_in_the_nzbc_and_cr_data_sets}
 
 Metagene scores used for the construction of linear models were generated from the application of the transformation matrices derived from the GT data (from \cref{sec:pathway_associated_metagenes_and_obesity_associated_metagenes}) to \gls{rma} normalised \gls{nzbc} data.
-From \cref{tab:svd_vs_tm_path}, it was evident that some pathway associated genetic signatures could be variable across different data sets.
+From \cref{tab:svd_vs_tm_path}, it was evident that some pathway-associated genetic signatures could be variable across different data sets.
 Therefore, only six pathways (\gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}) that were ``consistent'' (correlation \textgreater{} 0.9) across all of the data sets were used to construct the linear models.
 
 For each of the obesity metagenes identified, seven linear models were created: \gls{bmi}-only, \gls{bmi} status-only, \gls{bmi} and \gls{bmi} status, pathway metagenes-only, and the combinations of pathway metagenes with \gls{bmi} and/or \gls{bmi} status.
@@ -283,8 +283,8 @@ The models constructed from the patient \gls{bmi}, \gls{bmi} status and/or GT pa
 It was not surprising that the \gls{pr} pathway metagene showed significance in the models generated in \gls{nzbc} data set, as majority of the patients in the \gls{nzbc} data set were \gls{pr}$^+$ (\cref{tab:clin_summary}).
 The significance of the Myc metagene in the model for FM metagene was difficult to interpret, as there was no reported association of the FM metagene with the Myc pathway by \citet{Fuentes-Mattei2014}.
 \textit{MYC} is an oncogene that encodes the Myc transcription factor that, when overexpressed, disrupts various pathways that directly promote tumour growth and proliferation, and has a central role in many of the cancer hallmarks \citep{Coller2000,Hanahan2000}.
-``Sustained cell proliferation'' was one of the cancer hallmarks that \citet{Fuentes-Mattei2014} had shown to be related to their obesity associated genetic signature, which could be the reason that the Myc pathway metagene showed up as a significant variable in the linear model.
-Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with each of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity associated metagenes (\cref{tab:lm_pr_only}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
+``Sustained cell proliferation'' was one of the cancer hallmarks that \citet{Fuentes-Mattei2014} had shown to be related to their obesity-associated genetic signature, which could be the reason that the Myc pathway metagene showed up as a significant variable in the linear model.
+Since the \gls{pr} pathway metagene showed significant association in many of the linear models, linear models were made with each of the combinations of \gls{bmi}, \gls{bmi} status and \gls{pr} pathway metagene for all of the obesity-associated metagenes (\cref{tab:lm_pr_only}; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 As expected, all of the linear models showed significant contribution of the \gls{pr} metagene scores to the model for all obesity metagenes (except FM metagene; \cref{sec:summary_of_the_linear_models_in_nzbc_data}).
 
 \begin{table}[tpb]
@@ -358,7 +358,7 @@ Again, these results suggested that the predicted metagene scores from the linea
 
 Another thing to note from \cref{fig:predict_cr_cris} was the apparent negative association of the predicted metagenes with the original metagenes in the \gls{bmi}-only, the \gls{bmi} status-only and the \gls{bmi} and \gls{bmi} status models.
 One possible explanation for this was that these \gls{bmi}-based models were overfitted in the \gls{nzbc} data set, and was not generalisable in the CR data set, and thus produced negative correlations.
-In fact, it was evident from the metagene analyses in \cref{cha:obesity_genetic_signatures_and_cancer} that these obesity associated genetic signatures were not generalisable with the patient \gls{bmi} in different data sets, and overfitting of the model in the \gls{nzbc} data was the likely cause of this negative correlation.
+In fact, it was evident from the metagene analyses in \cref{cha:obesity_genetic_signatures_and_cancer} that these obesity-associated genetic signatures were not generalisable with the patient \gls{bmi} in different data sets, and overfitting of the model in the \gls{nzbc} data was the likely cause of this negative correlation.
 
 \begin{figure}[htpb]
 	\centering
@@ -467,7 +467,7 @@ Though the $R^2$ values were slightly lower than those from the \gls{nzbc} data 
 	\end{longtable}
 \end{ThreePartTable}
 
-Clearly, the stepwise linear models were able to predict the obesity associated metagenes better than the models created in \cref{sub:linear_model_prediction_in_the_nzbc_and_cr_data_sets}.
+Clearly, the stepwise linear models were able to predict the obesity-associated metagenes better than the models created in \cref{sub:linear_model_prediction_in_the_nzbc_and_cr_data_sets}.
 This could be due to the fact that many of the stepwise linear models included many pathways that had a strong negative correlation with the obesity metagenes (Akt, \gls{er}, \gls{egfr}, \gls{pr}, p53, Src and \gls{tgfb} pathways; \cref{fig:gatza_allmeta}).
 These pathway metagenes may have been better predictors of the obesity metagenes than the six pathways that were ``consistent'' across the data sets, and therefore generated better predictions than those linear models.
 With that said, some of the predicted obesity metagenes from the stepwise linear models were negatively correlated with the original metagene values in the CR data (\cref{fig:stepwise_cr}).
