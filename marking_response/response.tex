@@ -2,7 +2,7 @@
 %     File Name           :     response.tex
 %     Created By          :     rikutakei
 %     Creation Date       :     [2017-08-15 15:29]
-%     Last Modified       :     [2017-08-22 17:44]
+%     Last Modified       :     [2017-08-28 21:55]
 %     Description         :     Response to the markers' comments for my MSc thesis.
 %--------------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ Section 1.2 was written as a section introducing cancer in general, and was not 
 So it follows that Section 1.2.3 describes, in very general terms, how \textit{some} (not \textit{all}) environmental factors can influence the cancer incidence, and I think the amount of information placed in this subsection is sufficient for this purpose.
 Additionally, the environmental factors chosen to be included in this section was based on either (1) (very) strong evidence of their role in cancer onset/progression in the literature (in terms of both epidemiological and biological evidence/association), or (2) some sort of relationship with obesity.
 
-Perhaps I could emphasise these points within Section 1.2.3 and guide the readers to Section 1.3.2 for specific details on the effect of obesity on cancer.
+Perhaps, on request, I could emphasise these points within Section 1.2.3 and guide the readers to Section 1.3.2 for specific details on the effect of obesity on cancer.
 \\
 
 \noindent
@@ -89,7 +89,6 @@ However, as you may know from the report, majority of these DEGs would have been
 Again, using only the cancer types that were known to be associated with obesity may have aided the discovery of significant pathways and/or genes.
 \\
 
-
 \noindent
 \textcolor{blue}{
 \textit{On page 110, it is suggested that as the obesity-associated genetic signatures were derived from breast cancer datasets, that it made sense that these signatures were significant in the bladder cancer data sets as `basal-like' and `luminal-like' subtypes had been identified in bladder cancer.
@@ -98,6 +97,14 @@ As adenocarcinomas (epithelial-cell derived, and glandular in origin) all have t
 }\\
 
 \noindent
+I would like to point out that Damrauer \textit{et al.} not only identified luminal and basal-like subtypes in bladder cancer, but they also showed that the molecular signatures (both gene expression pattern and gene set enrichment) between the breast and bladder cancer subtypes had striking similarity.
+This suggests that the underlying biology of the subtypes between the two cancer types are very similar.
+I am not aware of any other cancer type showing this sort of similarity.
+
+It could be possible that many other adenocarcinoma may have these characteristics due to their cell of origin context.
+However, based  on my very limited knowledge of the broad field of cancer biology, breast cancer-like subtypes  have not yet been identified in any other cancer types, let alone compared with the breast cancer subtypes like in the Damrauer \textit{et al.} paper.
+
+Based on the current knowledge of adenocarcinoma subtypes and the unexpected analysis results from this thesis, I personally think that the interpretation made on page 110  was the best explanation one could make out from these evidence.
 \\
 
 \subsection*{Minor corrections}
@@ -206,6 +213,8 @@ Also, the font size was chosen so that the statistical values and letters did no
 }\\
 
 \noindent
+%TODO: "critically appraise" the three papers.
+Creighton \textit{et al.}, Fuentes-Mattei \textit{et al.} and Gatza \textit{et al.} papers have been more thoroughly introduced in Section 1.4.
 \\
 
 \noindent
@@ -233,6 +242,8 @@ Also, the font size was chosen so that the statistical values and letters did no
 }\\
 
 \noindent
+Adjusting the linear models with other clincial variables such as smoking would have been interesting to see.
+Extra paragraph has been added to Section 1.2.3 and a sentence has also been added towards the end of Section 5.1.1 to address this point.
 \\
 
 \noindent
@@ -255,7 +266,7 @@ Also, the font size was chosen so that the statistical values and letters did no
 
 \noindent
 \textcolor{blue}{
-	\textit{Potential mechanisms of obesity-altering hormone receptor expression could have been explored in more depth \textit{at the level of cancer cells}.
+	\textit{Potential mechanisms of obesity-altering hormone receptor expression could have been explored in more depth \textbf{at the level of cancer cells}.
 	The effects of endocrine factors like leptin and the IGFs were discussed in general but not the cancer cell type-specific gene expression changes they cause.
 	}
 }\\
@@ -355,22 +366,15 @@ However, I feel like an investigation  of the most informative probes/RNAs for e
 
 \noindent
 \textcolor{blue}{
-	\textit{It would be interesting to explore whether the differences in risk ratio between cancer types was due to technical issues, or represented real biology.
-	}
-}\\
-
-\noindent
-\\
-
-\noindent
-\textcolor{blue}{
 	\textit{Cancer patients can have vast differences in BMI at different points in their treatment.
 	Was the clinical timing of weight measures standardised in some way to reduce the impact of this problem, e.g. using weight at initial diagnosis?
 	}
 }\\
 
 \noindent
-This is a good point, and none of the papers define at which stage of the disease the patients' clinical data was taken (check).
+This is a good point, and only Creighton \textit{et al.} have specifically stated in their paper that the patient BMI was measured at the time of diagnosis.
+Fuentes-Mattei \textit{et al.} paper did not describe when the patient BMI was measured.
+Although I am not aware of how and when clinicians record patient data, I would suspect they would have measured BMI at the time of diagnosis to keep the data consistent with other variables (e.g. tumour grade).
 \\
 
 \noindent
@@ -422,11 +426,15 @@ This will be considered after discussion with Mik and HOD.
 
 \noindent
 \textcolor{blue}{
-	\textit{Discuss whether the biology underpinning differences between cancer types in terms of obesity risk ratios in Table 1 could be explored statistically using genomic data.
+	\textit{It would be interesting to explore whether the differences in risk ratio between cancer types was due to technical issues, or represented real biology.
+	Discuss whether the biology underpinning differences between cancer types in terms of obesity risk ratios in Table 1 could be explored statistically using genomic data.
 	}
 }\\
 
 \noindent
+Though there would be some technical issues in the individual studies include in the meta-analysis study by Renehan \textit{et al.}, I suspect that there is an effect of obesity on certain types of cancer.
+I am not sure whether there are any genomic data that could clarify the Examiner's question, as it is possible that obesity affects many different biological functions/pathways of a cell.
+However, I wonder if it would be possible to use SVD, or some other weighting scores, that take these risk ratios into account and essentially ``normalise'' the genetic signals (e.g. gene expression and/or methylation) across different cancer types, and thereby focus on the underlying biology of each cancer type.
 \\
 
 \noindent
