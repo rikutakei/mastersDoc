@@ -59,17 +59,24 @@ Likewise, any obesity-associated or pathway-associated gene probes were converte
 	\centering
 	\caption{Number of samples in each of the breast cancer microarray data}
 	\label{tab:num_sample_microarray}
-	\begin{tabular}{lc}
-		Data set & Number of samples\\
-		\hline
-		\hline
-		\rule{0pt}{2.25ex}Creighton \textit{et al.} & 103\\
-		Fuentes-Mattei \textit{et al.}              & 278\\
-		\gls{nzbc}                                  & 99 \\
-		Gatza \textit{et al.}                       & 1060\\
-		\hline
-		\hline
-	\end{tabular}
+	\begin{threeparttable}
+		\begin{tabular}{lcc}
+			Data set & Number of samples before exclusion\tnote{1} & Number of samples\\
+			\hline
+			\hline
+			\rule{0pt}{2.25ex}Creighton \textit{et al.} & 103 & 103\\
+			Fuentes-Mattei \textit{et al.}              & 278 & 278\\
+			\gls{nzbc}                                  & 107 & 99 \\
+			Gatza \textit{et al.}                       & 1965 & 1060\\
+			\hline
+			\hline
+		\end{tabular}
+		\begin{tablenotes}
+			\begin{footnotesize}
+			\item [1] See \cref{sub:breast_cancer_data} for exclusion criteria.
+			\end{footnotesize}
+		\end{tablenotes}
+	\end{threeparttable}
 \end{table}
 
 \begin{ThreePartTable}

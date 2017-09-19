@@ -400,7 +400,7 @@ Although there are a lot of possible mechanisms, there is growing evidence of th
 Free fatty acids from excess adipose tissue and/or diet can be recognised by \gls{tlr} (specifically \gls{tlr}4), which can then activate the \gls{nfkb} pathway, leading to the activation of one of the Hallmarks of Cancer (tumour-promoting inflammation) \citep{Lumeng2011}.
 
 In addition to the mechanisms described above, there is a growing body of evidence where some environmental factors may affect the transcriptional regulation of a set of genes in certain cancer type.
-A relatively recent review by \citet{Perez-Solis2016} describes potential mechanism in which obesity, alcoholism and smoking may regulate gene expression in breast cancer cells.
+A relatively recent review by \citet{Perez-Solis2016} describes potential mechanism in which obesity, alcoholism and smoking (all a lifestyle factor related to obesity) may regulate gene expression in breast cancer cells.
 By affecting the so-called ``Master'' transcription factors, environmental factors are able to affect the expression of the genes that are downstream to the Master transcription factor, and as a result, lead to the development of cancerous cells \citep{Perez-Solis2016}.
 It is not surprising that different environmental factors affect different Master transcriptional factor, and therefore have different biological mechanism of gene regulation.
 
@@ -497,8 +497,10 @@ Adipose tissue has long known to have been a group of cells to store excess fats
 Increased adiposity is known to influence the bioavailability of endogenous sex hormones, including estrogens, androgens and progesterone \citep{Calle2004}.
 \Glspl{adipocyte} synthesise enzymes, such as aromatase, that convert precursor molecules into different forms of androgens and estrogens \citep{Calle2004}.
 Many studies have confirmed the mitogenic effect of sex hormones on certain cell types, mainly breast and endometrial cell types \citep{Roberts2010}.
+In addition to this, there has also been evidence of serum from obese patient influencing the gene expression of sex hormone receptor (estrogen receptor $\beta$) in a breast cancer cell line, suggesting there may be a gene regulatory effect caused by the obese phenotype \citep{Bowers2015}.
+Through the effects of dysregulated levels of hormones and hormone receptors, obesity may have significant impact on the tumour biology through changes in gene expression level.
 
-On top of the effects that \glspl{adipocyte} have on circulating concentration of sex hormones, \glspl{adipocyte} also produce adipose tissue-specific hormones called adipokines \citep{Roberts2010}.
+On top of the effects that \glspl{adipocyte} have on circulating concentration of sex hormones as well as gene expression of sex hormone receptors, \glspl{adipocyte} also produce adipose tissue-specific hormones called adipokines \citep{Roberts2010}.
 Of the many adipokines identified so far, leptin and adipo\-nectin have been studied the most in terms of cancer development \citep{Renehan2006,Roberts2010}.
 Leptin is known to activate not only the satiety signalling pathway, but also the \gls{jak}/\gls{stat} and \gls{pi3k}/Akt signalling pathways \citep{Garofalo2006,Renehan2006}.
 Activation of these pathways leads to the activation of the target genes that are involved in cell proliferation and cell survival, as well as pro-angiogenic factors \citep{Garofalo2006}.
@@ -584,10 +586,18 @@ In both studies, the authors were able to identify a set of genes that were up o
 \label{ssub:creighton_study}
 
 \citet{Creighton2012} used 103 breast tumour samples and analysed these samples using microarrays.
+The tumour samples were trimmed upon collection, to ensure all of the samples had $\geq$ 70\% tumour cells before \acrshort{rna} was extracted from the samples.
 Of the 103 samples, 35\% were from normal weight, 28\% were from overweight and 37\% were from obese patients.
 It was also noted that African-American patients were more likely to be obese than Caucasian patients.
 They compared the gene expression between the tumours from obese patients with the tumours from non-obese patients and identified 799 gene probe sets (662 unique genes) with p \textless{} 0.01 and with a \gls{fc} \textgreater{} 1.2.
 The majority of these genes (725 gene probes) were downregulated and 74 gene probes were upregulated in the breast tumour samples from the obese patients compared with the breast tumour samples from the non-obese patients.
+
+Major concern with this study was the quality of the \acrshort{rna} that was collected from the samples.
+Ensuring that all of the samples had more than 70\% of tumour cells meant that the \acrshort{rna} was likely from the tumour cells.
+However, this did not control for the quality of the \acrshort{rna} that has been extracted, as some samples may have had significantly less tumour volume compared to another, but still have $\geq$ 70\% tumour cells in both samples.
+Another thing to note from this paper was the predictive ability of their obesity signatures in other data sets.
+\citet{Creighton2012} used six independent breast cancer  data sets to test whether their signature was able to replicate their findings.
+Although they were able to replicate their results in one of the data sets, they were not able to find any significant association in the other data sets.
 
 \subsubsection{\citet{Fuentes-Mattei2014} study}
 \label{ssub:fuentes_mattei_study}
@@ -596,8 +606,9 @@ The majority of these genes (725 gene probes) were downregulated and 74 gene pro
 Of the 137 patients, 43 patients were obese and 94 patients were not obese.
 Comparison of the gene expressions of the tumour samples from the obese patients with the tumour samples from the non-obese patients revealed 112 genes that were statistically significantly dysregulated (62 genes upregulated and 50 genes downregulated).
 Furthermore, functional transcriptomic analysis suggested that the insulin signalling and inflammation affected human \gls{er}$^+$ breast cancer.
+One minor thing to point out in this paper was that the normalisation procedure carried out before the differential expression analysis was not clear.
 
-On top of this, \citet{Fuentes-Mattei2014} validated their results using a mouse model, where they compared the expression level in the breast tumours from the obese mice with those from the lean mice.
+On top of the bioinformatic analysis that was carried out, \citet{Fuentes-Mattei2014} validated their results using a mouse model, where they compared the expression level in the breast tumours from the obese mice with those from the lean mice.
 Results from this animal model provided strong evidence that obesity significantly accelerated tumour growth through Akt/\gls{mtor} signalling pathway.
 
 \subsection{Pathway-associated genetic signatures}
