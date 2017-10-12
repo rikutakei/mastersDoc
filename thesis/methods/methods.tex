@@ -20,8 +20,8 @@ In addition to these breast cancer data sets, the raw microarray data set from a
 \label{ssub:creighton2012_data}
 
 The raw Affymetrix HGU\-133A microarray gene expression data files from the \citet{Creighton2012} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE24185).
-Clinical data of the samples (age, ethnicity, tumour grade, menopause status, \gls{bmi}, \gls{er} status, \gls{pr} status, \gls{her2} status, and \gls{ln} status) were obtained from the Supplementary Table 1 from the \citet{Creighton2012} study.
-799 obesity-associated gene probes identified in the \citet{Creighton2012} study were obtained from the Supplementary Data File 1 from the \citet{Creighton2012} study.
+Clinical data of the samples (age, ethnicity, tumour grade, menopause status, \gls{bmi}, \gls{er} status, \gls{pr} status, \gls{her2} status, and \gls{ln} status) were obtained from Supplementary Table 1 of the \citet{Creighton2012} study.
+799 obesity-associated gene probes identified in the \citet{Creighton2012} study were obtained from Supplementary Data File 1 from the \citet{Creighton2012} study.
 
 \subsubsection{\citet{Fuentes-Mattei2014} data}
 \label{ssub:fuentes-mattei2014_data}
@@ -29,7 +29,7 @@ Clinical data of the samples (age, ethnicity, tumour grade, menopause status, \g
 The raw Affymetrix HGU\-133A microarray gene expression data files from the  \citet{Fuentes-Mattei2014} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE\-20194).
 Clinical data for the samples (age, ethnicity, tumour grade, \gls{er}/\gls{pr}/\gls{her2} statuses, and treatments used) in this study was also downloaded from the \gls{geo} database (same \gls{geo} accession ID).
 Patient height, weight and \gls{bmi} information were not available in this data set.
-130 obesity-associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from the Supplementary Table 3 from their paper.
+130 obesity-associated gene probes identified by \citet{Fuentes-Mattei2014} were taken from Supplementary Table 3 of their paper.
 
 \subsubsection{\acrfull{nzbc} data}
 \label{ssub:nzbc_data}
@@ -44,7 +44,7 @@ Clinical data for the samples (age, ethnicity, tumour grade, breast cancer subty
 The raw microarray gene expression data files from the \citet{Gatza2010a} study were downloaded from the \gls{geo} database (\gls{geo} accession ID: GSE1456, GSE\-1561, GSE2034, GSE3494, GSE4922 and GSE6596).
 Only the Affymetrix HGU\-133A microarray samples were included in this project, as the other microarray data from the \citet{Creighton2012}, \citet{Fuentes-Mattei2014} and \citet{Print2016} studies were analysed using the Affymetrix HGU-133A platform.
 Clinical data for the samples in \citet{Gatza2010a} study was not available, as these samples were a combination of many different datasets.
-The Akt, \gls{bcat}, E2F1, \gls{egfr}, \gls{er}, \gls{her2}, \gls{ifna}, \gls{ifny}, Myc, p53, p63, \gls{pi3k}, \gls{pr}, Ras, \gls{stat3}, Src, \gls{tgfb}, and \gls{tnfa} pathway-associated genetic signatures were used by Gatza \textit{et al.}, and the gene probes of all the pathway-associated genetic signatures were obtained from the Supplemental Table 10 from their paper.
+The Akt, \gls{bcat}, E2F1, \gls{egfr}, \gls{er}, \gls{her2}, \gls{ifna}, \gls{ifny}, Myc, p53, p63, \gls{pi3k}, \gls{pr}, Ras, \gls{stat3}, Src, \gls{tgfb}, and \gls{tnfa} pathway-associated genetic signatures were used by Gatza \textit{et al.}, and the gene probes of all the pathway-associated genetic signatures were obtained from Supplemental Table 10 of their paper.
 
 \subsubsection{Gene probe ID conversion}
 \label{ssub:gene_probe_id_conversion}
@@ -281,7 +281,7 @@ The \gls{rma} method is based on the observation that \gls{pm} is a mixture of b
 In fact, the \gls{rma} method showed better identification of the true signals than the other methods, including \Gls{mas} method \citep{Irizarry2003}.
 
 The raw microarray data were normalised using both \gls{rma} and \gls{mas} methods, each done separately on a copy of the data.
-The reason why the \gls{mas} method was used as well as the \gls{rma} method was because the \gls{mas}-normalisation method was used in the \citet{Gatza2010a} study.
+The reason that the \gls{mas} method was used as well as the \gls{rma} method was because the \gls{mas}-normalisation method was used in the \citet{Gatza2010a} study.
 Though the normalisation methods were not specified in the \citet{Creighton2012} and \citet{Fuentes-Mattei2014} studies, to allow for data comparison between different datasets and accurate result validation of some of the studies, both \gls{rma} and \gls{mas} methods were considered for normalising the microarray data.
 
 \subsubsection{RNA-seq data}
@@ -573,11 +573,11 @@ In this case, the direction of the generated metagene must be corrected in order
 \end{figure}
 
 In this project, two types of metagenes were created: obesity-associated and pathway-associated metagenes.
-For obesity-associated metagenes, the direction of the metagenes were checked with the patient obesity status and \gls{bmi} value from the data in which the metagene was derived from.
+For obesity-associated metagenes, the direction of each metagene was checked with the patient obesity status and \gls{bmi} value from the data in which the metagene was derived from.
 When the data set did not have \gls{bmi} or \gls{bmi} status information for the patients (for example the Gatza \textit{et al.} data set), a set of genes that were common in all obesity-associated genetic signatures were taken and the expression of these common genes were compared with the metagene scores.
-The genes that are common to all of the obesity-associated genetic signatures will be related to the metagenes produced by these signatures, and therefore the expressions of these genes should be in line with the metagene scores.
+The genes that are common to all of the obesity-associated genetic signatures will be related to the metagenes produced by these signatures, and therefore the expression patterns of these genes should be in line with the metagene scores.
 
-Checking the direction of the pathway metagenes from \citet{Gatza2010a} study is not as simple as the obesity-associated metagenes, as the experimental design that identify which samples were treated to generate the pathway signature was not available.
+Checking the direction of the pathway metagenes from \citet{Gatza2010a} study is not as simple as the obesity-associated metagenes, as the gene lists for each pathway were derived from a separate study and per-gene directionality information was not provided.
 Due to this, it was not possible to validate whether the generated pathway metagene was in the ``correct'' direction.
 As an alternative, the pathway metagenes were visually compared with the gene that represent the pathway using a heatmap, as the expression of this gene would likely be affected the most by the pathway signature.
 For example, the \gls{er} pathway metagene was compared with the \textit{ESR1} gene expression, and if the metagene was not in the same direction as the \textit{ESR1} gene expression, the direction of the metagene was corrected (\cref{fig:methods/meta_dir}).
@@ -651,7 +651,7 @@ If the predicted metagene was similar to the original metagene, then it provides
 
 Since the \gls{nzbc} data was the only data set (other than the Creighton \textit{et al.} data set) that had the patient \gls{bmi} information, all of the linear models were constructed in the \gls{nzbc} data set.
 Eleven linear models were created in the \gls{nzbc} to predict the obesity-associated metagene from the \citet{Creighton2012} study.
-First seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway-associated metagene scores.
+The first seven models created were combinations of the sample \gls{bmi}, \gls{bmi} status and a selection of pathway-associated metagene scores.
 The selected pathways used in the linear model construction were \gls{bcat}, \gls{er}, \gls{ifna}, \gls{ifny}, Myc and \gls{pr}.
 In deciding on the pathways to be used for the construction of the linear model, the correlation of the \gls{svd}- and transformation matrix-derived pathway metagene scores in different data sets were examined.
 
