@@ -275,7 +275,7 @@ In Affymetrix HGU133A microarray experiments, there are two types of probes pres
 As the name suggests, \gls{pm} probes represent the probes that should perfectly match the gene of interest, whereas \gls{mm} probes have there 13th base pair intentionally altered to measure non-specific binding of the gene \citep{Irizarry2003}.
 Various normalisation methods make use of \gls{pm} and \gls{mm}, or ``probe pairs'', to identify true signals from the noise.
 
-\Gls{mas} and \gls{rma}-normalisation methods are both part of the \textit{affy} package in \gls{r} \citep{Gautier2004}.
+\Gls{mas} and \gls{rma}-normali\-sa\-tion methods are both part of the \textit{affy} package in \gls{r} \citep{Gautier2004}.
 \Gls{mas} uses a difference-based method where it subtracts a value derived from \gls{mm} from \gls{pm}, but this approach may introduce additional noise and/or errors in some cases \citep{Irizarry2003}.
 The \gls{rma} method is based on the observation that \gls{pm} is a mixture of background and true signal, and uses mathematical models to estimate the expression while correcting for background signals from \gls{pm} only \citep{Irizarry2003}.
 In fact, the \gls{rma} method showed better identification of the true signals than the other methods, including \Gls{mas} method \citep{Irizarry2003}.
@@ -589,6 +589,7 @@ Therefore, the direction as well as the magnitude of the correlation value was a
 Lastly, the clustering of the pathway metagenes with the other pathway metagenes were also considered.
 It was known from the \citet{Gatza2010a} study that some pathways clustered and grouped together with certain pathways, so the direction of some of the metagenes were altered in order to keep the grouping of the pathways matched to the results in their paper (\cref{sec:result_from_gatza2010a_study}).
 
+\newpage
 \begin{longtable}{llp{8cm}}
 	\caption{18 pathways from \citet{Gatza2010a} and its respective genes used to check the direction of the pathway metagene}
 	\label{tab:metagene_direction}\\
